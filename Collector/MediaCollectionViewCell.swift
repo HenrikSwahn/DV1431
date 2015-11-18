@@ -10,4 +10,8 @@ import UIKit
 
 class MediaCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var coverArt: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var releaseYearLabel: UILabel!
+    
 }

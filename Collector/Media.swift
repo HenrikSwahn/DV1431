@@ -1,3 +1,6 @@
+
+import UIKit
+
 class Media {
     var name: String
     var release: Int

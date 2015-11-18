@@ -9,7 +9,12 @@
 import UIKit
 
 class MediaTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var coverArt: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var releaseYearLabel: UILabel!
+    @IBOutlet weak var runtimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +25,4 @@ class MediaTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		31B842221BF3880D005429FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842211BF3880D005429FA /* AppDelegate.swift */; };
-		31B842241BF3880D005429FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842231BF3880D005429FA /* ViewController.swift */; };
 		31B842271BF3880E005429FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31B842251BF3880E005429FA /* Main.storyboard */; };
 		31B8422A1BF3880E005429FA /* Collector.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B842281BF3880E005429FA /* Collector.xcdatamodeld */; };
 		31B8422C1BF3880E005429FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31B8422B1BF3880E005429FA /* Assets.xcassets */; };
 		31B8422F1BF3880E005429FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31B8422D1BF3880E005429FA /* LaunchScreen.storyboard */; };
 		31B8423A1BF3880E005429FA /* CollectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842391BF3880E005429FA /* CollectorTests.swift */; };
 		31B842451BF3880E005429FA /* CollectorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842441BF3880E005429FA /* CollectorUITests.swift */; };
+		AFADF84D1BFC6F180024D9A4 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84C1BFC6F180024D9A4 /* HomeScreenViewController.swift */; };
+		AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84E1BFC76E80024D9A4 /* Media.swift */; };
+		AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */; };
+		AFF229561BFC8CAF001181AC /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */; };
+		AFF229581BFCAFED001181AC /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF229571BFCAFED001181AC /* MediaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +41,6 @@
 /* Begin PBXFileReference section */
 		31B8421E1BF3880D005429FA /* Collector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31B842211BF3880D005429FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		31B842231BF3880D005429FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		31B842261BF3880E005429FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		31B842291BF3880E005429FA /* Collector.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Collector.xcdatamodel; sourceTree = "<group>"; };
 		31B8422B1BF3880E005429FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +52,11 @@
 		31B842401BF3880E005429FA /* CollectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31B842441BF3880E005429FA /* CollectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectorUITests.swift; sourceTree = "<group>"; };
 		31B842461BF3880E005429FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFADF84C1BFC6F180024D9A4 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		AFADF84E1BFC76E80024D9A4 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
+		AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCell.swift; sourceTree = "<group>"; };
+		AFF229571BFCAFED001181AC /* MediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +107,17 @@
 		31B842201BF3880D005429FA /* Collector */ = {
 			isa = PBXGroup;
 			children = (
+				AFADF84B1BFC6E880024D9A4 /* HomeScreen */,
 				31B842211BF3880D005429FA /* AppDelegate.swift */,
-				31B842231BF3880D005429FA /* ViewController.swift */,
+				AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */,
+				AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */,
 				31B842251BF3880E005429FA /* Main.storyboard */,
+				AFADF84E1BFC76E80024D9A4 /* Media.swift */,
 				31B8422B1BF3880E005429FA /* Assets.xcassets */,
 				31B8422D1BF3880E005429FA /* LaunchScreen.storyboard */,
 				31B842301BF3880E005429FA /* Info.plist */,
 				31B842281BF3880E005429FA /* Collector.xcdatamodeld */,
+				AFF229571BFCAFED001181AC /* MediaViewController.swift */,
 			);
 			path = Collector;
 			sourceTree = "<group>";
@@ -126,6 +138,14 @@
 				31B842461BF3880E005429FA /* Info.plist */,
 			);
 			path = CollectorUITests;
+			sourceTree = "<group>";
+		};
+		AFADF84B1BFC6E880024D9A4 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AFADF84C1BFC6F180024D9A4 /* HomeScreenViewController.swift */,
+			);
+			name = HomeScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +280,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				31B8422A1BF3880E005429FA /* Collector.xcdatamodeld in Sources */,
-				31B842241BF3880D005429FA /* ViewController.swift in Sources */,
+				AFF229581BFCAFED001181AC /* MediaViewController.swift in Sources */,
+				AFF229561BFC8CAF001181AC /* MediaCollectionViewCell.swift in Sources */,
+				AFADF84D1BFC6F180024D9A4 /* HomeScreenViewController.swift in Sources */,
+				AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */,
 				31B842221BF3880D005429FA /* AppDelegate.swift in Sources */,
+				AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +512,7 @@
 				31B8424B1BF3880E005429FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31B8424C1BF3880E005429FA /* Build configuration list for PBXNativeTarget "CollectorTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +521,7 @@
 				31B8424E1BF3880E005429FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31B8424F1BF3880E005429FA /* Build configuration list for PBXNativeTarget "CollectorUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +530,7 @@
 				31B842511BF3880E005429FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
