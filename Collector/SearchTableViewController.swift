@@ -8,11 +8,41 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController {
+class SearchTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    // MARK: - Variables and constances
+    private struct Storyboard {
+            static let mediaCellId = "media cell"
+    }
+    
+    private var media = [Media]()
+    
+    @IBOutlet weak var movieTableCell: UITableViewCell!
+    @IBOutlet weak var musicTableCell: UITableViewCell!
+
+    @IBOutlet weak var movieResultsCollectionView: UICollectionView! {
+        didSet {
+            self.movieResultsCollectionView.delegate = self
+            self.movieResultsCollectionView.dataSource = self
+        }
+    }
+
+    @IBOutlet weak var musicResultsCollectionView: UICollectionView! {
+        didSet {
+            self.musicResultsCollectionView.delegate = self
+            self.musicResultsCollectionView.dataSource = self
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let mov1 = Media(named: "I am Legend", released: 2007, length: "1 hour 43 minutes", image: UIImage(named: "i-am-legend-box"))
+        let mov2 = Media(named: "Indiana Jones and The temple of doom", released: 1989, length: "2 hour 6 minutes", image: UIImage(named: "i-am-legend-box"))
+        let mov3 = Media(named: "Interstellar", released: 2014, length: "2 hour 49 minutes", image: UIImage(named: "i-am-legend-box"))
+        let mov4 = Media(named: "The Lord of the Rings: The Return of the King", released: 2003, length: "3 hour 21 minutes", image: UIImage(named: "i-am-legend-box"))
+        
+        media += [mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4]
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -27,7 +57,7 @@ class SearchTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+ /*   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     }
@@ -35,8 +65,22 @@ class SearchTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
+    }*/
+
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return media.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
+        cell.titleLabel.text = media[indexPath.row].name
+        cell.releaseYearLabel.text = "\(media[indexPath.row].release)"
+        cell.coverArt.image = media[indexPath.row].image
+
+        return cell
     }
 
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
@@ -91,5 +135,5 @@ class SearchTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

@@ -80,10 +80,10 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         self.mediaCollection.hidden = true
         //self.navigationController?.navigationBar.backgroundColor = UIColor.greenColor()
         // Do any additional setup after loading the view.
-        let mov1 = Media(named: "I am Legend", released: 2007, length: "1 hour 43 minutes", image: UIImage(named: "placeholder-movie"))
-        let mov2 = Media(named: "Indiana Jones and The temple of doom", released: 1989, length: "2 hour 6 minutes", image: UIImage(named: "placeholder-movie"))
-        let mov3 = Media(named: "Interstellar", released: 2014, length: "2 hour 49 minutes", image: UIImage(named: "placeholder-movie"))
-        let mov4 = Media(named: "The Lord of the Rings: The Return of the King", released: 2003, length: "3 hour 21 minutes", image: UIImage(named: "placeholder-movie"))
+        let mov1 = Media(named: "I am Legend", released: 2007, length: "1 hour 43 minutes", image: UIImage(named: "i-am-legend-box"))
+        let mov2 = Media(named: "Indiana Jones and The temple of doom", released: 1989, length: "2 hour 6 minutes", image: UIImage(named: "i-am-legend-box"))
+        let mov3 = Media(named: "Interstellar", released: 2014, length: "2 hour 49 minutes", image: UIImage(named: "i-am-legend-box"))
+        let mov4 = Media(named: "The Lord of the Rings: The Return of the King", released: 2003, length: "3 hour 21 minutes", image: UIImage(named: "i-am-legend-box"))
         
         media += [mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4]
     }
