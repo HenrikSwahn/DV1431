@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class SearchTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     // MARK: - Variables and constances
