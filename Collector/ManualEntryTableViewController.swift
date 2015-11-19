@@ -9,7 +9,17 @@
 import UIKit
 
 class ManualEntryTableViewController: UITableViewController {
-
+    // MARK: - Outlets
+    @IBOutlet weak var releaseYear: UIPickerTextField! {
+        didSet {
+            // Create a array with year range from currentYear - 100 years
+            let years: [String] = [Int](count: 100, repeatedValue: 0).mapNumber({
+                (year, _) -> String in return "\(2015 - year)"
+            })
+            
+            self.releaseYear.dataSource(years)
+        }
+    }
     @IBOutlet weak var image: UIImageView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "imageTapped")
@@ -53,5 +63,12 @@ class ManualEntryTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
+    }
+}
+
+// MARK: - Extensions
+extension Array {
+    public func mapNumber<T> (f: (Int, Element) -> T) -> [T] {
+        return zip((self.startIndex ..< self.endIndex), self).map(f)
     }
 }

@@ -16,6 +16,7 @@
 		31B8422F1BF3880E005429FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31B8422D1BF3880E005429FA /* LaunchScreen.storyboard */; };
 		31B8423A1BF3880E005429FA /* CollectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842391BF3880E005429FA /* CollectorTests.swift */; };
 		31B842451BF3880E005429FA /* CollectorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842441BF3880E005429FA /* CollectorUITests.swift */; };
+		31EA349F1BFE4E4900D7F72B /* UIPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */; };
 		AFADF84D1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84C1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift */; };
 		AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84E1BFC76E80024D9A4 /* Media.swift */; };
 		AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */; };
@@ -58,6 +59,7 @@
 		31B842401BF3880E005429FA /* CollectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31B842441BF3880E005429FA /* CollectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectorUITests.swift; sourceTree = "<group>"; };
 		31B842461BF3880E005429FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPickerTextField.swift; sourceTree = "<group>"; };
 		AFADF84C1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieHomeScreenViewController.swift; sourceTree = "<group>"; };
 		AFADF84E1BFC76E80024D9A4 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		31B842201BF3880D005429FA /* Collector */ = {
 			isa = PBXGroup;
 			children = (
+				31EA349D1BFE4E1600D7F72B /* UIElements */,
 				AFFC51BD1BFDC31A00DA5344 /* Models */,
 				AFFC51BE1BFDC33600DA5344 /* Controllers */,
 				AFFC51BC1BFDC2EF00DA5344 /* Cells */,
@@ -144,6 +147,14 @@
 				31B842461BF3880E005429FA /* Info.plist */,
 			);
 			path = CollectorUITests;
+			sourceTree = "<group>";
+		};
+		31EA349D1BFE4E1600D7F72B /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */,
+			);
+			name = UIElements;
 			sourceTree = "<group>";
 		};
 		AFFC51BC1BFDC2EF00DA5344 /* Cells */ = {
@@ -314,6 +325,7 @@
 				AFF229561BFC8CAF001181AC /* MediaCollectionViewCell.swift in Sources */,
 				31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */,
 				AFADF84D1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift in Sources */,
+				31EA349F1BFE4E4900D7F72B /* UIPickerTextField.swift in Sources */,
 				AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */,
 				31B842221BF3880D005429FA /* AppDelegate.swift in Sources */,
 				AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */,
