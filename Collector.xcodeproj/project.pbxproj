@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		315D31521BFF4EA100E08C7D /* ManualEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D31511BFF4EA100E08C7D /* ManualEntryTableViewCell.swift */; };
 		31749C031BFDE7B400E76648 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749C021BFDE7B400E76648 /* SearchTableViewController.swift */; };
 		31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */; };
 		31B842221BF3880D005429FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842211BF3880D005429FA /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		315D31511BFF4EA100E08C7D /* ManualEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualEntryTableViewCell.swift; sourceTree = "<group>"; };
 		31749C021BFDE7B400E76648 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEntryTableViewController.swift; sourceTree = "<group>"; };
 		31B8421E1BF3880D005429FA /* Collector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collector.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 				AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */,
 				AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */,
 				AFFC51BF1BFDD03400DA5344 /* MediaDetailTableViewCell.swift */,
+				315D31511BFF4EA100E08C7D /* ManualEntryTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				31B842221BF3880D005429FA /* AppDelegate.swift in Sources */,
 				AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */,
 				AFFC51C01BFDD03400DA5344 /* MediaDetailTableViewCell.swift in Sources */,
+				315D31521BFF4EA100E08C7D /* ManualEntryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

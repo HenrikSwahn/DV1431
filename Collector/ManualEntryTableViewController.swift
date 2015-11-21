@@ -9,6 +9,9 @@
 import UIKit
 
 class ManualEntryTableViewController: UITableViewController {
+    // MARK: - Instance variables
+    private let genericEntries = ["Age Restriction", "Main Actors", "Director"]
+    
     // MARK: - Outlets
     @IBOutlet weak var releaseYear: UIPickerTextField! {
         didSet {
@@ -20,6 +23,21 @@ class ManualEntryTableViewController: UITableViewController {
             self.releaseYear.dataSource(years)
         }
     }
+    
+    @IBOutlet weak var owningType: UIPickerTextField! {
+        didSet {
+            self.owningType.dataSource(["Digital", "Physical"])
+        }
+    }
+    
+    @IBOutlet weak var formatPickerTextField: UIPickerTextField! {
+        didSet {
+            // Move this data to prepareForSegue
+            self.formatPickerTextField.dataSource(["DVD", "Blu-Ray"])
+            //self.formatPickerTextField.dataSource(["FLAC", "mp3"])
+        }
+    }
+    
     @IBOutlet weak var image: UIImageView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "imageTapped")
@@ -46,6 +64,7 @@ class ManualEntryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,12 +76,18 @@ class ManualEntryTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return genericEntries.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("generic entry") as! ManualEntryTableViewCell
+        cell.genricEntryTextField.placeholder = genericEntries[indexPath.row]
+        return cell
     }
 }
 

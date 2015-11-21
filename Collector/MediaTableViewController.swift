@@ -9,7 +9,6 @@
 import UIKit
 
 class MediaTableViewController: UITableViewController {
-    
     @IBOutlet weak var backgroundImage: UIImageView! {
         didSet {
             let gradient = CAGradientLayer()
@@ -30,8 +29,6 @@ class MediaTableViewController: UITableViewController {
         test.append(("Writers", "Mark Protocevic, Akiva Goldsman"))
         test.append(("Actors", "Will Smith, Alice Braga, Charlie Tahan"))
     }
-    
-        
     
     private struct Storyboard {
         static let mediaDetailCellId = "media detail cell id"
