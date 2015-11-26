@@ -8,6 +8,11 @@
 
 import UIKit
 
+/*
+UIIconImageView changes the rendering behavior of the default UIImageView and
+enables tint changes directly from the storboard. UIIconImageView works exactly
+as tint colors on navigation items (tab bars, etc.)
+*/
 class UIIconImageView: UIImageView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
