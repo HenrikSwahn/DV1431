@@ -49,10 +49,10 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId) as! MediaTableViewCell
-        cell.titleLabel.text = media[indexPath.row].name
-        cell.releaseYearLabel.text = "\(media[indexPath.row].release)"
-        cell.runtimeLabel.text = media[indexPath.row].length
-        cell.coverArt.image = media[indexPath.row].image
+        cell.titleLabel.text = media[indexPath.row].getTitle()
+        cell.releaseYearLabel.text = "\(media[indexPath.row].getReleaseYear())"
+        cell.runtimeLabel.text = media[indexPath.row].getRuntime().toString()
+        cell.coverArt.image = media[indexPath.row].getCoverArt()
         return cell
     }
     
@@ -67,9 +67,9 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
-        cell.titleLabel.text = media[indexPath.row].name
-        cell.releaseYearLabel.text = "\(media[indexPath.row].release)"
-        cell.coverArt.image = media[indexPath.row].image
+        cell.titleLabel.text = media[indexPath.row].getTitle()
+        cell.releaseYearLabel.text = "\(media[indexPath.row].getReleaseYear())"
+        cell.coverArt.image = media[indexPath.row].getCoverArt()
         return cell
     }
     
@@ -80,10 +80,10 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         self.mediaCollection.hidden = true
         //self.navigationController?.navigationBar.backgroundColor = UIColor.greenColor()
         // Do any additional setup after loading the view.
-        let mov1 = Media(named: "I am Legend", released: 2007, length: "1 hour 43 minutes", image: UIImage(named: "i-am-legend-box"))
-        let mov2 = Media(named: "Indiana Jones and The temple of doom", released: 1989, length: "2 hour 6 minutes", image: UIImage(named: "i-am-legend-box"))
-        let mov3 = Media(named: "Interstellar", released: 2014, length: "2 hour 49 minutes", image: UIImage(named: "i-am-legend-box"))
-        let mov4 = Media(named: "The Lord of the Rings: The Return of the King", released: 2003, length: "3 hour 21 minutes", image: UIImage(named: "i-am-legend-box"))
+        let mov1 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 0))
+        let mov2 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
+        let mov3 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
+        let mov4 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
         
         media += [mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4]
     }
