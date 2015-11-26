@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		315797E91C074F0B0007FAFC /* UIIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E61C074F0B0007FAFC /* UIIconImageView.swift */; };
+		315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */; };
+		315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E81C074F0B0007FAFC /* UIRatingView.swift */; };
+		315797ED1C074F190007FAFC /* MediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797EC1C074F190007FAFC /* MediaDetailViewController.swift */; };
 		315D31521BFF4EA100E08C7D /* ManualEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D31511BFF4EA100E08C7D /* ManualEntryTableViewCell.swift */; };
 		31749C031BFDE7B400E76648 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749C021BFDE7B400E76648 /* SearchTableViewController.swift */; };
 		31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */; };
@@ -49,6 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		315797E61C074F0B0007FAFC /* UIIconImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIIconImageView.swift; sourceTree = "<group>"; };
+		315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMarqueeLabel.swift; sourceTree = "<group>"; };
+		315797E81C074F0B0007FAFC /* UIRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRatingView.swift; sourceTree = "<group>"; };
+		315797EC1C074F190007FAFC /* MediaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDetailViewController.swift; sourceTree = "<group>"; };
 		315D31511BFF4EA100E08C7D /* ManualEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualEntryTableViewCell.swift; sourceTree = "<group>"; };
 		31749C021BFDE7B400E76648 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEntryTableViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +170,9 @@
 		31EA349D1BFE4E1600D7F72B /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				315797E61C074F0B0007FAFC /* UIIconImageView.swift */,
+				315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */,
+				315797E81C074F0B0007FAFC /* UIRatingView.swift */,
 				31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */,
 			);
 			name = UIElements;
@@ -201,6 +212,7 @@
 		AFFC51BE1BFDC33600DA5344 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				315797EC1C074F190007FAFC /* MediaDetailViewController.swift */,
 				AFF229571BFCAFED001181AC /* MediaTableViewController.swift */,
 				AFADF84C1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift */,
 				31749C021BFDE7B400E76648 /* SearchTableViewController.swift */,
@@ -344,20 +356,24 @@
 				31B8422A1BF3880E005429FA /* Collector.xcdatamodeld in Sources */,
 				31749C031BFDE7B400E76648 /* SearchTableViewController.swift in Sources */,
 				AF300A781C0710E000BC57D9 /* Runtime.swift in Sources */,
+				315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */,
 				AFF229581BFCAFED001181AC /* MediaTableViewController.swift in Sources */,
 				AFE9D7151BFE13EC009E5DAA /* ManualEntryTableViewController.swift in Sources */,
 				AFF229561BFC8CAF001181AC /* MediaCollectionViewCell.swift in Sources */,
+				315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */,
 				31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */,
 				AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */,
 				AFADF84D1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift in Sources */,
 				31EA349F1BFE4E4900D7F72B /* UIPickerTextField.swift in Sources */,
 				AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */,
+				315797E91C074F0B0007FAFC /* UIIconImageView.swift in Sources */,
 				31B842221BF3880D005429FA /* AppDelegate.swift in Sources */,
 				AF300A7F1C0737E000BC57D9 /* Track.swift in Sources */,
 				AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */,
 				AFFC51C01BFDD03400DA5344 /* MediaDetailTableViewCell.swift in Sources */,
 				315D31521BFF4EA100E08C7D /* ManualEntryTableViewCell.swift in Sources */,
 				AF300A7A1C07151200BC57D9 /* Movie.swift in Sources */,
+				315797ED1C074F190007FAFC /* MediaDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

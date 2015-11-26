@@ -9,7 +9,6 @@
 import UIKit
 
 class MediaDetailTableViewCell: UITableViewCell {
-
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
