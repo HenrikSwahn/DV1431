@@ -18,6 +18,14 @@ class ManualEntryTableViewController: UITableViewController {
     
     @IBAction func doneTapped(sender: UIBarButtonItem) {
         storage.storeMedia(titleField.text!, genre: genreFIeld.text!, releaseYear: Int(releaseYear.text!)!, owningType: owningType.text, ownerLocation: locationField.text, format: formatPickerTextField.text, runtime: Int(runTime.text!), description: descTextArea.text, coverArt: image.image)
+        /*print(titleField.text)
+        print(genreFIeld.text)
+        print(locationField.text)
+        print(descTextArea.text)
+        print(releaseYear.text)
+        print(owningType.text)
+        print(runTime.text)
+        print(formatPickerTextField.text)*/
     }
     
     // MARK: - Outlets
@@ -62,6 +70,12 @@ class ManualEntryTableViewController: UITableViewController {
         tap.numberOfTapsRequired = 1
         self.image.userInteractionEnabled = true
         self.image.addGestureRecognizer(tap)
+        
+        let seconds: [String] = [Int](count: 2000, repeatedValue: 0).mapNumber({
+            (second, _) -> String in return "\(second)"
+        })
+        
+        self.runTime.dataSource(seconds)
     }
 
     override func didReceiveMemoryWarning() {

@@ -113,12 +113,25 @@ class Storage {
                     media.setFormat(.DVD)
                     break
                 }
+                print(media.getRuntime().toString())
                 medias.append(media)
             }
             return medias
         }    
         catch {
             fatalError("Could not execute query")
+        }
+    }
+    
+    // MARK: - Dev
+    func emptyDatabase() {
+        let fetchRequest = NSFetchRequest(entityName: "Media")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedObjectContext.executeRequest(deleteRequest)
+        }catch {
+            fatalError("Error deleting batabase")
         }
     }
 }
