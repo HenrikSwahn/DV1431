@@ -7,45 +7,29 @@
 //
 
 import UIKit
+import CoreData
 
 class ManualEntryTableViewController: UITableViewController {
     // MARK: - Instance variables
     private let genericEntries = ["Age Restriction", "Main Actors", "Director"]
+    private var storage = Storage()
+    
+    let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    @IBAction func doneTapped(sender: UIBarButtonItem) {
+        storage.storeMedia(titleField.text!, genre: genreFIeld.text!, releaseYear: Int(releaseYear.text!)!, owningType: owningType.text, ownerLocation: locationField.text, format: formatPickerTextField.text, runtime: Int(runTime.text!), description: descTextArea.text, coverArt: image.image)
+    }
     
     // MARK: - Outlets
-    @IBOutlet weak var releaseYear: UIPickerTextField! {
-        didSet {
-            // Create a array with year range from currentYear - 100 years
-            let years: [String] = [Int](count: 100, repeatedValue: 0).mapNumber({
-                (year, _) -> String in return "\(2015 - year)"
-            })
-            
-            self.releaseYear.dataSource(years)
-        }
-    }
-    
-    @IBOutlet weak var owningType: UIPickerTextField! {
-        didSet {
-            self.owningType.dataSource(["Digital", "Physical"])
-        }
-    }
-    
-    @IBOutlet weak var formatPickerTextField: UIPickerTextField! {
-        didSet {
-            // Move this data to prepareForSegue
-            self.formatPickerTextField.dataSource(["DVD", "Blu-Ray"])
-            //self.formatPickerTextField.dataSource(["FLAC", "mp3"])
-        }
-    }
-    
-    @IBOutlet weak var image: UIImageView! {
-        didSet {
-            let tap = UITapGestureRecognizer(target: self, action: "imageTapped")
-            tap.numberOfTapsRequired = 1
-            self.image.userInteractionEnabled = true
-            self.image.addGestureRecognizer(tap)
-        }
-    }
+    @IBOutlet weak var titleField: UITextField!
+    @IBOutlet weak var genreFIeld: UITextField!
+    @IBOutlet weak var locationField: UITextField!
+    @IBOutlet weak var descTextArea: UITextView!
+    @IBOutlet weak var releaseYear: UIPickerTextField!
+    @IBOutlet weak var owningType: UIPickerTextField!
+    @IBOutlet weak var runTime: UIPickerTextField!
+    @IBOutlet weak var formatPickerTextField: UIPickerTextField!
+    @IBOutlet weak var image: UIImageView!
     
     func imageTapped() {
         
@@ -64,7 +48,20 @@ class ManualEntryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.formatPickerTextField.dataSource(["DVD", "Blu-Ray"])
+        self.owningType.dataSource(["Digital", "Physical"])
         
+        // Create a array with year range from currentYear - 100 years
+        let years: [String] = [Int](count: 100, repeatedValue: 0).mapNumber({
+            (year, _) -> String in return "\(2015 - year)"
+        })
+        
+        self.releaseYear.dataSource(years)
+        
+        let tap = UITapGestureRecognizer(target: self, action: "imageTapped")
+        tap.numberOfTapsRequired = 1
+        self.image.userInteractionEnabled = true
+        self.image.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {

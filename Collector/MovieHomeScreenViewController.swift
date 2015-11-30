@@ -10,6 +10,9 @@ import UIKit
 
 class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    private let storage = Storage()
+    private var media = [Media]()
+    
     // MARK: - Variables and constatns
     private struct Storyboard {
         static let mediaCellId = "media cell"
@@ -29,7 +32,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
             self.mediaCollection.backgroundColor = UIColor.whiteColor()
         }
     }
-    private var media = [Media]()
+    //private var media = [Media]()
     
     
     @IBAction func changeView(sender: UISegmentedControl) {
@@ -51,7 +54,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId) as! MediaTableViewCell
         cell.titleLabel.text = media[indexPath.row].getTitle()
         cell.releaseYearLabel.text = "\(media[indexPath.row].getReleaseYear())"
-        cell.runtimeLabel.text = media[indexPath.row].getRuntime().toString()
+        cell.runtimeLabel.text = "\(media[indexPath.row].getRuntime())"
         cell.coverArt.image = media[indexPath.row].getCoverArt()
         return cell
     }
@@ -78,13 +81,6 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         
         self.mediaCollection.hidden = true
-        //self.navigationController?.navigationBar.backgroundColor = UIColor.greenColor()
-        // Do any additional setup after loading the view.
-        let mov1 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 0))
-        let mov2 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
-        let mov3 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
-        let mov4 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
-        
-        media += [mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4]
+        media = storage.getMedia()!
     }
 }

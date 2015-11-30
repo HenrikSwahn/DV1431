@@ -11,7 +11,7 @@ class Media {
     
     enum Format:String {
         case DVD = "DVD"
-        case BlURAY = "Blu-Ray"
+        case BLURAY = "Blu-Ray"
         case VHS = "VHS"
         case MP4 = "MP4"
         case CD = "CD"
@@ -20,10 +20,10 @@ class Media {
     }
     
     private var title: String
-    private var release: Int
+    private var releaseYear: Int
     private var runtime: Runtime
     private var genre: String?
-    private var description: String?
+    private var desc: String?
     private var format: Format?
     private var owningType: OwningType
     private var ownerLocation: String?
@@ -31,7 +31,7 @@ class Media {
     
     init(title: String, released: Int, runtime: Runtime) {
         self.title = title
-        self.release = released
+        self.releaseYear = released
         self.runtime = runtime
         owningType = .NotOwned
     }
@@ -42,7 +42,7 @@ class Media {
     }
     
     func getReleaseYear() -> Int {
-        return release
+        return releaseYear
     }
     
     func getRuntime() -> Runtime {
@@ -54,7 +54,7 @@ class Media {
     }
     
     func getDescription() -> String? {
-        return description
+        return desc
     }
     
     func getFormat() -> Format? {
@@ -79,7 +79,7 @@ class Media {
     }
     
     func setReleaseYear(year: Int) {
-        self.release = year
+        self.releaseYear = year
     }
     
     func setRuntime(runtime: Runtime) {
@@ -91,7 +91,7 @@ class Media {
     }
     
     func setDescription(desc: String) {
-        self.description = desc
+        self.desc = desc
     }
     
     func setFormat(format: Format) {
@@ -99,6 +99,7 @@ class Media {
     }
     
     func setOwningType(type: OwningType) {
+        
         self.owningType = type
     }
     

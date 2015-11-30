@@ -10,20 +10,20 @@ import Foundation
 
 class Movie:Media {
     
-    private var age: Int?
+    private var ageRestriction: Int?
     private var mainActors: [String]?
     private var director: String?
     
     init(title: String, released: Int, runtime: Runtime, age: Int?, mainActors: [String]?, director: String?) {
         super.init(title: title, released: released, runtime: runtime)
         
-        self.age = age
+        self.ageRestriction = age
         self.mainActors = mainActors
         self.director = director
     }
     
     func getAgeRestriction() -> Int? {
-        return age
+        return ageRestriction
     }
     
     func getMainActors() -> [String]? {
@@ -59,7 +59,7 @@ class Movie:Media {
             movieDict["ownerLocation"] = ownerLocation
         }
         
-        if let ageRes = self.age {
+        if let ageRes = self.ageRestriction {
             movieDict["ageRestriction"] = String(ageRes)
         }
         
