@@ -13,6 +13,9 @@ class MediaDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
 
+    // MARK: - Initialization
+    private let cellSeparatorWeight: CGFloat = 0.5
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -49,6 +52,10 @@ class MediaDetailTableViewCell: UITableViewCell {
         
             if indexPath.row == 0 {
                 shadow = color.secondaryColor
+            } else {
+                let separatorView = UIView(frame: CGRectMake(0, 0, self.bounds.width, self.cellSeparatorWeight))
+                separatorView.backgroundColor = color.detailColor
+                self.contentView.addSubview(separatorView)
             }
         }
     }
