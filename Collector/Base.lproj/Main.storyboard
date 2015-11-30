@@ -439,7 +439,7 @@
         <!--Filter-->
         <scene sceneID="beV-Mn-vEe">
             <objects>
-                <tableViewController id="dBo-Ca-u3h" sceneMemberID="viewController">
+                <tableViewController id="dBo-Ca-u3h" customClass="FilterTableViewController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iBs-GP-u16">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -537,7 +537,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Filter" id="Oga-h3-pkO">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NJB-ds-CEE"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NJB-ds-CEE">
+                            <connections>
+                                <action selector="didCancel:" destination="dBo-Ca-u3h" id="kWf-6h-upS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INI-jD-jbz" userLabel="First Responder" sceneMemberID="firstResponder"/>

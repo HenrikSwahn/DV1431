@@ -16,6 +16,7 @@
 		31749C031BFDE7B400E76648 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749C021BFDE7B400E76648 /* SearchTableViewController.swift */; };
 		31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */; };
 		318C2C311C0C8F29008AE6C4 /* UIStretchableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318C2C301C0C8F29008AE6C4 /* UIStretchableTableView.swift */; };
+		318C2C331C0CB5C8008AE6C4 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318C2C321C0CB5C8008AE6C4 /* FilterTableViewController.swift */; };
 		31B842221BF3880D005429FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842211BF3880D005429FA /* AppDelegate.swift */; };
 		31B842271BF3880E005429FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31B842251BF3880E005429FA /* Main.storyboard */; };
 		31B8422A1BF3880E005429FA /* Collector.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B842281BF3880E005429FA /* Collector.xcdatamodeld */; };
@@ -64,6 +65,7 @@
 		31749C021BFDE7B400E76648 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEntryTableViewController.swift; sourceTree = "<group>"; };
 		318C2C301C0C8F29008AE6C4 /* UIStretchableTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStretchableTableView.swift; sourceTree = "<group>"; };
+		318C2C321C0CB5C8008AE6C4 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		31B8421E1BF3880D005429FA /* Collector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31B842211BF3880D005429FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31B842261BF3880E005429FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				31749C021BFDE7B400E76648 /* SearchTableViewController.swift */,
 				31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */,
 				AFE9D7141BFE13EC009E5DAA /* ManualEntryTableViewController.swift */,
+				318C2C321C0CB5C8008AE6C4 /* FilterTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */,
 				AFF229581BFCAFED001181AC /* MediaTableViewController.swift in Sources */,
 				AFE9D7151BFE13EC009E5DAA /* ManualEntryTableViewController.swift in Sources */,
+				318C2C331C0CB5C8008AE6C4 /* FilterTableViewController.swift in Sources */,
 				AFF229561BFC8CAF001181AC /* MediaCollectionViewCell.swift in Sources */,
 				315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */,
 				31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */,
