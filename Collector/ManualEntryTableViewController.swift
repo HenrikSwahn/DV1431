@@ -14,18 +14,19 @@ class ManualEntryTableViewController: UITableViewController {
     private let genericEntries = ["Age Restriction", "Main Actors", "Director"]
     private var storage = Storage()
     
-    let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    
     @IBAction func doneTapped(sender: UIBarButtonItem) {
         storage.storeMedia(titleField.text!, genre: genreFIeld.text!, releaseYear: Int(releaseYear.text!)!, owningType: owningType.text, ownerLocation: locationField.text, format: formatPickerTextField.text, runtime: Int(runTime.text!), description: descTextArea.text, coverArt: image.image)
-        /*print(titleField.text)
-        print(genreFIeld.text)
-        print(locationField.text)
-        print(descTextArea.text)
-        print(releaseYear.text)
-        print(owningType.text)
-        print(runTime.text)
-        print(formatPickerTextField.text)*/
+        
+        var dynamicData = [String]()
+        for(var section = 0; section < self.tableView.numberOfSections; section++) {
+            for(var row = 0; row < self.tableView.numberOfRowsInSection(section); row++) {
+                let indexPath = NSIndexPath(forRow: row, inSection: section)
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
+                dynamicData.append(cell.genricEntryTextField.text!)
+            }
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Outlets
