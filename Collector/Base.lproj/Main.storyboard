@@ -666,7 +666,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="compose" id="Mfj-mB-sC8">
                                 <connections>
-                                    <segue destination="ooV-i8-8Z3" kind="show" id="dDb-8i-epC"/>
+                                    <segue destination="ooV-i8-8Z3" kind="show" id="UUg-Hg-IZ3"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -1151,7 +1151,7 @@
                     <navigationItem key="navigationItem" id="w8N-EV-lKt">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="c1h-3p-O8O" customClass="UIRatingView" customModule="Collector" customModuleProvider="target">
-                            <rect key="frame" x="238" y="14" width="124" height="17"/>
+                            <rect key="frame" x="238" y="13.5" width="124" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1237,6 +1237,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SqZ-Jq-fr5"/>
-        <segue reference="uWx-WX-m7B"/>
+        <segue reference="UUg-Hg-IZ3"/>
     </inferredMetricsTieBreakers>
 </document>
