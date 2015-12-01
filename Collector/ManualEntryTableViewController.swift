@@ -9,8 +9,10 @@
 import UIKit
 import CoreData
 
-class ManualEntryTableViewController: UITableViewController {
+class ManualEntryTableViewController: UITableViewController, Context {
+    
     // MARK: - Instance variables
+    var context = ViewContext.Unkown
     private let genericEntries = ["Age Restriction", "Main Actors", "Director"]
     private var storage = Storage()
     

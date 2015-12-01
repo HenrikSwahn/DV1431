@@ -9,8 +9,12 @@
 import UIKit
 import MobileCoreServices
 
-class SearchEntryTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
+class SearchEntryTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, Context {
+    
+    var context = ViewContext.Unkown
+    private struct Storyboard {
+        static let manualEntrySegueId = "ManualEntrySegue"
+    }
     @IBAction func cancelButtonItem(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -33,6 +37,15 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
         
         if image == nil {
             image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        }
+    }
+    
+    // MARK: - Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == Storyboard.manualEntrySegueId {
+            let dest = segue.destinationViewController as! ManualEntryTableViewController
+            dest.context = .Movie
         }
     }
     

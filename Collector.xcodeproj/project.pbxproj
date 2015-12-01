@@ -32,6 +32,7 @@
 		AF300AA01C0C908300BC57D9 /* MovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A9E1C0C908300BC57D9 /* MovieStore.swift */; };
 		AF300AA41C0C90E200BC57D9 /* MediaStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AA21C0C90E200BC57D9 /* MediaStore.swift */; };
 		AF300AA61C0CBFA300BC57D9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AA51C0CBFA300BC57D9 /* Storage.swift */; };
+		AF300AA91C0E3D8200BC57D9 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AA81C0E3D8200BC57D9 /* Context.swift */; };
 		AFADF84D1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84C1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift */; };
 		AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84E1BFC76E80024D9A4 /* Media.swift */; };
 		AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */; };
@@ -90,6 +91,7 @@
 		AF300A9E1C0C908300BC57D9 /* MovieStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieStore.swift; path = ../MovieStore.swift; sourceTree = "<group>"; };
 		AF300AA21C0C90E200BC57D9 /* MediaStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaStore.swift; path = ../MediaStore.swift; sourceTree = "<group>"; };
 		AF300AA51C0CBFA300BC57D9 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		AF300AA81C0E3D8200BC57D9 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		AFADF84C1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieHomeScreenViewController.swift; sourceTree = "<group>"; };
 		AFADF84E1BFC76E80024D9A4 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		31B842201BF3880D005429FA /* Collector */ = {
 			isa = PBXGroup;
 			children = (
+				AF300AA71C0E3D6A00BC57D9 /* Protocols */,
 				31EA349D1BFE4E1600D7F72B /* UIElements */,
 				AFFC51BD1BFDC31A00DA5344 /* Models */,
 				AFFC51BE1BFDC33600DA5344 /* Controllers */,
@@ -209,6 +212,14 @@
 				AF300AA51C0CBFA300BC57D9 /* Storage.swift */,
 			);
 			name = Storage;
+			sourceTree = "<group>";
+		};
+		AF300AA71C0E3D6A00BC57D9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AF300AA81C0E3D8200BC57D9 /* Context.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		AFFC51BC1BFDC2EF00DA5344 /* Cells */ = {
@@ -396,6 +407,7 @@
 				31EA349F1BFE4E4900D7F72B /* UIPickerTextField.swift in Sources */,
 				AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */,
 				315797E91C074F0B0007FAFC /* UIIconImageView.swift in Sources */,
+				AF300AA91C0E3D8200BC57D9 /* Context.swift in Sources */,
 				31B842221BF3880D005429FA /* AppDelegate.swift in Sources */,
 				AF300AA41C0C90E200BC57D9 /* MediaStore.swift in Sources */,
 				AF300A7F1C0737E000BC57D9 /* Track.swift in Sources */,

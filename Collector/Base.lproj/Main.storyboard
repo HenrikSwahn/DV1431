@@ -184,7 +184,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="NDG-dT-Ipr">
                             <connections>
-                                <segue destination="xU5-tA-dCD" kind="presentation" id="0Jf-ot-bv2"/>
+                                <segue destination="xU5-tA-dCD" kind="presentation" identifier="AddMovieSegue" id="0Jf-ot-bv2"/>
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="vgW-M0-NLy">
@@ -666,7 +666,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="compose" id="Mfj-mB-sC8">
                                 <connections>
-                                    <segue destination="ooV-i8-8Z3" kind="show" id="UUg-Hg-IZ3"/>
+                                    <segue destination="ooV-i8-8Z3" kind="show" identifier="ManualEntrySegue" id="UUg-Hg-IZ3"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>

@@ -10,13 +10,14 @@ import UIKit
 
 class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    private let storage = Storage()
-    private var media: [Media]?
-    
     // MARK: - Variables and constatns
     private struct Storyboard {
         static let mediaCellId = "media cell"
+        static let addMovieSegueId = "AddMovieSegue"
     }
+    
+    private let storage = Storage()
+    private var media: [Media]?
     
     @IBOutlet weak var mediaTable: UITableView! {
         didSet {
@@ -78,6 +79,16 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         cell.releaseYearLabel.text = "\(media![indexPath.row].getReleaseYear())"
         cell.coverArt.image = media![indexPath.row].getCoverArt()
         return cell
+    }
+    
+    // MARK: - Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == Storyboard.addMovieSegueId {
+            let navCtr = segue.destinationViewController as! UINavigationController
+            let dest = navCtr.topViewController as! SearchEntryTableViewController
+            dest.context = .Movie
+        }
     }
     
     // MARK: - ViewDidLoad
