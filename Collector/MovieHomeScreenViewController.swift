@@ -10,6 +10,9 @@ import UIKit
 
 class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    private let storage = Storage()
+    private var media: [Media]?
+    
     // MARK: - Variables and constatns
     private struct Storyboard {
         static let mediaCellId = "media cell"
@@ -29,8 +32,6 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
             self.mediaCollection.backgroundColor = UIColor.whiteColor()
         }
     }
-    private var media = [Media]()
-    
     
     @IBAction func changeView(sender: UISegmentedControl) {
         
@@ -49,27 +50,33 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId) as! MediaTableViewCell
-        cell.titleLabel.text = media[indexPath.row].getTitle()
-        cell.releaseYearLabel.text = "\(media[indexPath.row].getReleaseYear())"
-        cell.runtimeLabel.text = media[indexPath.row].getRuntime().toString()
-        cell.coverArt.image = media[indexPath.row].getCoverArt()
+        cell.titleLabel.text = media![indexPath.row].getTitle()
+        cell.releaseYearLabel.text = "\(media![indexPath.row].getReleaseYear())"
+        cell.runtimeLabel.text = "\(media![indexPath.row].getRuntime().toString())"
+        cell.coverArt.image = media![indexPath.row].getCoverArt()
+        print(media![indexPath.row].getTitle())
+        print(media![indexPath.row].getGenre())
+        print(media![indexPath.row].getDescription())
+        print(media![indexPath.row].getFormat())
+        print(media![indexPath.row].getOwnerLocation())
+        print(media![indexPath.row].getOwningType())
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return media.count
+        return media!.count
     }
     
     // MARK: - CollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return media.count
+        return media!.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
-        cell.titleLabel.text = media[indexPath.row].getTitle()
-        cell.releaseYearLabel.text = "\(media[indexPath.row].getReleaseYear())"
-        cell.coverArt.image = media[indexPath.row].getCoverArt()
+        cell.titleLabel.text = media![indexPath.row].getTitle()
+        cell.releaseYearLabel.text = "\(media![indexPath.row].getReleaseYear())"
+        cell.coverArt.image = media![indexPath.row].getCoverArt()
         return cell
     }
     
@@ -78,13 +85,12 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         
         self.mediaCollection.hidden = true
-        //self.navigationController?.navigationBar.backgroundColor = UIColor.greenColor()
-        // Do any additional setup after loading the view.
-        let mov1 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 0))
-        let mov2 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
-        let mov3 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
-        let mov4 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
-        
-        media += [mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4]
+        //storage.emptyDatabase()
+        media = storage.getMedia()!
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        media = storage.getMedia()
+        mediaTable.reloadData()
     }
 }
