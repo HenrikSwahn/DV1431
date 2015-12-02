@@ -9,12 +9,13 @@
 import UIKit
 import CoreData
 
-class ManualEntryTableViewController: UITableViewController, ViewContext {
+class ManualEntryTableViewController: UITableViewController, ViewContext, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - Instance variables
     var context = ViewContextEnum.Unkown
     private let genericEntries = ["Age Restriction", "Main Actors", "Director"]
     private var storage = Storage()
+    let libraryPicker = UIImagePickerController()
     
     // MARK: - Outlets
     @IBOutlet weak var titleField: UITextField!
@@ -47,8 +48,16 @@ class ManualEntryTableViewController: UITableViewController, ViewContext {
     func imageTapped() {
         
         let menu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
-        let cameraAction = UIAlertAction(title: "Camera", style: .Default, handler: nil) //Should take some function
-        let photoAlbumAction = UIAlertAction(title: "Photo Album", style: .Default, handler: nil) //Should take some function
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .Default) { _ in
+
+        }
+        
+        let photoAlbumAction = UIAlertAction(title: "Photo Album", style: .Default) { _ in
+            self.libraryPicker.allowsEditing = false
+            self.libraryPicker.sourceType = .PhotoLibrary
+            self.presentViewController(self.libraryPicker, animated: true, completion: nil)
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil) //Should take some function
         
         menu.addAction(cameraAction)
@@ -111,6 +120,8 @@ class ManualEntryTableViewController: UITableViewController, ViewContext {
         })
         
         self.runTime.dataSource(hours, arrayTwo: minutes, arrayThree: seconds)
+        
+        self.libraryPicker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,6 +144,18 @@ class ManualEntryTableViewController: UITableViewController, ViewContext {
         let cell = tableView.dequeueReusableCellWithIdentifier("generic entry") as! ManualEntryTableViewCell
         cell.genricEntryTextField.placeholder = genericEntries[indexPath.row]
         return cell
+    }
+    
+    //MARK: UIImagePickerView
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:AnyObject]){
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        image.contentMode = .ScaleAspectFill
+        image.image = chosenImage
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
