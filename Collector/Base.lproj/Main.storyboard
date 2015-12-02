@@ -160,7 +160,7 @@
                                             <outlet property="releaseYearLabel" destination="FYm-1s-FEO" id="uD0-Ka-Mjm"/>
                                             <outlet property="runtimeLabel" destination="cac-g7-eKu" id="mfA-MV-BGP"/>
                                             <outlet property="titleLabel" destination="PUH-6H-Gi6" id="0Jh-4Y-LhY"/>
-                                            <segue destination="dtS-oE-kFg" kind="show" id="0r5-Mn-gAE"/>
+                                            <segue destination="dtS-oE-kFg" kind="show" identifier="DetailMovieSegue" id="0r5-Mn-gAE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1236,7 +1236,7 @@
         <image name="star-fill" width="25" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SqZ-Jq-fr5"/>
+        <segue reference="0r5-Mn-gAE"/>
         <segue reference="UUg-Hg-IZ3"/>
     </inferredMetricsTieBreakers>
 </document>

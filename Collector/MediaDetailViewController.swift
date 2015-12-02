@@ -8,10 +8,14 @@
 
 import UIKit
 
-class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext {
+    
+    var media:Media?
+    var context = ViewContextEnum.Unkown
+    
     // MARK: - Private Members
     private var colors: UIImageColors?
-    private var media = [(String, String)]()
+    private var genericData = [(String, String)]()
     private struct Storyboard {
         static let mediaDetailTableCellIdentifier = "media detail cell id"
     }
@@ -36,7 +40,7 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     // MARK: - Mock Data Initialization 
-    private func setMockData() {
+    /*private func setMockData() {
         // Data for labels
         self.yearLabel.text = "2007"
         self.titleLabel.text = "The Lord of The Rings: Fellowship of the Ring"
@@ -49,6 +53,68 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
         media.append(("Description", "Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure."))
         media.append(("Writers", "Mark Protocevic, Akiva Goldsman"))
         media.append(("Actors", "Will Smith, Alice Braga, Charlie Tahan"))
+    }*/
+    
+    private func setData() {
+        
+        if let year = media?.getReleaseYear() {
+            self.yearLabel.text = String(year)
+        }
+        
+        if let title = media?.getTitle() {
+            self.titleLabel.text = title
+        }
+        
+        if let runtime = media?.getRuntime() {
+            self.runtimeLabel.text = runtime.toString()
+        }
+        
+        if let genre = media?.getGenre() {
+            self.genreLabel.text = genre
+        }
+        
+        if let ownerLocation = media?.getOwnerLocation() {
+            self.ownerLocationLabel.text = ownerLocation
+        }
+        
+        if let ownerType = media?.getOwningType() {
+            self.ownerTypeLabel.text = ownerType.rawValue
+        }
+        
+        if let coverArt = media?.getCoverArt() {
+            self.coverImageView.image = coverArt
+        }
+        
+        switch context {
+        case .Movie:
+            movieSpecificData()
+            break
+        case .Music:
+            musicSpecificData()
+            break
+        default:
+            break
+        }
+    }
+    
+    private func movieSpecificData() {
+        
+        let movie = media as! Movie
+        if let ageRestriction = movie.getAgeRestriction() {
+            self.genericData.append(("Age restriction",String(ageRestriction)))
+        }
+        
+        if let mainActor = movie.getMainActors() {
+            self.genericData.append(("Main actor",String(mainActor)))
+        }
+        
+        if let director = movie.getDirector() {
+            self.genericData.append(("Director",String(director)))
+        }
+    }
+    
+    private func musicSpecificData() {
+        
     }
     
     private func updateColor() {
@@ -81,7 +147,8 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // Set mock data
-        self.setMockData()
+        //self.setMockData()
+        setData()
         
         // Sets the background image to the cover image
         self.headerImageView.image = self.coverImageView.image
@@ -119,8 +186,8 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaDetailTableCellIdentifier) as! MediaDetailTableViewCell
 
-        cell.keyLabel?.text = media[indexPath.row].0
-        cell.valueLabel?.text = media[indexPath.row].1
+        cell.keyLabel?.text = genericData[indexPath.row].0
+        cell.valueLabel?.text = genericData[indexPath.row].1
         
         // Set the proper background color
         cell.setDominantColors(with: colors, indexPath: indexPath)
@@ -130,17 +197,8 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return media.count
+        return genericData.count
     }
-    
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 // Drops an shadow around a UIImageView
