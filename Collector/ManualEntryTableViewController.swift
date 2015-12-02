@@ -83,26 +83,34 @@ class ManualEntryTableViewController: UITableViewController, ViewContext {
     // MARK: - View did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.formatPickerTextField.dataSource(["DVD", "Blu-Ray"])
-        self.owningType.dataSource(["Digital", "Physical"])
+        self.formatPickerTextField.dataSource(["DVD", "Blu-Ray"], arrayTwo: nil, arrayThree: nil)
+        self.owningType.dataSource(["Digital", "Physical"], arrayTwo: nil, arrayThree: nil)
         
         // Create a array with year range from currentYear - 100 years
         let years: [String] = [Int](count: 100, repeatedValue: 0).mapNumber({
             (year, _) -> String in return "\(2015 - year)"
         })
         
-        self.releaseYear.dataSource(years)
+        self.releaseYear.dataSource(years, arrayTwo: nil, arrayThree: nil)
         
         let tap = UITapGestureRecognizer(target: self, action: "imageTapped")
         tap.numberOfTapsRequired = 1
         self.image.userInteractionEnabled = true
         self.image.addGestureRecognizer(tap)
         
-        let seconds: [String] = [Int](count: 2000, repeatedValue: 0).mapNumber({
-            (second, _) -> String in return "\(second)"
+        let seconds: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
+            (second, _) -> String in return "\(second) s"
         })
         
-        self.runTime.dataSource(seconds)
+        let minutes: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
+            (min, _) -> String in return "\(min) m"
+        })
+        
+        let hours: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
+            (hour, _) -> String in return "\(hour) h"
+        })
+        
+        self.runTime.dataSource(hours, arrayTwo: minutes, arrayThree: seconds)
     }
 
     override func didReceiveMemoryWarning() {
