@@ -85,6 +85,10 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
             self.coverImageView.image = coverArt
         }
         
+        if let format = media?.getFormat() {
+            self.genericData.append(("Format", format.rawValue))
+        }
+
         switch context {
         case .Movie:
             movieSpecificData()
@@ -100,6 +104,11 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
     private func movieSpecificData() {
         
         let movie = media as! Movie
+        
+        if let synopsis = movie.getDescription() {
+            self.genericData.insert(("Synopsis", synopsis), atIndex: 0)
+        }
+        
         if let ageRestriction = movie.getAgeRestriction() {
             self.genericData.append(("Age restriction",String(ageRestriction)))
         }

@@ -1,6 +1,7 @@
 
 import UIKit
 
+// Todo: Rating variable
 class Media {
     
     enum OwningType: String {
