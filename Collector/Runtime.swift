@@ -33,6 +33,37 @@ class Runtime {
         return self
     }
     
+    static func getRuntimeBasedOnSeconds(seconds:Int) -> Runtime {
+        let sec = seconds % 60
+        let totalMin = seconds / 60
+        let min = totalMin % 60
+        let hour = totalMin / 60
+        
+        return Runtime(hours: hour, minutes: min, seconds: sec)
+    }
+    
+    static func getRuntimeBasedOnFormattedString(time: String) -> Runtime {
+        let timeArr = time.characters.split{ $0 == " " }.map{String($0)}
+        var hours = 0;
+        var min = 0;
+        var sec = 0;
+        
+        for var i = 0; i < timeArr.count; ++i {
+            if let intVal = Int(timeArr[i]) {
+                if i == 0 {
+                    hours = intVal
+                }
+                else if i == 2 {
+                    min = intVal
+                }
+                else if i == 4 {
+                    sec = intVal
+                }
+            }
+        }
+        return Runtime(hours: hours, minutes: min, seconds: sec)
+    }
+    
     func toString() -> String {
         
         var retString = ""

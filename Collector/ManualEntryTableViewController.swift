@@ -61,7 +61,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext {
     
     private func addMovie() {
         
-        storage.storeMedia(titleField.text!, genre: genreFIeld.text!, releaseYear: Int(releaseYear.text!)!, owningType: owningType.text, ownerLocation: locationField.text, format: formatPickerTextField.text, runtime: Int(runTime.text!), description: descTextArea.text, coverArt: image.image)
+        storage.storeMedia(titleField.text!, genre: genreFIeld.text!, releaseYear: Int(releaseYear.text!)!, owningType: owningType.text, ownerLocation: locationField.text, format: formatPickerTextField.text, runtime: Runtime.getRuntimeBasedOnFormattedString(runTime.text!).getTotalInSeconds(), description: descTextArea.text, coverArt: image.image)
         
         var dynamicData = [String]()
         for(var section = 0; section < self.tableView.numberOfSections; section++) {

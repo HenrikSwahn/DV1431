@@ -56,12 +56,6 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         cell.releaseYearLabel.text = "\(media![indexPath.row].getReleaseYear())"
         cell.runtimeLabel.text = "\(media![indexPath.row].getRuntime().toString())"
         cell.coverArt.image = media![indexPath.row].getCoverArt()
-        print(media![indexPath.row].getTitle())
-        print(media![indexPath.row].getGenre())
-        print(media![indexPath.row].getDescription())
-        print(media![indexPath.row].getFormat())
-        print(media![indexPath.row].getOwnerLocation())
-        print(media![indexPath.row].getOwningType())
         return cell
     }
     

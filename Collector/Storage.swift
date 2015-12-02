@@ -67,9 +67,7 @@ class Storage {
             try storedMedias = managedObjectContext.executeFetchRequest(request) as! [MediaStore]
             var medias = [Media]()
             for mStore in storedMedias {
-                let rt = Runtime(hours: 0, minutes: 0, seconds: 0)
-                rt.setTimeBasedOnSeconds(Int(mStore.runtime!))
-                let media = Media(title: mStore.title!, released: Int(mStore.releaseYear!), runtime: rt)
+                let media = Media(title: mStore.title!, released: Int(mStore.releaseYear!), runtime: Runtime.getRuntimeBasedOnSeconds(Int(mStore.runtime!)))
                 media.setGenre(mStore.genre!)
                 media.setDescription(mStore.desc!)
                 media.setOwnerLocation(mStore.ownerLocation!)
@@ -113,7 +111,6 @@ class Storage {
                     media.setFormat(.DVD)
                     break
                 }
-                print(media.getRuntime().toString())
                 medias.append(media)
             }
             return medias
