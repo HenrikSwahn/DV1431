@@ -92,11 +92,11 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         
         self.mediaCollection.hidden = true
         //storage.emptyDatabase()
-        media = storage.getMedia()!
+        media = storage.getMovies()!
     }
     
     override func viewDidAppear(animated: Bool) {
-        media = storage.getMedia()
+        media = storage.getMovies()
         mediaTable.reloadData()
     }
 }

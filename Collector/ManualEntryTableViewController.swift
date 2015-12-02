@@ -70,19 +70,67 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     
     private func addMovie() {
         
-        storage.storeMedia(titleField.text!, genre: genreFIeld.text!, releaseYear: Int(releaseYear.text!)!, owningType: owningType.text, ownerLocation: locationField.text, format: formatPickerTextField.text, runtime: Runtime.getRuntimeBasedOnFormattedString(runTime.text!).getTotalInSeconds(), description: descTextArea.text, coverArt: image.image)
-        
-        var dynamicData = [String]()
-        for(var section = 0; section < self.tableView.numberOfSections; section++) {
-            for(var row = 0; row < self.tableView.numberOfRowsInSection(section); row++) {
-                let indexPath = NSIndexPath(forRow: row, inSection: section)
-                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
-                dynamicData.append(cell.genricEntryTextField.text!)
-            }
+        if titleField.text?.characters.count < 0 {
+            return
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if releaseYear.text?.characters.count < 0 {
+            return
+        }
         
+        if runTime.text?.characters.count < 0 {
+            return
+        }
+        
+        let newMovie = Movie(title: titleField.text!, released: Int(releaseYear.text!)!, runtime: Runtime.getRuntimeBasedOnFormattedString(runTime.text!))
+        
+        if let genre = genreFIeld.text {
+            newMovie.setGenre(genre)
+        }
+        
+        if let format = formatPickerTextField.text {
+            newMovie.setFormat(format)
+        }
+        
+        if let desc = descTextArea.text {
+            newMovie.setDescription(desc)
+        }
+        
+        if let coverArt = image.image {
+            newMovie.setCoverArt(coverArt)
+        }
+        
+        if let ownerLocation = locationField.text {
+            newMovie.setOwnerLocation(ownerLocation)
+        }
+        
+        if let ownType = owningType.text {
+            newMovie.setOwningType(ownType)
+        }
+        
+        /* Generic data */
+        var indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
+        
+        if let age = Int(cell.genricEntryTextField.text!) {
+                newMovie.setAgeRestriction(age)
+        }
+        
+        indexPath = NSIndexPath(forRow: 1, inSection: 0)
+        cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
+        
+        if let actors = cell.genricEntryTextField.text {
+            newMovie.setMainActors(actors)
+        }
+        
+        indexPath = NSIndexPath(forRow: 2, inSection: 0)
+        cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
+        
+        if let director = cell.genricEntryTextField.text {
+            newMovie.setDirector(director)
+        }
+        storage.storeMovie(newMovie)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     private func addMusic() {
@@ -149,7 +197,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     //MARK: UIImagePickerView
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:AnyObject]){
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        image.contentMode = .ScaleAspectFill
+        image.contentMode = .ScaleAspectFit
         image.image = chosenImage
         self.dismissViewControllerAnimated(true, completion: nil)
     }

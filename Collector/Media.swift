@@ -25,7 +25,7 @@ class Media {
     private var genre: String?
     private var desc: String?
     private var format: Format?
-    private var owningType: OwningType
+    private var owningType: OwningType?
     private var ownerLocation: String?
     private var coverArt: UIImage?
     
@@ -33,7 +33,6 @@ class Media {
         self.title = title
         self.releaseYear = released
         self.runtime = runtime
-        owningType = .NotOwned
     }
     
     // MARK: - Getters
@@ -61,7 +60,7 @@ class Media {
         return format
     }
     
-    func getOwningType() -> OwningType {
+    func getOwningType() -> OwningType? {
         return owningType
     }
     
@@ -74,40 +73,68 @@ class Media {
     }
     
     // MARK: - Setters
-    func setTitle(title: String) {
-        self.title = title
-    }
-    
-    func setReleaseYear(year: Int) {
-        self.releaseYear = year
-    }
-    
-    func setRuntime(runtime: Runtime) {
-        self.runtime = runtime
-    }
-    
-    func setGenre(genre: String) {
+    func setGenre(genre: String?) {
         self.genre = genre
     }
     
-    func setDescription(desc: String) {
+    func setDescription(desc: String?) {
         self.desc = desc
     }
     
-    func setFormat(format: Format) {
-        self.format = format
-    }
-    
-    func setOwningType(type: OwningType) {
+    func setFormat(format: String?) {
         
-        self.owningType = type
+        if let f = format {
+            switch(f) {
+            case "DVD":
+                self.format = .DVD
+                break
+            case "Blu-Ray":
+                self.format = .BLURAY
+                break
+            case "VHS":
+                self.format = .VHS
+                break
+            case "MP4":
+                self.format = .MP4
+                break
+            case "CD":
+                self.format = .CD
+                break
+            case "MP3":
+                self.format = .MP3
+                break
+            case "FLAC":
+                self.format = .FLAC
+                break
+            default:
+                self.format = .DVD
+                break
+            }
+        }
     }
     
-    func setOwnerLocation(location: String) {
+    func setOwningType(type: String?) {
+        
+        if let t = type {
+            switch(t) {
+            case "Physical":
+                owningType = .Physical
+                break
+            case "Digital":
+                owningType = .Digital
+                break
+            default:
+                owningType = .NotOwned
+                break
+            }
+        }
+    }
+    
+    func setOwnerLocation(location: String?) {
         self.ownerLocation = location
     }
     
-    func setCoverArt(image: UIImage) {
+    func setCoverArt(image: UIImage?) {
         self.coverArt = image
     }
 }

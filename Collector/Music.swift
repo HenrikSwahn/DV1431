@@ -13,7 +13,7 @@ class Music: Media {
     private var albumArtist: String?
     private var trackList = [Track]() {
         didSet {
-            super.setRuntime(calculateAlbumLength())
+            //super.setRuntime(calculateAlbumLength())
         }
     }
     
@@ -76,7 +76,7 @@ class Music: Media {
             movieDict["format"] = format.rawValue
         }
         
-        movieDict["owningType"] = super.getOwningType().rawValue
+        movieDict["owningType"] = super.getOwningType()!.rawValue
         
         if let ownerLocation = super.getOwnerLocation() {
             movieDict["ownerLocation"] = ownerLocation

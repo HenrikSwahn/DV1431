@@ -14,40 +14,51 @@ class Storage {
     
     private var managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    func storeMedia(title: String, genre: String, releaseYear: Int, owningType: String?, ownerLocation: String?, format: String?, runtime: Int?, description: String?, coverArt: UIImage?) -> Bool {
+    func storeMovie(movie: Movie) -> Bool {
         
-        let mediaStoreDesc = NSEntityDescription.entityForName("Media", inManagedObjectContext: managedObjectContext)
-        let storeMedia = MediaStore(entity: mediaStoreDesc!, insertIntoManagedObjectContext: managedObjectContext)
+        let movieStoreDesc = NSEntityDescription.entityForName("Movie", inManagedObjectContext: managedObjectContext)
+        let storeMovie = MovieStore(entity: movieStoreDesc!, insertIntoManagedObjectContext: managedObjectContext)
         
-        storeMedia.title = title
-        storeMedia.genre = genre
-        storeMedia.releaseYear = releaseYear
+        storeMovie.title = movie.getTitle()
+        storeMovie.runtime = movie.getRuntime().getTotalInSeconds()
+        storeMovie.releaseYear = movie.getReleaseYear()
         
-        if (owningType != nil) {
-            storeMedia.owningType = owningType
+        if let owningType = movie.getOwningType() {
+            storeMovie.owningType = owningType.rawValue
         }
         
-        if (ownerLocation != nil) {
-            storeMedia.ownerLocation = ownerLocation
+        if let ownerLocation = movie.getOwnerLocation() {
+            storeMovie.ownerLocation = ownerLocation
         }
         
-        if (format != nil) {
-            storeMedia.format = format
+        if let genre = movie.getGenre() {
+            storeMovie.genre = genre
         }
         
-        if (runtime != nil) {
-                storeMedia.runtime = runtime
+        if let description = movie.getDescription() {
+            storeMovie.desc = description
         }
         
-        if (description != nil) {
-                storeMedia.desc = description
+        if let format = movie.getFormat() {
+            storeMovie.format = format.rawValue
         }
         
-        if (coverArt != nil) {
-                let imageData = UIImageJPEGRepresentation(coverArt!, 1)
-                storeMedia.coverArt = imageData
+        if let coverArt = movie.getCoverArt() {
+            let imageData = UIImageJPEGRepresentation(coverArt, 1)
+            storeMovie.coverArt = imageData
         }
         
+        if let director = movie.getDirector() {
+            storeMovie.director = director
+        }
+        
+        if let ageRestriction = movie.getAgeRestriction() {
+            storeMovie.ageRestriction = ageRestriction
+        }
+        
+        if let mainActors = movie.getMainActors() {
+            storeMovie.mainActors = mainActors
+        }
         
         do {
             try managedObjectContext.save()
@@ -58,62 +69,56 @@ class Storage {
         return true
     }
     
-    func getMedia() -> [Media]? {
-        var storedMedias = [MediaStore]()
+    func getMovies() -> [Movie]? {
+        var storedMovies = [MovieStore]()
         
-        let request = NSFetchRequest(entityName: "Media")
+        let request = NSFetchRequest(entityName: "Movie")
         
         do {
-            try storedMedias = managedObjectContext.executeFetchRequest(request) as! [MediaStore]
-            var medias = [Media]()
-            for mStore in storedMedias {
-                let media = Media(title: mStore.title!, released: Int(mStore.releaseYear!), runtime: Runtime.getRuntimeBasedOnSeconds(Int(mStore.runtime!)))
-                media.setGenre(mStore.genre!)
-                media.setDescription(mStore.desc!)
-                media.setOwnerLocation(mStore.ownerLocation!)
-                media.setCoverArt(UIImage(data: mStore.coverArt!)!)
+            try storedMovies = managedObjectContext.executeFetchRequest(request) as! [MovieStore]
+            var movies = [Movie]()
+            for mStore in storedMovies {
+                let movie = Movie(title: mStore.title!, released: Int(mStore.releaseYear!), runtime: Runtime.getRuntimeBasedOnSeconds(Int(mStore.runtime!)))
                 
-                switch(mStore.owningType!) {
-                case "Physical":
-                    media.setOwningType(.Physical)
-                    break
-                case "Digital":
-                    media.setOwningType(.Physical)
-                    break
-                default:
-                    media.setOwningType(.NotOwned)
-                    break
+                if let genre = mStore.genre {
+                    movie.setGenre(genre)
                 }
                 
-                switch(mStore.format!) {
-                    case "DVD":
-                        media.setFormat(.DVD)
-                        break
-                    case "Blu-Ray":
-                        media.setFormat(.BLURAY)
-                        break
-                    case "VHS":
-                        media.setFormat(.VHS)
-                        break
-                    case "MP4":
-                        media.setFormat(.MP4)
-                        break
-                    case "CD":
-                        media.setFormat(.CD)
-                        break
-                    case "MP3":
-                        media.setFormat(.MP3)
-                        break
-                    case "Flac":
-                        media.setFormat(.FLAC)
-                        break
-                default:
-                    media.setFormat(.DVD)
-                    break
+                if let desc = mStore.desc {
+                    movie.setDescription(desc)
                 }
-                medias.append(media)
+                
+                if let ownerLocation = mStore.ownerLocation {
+                    movie.setOwnerLocation(ownerLocation)
+                }
+                
+                if let coverArt = UIImage(data: mStore.coverArt!) {
+                    movie.setCoverArt(coverArt)
+                }
+                
+                if let format = mStore.format {
+                    movie.setFormat(format)
+                }
+                
+                if let owningType = mStore.owningType {
+                    movie.setOwningType(owningType)
+                }
+                
+                if let ageRestriction = mStore.ageRestriction {
+                    movie.setAgeRestriction(Int(ageRestriction))
+                }
+                
+                if let mainActors = mStore.mainActors {
+                    movie.setMainActors(mainActors)
+                }
+                
+                if let director = mStore.director {
+                    movie.setDirector(director)
+                }
+                
+                movies.append(movie)
             }
-            return medias
+            return movies
         }    
         catch {
             fatalError("Could not execute query")
@@ -122,7 +127,7 @@ class Storage {
     
     // MARK: - Dev
     func emptyDatabase() {
-        let fetchRequest = NSFetchRequest(entityName: "Media")
+        let fetchRequest = NSFetchRequest(entityName: "Movie")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {

@@ -11,14 +11,22 @@ import Foundation
 class Movie:Media {
     
     private var ageRestriction: Int?
-    private var mainActors: [String]?
+    private var mainActors: String?
     private var director: String?
     
-    init(title: String, released: Int, runtime: Runtime, age: Int?, mainActors: [String]?, director: String?) {
+    override init(title: String, released: Int, runtime: Runtime) {
         super.init(title: title, released: released, runtime: runtime)
-        
-        self.ageRestriction = age
+    }
+    
+    func setAgeRestriction(age: Int?) {
+        ageRestriction = age
+    }
+    
+    func setMainActors(mainActors: String?) {
         self.mainActors = mainActors
+    }
+    
+    func setDirector(director: String?) {
         self.director = director
     }
     
@@ -26,7 +34,7 @@ class Movie:Media {
         return ageRestriction
     }
     
-    func getMainActors() -> [String]? {
+    func getMainActors() -> String? {
         return mainActors
     }
     
@@ -53,7 +61,7 @@ class Movie:Media {
             movieDict["format"] = format.rawValue
         }
         
-        movieDict["owningType"] = super.getOwningType().rawValue
+        movieDict["owningType"] = super.getOwningType()!.rawValue
         
         if let ownerLocation = super.getOwnerLocation() {
             movieDict["ownerLocation"] = ownerLocation
