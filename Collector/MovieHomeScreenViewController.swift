@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, ViewContext {
     
     // MARK: - Variables and constatns
     private struct Storyboard {
@@ -18,6 +18,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     
     private let storage = Storage()
     private var media: [Media]?
+    internal var context = ViewContextEnum.Movie
     
     @IBOutlet weak var mediaTable: UITableView! {
         didSet {
@@ -87,7 +88,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         if segue.identifier == Storyboard.addMovieSegueId {
             let navCtr = segue.destinationViewController as! UINavigationController
             let dest = navCtr.topViewController as! SearchEntryTableViewController
-            dest.context = .Movie
+            dest.context = context
         }
     }
     

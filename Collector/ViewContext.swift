@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum ViewContext: String {
+enum ViewContextEnum: String {
     case Movie = "Movie"
     case Music = "Music"
     case Unkown = "Unkown"
 }
 
-protocol Context {
-    var context: ViewContext { get set }
+protocol ViewContext {
+    var context: ViewContextEnum { get set }
 }
 

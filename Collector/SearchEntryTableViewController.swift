@@ -9,9 +9,9 @@
 import UIKit
 import MobileCoreServices
 
-class SearchEntryTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, Context {
+class SearchEntryTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ViewContext {
     
-    var context = ViewContext.Unkown
+    var context = ViewContextEnum.Unkown
     private struct Storyboard {
         static let manualEntrySegueId = "ManualEntrySegue"
     }
@@ -45,7 +45,7 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
         
         if segue.identifier == Storyboard.manualEntrySegueId {
             let dest = segue.destinationViewController as! ManualEntryTableViewController
-            dest.context = .Movie
+            dest.context = context
         }
     }
     

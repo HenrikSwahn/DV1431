@@ -9,27 +9,12 @@
 import UIKit
 import CoreData
 
-class ManualEntryTableViewController: UITableViewController, Context {
+class ManualEntryTableViewController: UITableViewController, ViewContext {
     
     // MARK: - Instance variables
-    var context = ViewContext.Unkown
+    var context = ViewContextEnum.Unkown
     private let genericEntries = ["Age Restriction", "Main Actors", "Director"]
     private var storage = Storage()
-    
-    @IBAction func doneTapped(sender: UIBarButtonItem) {
-        storage.storeMedia(titleField.text!, genre: genreFIeld.text!, releaseYear: Int(releaseYear.text!)!, owningType: owningType.text, ownerLocation: locationField.text, format: formatPickerTextField.text, runtime: Int(runTime.text!), description: descTextArea.text, coverArt: image.image)
-        
-        var dynamicData = [String]()
-        for(var section = 0; section < self.tableView.numberOfSections; section++) {
-            for(var row = 0; row < self.tableView.numberOfRowsInSection(section); row++) {
-                let indexPath = NSIndexPath(forRow: row, inSection: section)
-                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
-                dynamicData.append(cell.genricEntryTextField.text!)
-            }
-        }
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
     
     // MARK: - Outlets
     @IBOutlet weak var titleField: UITextField!
@@ -42,6 +27,23 @@ class ManualEntryTableViewController: UITableViewController, Context {
     @IBOutlet weak var formatPickerTextField: UIPickerTextField!
     @IBOutlet weak var image: UIImageView!
     
+    // MARK: - Actions
+    
+    @IBAction func doneTapped(sender: UIBarButtonItem) {
+        
+        switch context {
+        case .Movie:
+            addMovie()
+            break
+        case .Music:
+            addMusic()
+            break
+        default:
+            break
+        }
+    }
+    
+    // MARK: - Func
     func imageTapped() {
         
         let menu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
@@ -57,6 +59,28 @@ class ManualEntryTableViewController: UITableViewController, Context {
         
     }
     
+    private func addMovie() {
+        
+        storage.storeMedia(titleField.text!, genre: genreFIeld.text!, releaseYear: Int(releaseYear.text!)!, owningType: owningType.text, ownerLocation: locationField.text, format: formatPickerTextField.text, runtime: Int(runTime.text!), description: descTextArea.text, coverArt: image.image)
+        
+        var dynamicData = [String]()
+        for(var section = 0; section < self.tableView.numberOfSections; section++) {
+            for(var row = 0; row < self.tableView.numberOfRowsInSection(section); row++) {
+                let indexPath = NSIndexPath(forRow: row, inSection: section)
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
+                dynamicData.append(cell.genricEntryTextField.text!)
+            }
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    private func addMusic() {
+        
+    }
+    
+    // MARK: - View did load
     override func viewDidLoad() {
         super.viewDidLoad()
         self.formatPickerTextField.dataSource(["DVD", "Blu-Ray"])
@@ -87,7 +111,6 @@ class ManualEntryTableViewController: UITableViewController, Context {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
