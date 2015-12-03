@@ -53,10 +53,10 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId) as! MediaTableViewCell
-        cell.titleLabel.text = media![indexPath.row].getTitle()
-        cell.releaseYearLabel.text = "\(media![indexPath.row].getReleaseYear())"
-        cell.runtimeLabel.text = "\(media![indexPath.row].getRuntime().toString())"
-        cell.coverArt.image = media![indexPath.row].getCoverArt()
+        cell.titleLabel.text = media![indexPath.row].title
+        cell.releaseYearLabel.text = "\(media![indexPath.row].releaseYear)"
+        cell.runtimeLabel.text = "\(media![indexPath.row].runtime.toString())"
+        cell.coverArt.image = media![indexPath.row].coverArt
         return cell
     }
     
@@ -71,9 +71,9 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
-        cell.titleLabel.text = media![indexPath.row].getTitle()
-        cell.releaseYearLabel.text = "\(media![indexPath.row].getReleaseYear())"
-        cell.coverArt.image = media![indexPath.row].getCoverArt()
+        cell.titleLabel.text = media![indexPath.row].title
+        cell.releaseYearLabel.text = "\(media![indexPath.row].releaseYear)"
+        cell.coverArt.image = media![indexPath.row].coverArt
         return cell
     }
     

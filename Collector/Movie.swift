@@ -10,60 +10,36 @@ import Foundation
 
 class Movie:Media {
     
-    private var ageRestriction: Int?
-    private var mainActors: String?
-    private var director: String?
+    var ageRestriction: Int?
+    var mainActors: String?
+    var director: String?
     
     override init(title: String, released: Int, runtime: Runtime) {
         super.init(title: title, released: released, runtime: runtime)
     }
     
-    func setAgeRestriction(age: Int?) {
-        ageRestriction = age
-    }
-    
-    func setMainActors(mainActors: String?) {
-        self.mainActors = mainActors
-    }
-    
-    func setDirector(director: String?) {
-        self.director = director
-    }
-    
-    func getAgeRestriction() -> Int? {
-        return ageRestriction
-    }
-    
-    func getMainActors() -> String? {
-        return mainActors
-    }
-    
-    func getDirector() -> String? {
-        return director
-    }
-    
     func toDictionary() -> [String:String] {
         var movieDict = [String:String]()
         
-        movieDict["title"] = super.getTitle()
-        movieDict["release"] = String(super.getReleaseYear())
-        movieDict["runtime"] = super.getRuntime().toString()
+        movieDict["title"] = super.title
+        movieDict["release"] = String(super.releaseYear)
+        movieDict["runtime"] = super.runtime.toString()
         
-        if let genre = super.getGenre() {
+        if let genre = super.genre {
             movieDict["genre"] = genre
         }
         
-        if let description = super.getDescription() {
+        if let description = super.desc {
             movieDict["description"] = description
         }
         
-        if let format = super.getFormat() {
+        if let format = super.format {
             movieDict["format"] = format.rawValue
         }
         
-        movieDict["owningType"] = super.getOwningType()!.rawValue
+        movieDict["owningType"] = super.owningType!.rawValue
         
-        if let ownerLocation = super.getOwnerLocation() {
+        if let ownerLocation = super.ownerLocation {
             movieDict["ownerLocation"] = ownerLocation
         }
         

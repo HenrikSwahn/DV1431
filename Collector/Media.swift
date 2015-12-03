@@ -20,66 +20,20 @@ class Media {
         case FLAC = "Flac"
     }
     
-    private var title: String
-    private var releaseYear: Int
-    private var runtime: Runtime
-    private var genre: String?
-    private var desc: String?
-    private var format: Format?
-    private var owningType: OwningType?
-    private var ownerLocation: String?
-    private var coverArt: UIImage?
+    var title: String
+    var releaseYear: Int
+    var runtime: Runtime
+    var genre: String?
+    var desc: String?
+    var format: Format?
+    var owningType: OwningType?
+    var ownerLocation: String?
+    var coverArt: UIImage?
     
     init(title: String, released: Int, runtime: Runtime) {
         self.title = title
         self.releaseYear = released
         self.runtime = runtime
-    }
-    
-    // MARK: - Getters
-    func getTitle() -> String {
-        return title
-    }
-    
-    func getReleaseYear() -> Int {
-        return releaseYear
-    }
-    
-    func getRuntime() -> Runtime {
-        return runtime
-    }
-    
-    func getGenre() -> String? {
-        return genre
-    }
-    
-    func getDescription() -> String? {
-        return desc
-    }
-    
-    func getFormat() -> Format? {
-        return format
-    }
-    
-    func getOwningType() -> OwningType? {
-        return owningType
-    }
-    
-    func getOwnerLocation() -> String? {
-        return ownerLocation
-    }
-    
-    func getCoverArt() -> UIImage? {
-        return coverArt
-    }
-    
-    // MARK: - Setters
-    func setGenre(genre: String?) {
-        self.genre = genre
-    }
-    
-    func setDescription(desc: String?) {
-        self.desc = desc
     }
     
     func setFormat(format: String?) {
@@ -129,13 +83,5 @@ class Media {
                 break
             }
         }
-    }
-    
-    func setOwnerLocation(location: String?) {
-        self.ownerLocation = location
-    }
-    
-    func setCoverArt(image: UIImage?) {
-        self.coverArt = image
     }
 }

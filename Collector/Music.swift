@@ -10,8 +10,8 @@ import Foundation
 
 class Music: Media {
     
-    private var albumArtist: String?
-    private var trackList = [Track]() {
+    var albumArtist: String?
+    var trackList = [Track]() {
         didSet {
             //super.setRuntime(calculateAlbumLength())
         }
@@ -29,13 +29,13 @@ class Music: Media {
         self.insertTrack(Track(name: "1", runtime: Runtime(hours: 0, minutes: 3, seconds: 3)))
         self.insertTrack(Track(name: "1", runtime: Runtime(hours: 0, minutes: 3, seconds: 3)))
         self.insertTrack(Track(name: "1", runtime: Runtime(hours: 0, minutes: 3, seconds: 3)))
-        print(super.getRuntime().toString())
+        print(super.runtime.toString())
     }
     
     private func calculateAlbumLength() -> Runtime {
         
         let timeInSeconds = Array(trackList).reduce(0) {(total, obj) in total + obj.getRuntimeInSeconds()}
-        return super.getRuntime().setTimeBasedOnSeconds(timeInSeconds)
+        return super.runtime.setTimeBasedOnSeconds(timeInSeconds)
     }
     
     // MARK: - Setters
@@ -43,42 +43,29 @@ class Music: Media {
         trackList.append(aTrack)
     }
     
-    func setAlbumArtist(name: String) {
-        albumArtist = name
-    }
-    
-    // MARK: - Getters
-    func getAlbumArtist() -> String? {
-        return albumArtist
-    }
-    
-    func getAlbumTracks() -> [Track] {
-        return trackList
-    }
-    
     // MARK: - toDict
     func toDictionary() -> [String:String] {
         var movieDict = [String:String]()
         
-        movieDict["title"] = super.getTitle()
-        movieDict["release"] = String(super.getReleaseYear())
-        movieDict["runtime"] = super.getRuntime().toString()
+        movieDict["title"] = super.title
+        movieDict["release"] = String(super.releaseYear)
+        movieDict["runtime"] = super.runtime.toString()
         
-        if let genre = super.getGenre() {
+        if let genre = super.genre {
             movieDict["genre"] = genre
         }
         
-        if let description = super.getDescription() {
+        if let description = super.desc {
             movieDict["description"] = description
         }
         
-        if let format = super.getFormat() {
+        if let format = super.format {
             movieDict["format"] = format.rawValue
         }
         
-        movieDict["owningType"] = super.getOwningType()!.rawValue
+        movieDict["owningType"] = super.owningType!.rawValue
         
-        if let ownerLocation = super.getOwnerLocation() {
+        if let ownerLocation = super.ownerLocation {
             movieDict["ownerLocation"] = ownerLocation
         }
         

@@ -57,35 +57,35 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     private func setData() {
         
-        if let year = media?.getReleaseYear() {
+        if let year = media?.releaseYear {
             self.yearLabel.text = String(year)
         }
         
-        if let title = media?.getTitle() {
+        if let title = media?.title {
             self.titleLabel.text = title
         }
         
-        if let runtime = media?.getRuntime() {
+        if let runtime = media?.runtime {
             self.runtimeLabel.text = runtime.toString()
         }
         
-        if let genre = media?.getGenre() {
+        if let genre = media?.genre {
             self.genreLabel.text = genre
         }
         
-        if let ownerLocation = media?.getOwnerLocation() {
+        if let ownerLocation = media?.ownerLocation {
             self.ownerLocationLabel.text = ownerLocation
         }
         
-        if let ownerType = media?.getOwningType() {
+        if let ownerType = media?.owningType {
             self.ownerTypeLabel.text = ownerType.rawValue
         }
         
-        if let coverArt = media?.getCoverArt() {
+        if let coverArt = media?.coverArt {
             self.coverImageView.image = coverArt
         }
         
-        if let format = media?.getFormat() {
+        if let format = media?.format {
             self.genericData.append(("Format", format.rawValue))
         }
 
@@ -105,19 +105,19 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         let movie = media as! Movie
         
-        if let synopsis = movie.getDescription() {
+        if let synopsis = movie.desc {
             self.genericData.insert(("Synopsis", synopsis), atIndex: 0)
         }
         
-        if let ageRestriction = movie.getAgeRestriction() {
+        if let ageRestriction = movie.ageRestriction {
             self.genericData.append(("Age restriction",String(ageRestriction)))
         }
         
-        if let mainActor = movie.getMainActors() {
+        if let mainActor = movie.mainActors {
             self.genericData.append(("Main actor",String(mainActor)))
         }
         
-        if let director = movie.getDirector() {
+        if let director = movie.director {
             self.genericData.append(("Director",String(director)))
         }
     }

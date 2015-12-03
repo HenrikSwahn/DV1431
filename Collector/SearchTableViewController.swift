@@ -74,9 +74,9 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
-        cell.titleLabel.text = media[indexPath.row].getTitle()
-        cell.releaseYearLabel.text = "\(media[indexPath.row].getReleaseYear())"
-        cell.coverArt.image = media[indexPath.row].getCoverArt()
+        cell.titleLabel.text = media[indexPath.row].title
+        cell.releaseYearLabel.text = "\(media[indexPath.row].releaseYear)"
+        cell.coverArt.image = media[indexPath.row].coverArt
 
         return cell
     }

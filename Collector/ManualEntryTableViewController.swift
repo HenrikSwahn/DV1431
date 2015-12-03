@@ -85,7 +85,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         let newMovie = Movie(title: titleField.text!, released: Int(releaseYear.text!)!, runtime: Runtime.getRuntimeBasedOnFormattedString(runTime.text!))
         
         if let genre = genreFIeld.text {
-            newMovie.setGenre(genre)
+            newMovie.genre = genre
         }
         
         if let format = formatPickerTextField.text {
@@ -93,15 +93,15 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         }
         
         if let desc = descTextArea.text {
-            newMovie.setDescription(desc)
+            newMovie.desc = desc
         }
         
         if let coverArt = image.image {
-            newMovie.setCoverArt(coverArt)
+            newMovie.coverArt = coverArt
         }
         
         if let ownerLocation = locationField.text {
-            newMovie.setOwnerLocation(ownerLocation)
+            newMovie.ownerLocation = ownerLocation
         }
         
         if let ownType = owningType.text {
@@ -113,21 +113,21 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
         if let age = Int(cell.genricEntryTextField.text!) {
-                newMovie.setAgeRestriction(age)
+                newMovie.ageRestriction = age
         }
         
         indexPath = NSIndexPath(forRow: 1, inSection: 0)
         cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
         if let actors = cell.genricEntryTextField.text {
-            newMovie.setMainActors(actors)
+            newMovie.mainActors = actors
         }
         
         indexPath = NSIndexPath(forRow: 2, inSection: 0)
         cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
         if let director = cell.genricEntryTextField.text {
-            newMovie.setDirector(director)
+            newMovie.director = director
         }
         storage.storeMovie(newMovie)
         self.dismissViewControllerAnimated(true, completion: nil)

@@ -19,44 +19,44 @@ class Storage {
         let movieStoreDesc = NSEntityDescription.entityForName("Movie", inManagedObjectContext: managedObjectContext)
         let storeMovie = MovieStore(entity: movieStoreDesc!, insertIntoManagedObjectContext: managedObjectContext)
         
-        storeMovie.title = movie.getTitle()
-        storeMovie.runtime = movie.getRuntime().getTotalInSeconds()
-        storeMovie.releaseYear = movie.getReleaseYear()
+        storeMovie.title = movie.title
+        storeMovie.runtime = movie.runtime.getTotalInSeconds()
+        storeMovie.releaseYear = movie.releaseYear
         
-        if let owningType = movie.getOwningType() {
+        if let owningType = movie.owningType {
             storeMovie.owningType = owningType.rawValue
         }
         
-        if let ownerLocation = movie.getOwnerLocation() {
+        if let ownerLocation = movie.ownerLocation {
             storeMovie.ownerLocation = ownerLocation
         }
         
-        if let genre = movie.getGenre() {
+        if let genre = movie.genre {
             storeMovie.genre = genre
         }
         
-        if let description = movie.getDescription() {
+        if let description = movie.desc {
             storeMovie.desc = description
         }
         
-        if let format = movie.getFormat() {
+        if let format = movie.format {
             storeMovie.format = format.rawValue
         }
         
-        if let coverArt = movie.getCoverArt() {
+        if let coverArt = movie.coverArt {
             let imageData = UIImageJPEGRepresentation(coverArt, 1)
             storeMovie.coverArt = imageData
         }
         
-        if let director = movie.getDirector() {
+        if let director = movie.director {
             storeMovie.director = director
         }
         
-        if let ageRestriction = movie.getAgeRestriction() {
+        if let ageRestriction = movie.ageRestriction {
             storeMovie.ageRestriction = ageRestriction
         }
         
-        if let mainActors = movie.getMainActors() {
+        if let mainActors = movie.mainActors {
             storeMovie.mainActors = mainActors
         }
         
@@ -81,19 +81,19 @@ class Storage {
                 let movie = Movie(title: mStore.title!, released: Int(mStore.releaseYear!), runtime: Runtime.getRuntimeBasedOnSeconds(Int(mStore.runtime!)))
                 
                 if let genre = mStore.genre {
-                    movie.setGenre(genre)
+                    movie.genre = genre
                 }
                 
                 if let desc = mStore.desc {
-                    movie.setDescription(desc)
+                    movie.desc = desc
                 }
                 
                 if let ownerLocation = mStore.ownerLocation {
-                    movie.setOwnerLocation(ownerLocation)
+                    movie.ownerLocation = ownerLocation
                 }
                 
                 if let coverArt = UIImage(data: mStore.coverArt!) {
-                    movie.setCoverArt(coverArt)
+                    movie.coverArt = coverArt
                 }
                 
                 if let format = mStore.format {
@@ -105,15 +105,15 @@ class Storage {
                 }
                 
                 if let ageRestriction = mStore.ageRestriction {
-                    movie.setAgeRestriction(Int(ageRestriction))
+                    movie.ageRestriction = Int(ageRestriction)
                 }
                 
                 if let mainActors = mStore.mainActors {
-                    movie.setMainActors(mainActors)
+                    movie.mainActors = mainActors
                 }
                 
                 if let director = mStore.director {
-                    movie.setDirector(director)
+                    movie.director = director
                 }
                 
                 movies.append(movie)
