@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+import MobileCoreServices
 
 class ManualEntryTableViewController: UITableViewController, ViewContext, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -15,7 +15,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     var context = ViewContextEnum.Unkown
     private let genericEntries = ["Age Restriction", "Main Actors", "Director"]
     private var storage = Storage()
-    let libraryPicker = UIImagePickerController()
+    let imagePicker = UIImagePickerController()
     
     // MARK: - Outlets
     @IBOutlet weak var titleField: UITextField!
@@ -50,14 +50,20 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         let menu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
         
         let cameraAction = UIAlertAction(title: "Camera", style: .Default) { _ in
-
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.sourceType = .Camera
+                self.imagePicker.mediaTypes = [kUTTypeImage as String]
+                self.presentViewController(self.imagePicker, animated: true, completion: nil)
+            }
         }
         
         let photoAlbumAction = UIAlertAction(title: "Photo Album", style: .Default) { _ in
-            self.libraryPicker.allowsEditing = false
-            self.libraryPicker.sourceType = .PhotoLibrary
-            self.presentViewController(self.libraryPicker, animated: true, completion: nil)
+            self.imagePicker.allowsEditing = false
+            self.imagePicker.sourceType = .PhotoLibrary
+            self.presentViewController(self.imagePicker, animated: true, completion: nil)
         }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil) //Should take some function
         
         menu.addAction(cameraAction)
@@ -169,7 +175,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         
         self.runTime.dataSource(hours, arrayTwo: minutes, arrayThree: seconds)
         
-        self.libraryPicker.delegate = self
+        self.imagePicker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
