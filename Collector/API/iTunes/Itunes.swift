@@ -32,9 +32,9 @@ public struct Itunes: API {
     /// Parses a single album
     ///  - parameters:
     ///     - json: JSON object containing the data to be adapted
-    private static func parseOneAlbum(json: JSON) -> iTunesAlbumItem? {
+    private static func parseOneAlbum(json: JSON) -> ItunesAlbumItem? {
         if json["collectionType"].string! == "Album" {
-            return iTunesAlbumItem(
+            return ItunesAlbumItem(
                 id:     String(json["collectionId"].int!),
                 name:   json["collectionName"].string!,
                 artist: json["artistName"].string!,
@@ -50,11 +50,11 @@ public struct Itunes: API {
     /// Parses a single track in a album
     ///  - parameters:
     ///     - json: JSON object containing the data to be adapted
-    private static func parseOneTrack(json: JSON) -> iTunesAlbumTrackItem? {
+    private static func parseOneTrack(json: JSON) -> ItunesAlbumTrackItem? {
         if json["wrapperType"].string! == "track" {
             let durationOptional = json["trackTimeMillis"].int
             if let duration = durationOptional {
-                return iTunesAlbumTrackItem(
+                return ItunesAlbumTrackItem(
                     title:      json["trackName"].string!,
                     artist:     json["artistName"].string!,
                     duration:   duration > 0 ? "\(Int(duration / 1000))" : "0"
@@ -68,7 +68,7 @@ public struct Itunes: API {
     /// Parses a complete album
     ///  - parameters:
     ///     - json: JSON object containing the data to be adapted
-    public static func parseAlbum(json: JSON) -> iTunesAlbumItem? {
+    public static func parseAlbum(json: JSON) -> ItunesAlbumItem? {
         if didParseSuccessfully(json) {
             var results = json["results"].array!
             
@@ -82,7 +82,7 @@ public struct Itunes: API {
                 var tracks = results
                     tracks.removeFirst()
 
-                album?.tracks = [iTunesAlbumTrackItem]()
+                album?.tracks = [ItunesAlbumTrackItem]()
 
                 tracks.forEach() { track in
                     if let validTrack = parseOneTrack(track) {
@@ -100,12 +100,12 @@ public struct Itunes: API {
     /// Parses a search
     ///  - parameters:
     ///     - json: JSON object containing the data to be adapted
-    public static func parseSearch(json: JSON) -> [iTunesAlbumItem]? {
+    public static func parseSearch(json: JSON) -> [ItunesAlbumItem]? {
         if didParseSuccessfully(json) {
             let results = json["results"].array!
             
             if results.count > 0 {
-                var items = [iTunesAlbumItem]()
+                var items = [ItunesAlbumItem]()
                 results.forEach() { album in
                     if let validAlbum = parseOneAlbum(album) {
                         items.append(validAlbum)

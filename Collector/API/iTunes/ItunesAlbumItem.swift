@@ -1,13 +1,13 @@
 import Foundation
 
-public struct iTunesAlbumItem: CustomStringConvertible {
+public struct ItunesAlbumItem: CustomStringConvertible {
     var id: String
     var name: String
     var artist: String
     var image: String?
     var release: String
     var genre: String
-    var tracks: [iTunesAlbumTrackItem]?
+    var tracks: [ItunesAlbumTrackItem]?
     
     public var description: String {
         get {
