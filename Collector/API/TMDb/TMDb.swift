@@ -10,8 +10,7 @@ public struct TMDb: API {
     public init(_ api: APIResource, completion: (Result<Response>) -> Void) {
         //api.resource.urlDomain("api.themoviedb.org")
         api.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
-        api.resource.urlDomain("dino.opij.ac")
-        
+        api.resource.urlDomain("app.opij.ac")
         print(api.resource.url)
         
         request.dispatch(Request.Source.URL(api.resource.url), completion: completion)

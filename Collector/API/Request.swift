@@ -37,7 +37,9 @@ public struct Request {
                         if let http = response.http {
                             // Response is ok, but is it malformed?
                             if (200..<400).contains(http.statusCode) {
-                                completion(Result(e, response))
+                                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                                    completion(Result(e, response))
+                                }
                                 return
                             } else {
                                 let description = NSHTTPURLResponse.localizedStringForStatusCode(http.statusCode)

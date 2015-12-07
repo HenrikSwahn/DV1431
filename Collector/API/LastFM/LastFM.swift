@@ -12,7 +12,7 @@ public struct LastFM: API {
         api.resource.urlField(named: "api_key", "6aec100ca9d5d3e4e30477dd0f1fc103")
         api.resource.urlField(named: "format", "json")
         
-        api.resource.urlDomain("dino.opij.ac")
+        api.resource.urlDomain("app.opij.ac")
         
         print(api.resource.url)
         

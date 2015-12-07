@@ -9,7 +9,7 @@ public struct Itunes: API {
     ///     - completion: callback function when the request has been handled
     public init(_ api: APIResource, completion: (Result<Response>) -> Void) {
         //api.resource.urlDomain("itunes.apple.com", scheme: URL.Scheme.HTTPS)
-        api.resource.urlDomain("dino.opij.ac")
+        api.resource.urlDomain("app.opij.ac")
         
         print(api.resource.url)
         
