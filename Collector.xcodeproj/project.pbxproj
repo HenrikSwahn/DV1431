@@ -32,6 +32,8 @@
 		31114C461C15B1C700396AA8 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C3F1C15B1C700396AA8 /* Response.swift */; };
 		31114C471C15B1C700396AA8 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C401C15B1C700396AA8 /* Result.swift */; };
 		31114C481C15B1C700396AA8 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C411C15B1C700396AA8 /* URL.swift */; };
+		31114C4A1C15FEC400396AA8 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C491C15FEC400396AA8 /* SearchAPI.swift */; };
+		31114C4C1C15FFEE00396AA8 /* SearchAPIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C4B1C15FFEE00396AA8 /* SearchAPIDelegate.swift */; };
 		315797E91C074F0B0007FAFC /* UIIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E61C074F0B0007FAFC /* UIIconImageView.swift */; };
 		315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */; };
 		315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E81C074F0B0007FAFC /* UIRatingView.swift */; };
@@ -110,6 +112,8 @@
 		31114C3F1C15B1C700396AA8 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Response.swift; path = API/Response.swift; sourceTree = "<group>"; };
 		31114C401C15B1C700396AA8 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = API/Result.swift; sourceTree = "<group>"; };
 		31114C411C15B1C700396AA8 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URL.swift; path = API/URL.swift; sourceTree = "<group>"; };
+		31114C491C15FEC400396AA8 /* SearchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
+		31114C4B1C15FFEE00396AA8 /* SearchAPIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAPIDelegate.swift; sourceTree = "<group>"; };
 		315797E61C074F0B0007FAFC /* UIIconImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIIconImageView.swift; sourceTree = "<group>"; };
 		315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMarqueeLabel.swift; sourceTree = "<group>"; };
 		315797E81C074F0B0007FAFC /* UIRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRatingView.swift; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				AF300AA81C0E3D8200BC57D9 /* ViewContext.swift */,
+				31114C4B1C15FFEE00396AA8 /* SearchAPIDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 				AFADF84E1BFC76E80024D9A4 /* Media.swift */,
 				AF300A771C0710E000BC57D9 /* Runtime.swift */,
 				AF300A791C07151200BC57D9 /* Movie.swift */,
+				31114C491C15FEC400396AA8 /* SearchAPI.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -521,6 +527,7 @@
 				31114C221C15B19000396AA8 /* TMDbMovieResource.swift in Sources */,
 				31749C031BFDE7B400E76648 /* SearchTableViewController.swift in Sources */,
 				31114C231C15B19000396AA8 /* TMDbSearchItem.swift in Sources */,
+				31114C4A1C15FEC400396AA8 /* SearchAPI.swift in Sources */,
 				AF300A781C0710E000BC57D9 /* Runtime.swift in Sources */,
 				315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */,
 				31114C2E1C15B1A200396AA8 /* LastFMAlbumTrackItem.swift in Sources */,
@@ -532,6 +539,7 @@
 				31114C201C15B19000396AA8 /* TMDb.swift in Sources */,
 				315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */,
 				31114C441C15B1C700396AA8 /* README.md in Sources */,
+				31114C4C1C15FFEE00396AA8 /* SearchAPIDelegate.swift in Sources */,
 				31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */,
 				31114C2C1C15B1A200396AA8 /* LastFMAlbumItem.swift in Sources */,
 				AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */,
