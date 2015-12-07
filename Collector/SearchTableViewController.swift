@@ -13,7 +13,9 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
     
     // MARK: - Variables and constances
     private struct Storyboard {
-            static let mediaCellId = "media cell"
+        static let mediaCellId = "media cell"
+        static let mediaDetailSegueIdForMovie = "mediaDetailSegue-Movie"
+        static let mediaDetailSegueIdForMusic = "mediaDetailSegue-Music"
     }
     
     var movies: [Movie]?
@@ -78,7 +80,8 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    // MARK: - Collection View
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == self.movieResultsCollectionView {
@@ -107,5 +110,24 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
         cell.releaseYearLabel.text = "\((filteredMovies![indexPath.row].releaseYear))"
     
         return cell
+    }
+    
+    // MARK: - Prepare for segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == Storyboard.mediaDetailSegueIdForMovie {
+            
+            let indexPaths = self.movieResultsCollectionView.indexPathsForSelectedItems()
+            
+            if (indexPaths != nil) {
+                let indexPath = indexPaths![0]
+                let dest = segue.destinationViewController as! MediaDetailViewController
+                dest.media = filteredMovies![indexPath.row]
+                dest.context = .Movie
+            }
+        }
+        else if segue.identifier == Storyboard.mediaDetailSegueIdForMusic {
+            // Todo
+        }
     }
 }
