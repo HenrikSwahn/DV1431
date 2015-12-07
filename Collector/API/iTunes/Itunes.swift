@@ -35,16 +35,32 @@ public struct Itunes: API {
     private static func parseOneAlbum(json: JSON) -> ItunesAlbumItem? {
         if json["collectionType"].string! == "Album" {
             return ItunesAlbumItem(
-                id:     String(json["collectionId"].int!),
-                name:   json["collectionName"].string!,
-                artist: json["artistName"].string!,
-                image:  json["artworkUrl100"].string!,
-                release:json["releaseDate"].string!,
-                genre:  json["primaryGenreName"].string!,
-                tracks: nil)
+                id:         String(json["collectionId"].int!),
+                name:       json["collectionName"].string!,
+                artist:     json["artistName"].string!,
+                image:      json["artworkUrl100"].string!,
+                release:    dateToYear(json["releaseDate"].string),
+                trackCount: String(json["trackCount"].int!),
+                genre:      json["primaryGenreName"].string!,
+                tracks:     nil)
         }
         
         return nil
+    }
+    
+    /// Returns the year from a date
+    /// parameters:
+    ///     - date: A datestring in Itunes format.
+    private static func dateToYear(date: String?) -> String {
+        if let string = date {
+            if string.characters.count > 4 {
+                return string.substringToIndex(string.startIndex.advancedBy(4))
+            } else {
+                return string
+            }
+        }
+        
+        return "1970"
     }
     
     /// Parses a single track in a album

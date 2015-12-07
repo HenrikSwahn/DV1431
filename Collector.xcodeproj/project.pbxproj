@@ -51,6 +51,8 @@
 		31B8422F1BF3880E005429FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31B8422D1BF3880E005429FA /* LaunchScreen.storyboard */; };
 		31B8423A1BF3880E005429FA /* CollectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842391BF3880E005429FA /* CollectorTests.swift */; };
 		31B842451BF3880E005429FA /* CollectorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842441BF3880E005429FA /* CollectorUITests.swift */; };
+		31D1A6361C16126C00AA02A8 /* SearchMovieEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1A6351C16126C00AA02A8 /* SearchMovieEntryTableViewCell.swift */; };
+		31D1A6381C16127B00AA02A8 /* SearchMusicEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1A6371C16127B00AA02A8 /* SearchMusicEntryTableViewCell.swift */; };
 		31EA349F1BFE4E4900D7F72B /* UIPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */; };
 		AF300A781C0710E000BC57D9 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A771C0710E000BC57D9 /* Runtime.swift */; };
 		AF300A7A1C07151200BC57D9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A791C07151200BC57D9 /* Movie.swift */; };
@@ -137,6 +139,8 @@
 		31B842401BF3880E005429FA /* CollectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31B842441BF3880E005429FA /* CollectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectorUITests.swift; sourceTree = "<group>"; };
 		31B842461BF3880E005429FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31D1A6351C16126C00AA02A8 /* SearchMovieEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMovieEntryTableViewCell.swift; sourceTree = "<group>"; };
+		31D1A6371C16127B00AA02A8 /* SearchMusicEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMusicEntryTableViewCell.swift; sourceTree = "<group>"; };
 		31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPickerTextField.swift; sourceTree = "<group>"; };
 		AF300A771C0710E000BC57D9 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		AF300A791C07151200BC57D9 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -357,6 +361,8 @@
 				AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */,
 				AFFC51BF1BFDD03400DA5344 /* MediaDetailTableViewCell.swift */,
 				315D31511BFF4EA100E08C7D /* ManualEntryTableViewCell.swift */,
+				31D1A6351C16126C00AA02A8 /* SearchMovieEntryTableViewCell.swift */,
+				31D1A6371C16127B00AA02A8 /* SearchMusicEntryTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 				31114C4A1C15FEC400396AA8 /* SearchAPI.swift in Sources */,
 				AF300A781C0710E000BC57D9 /* Runtime.swift in Sources */,
 				315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */,
+				31D1A6381C16127B00AA02A8 /* SearchMusicEntryTableViewCell.swift in Sources */,
 				31114C2E1C15B1A200396AA8 /* LastFMAlbumTrackItem.swift in Sources */,
 				AFF229581BFCAFED001181AC /* MediaTableViewController.swift in Sources */,
 				AFE9D7151BFE13EC009E5DAA /* ManualEntryTableViewController.swift in Sources */,
@@ -552,6 +559,7 @@
 				31114C371C15B1AF00396AA8 /* ItunesAlbumItem.swift in Sources */,
 				31114C301C15B1A200396AA8 /* LastFMSearchResource.swift in Sources */,
 				315797E91C074F0B0007FAFC /* UIIconImageView.swift in Sources */,
+				31D1A6361C16126C00AA02A8 /* SearchMovieEntryTableViewCell.swift in Sources */,
 				AF300AA91C0E3D8200BC57D9 /* ViewContext.swift in Sources */,
 				31B842221BF3880D005429FA /* AppDelegate.swift in Sources */,
 				31114C2D1C15B1A200396AA8 /* LastFMAlbumResource.swift in Sources */,

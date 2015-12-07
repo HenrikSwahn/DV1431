@@ -57,6 +57,9 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         self.indicatorShouldStopAnimating()
         
         self.search = SearchAPI(context: ViewContextEnum.Music,
@@ -87,6 +90,10 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
         return self.search.cellForIndexPath(tableView, indexPath: indexPath)
     }
     
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     // MARK: - SearchBar delegates
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.indicatorShouldStartAnimating()
@@ -96,10 +103,10 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count == 0 {
-            self.activityIndicatorView.stopAnimating()
-            self.activityIndicatorView.hidden = true
             self.search.empty()
             self.tableView.reloadData()
+
+            self.indicatorShouldStopAnimating()
         }
     }
     

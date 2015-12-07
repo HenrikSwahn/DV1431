@@ -46,7 +46,7 @@ class SearchAPI {
             switch self.context {
             case .Movie:
                 self.movieSearchResults = TMDb.parseSearch(JSON(response.data))
-                self.delegate?.searchAPI(self.musicSearchResults!.count)
+                self.delegate?.searchAPI(self.movieSearchResults!.count)
             case .Music:
                 self.musicSearchResults = Itunes.parseSearch(JSON(response.data))
                 self.delegate?.searchAPI(self.musicSearchResults!.count)
@@ -67,25 +67,35 @@ class SearchAPI {
     }
     
     internal func cellForIndexPath(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        
         switch self.context {
         case .Movie where self.movieSearchResults != nil:
-            cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.Movie, forIndexPath: indexPath)
-            cell.textLabel?.text = self.movieSearchResults![indexPath.row].title
+            if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.Movie, forIndexPath: indexPath) as? SearchMovieEntryTableViewCell {
+                cell.titleLabel.text = self.movieSearchResults![indexPath.row].title
+                cell.releaseLabel.text = self.movieSearchResults![indexPath.row].release
+                cell.synopsisLabel.text = self.movieSearchResults![indexPath.row].synopsis
+                return cell
+            }
             
         case .Music where self.musicSearchResults != nil:
-            cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.Music, forIndexPath: indexPath)
-            cell.textLabel?.text = self.musicSearchResults![indexPath.row].name
-            
+            if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.Music, forIndexPath: indexPath) as? SearchMusicEntryTableViewCell {
+                cell.releaseLabel.text = self.musicSearchResults![indexPath.row].release
+                cell.artistLabel.text = self.musicSearchResults![indexPath.row].artist
+                cell.titleLabel.text = self.musicSearchResults![indexPath.row].name
+                return cell
+            }
         default: break
+            
         }
         
-        return cell
+        // If we end up here. Something is wrong.
+        return UITableViewCell()
     }
     
     internal func empty() {
         self.movieSearchResults = nil
         self.musicSearchResults = nil
+        
+        print(self.movieSearchResults)
+        print(self.musicSearchResults)
     }
 }
