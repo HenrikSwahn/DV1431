@@ -22,6 +22,11 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     }
     
     private let model = ["A", "B", "C"]
+    private var searchResults: [TMDbSearchItem]? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     
     // MARK: - Image
     @IBAction func photoButtonItem(sender: UIBarButtonItem) {
@@ -64,6 +69,15 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let _ = TMDb(TMDbSearchResource(forTerm: "hello world")) { result in
+            switch result {
+            case .Error(let e):
+                print(e)
+            case .Success(let result):
+                self.searchResults = TMDb.parseSearch(JSON(result.data))
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,15 +93,21 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        if let results = self.searchResults {
+            return results.count
+        }
+        return 0
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.searchCell, forIndexPath: indexPath)
 
-        cell.textLabel?.text = model[indexPath.row]
-
+        //cell.textLabel?.text = model[indexPath.row]
+        if let results = self.searchResults {
+            cell.textLabel?.text = results[indexPath.row].title
+        }
+        
         return cell
     }
 
