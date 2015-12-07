@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		312602151C15A1550042F319 /* API in Resources */ = {isa = PBXBuildFile; fileRef = 312602131C15A1550042F319 /* API */; };
-		312602161C15A1550042F319 /* JSON in Resources */ = {isa = PBXBuildFile; fileRef = 312602141C15A1550042F319 /* JSON */; };
 		315797E91C074F0B0007FAFC /* UIIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E61C074F0B0007FAFC /* UIIconImageView.swift */; };
 		315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */; };
 		315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E81C074F0B0007FAFC /* UIRatingView.swift */; };
@@ -62,8 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		312602131C15A1550042F319 /* API */ = {isa = PBXFileReference; lastKnownFileType = folder; path = API; sourceTree = "<group>"; };
-		312602141C15A1550042F319 /* JSON */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JSON; sourceTree = "<group>"; };
 		315797E61C074F0B0007FAFC /* UIIconImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIIconImageView.swift; sourceTree = "<group>"; };
 		315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMarqueeLabel.swift; sourceTree = "<group>"; };
 		315797E81C074F0B0007FAFC /* UIRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRatingView.swift; sourceTree = "<group>"; };
@@ -130,15 +126,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		312602121C15A12F0042F319 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				312602131C15A1550042F319 /* API */,
-				312602141C15A1550042F319 /* JSON */,
-			);
-			name = Libraries;
-			sourceTree = "<group>";
-		};
 		31B842151BF3880D005429FA = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +149,6 @@
 		31B842201BF3880D005429FA /* Collector */ = {
 			isa = PBXGroup;
 			children = (
-				312602121C15A12F0042F319 /* Libraries */,
 				AF300AA71C0E3D6A00BC57D9 /* Protocols */,
 				31EA349D1BFE4E1600D7F72B /* UIElements */,
 				AFFC51BD1BFDC31A00DA5344 /* Models */,
@@ -377,9 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				312602161C15A1550042F319 /* JSON in Resources */,
 				31B8422F1BF3880E005429FA /* LaunchScreen.storyboard in Resources */,
-				312602151C15A1550042F319 /* API in Resources */,
 				31B8422C1BF3880E005429FA /* Assets.xcassets in Resources */,
 				31B842271BF3880E005429FA /* Main.storyboard in Resources */,
 			);
