@@ -168,7 +168,7 @@ class Storage {
         }
     }
     
-    func searchData(table: DBTable?, search: String?, batchSize: Int?, set: SearchSet) -> [Media]? {
+    private func searchData(table: DBTable?, search: String?, batchSize: Int?, set: SearchSet) -> [Media]? {
         
         let request = NSFetchRequest(entityName: set.rawValue)
         

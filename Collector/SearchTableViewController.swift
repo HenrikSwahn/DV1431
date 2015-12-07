@@ -16,7 +16,11 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
             static let mediaCellId = "media cell"
     }
     
-    var media = [Media]()
+    var movies: [Movie]?
+    var filteredMovies: [Movie]?
+    var music: [Music]?
+    var filteredMusic: [Music]?
+    var filtered = false
     var storage = Storage()
     
     @IBOutlet weak var movieTableCell: UITableViewCell!
@@ -42,28 +46,33 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
         }
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-               print("BeEd")
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-                print("EndEd")
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        print("cancel")
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print("search")
+    func filter(text: String) {
+        
+        if (movies != nil) {
+            self.filteredMovies = self.movies!.filter({(movie: Movie) -> Bool in
+                let titleMatch = movie.title.rangeOfString(text)
+                return (titleMatch != nil)
+            })
+        }
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-    
+        
+        if searchText.characters.count == 0 {
+            filtered = false
+            self.movieResultsCollectionView.reloadData()
+        }
+        else {
+            filtered = true
+            filter(searchText)
+            self.movieResultsCollectionView.reloadData()
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
+        //music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set:.Music)) as! [Music]
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,15 +80,32 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return media.count
+        
+        if collectionView == self.movieResultsCollectionView {
+            if (movies != nil) {
+                if filtered {
+                    return filteredMovies!.count
+                }
+            }
+        }
+        else {
+            if (music != nil) {
+                if filtered {
+                    return filteredMusic!.count
+                }
+            }
+        }
+        
+        return 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
-        cell.titleLabel.text = media[indexPath.row].title
-        cell.releaseYearLabel.text = "\(media[indexPath.row].releaseYear)"
-        cell.coverArt.image = media[indexPath.row].coverArt
-
+    
+        cell.titleLabel.text = filteredMovies![indexPath.row].title
+        cell.coverArt.image = filteredMovies![indexPath.row].coverArt
+        cell.releaseYearLabel.text = "\((filteredMovies![indexPath.row].releaseYear))"
+    
         return cell
     }
 }
