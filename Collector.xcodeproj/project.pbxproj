@@ -90,7 +90,7 @@
 		AF300A7E1C0737E000BC57D9 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		AF300A9E1C0C908300BC57D9 /* MovieStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieStore.swift; path = ../MovieStore.swift; sourceTree = "<group>"; };
 		AF300AA21C0C90E200BC57D9 /* MediaStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaStore.swift; path = ../MediaStore.swift; sourceTree = "<group>"; };
-		AF300AA51C0CBFA300BC57D9 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		AF300AA51C0CBFA300BC57D9 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		AF300AA81C0E3D8200BC57D9 /* ViewContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContext.swift; sourceTree = "<group>"; };
 		AFADF84C1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieHomeScreenViewController.swift; sourceTree = "<group>"; };
 		AFADF84E1BFC76E80024D9A4 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };

@@ -430,6 +430,7 @@
                         <outlet property="movieTableCell" destination="c0o-6t-EIb" id="4hB-yK-jfW"/>
                         <outlet property="musicResultsCollectionView" destination="dPD-cT-erq" id="sRf-GF-ZwC"/>
                         <outlet property="musicTableCell" destination="k2a-PD-Q6M" id="vsd-o1-oZc"/>
+                        <outlet property="searchMediaBar" destination="3pw-i7-00t" id="bEh-ye-XDA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="96l-Wu-AtR" userLabel="First Responder" sceneMemberID="firstResponder"/>

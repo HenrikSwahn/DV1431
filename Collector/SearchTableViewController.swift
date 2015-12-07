@@ -9,18 +9,25 @@
 import UIKit
 
 @IBDesignable
-class SearchTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SearchTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
     // MARK: - Variables and constances
     private struct Storyboard {
             static let mediaCellId = "media cell"
     }
     
-    private var media = [Media]()
+    var media = [Media]()
+    var storage = Storage()
     
     @IBOutlet weak var movieTableCell: UITableViewCell!
     @IBOutlet weak var musicTableCell: UITableViewCell!
 
+    @IBOutlet weak var searchMediaBar: UISearchBar! {
+        didSet {
+            self.searchMediaBar.delegate = self
+        }
+    }
+    
     @IBOutlet weak var movieResultsCollectionView: UICollectionView! {
         didSet {
             self.movieResultsCollectionView.delegate = self
@@ -34,39 +41,34 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
             self.musicResultsCollectionView.dataSource = self
         }
     }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+               print("BeEd")
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+                print("EndEd")
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        print("cancel")
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print("search")
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mov1 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
-        let mov2 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
-        let mov3 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
-        let mov4 = Media(title: "I am Legend", released: 2007, runtime: Runtime(hours: 1, minutes: 40, seconds: 40))
-        
-        media += [mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4,mov1, mov2, mov3, mov4]
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
- /*   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }*/
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return media.count
@@ -80,61 +82,4 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
 
         return cell
     }
-
-    
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
 }
