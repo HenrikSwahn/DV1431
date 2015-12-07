@@ -14,7 +14,8 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     private struct Storyboard {
         static let mediaCellId = "media cell"
         static let addMovieSegueId = "AddMovieSegue"
-        static let detailMovieSegueId = "DetailMovieSegue"
+        static let detailMovieSegueTableId = "DetailMovieSegueTable"
+        static let detailMovieSegueCollectionId = "DetailMovieSegueCollection"
     }
     
     private let storage = Storage()
@@ -85,11 +86,20 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
             let dest = navCtr.topViewController as! SearchEntryTableViewController
             dest.context = context
         }
-        else if segue.identifier == Storyboard.detailMovieSegueId {
+        else if segue.identifier == Storyboard.detailMovieSegueTableId {
             let dest = segue.destinationViewController as! MediaDetailViewController
             let indexPath = self.mediaTable.indexPathForSelectedRow
             dest.media = media![(indexPath?.row)!]
             dest.context = context
+        }
+        else if segue.identifier == Storyboard.detailMovieSegueCollectionId {
+            let indexPaths = self.mediaCollection.indexPathsForSelectedItems()
+            if (indexPaths != nil) {
+                let indexPath = indexPaths![0]
+                let dest = segue.destinationViewController as! MediaDetailViewController
+                dest.media = media![indexPath.row]
+                dest.context = context
+            }
         }
     }
     

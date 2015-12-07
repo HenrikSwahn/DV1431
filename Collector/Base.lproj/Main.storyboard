@@ -82,7 +82,7 @@
                                             <outlet property="coverArt" destination="KDY-N2-13M" id="j8g-HF-aUb"/>
                                             <outlet property="releaseYearLabel" destination="AH6-Os-35x" id="P5S-Gw-tqK"/>
                                             <outlet property="titleLabel" destination="gvt-RB-GGW" id="JV3-mN-fpF"/>
-                                            <segue destination="dtS-oE-kFg" kind="show" id="SqZ-Jq-fr5"/>
+                                            <segue destination="dtS-oE-kFg" kind="show" identifier="DetailMovieSegueCollection" id="SqZ-Jq-fr5"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1183,7 +1183,7 @@
         <image name="star-fill" width="25" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="SqZ-Jq-fr5"/>
         <segue reference="UUg-Hg-IZ3"/>
-        <segue reference="CnV-X6-7Zv"/>
     </inferredMetricsTieBreakers>
 </document>
