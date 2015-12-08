@@ -70,17 +70,13 @@ class SearchAPI {
         switch self.context {
         case .Movie where self.movieSearchResults != nil:
             if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.Movie, forIndexPath: indexPath) as? SearchMovieEntryTableViewCell {
-                cell.titleLabel.text = self.movieSearchResults![indexPath.row].title
-                cell.releaseLabel.text = self.movieSearchResults![indexPath.row].release
-                cell.synopsisLabel.text = self.movieSearchResults![indexPath.row].synopsis
+                cell.model = self.movieSearchResults![indexPath.row]
                 return cell
             }
             
         case .Music where self.musicSearchResults != nil:
             if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.Music, forIndexPath: indexPath) as? SearchMusicEntryTableViewCell {
-                cell.releaseLabel.text = self.musicSearchResults![indexPath.row].release
-                cell.artistLabel.text = self.musicSearchResults![indexPath.row].artist
-                cell.titleLabel.text = self.musicSearchResults![indexPath.row].name
+                cell.model = self.musicSearchResults![indexPath.row]
                 return cell
             }
         default: break
@@ -95,7 +91,7 @@ class SearchAPI {
         self.movieSearchResults = nil
         self.musicSearchResults = nil
         
-        print(self.movieSearchResults)
-        print(self.musicSearchResults)
+        //print(self.movieSearchResults)
+        //print(self.musicSearchResults)
     }
 }

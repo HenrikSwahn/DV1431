@@ -8,22 +8,27 @@
 
 import UIKit
 
-class SearchMusicEntryTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+class SearchMusicEntryTableViewCell: UICachableTableViewCell {
+    var model: ItunesAlbumItem? {
+        didSet {
+            updateSelf()
+        }
     }
-
+    
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var releaseLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    private func updateSelf() {
+        if let album = self.model {
+            //let link = album.image
+            let link = "http://app.opij.ac/image.jpg"
+            self.loadImage(link, applyToView: self.albumImage)
+            
+            releaseLabel.text = album.release
+            artistLabel.text = album.artist
+            titleLabel.text = album.name
+        }
     }
-
 }
