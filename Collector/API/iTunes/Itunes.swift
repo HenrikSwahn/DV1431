@@ -11,9 +11,6 @@ public class Itunes: API {
         super.init(api, completion: completion)
         //api.resource.urlDomain("itunes.apple.com", scheme: URL.Scheme.HTTPS)
         api.resource.urlDomain("app.opij.ac")
-        
-        print(api.resource.url)
-        
         request.dispatch(Request.Source.URL(api.resource.url), completion: completion)
     }
     

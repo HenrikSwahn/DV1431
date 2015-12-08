@@ -33,7 +33,6 @@ public class TMDb: API {
         //api.resource.urlDomain("api.themoviedb.org")
         api.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
         api.resource.urlDomain("app.opij.ac")
-        print(api.resource.url)
         
         request.dispatch(Request.Source.URL(api.resource.url), completion: completion)
     }
@@ -74,7 +73,6 @@ public class TMDb: API {
         if let results = json["results"].array {
             var items = [TMDbSearchItem]()
             results.forEach { item in
-                print(item)
                 items.append(TMDbSearchItem(
                     id:         item["id"].int ?? 0,
                     image:      appendImageURL(item["poster_path"].string),

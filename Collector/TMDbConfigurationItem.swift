@@ -38,7 +38,6 @@ public struct TMDbConfigurationItem {
         if let dict = defaults.objectForKey(TMDb.Configuration.Key) {
             var item = defaultConfiguration()
                 item.propertyList = dict
-            print(item)
             return item
         }
         
@@ -49,7 +48,6 @@ public struct TMDbConfigurationItem {
         let currentTime = NSDate().timeIntervalSince1970
         let distance = currentTime.distanceTo(self.shouldUpdate)
         print("WARNING: TMDb.Configuration: is set to \(TMDb.Configuration.UpdateInterval)")
-        print("Next update: \(distance)")
         return distance <= 0
     }
     

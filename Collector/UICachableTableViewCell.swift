@@ -17,30 +17,32 @@ class UICachableTableViewCell: UITableViewCell {
     // - parameters:
     //      - link: a link to the image
     //      - applyToView: a reference to the UIImageView in which to place the result
-    internal func loadImage(link: String, applyToView: UIImageView) {
+    internal func loadImage(link: String, view: UIImageView) {
         // If the image is out of view, but already loaded, set it
         if let image = self.delegate?.cachableTableView(didStore: link) {
-            applyToView.image = image
-            print("Image Already Exists")
+            self.apply(image, toView: view)
         } else {
             Request().dispatch(Request.Source.URL(NSURL(string: link))) { [unowned self] result in
                 switch result {
                 case .Error(_): break
                 case .Success(let result):
                     // If the image is already loaded in another thread, retrieve it, and set it
-                    if let alreadyLoaded = self.delegate?.cachableTableView(didStore: link) {
-                        applyToView.image = alreadyLoaded
-                        print("ALREADY DOEN")
+                    if let alreadyLoadedImage = self.delegate?.cachableTableView(didStore: link) {
+                        self.apply(alreadyLoadedImage, toView: view)
                     } else {
                         // The image was never loaded, commence the load
                         if let image = UIImage(data: result.data) {
-                            print("SET")
-                            applyToView.image = image
+                            self.apply(image, toView: view)
                             self.delegate?.cachableTableView(willStore: link, image: image)
                         }
                     }
                 }
             }
         }
+    }
+    
+    internal func apply(image: UIImage, toView: UIImageView) {
+        toView.contentMode = .ScaleToFill
+        toView.image = image
     }
 }

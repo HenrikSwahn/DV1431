@@ -28,7 +28,7 @@ class SearchMovieEntryTableViewCell: UICachableTableViewCell {
         if let movie = self.model {
             //let link = movie.image
             let link = "http://app.opij.ac/image.jpg"
-            self.loadImage(link, applyToView: self.movieImage)
+            self.loadImage(link, view: self.movieImage)
 
             titleLabel.text = movie.title
             releaseLabel.text = movie.release

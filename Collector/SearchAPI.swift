@@ -90,8 +90,5 @@ class SearchAPI {
     internal func empty() {
         self.movieSearchResults = nil
         self.musicSearchResults = nil
-        
-        //print(self.movieSearchResults)
-        //print(self.musicSearchResults)
     }
 }

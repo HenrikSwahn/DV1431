@@ -20,8 +20,22 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
         static let musicReuseIdentifier = "MusicResultCell"
     }
     
+    private struct Placeholder {
+        static let Music = "Search for albums ..."
+        static let Movie = "Search for movies ..."
+        static let Unknown = "Unknown context"
+    }
+    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            switch self.context {
+                case .Music: self.searchBar.placeholder = Placeholder.Music
+                case .Movie: self.searchBar.placeholder = Placeholder.Movie
+                default: self.searchBar.placeholder     = Placeholder.Unknown
+            }
+        }
+    }
     @IBAction func cancelButtonItem(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -66,11 +80,15 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
         
         self.indicatorShouldStopAnimating()
         
+        if (context == .Unkown) {
+            self.searchBar.userInteractionEnabled = false
+        }
+        
         self.search = SearchAPI(context: context,
             reuseIdentifierForMovie: Storyboard.movieReuseIdentifier,
             reuseIdentifierForMusic: Storyboard.musicReuseIdentifier)
         
-        self.search.delegate = self
+        self.search?.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.searchBar.delegate = self
@@ -121,7 +139,6 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
             self.indicatorShouldStopAnimating()
         }
     }
-    
     
     // MARK: - SearchAPI delegate
     func searchAPI(count: Int) {

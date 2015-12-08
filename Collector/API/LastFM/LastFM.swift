@@ -15,8 +15,6 @@ public class LastFM: API {
         
         api.resource.urlDomain("app.opij.ac")
         
-        print(api.resource.url)
-        
         request.dispatch(Request.Source.URL(api.resource.url), completion: completion)
     }
     
