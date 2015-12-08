@@ -1,6 +1,6 @@
 import Foundation
 
-public struct iTunesAlbumTrackItem: CustomStringConvertible {
+public struct ItunesAlbumTrackItem: CustomStringConvertible {
     var title: String
     var artist: String
     var duration: String

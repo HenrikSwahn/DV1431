@@ -34,12 +34,12 @@ public struct TMDb: API {
         }
         
         return TMDbMovieItem(
-            id: json["id"].int ?? 0,
-            image: json["poster_path"].string ?? "Unavailable",
-            release_date: json["release_date"].string ?? "Unavailable",
-            language: json["original_language"].string ?? "en",
-            title: json["original_title"].string ?? "Unavailable",
-            synopsis: json["overview"].string ?? "Unavailable",
+            id:                 json["id"].int ?? 0,
+            image:              json["poster_path"].string ?? "/",
+            release_date:       json["release_date"].string ?? "1970-01-01",
+            language:           json["original_language"].string ?? "en",
+            title:              json["original_title"].string ?? "Unavailable",
+            synopsis:           json["overview"].string ?? "Unavailable",
             cast: cast,
             genres: genres
         )
@@ -54,9 +54,11 @@ public struct TMDb: API {
             results.forEach { item in
                 print(item)
                 items.append(TMDbSearchItem(
-                    id: item["id"].int ?? 0, image: item["poster_path"].string ?? "/",
-                    release_date: item["release_date"].string ?? "1970-01-01",
-                    title: item["title"].string ?? "Unavailable")
+                    id:         item["id"].int ?? 0,
+                    image:      item["poster_path"].string ?? "/",
+                    release:    item["release_date"].string ?? "1970-01-01",
+                    title:      item["title"].string ?? "Unavailable",
+                    synopsis:   item["overview"].string ?? "Unavailable")
                 )
             }
             
