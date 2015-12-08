@@ -1238,7 +1238,7 @@
                     <navigationItem key="navigationItem" id="w8N-EV-lKt">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="c1h-3p-O8O" customClass="UIRatingView" customModule="Collector" customModuleProvider="target">
-                            <rect key="frame" x="238" y="14" width="124" height="17"/>
+                            <rect key="frame" x="238" y="13.5" width="124" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1493,7 +1493,7 @@
                                 <segment title="" image="grid"/>
                             </segments>
                             <connections>
-                                <action selector="changeView:" destination="LQr-47-KTt" eventType="valueChanged" id="iyS-z1-Dvb"/>
+                                <action selector="changeViewLayout:" destination="LQr-47-KTt" eventType="valueChanged" id="ER8-Ed-QQx"/>
                             </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" image="sort" id="se4-nO-YAx"/>
@@ -1544,8 +1544,8 @@
         <image name="star-fill" width="25" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Jf-ot-bv2"/>
         <segue reference="SqZ-Jq-fr5"/>
+        <segue reference="sYd-fh-NBU"/>
         <segue reference="UUg-Hg-IZ3"/>
     </inferredMetricsTieBreakers>
 </document>

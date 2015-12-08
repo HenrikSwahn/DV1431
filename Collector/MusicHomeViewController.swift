@@ -11,6 +11,7 @@ import UIKit
 class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, ViewContext {
     
     private struct Storyboard {
+        static let musicCellId = "media cell"
         static let mediaCellId = "AddMusicSegue"
     }
     var context = ViewContextEnum.Music
@@ -31,25 +32,29 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    @IBAction func changeViewLayout(sender: AnyObject) {
+        
+        self.musicCollectionView.hidden = !self.musicCollectionView.hidden
+        self.musicTableView.hidden = !self.musicTableView.hidden
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*var mu1 = Music(title: "Clayman", released: 1996);
-        mu1.insertTrack(Track(name: "Track1", runtime: Runtime(hours: 0, minutes: 3, seconds: 26)))
-        mu1.insertTrack(Track(name: "Track2", runtime: Runtime(hours: 0, minutes: 3, seconds: 17)))
-        mu1.insertTrack(Track(name: "Track3", runtime: Runtime(hours: 0, minutes: 3, seconds: 28)))
-        mu1.insertTrack(Track(name: "Track4", runtime: Runtime(hours: 0, minutes: 3, seconds: 21)))
+        self.musicCollectionView.hidden = true
+        self.musicTableView.hidden = false
+        
+        var mu1 = Music(title: "Clayman", released: 1996);
+        mu1.insertTrack(Track(name: "Track1", runtime: Runtime(hours: 0, minutes: 3, seconds: 26), trackNr: 1))
+        mu1.insertTrack(Track(name: "Track2", runtime: Runtime(hours: 0, minutes: 3, seconds: 17), trackNr: 2))
+        mu1.insertTrack(Track(name: "Track3", runtime: Runtime(hours: 0, minutes: 3, seconds: 28), trackNr: 3))
+        mu1.insertTrack(Track(name: "Track4", runtime: Runtime(hours: 0, minutes: 3, seconds: 21), trackNr: 4))
         mu1.desc = "Awesome inflames album"
         mu1.setFormat("CD");
         mu1.setOwningType("Physical");
         mu1.genre = "Metal"
         mu1.albumArtist = "inFlames"
         mu1.ownerLocation = "Section A"
-        storage.storeMusic(mu1);*/
-        //music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music)) as? [Music]
-        
-        /*for track in music![0].trackList {
-            print(track.name)
-        }*/
+        storage.storeMusic(mu1);
+        music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music)) as? [Music]
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,7 +63,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId) as! MediaTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.musicCellId) as! MediaTableViewCell
         cell.titleLabel.text = music![indexPath.row].title
         cell.releaseYearLabel.text = "\(music![indexPath.row].releaseYear)"
         cell.runtimeLabel.text = "\(music![indexPath.row].runtime.toString())"
@@ -83,7 +88,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.musicCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
         cell.titleLabel.text = music![indexPath.row].title
         cell.releaseYearLabel.text = "\(music![indexPath.row].releaseYear)"
         cell.coverArt.image = music![indexPath.row].coverArt

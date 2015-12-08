@@ -27,7 +27,14 @@ class Music: Media {
         return super.runtime.setTimeBasedOnSeconds(timeInSeconds)
     }
     
-    // MARK: - Setters
+    func sortAlbum() {
+        trackList.sortInPlace({$0.trackNr < $1.trackNr})
+        
+        for track in trackList {
+            print(track.name)
+        }
+    }
+    
     func insertTrack(aTrack: Track) {
         trackList.append(aTrack)
     }

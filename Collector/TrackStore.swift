@@ -10,7 +10,8 @@ import Foundation
 import CoreData
 
 class TrackStore: NSManagedObject {
-    @NSManaged var name: String?
-    @NSManaged var runtime: NSNumber?
-    @NSManaged var album: MusicStore?
+    @NSManaged var name: String
+    @NSManaged var runtime: NSNumber
+    @NSManaged var trackNr: NSNumber
+    @NSManaged var album: MusicStore
 }

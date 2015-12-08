@@ -11,11 +11,13 @@ import Foundation
 class Track: NSObject {
     
     var name: String
-    var runtime:Runtime
+    var runtime: Runtime
+    var trackNr: Int
     
-    init(name: String, runtime: Runtime) {
+    init(name: String, runtime: Runtime, trackNr: Int) {
         self.name = name
         self.runtime = runtime
+        self.trackNr = trackNr
         super.init()
     }
 }

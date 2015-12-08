@@ -141,12 +141,16 @@ class Storage {
     }
     
     private func storeTracks(tracks: [Track], music: MusicStore) {
-        let trackStoreDesc = NSEntityDescription.entityForName("Track", inManagedObjectContext: managedObjectContext)
-        let storeTrack = TrackStore(entity: trackStoreDesc!, insertIntoManagedObjectContext: managedObjectContext)
-        
+
         for track in tracks {
+            
+            let trackStoreDesc = NSEntityDescription.entityForName("Track", inManagedObjectContext: managedObjectContext)
+            let storeTrack = TrackStore(entity: trackStoreDesc!, insertIntoManagedObjectContext: managedObjectContext)
+            
             storeTrack.name = track.name
             storeTrack.runtime = track.runtime.getTotalInSeconds()
+            storeTrack.trackNr = track.trackNr
+            
             storeTrack.album = music
             
             do {
@@ -194,12 +198,15 @@ class Storage {
             switch table! {
             case .Title:
                 request.predicate = NSPredicate(format: "title==%@", search!)
+                request.sortDescriptors?.append(NSSortDescriptor(key: "title", ascending: true))
                 break
             case .ReleaseYear:
                 request.predicate = NSPredicate(format: "releaseYear==%@", Int(search!)!)
+                request.sortDescriptors?.append(NSSortDescriptor(key: "releaseYear", ascending: true))
                 break
             case .Genre:
                 request.predicate = NSPredicate(format: "genre==%@", search!)
+                request.sortDescriptors?.append(NSSortDescriptor(key: "genre", ascending: true))
                 break
             }
 
@@ -322,17 +329,10 @@ class Storage {
                 let tracks = trackList.allObjects as! [TrackStore]
                 
                 for track in tracks {
-                    if let trackName = track.name {
-                        if let runtime = track.runtime {
-                            mu.insertTrack(Track(name: trackName, runtime: Runtime.getRuntimeBasedOnSeconds(Int(runtime))))
-                        }
-                        else {
-                            mu.insertTrack(Track(name: trackName, runtime: Runtime(hours: 0, minutes: 0, seconds: 0)))
-                        }
-                    }
+                    mu.insertTrack(Track(name: track.name , runtime: Runtime.getRuntimeBasedOnSeconds(Int(track.runtime)), trackNr: Int(track.trackNr)))
                 }
             }
-            
+            mu.sortAlbum()
             music.append(mu)
         }
         return music
