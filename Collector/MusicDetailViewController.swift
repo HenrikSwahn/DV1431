@@ -1,16 +1,16 @@
 //
-//  MediaDetailViewController.swift
+//  MusicDetailViewController.swift
 //  Collector
 //
-//  Created by Dino Opijac on 24/11/15.
+//  Created by Henrik Swahn on 2015-12-08.
 //  Copyright © 2015 Dino Opijac. All rights reserved.
 //
 
 import UIKit
 
-class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext {
+class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext {
     
-    var media:Media?
+    var music: Music?
     var context = ViewContextEnum.Unkown
     
     // MARK: - Private Members
@@ -22,7 +22,7 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var coverImageView: UIImageView!
-
+    
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var titleLabel: UIMarqueeLabel!
     @IBOutlet weak var runtimeLabel: UILabel!
@@ -38,98 +38,52 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.backgroundColor = UIColor.clearColor()
         }
     }
-
-    // MARK: - Mock Data Initialization 
-    /*private func setMockData() {
-        // Data for labels
-        self.yearLabel.text = "2007"
-        self.titleLabel.text = "The Lord of The Rings: Fellowship of the Ring"
-        self.runtimeLabel.text = "1 hour, 40 minutes"
-        self.genreLabel.text = "Drama, Sci-Fi, Thriller"
-        self.ownerLocationLabel.text = "Physical"
-        self.ownerTypeLabel.text = "Blu-Ray"
-        
-        // Data for the table
-        media.append(("Description", "Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure."))
-        media.append(("Writers", "Mark Protocevic, Akiva Goldsman"))
-        media.append(("Actors", "Will Smith, Alice Braga, Charlie Tahan"))
-    }*/
     
     private func setData() {
         
-        if let year = media?.releaseYear {
+        if let year = music?.releaseYear {
             self.yearLabel.text = String(year)
         }
         
-        if let title = media?.title {
+        if let title = music?.title {
             self.titleLabel.text = title
         }
         
-        if let runtime = media?.runtime {
+        if let runtime = music?.runtime {
             self.runtimeLabel.text = runtime.toString()
         }
         
-        if let genre = media?.genre {
+        if let genre = music?.genre {
             self.genreLabel.text = genre
         }
         
-        if let ownerLocation = media?.ownerLocation {
+        if let ownerLocation = music?.ownerLocation {
             self.ownerLocationLabel.text = ownerLocation
         }
         
-        if let ownerType = media?.owningType {
+        if let ownerType = music?.owningType {
             self.ownerTypeLabel.text = ownerType.rawValue
         }
         
-        if let coverArt = media?.coverArt {
+        if let coverArt = music?.coverArt {
             self.coverImageView.image = coverArt
         }
         
-        if let format = media?.format {
+        if let format = music?.format {
             self.genericData.append(("Format", format.rawValue))
         }
-
-        switch context {
-        case .Movie:
-            movieSpecificData()
-            break
-        case .Music:
-            musicSpecificData()
-            break
-        default:
-            break
-        }
-    }
-    
-    private func movieSpecificData() {
         
-        let movie = media as! Movie
-        
-        if let synopsis = movie.desc {
-            self.genericData.insert(("Synopsis", synopsis), atIndex: 0)
-        }
-        
-        if let ageRestriction = movie.ageRestriction {
-            self.genericData.append(("Age restriction",String(ageRestriction)))
-        }
-        
-        if let mainActor = movie.mainActors {
-            self.genericData.append(("Main actor",String(mainActor)))
-        }
-        
-        if let director = movie.director {
-            self.genericData.append(("Director",String(director)))
-        }
+        musicSpecificData();
     }
     
     private func musicSpecificData() {
         
     }
-    
+
     private func updateColor() {
         if let c = colors {
             let color = c.primaryColor.isDarkColor ? c.primaryColor : c.backgroundColor
-
+            
             self.titleLabel.textColor = color
             self.yearLabel.textColor = color
             self.runtimeLabel.textColor = color
@@ -141,7 +95,6 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
             self.view.backgroundColor = c.secondaryColor
         }
     }
-
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -175,7 +128,7 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.titleLabel.scrollRate = 100.0
         self.titleLabel.fadeLength = 20.0
         
-
+        
         
         // Hide empty table cells
         self.hideEmptyTableViewCells()
@@ -194,7 +147,7 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaDetailTableCellIdentifier) as! MediaDetailTableViewCell
-
+        
         cell.keyLabel?.text = genericData[indexPath.row].0
         cell.valueLabel?.text = genericData[indexPath.row].1
         
@@ -202,7 +155,7 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
         cell.setDominantColors(with: colors, indexPath: indexPath)
         
         return cell
-    
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -214,7 +167,7 @@ class MediaDetailViewController: UIViewController, UITableViewDelegate, UITableV
 private extension UIImageView {
     func dropShadow(colored: UIColor? = nil, offset: CGSize = CGSizeMake(0,0), opacity: Float = 1, radius: CGFloat = 1.0) {
         let color = (colored != nil) ? colored!.CGColor : UIColor.blackColor().CGColor
-    
+        
         layer.shadowColor = color
         layer.shadowOffset = offset
         layer.shadowOpacity = opacity

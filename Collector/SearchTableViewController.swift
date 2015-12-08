@@ -56,6 +56,13 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
                 return (titleMatch != nil)
             })
         }
+        
+        if (music != nil) {
+            self.filteredMusic = self.music!.filter({(music: Music) -> Bool in
+                let titleMatch = music.title.rangeOfString(text)
+                return (titleMatch != nil)
+            })
+        }
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -63,18 +70,20 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
         if searchText.characters.count == 0 {
             filtered = false
             self.movieResultsCollectionView.reloadData()
+            self.musicResultsCollectionView.reloadData()
         }
         else {
             filtered = true
             filter(searchText)
             self.movieResultsCollectionView.reloadData()
+            self.musicResultsCollectionView.reloadData()
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
-        //music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set:.Music)) as! [Music]
+        music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set:.Music)) as? [Music]
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,13 +112,21 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
-    
-        cell.titleLabel.text = filteredMovies![indexPath.row].title
-        cell.coverArt.image = filteredMovies![indexPath.row].coverArt
-        cell.releaseYearLabel.text = "\((filteredMovies![indexPath.row].releaseYear))"
-    
-        return cell
+        
+        if collectionView == self.movieResultsCollectionView {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
+            cell.titleLabel.text = filteredMovies![indexPath.row].title
+            cell.coverArt.image = filteredMovies![indexPath.row].coverArt
+            cell.releaseYearLabel.text = "\((filteredMovies![indexPath.row].releaseYear))"
+            return cell
+        }
+        else {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
+            cell.titleLabel.text = filteredMusic![indexPath.row].title
+            cell.coverArt.image = filteredMusic![indexPath.row].coverArt
+            cell.releaseYearLabel.text = "\((filteredMusic![indexPath.row].releaseYear))"
+            return cell
+        }
     }
     
     // MARK: - Prepare for segue
@@ -121,13 +138,21 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
             
             if (indexPaths != nil) {
                 let indexPath = indexPaths![0]
-                let dest = segue.destinationViewController as! MediaDetailViewController
-                dest.media = filteredMovies![indexPath.row]
+                let dest = segue.destinationViewController as! MovieDetailViewController
+                dest.movie = filteredMovies![indexPath.row]
                 dest.context = .Movie
             }
         }
         else if segue.identifier == Storyboard.mediaDetailSegueIdForMusic {
-            // Todo
+            
+            let indexPaths = self.musicResultsCollectionView.indexPathsForSelectedItems()
+            
+            if (indexPaths != nil) {
+                let indexPath = indexPaths![0]
+                let dest = segue.destinationViewController as! MusicDetailViewController
+                dest.music = filteredMusic![indexPath.row]
+                dest.context = .Music
+            }
         }
     }
 }

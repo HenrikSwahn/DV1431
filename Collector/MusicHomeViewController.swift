@@ -13,7 +13,10 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     private struct Storyboard {
         static let musicCellId = "media cell"
         static let mediaCellId = "AddMusicSegue"
+        static let musicDetailColSegueId = "showMusicDetailCol"
+        static let musicDetailTableSegueId = "showMusicDetailTable"
     }
+    
     var context = ViewContextEnum.Music
     var music: [Music]?
     let storage = Storage();
@@ -42,7 +45,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         self.musicCollectionView.hidden = true
         self.musicTableView.hidden = false
         
-        var mu1 = Music(title: "Clayman", released: 1996);
+        /*var mu1 = Music(title: "Clayman", released: 1996);
         mu1.insertTrack(Track(name: "Track1", runtime: Runtime(hours: 0, minutes: 3, seconds: 26), trackNr: 1))
         mu1.insertTrack(Track(name: "Track2", runtime: Runtime(hours: 0, minutes: 3, seconds: 17), trackNr: 2))
         mu1.insertTrack(Track(name: "Track3", runtime: Runtime(hours: 0, minutes: 3, seconds: 28), trackNr: 3))
@@ -53,7 +56,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         mu1.genre = "Metal"
         mu1.albumArtist = "inFlames"
         mu1.ownerLocation = "Section A"
-        storage.storeMusic(mu1);
+        storage.storeMusic(mu1);*/
         music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music)) as? [Music]
     }
 
@@ -93,5 +96,25 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.releaseYearLabel.text = "\(music![indexPath.row].releaseYear)"
         cell.coverArt.image = music![indexPath.row].coverArt
         return cell
+    }
+    
+    // MARK: - Prepare for Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        if segue.identifier == Storyboard.musicDetailTableSegueId {
+            let dest = segue.destinationViewController as! MusicDetailViewController
+            let indexPath = self.musicTableView.indexPathForSelectedRow
+            dest.music = music![(indexPath?.row)!]
+            dest.context = context
+        }
+        else if segue.identifier == Storyboard.musicDetailColSegueId {
+            let indexPaths = self.musicCollectionView.indexPathsForSelectedItems()
+            if (indexPaths != nil) {
+                let indexPath = indexPaths![0]
+                let dest = segue.destinationViewController as! MusicDetailViewController
+                dest.music = music![indexPath.row]
+                dest.context = context
+            }
+        }
     }
 }

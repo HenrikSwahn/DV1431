@@ -19,7 +19,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     }
     
     private let storage = Storage()
-    private var media: [Media]?
+    private var movies: [Movie]?
     internal var context = ViewContextEnum.Movie
     
     @IBOutlet weak var mediaTable: UITableView! {
@@ -54,27 +54,27 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId) as! MediaTableViewCell
-        cell.titleLabel.text = media![indexPath.row].title
-        cell.releaseYearLabel.text = "\(media![indexPath.row].releaseYear)"
-        cell.runtimeLabel.text = "\(media![indexPath.row].runtime.toString())"
-        cell.coverArt.image = media![indexPath.row].coverArt
+        cell.titleLabel.text = movies![indexPath.row].title
+        cell.releaseYearLabel.text = "\(movies![indexPath.row].releaseYear)"
+        cell.runtimeLabel.text = "\(movies![indexPath.row].runtime.toString())"
+        cell.coverArt.image = movies![indexPath.row].coverArt
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return media!.count
+        return movies!.count
     }
     
     // MARK: - CollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return media!.count
+        return movies!.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
-        cell.titleLabel.text = media![indexPath.row].title
-        cell.releaseYearLabel.text = "\(media![indexPath.row].releaseYear)"
-        cell.coverArt.image = media![indexPath.row].coverArt
+        cell.titleLabel.text = movies![indexPath.row].title
+        cell.releaseYearLabel.text = "\(movies![indexPath.row].releaseYear)"
+        cell.coverArt.image = movies![indexPath.row].coverArt
         return cell
     }
     
@@ -87,17 +87,17 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
             dest.context = context
         }
         else if segue.identifier == Storyboard.detailMovieSegueTableId {
-            let dest = segue.destinationViewController as! MediaDetailViewController
+            let dest = segue.destinationViewController as! MovieDetailViewController
             let indexPath = self.mediaTable.indexPathForSelectedRow
-            dest.media = media![(indexPath?.row)!]
+            dest.movie = movies![(indexPath?.row)!]
             dest.context = context
         }
         else if segue.identifier == Storyboard.detailMovieSegueCollectionId {
             let indexPaths = self.mediaCollection.indexPathsForSelectedItems()
             if (indexPaths != nil) {
                 let indexPath = indexPaths![0]
-                let dest = segue.destinationViewController as! MediaDetailViewController
-                dest.media = media![indexPath.row]
+                let dest = segue.destinationViewController as! MovieDetailViewController
+                dest.movie = movies![indexPath.row]
                 dest.context = context
             }
         }
@@ -109,11 +109,11 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         
         self.mediaCollection.hidden = true
         //storage.emptyDatabase()
-        media = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as! [Movie]
+        movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
     }
     
     override func viewDidAppear(animated: Bool) {
-        media = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as! [Movie]
+        movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
         mediaTable.reloadData()
         
     }

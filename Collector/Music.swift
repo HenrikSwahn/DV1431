@@ -29,10 +29,6 @@ class Music: Media {
     
     func sortAlbum() {
         trackList.sortInPlace({$0.trackNr < $1.trackNr})
-        
-        for track in trackList {
-            print(track.name)
-        }
     }
     
     func insertTrack(aTrack: Track) {
