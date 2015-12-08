@@ -1,13 +1,14 @@
 import Foundation
 
-public struct LastFM: API {
+public class LastFM: API {
     private let request = Request()
     
     /// Creates a instance of the LastFM API
     ///  - parameters:
     ///     - api: resource to use when dispatching a request
     ///     - completion: callback function when the request has been handled
-    public init(_ api: APIResource, completion: (Result<Response>) -> Void) {
+    public required init(_ api: APIResource, completion: (Result<Response>) -> Void) {
+        super.init(api, completion: completion)
         //api.resource.urlDomain("ws.audioscrobbler.com")
         api.resource.urlField(named: "api_key", "6aec100ca9d5d3e4e30477dd0f1fc103")
         api.resource.urlField(named: "format", "json")
