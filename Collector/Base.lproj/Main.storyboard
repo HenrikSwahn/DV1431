@@ -606,7 +606,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fa-ZS-azH">
-                                            <rect key="frame" x="53" y="8" width="83" height="20"/>
+                                            <rect key="frame" x="53" y="8" width="459" height="20"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -639,6 +639,7 @@
                                         <constraint firstItem="4Fa-ZS-azH" firstAttribute="leading" secondItem="8Xt-Z0-511" secondAttribute="trailing" constant="8" id="cEX-GB-rGi"/>
                                         <constraint firstItem="ONM-tr-WuE" firstAttribute="trailing" secondItem="ZdB-Sa-qvC" secondAttribute="trailingMargin" id="jRB-LH-xsR"/>
                                         <constraint firstItem="ONM-tr-WuE" firstAttribute="top" secondItem="4Fa-ZS-azH" secondAttribute="top" constant="5" id="mud-cK-O1g"/>
+                                        <constraint firstItem="ONM-tr-WuE" firstAttribute="leading" secondItem="4Fa-ZS-azH" secondAttribute="trailing" constant="19" id="wT2-z8-o2i"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
