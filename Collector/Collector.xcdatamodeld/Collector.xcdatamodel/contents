@@ -14,9 +14,27 @@
         <attribute name="runtime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Music" syncable="YES"/>
+    <entity name="Music" representedClassName=".MusicStore" syncable="YES">
+        <attribute name="albumArtist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coverArt" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="format" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ownerLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="owningType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="releaseYear" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="runtime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="album" inverseEntity="Track" syncable="YES"/>
+    </entity>
+    <entity name="Track" representedClassName=".TrackStore" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runtime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Music" inverseName="tracks" inverseEntity="Music" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Movie" positionX="79" positionY="243" width="128" height="225"/>
-        <element name="Music" positionX="-225" positionY="261" width="126" height="45"/>
+        <element name="Movie" positionX="79" positionY="243" width="128" height="223"/>
+        <element name="Music" positionX="-225" positionY="261" width="126" height="208"/>
+        <element name="Track" positionX="-126" positionY="611" width="126" height="88"/>
     </elements>
 </model>

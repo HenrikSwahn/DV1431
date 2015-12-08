@@ -13,28 +13,17 @@ class Music: Media {
     var albumArtist: String?
     var trackList = [Track]() {
         didSet {
-            //super.setRuntime(calculateAlbumLength())
+            calculateAlbumLength()
         }
     }
     
-    init(title: String, released: Int, artist: String?) {
+    init(title: String, released: Int) {
         super.init(title: title, released: released, runtime: Runtime(hours: 0, minutes: 0, seconds: 0))
-        
-        if let art = artist {
-            self.albumArtist = art
-        }
-        
-        self.insertTrack(Track(name: "1", runtime: Runtime(hours: 0, minutes: 3, seconds: 3)))
-        self.insertTrack(Track(name: "1", runtime: Runtime(hours: 0, minutes: 3, seconds: 3)))
-        self.insertTrack(Track(name: "1", runtime: Runtime(hours: 0, minutes: 3, seconds: 3)))
-        self.insertTrack(Track(name: "1", runtime: Runtime(hours: 0, minutes: 3, seconds: 3)))
-        self.insertTrack(Track(name: "1", runtime: Runtime(hours: 0, minutes: 3, seconds: 3)))
-        print(super.runtime.toString())
     }
     
     private func calculateAlbumLength() -> Runtime {
         
-        let timeInSeconds = Array(trackList).reduce(0) {(total, obj) in total + obj.getRuntimeInSeconds()}
+        let timeInSeconds = Array(trackList).reduce(0) {(total, obj) in total + obj.runtime.getTotalInSeconds()}
         return super.runtime.setTimeBasedOnSeconds(timeInSeconds)
     }
     

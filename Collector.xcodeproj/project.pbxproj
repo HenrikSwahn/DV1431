@@ -55,9 +55,11 @@
 		AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A7B1C07370E00BC57D9 /* Music.swift */; };
 		AF300A7F1C0737E000BC57D9 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A7E1C0737E000BC57D9 /* Track.swift */; };
 		AF300AA01C0C908300BC57D9 /* MovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A9E1C0C908300BC57D9 /* MovieStore.swift */; };
-		AF300AA41C0C90E200BC57D9 /* MediaStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AA21C0C90E200BC57D9 /* MediaStore.swift */; };
 		AF300AA61C0CBFA300BC57D9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AA51C0CBFA300BC57D9 /* Storage.swift */; };
 		AF300AA91C0E3D8200BC57D9 /* ViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AA81C0E3D8200BC57D9 /* ViewContext.swift */; };
+		AF300AAD1C15D11A00BC57D9 /* MusicStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AAB1C15D11A00BC57D9 /* MusicStore.swift */; };
+		AF300AAF1C15D94100BC57D9 /* MusicHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AAE1C15D94100BC57D9 /* MusicHomeViewController.swift */; };
+		AF300AB11C16CA3D00BC57D9 /* TrackStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AB01C16CA3D00BC57D9 /* TrackStore.swift */; };
 		AFADF84D1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84C1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift */; };
 		AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84E1BFC76E80024D9A4 /* Media.swift */; };
 		AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */; };
@@ -139,9 +141,11 @@
 		AF300A7B1C07370E00BC57D9 /* Music.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		AF300A7E1C0737E000BC57D9 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		AF300A9E1C0C908300BC57D9 /* MovieStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieStore.swift; path = ../MovieStore.swift; sourceTree = "<group>"; };
-		AF300AA21C0C90E200BC57D9 /* MediaStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaStore.swift; path = ../MediaStore.swift; sourceTree = "<group>"; };
 		AF300AA51C0CBFA300BC57D9 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		AF300AA81C0E3D8200BC57D9 /* ViewContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContext.swift; sourceTree = "<group>"; };
+		AF300AAB1C15D11A00BC57D9 /* MusicStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicStore.swift; path = ../MusicStore.swift; sourceTree = "<group>"; };
+		AF300AAE1C15D94100BC57D9 /* MusicHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicHomeViewController.swift; sourceTree = "<group>"; };
+		AF300AB01C16CA3D00BC57D9 /* TrackStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackStore.swift; sourceTree = "<group>"; };
 		AFADF84C1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieHomeScreenViewController.swift; sourceTree = "<group>"; };
 		AFADF84E1BFC76E80024D9A4 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
@@ -330,8 +334,9 @@
 		AF300A801C07577800BC57D9 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				AF300AA21C0C90E200BC57D9 /* MediaStore.swift */,
+				AF300AAB1C15D11A00BC57D9 /* MusicStore.swift */,
 				AF300A9E1C0C908300BC57D9 /* MovieStore.swift */,
+				AF300AB01C16CA3D00BC57D9 /* TrackStore.swift */,
 				AF300AA51C0CBFA300BC57D9 /* Storage.swift */,
 			);
 			name = Storage;
@@ -378,6 +383,7 @@
 				31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */,
 				AFE9D7141BFE13EC009E5DAA /* ManualEntryTableViewController.swift */,
 				318C2C321C0CB5C8008AE6C4 /* FilterTableViewController.swift */,
+				AF300AAE1C15D94100BC57D9 /* MusicHomeViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 				31114C211C15B19000396AA8 /* TMDbMovieItem.swift in Sources */,
 				31114C221C15B19000396AA8 /* TMDbMovieResource.swift in Sources */,
 				31749C031BFDE7B400E76648 /* SearchTableViewController.swift in Sources */,
+				AF300AAD1C15D11A00BC57D9 /* MusicStore.swift in Sources */,
 				31114C231C15B19000396AA8 /* TMDbSearchItem.swift in Sources */,
 				AF300A781C0710E000BC57D9 /* Runtime.swift in Sources */,
 				315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */,
@@ -531,11 +538,13 @@
 				AFF229561BFC8CAF001181AC /* MediaCollectionViewCell.swift in Sources */,
 				31114C201C15B19000396AA8 /* TMDb.swift in Sources */,
 				315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */,
+				AF300AAF1C15D94100BC57D9 /* MusicHomeViewController.swift in Sources */,
 				31114C441C15B1C700396AA8 /* README.md in Sources */,
 				31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */,
 				31114C2C1C15B1A200396AA8 /* LastFMAlbumItem.swift in Sources */,
 				AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */,
 				31114C3A1C15B1AF00396AA8 /* ItunesTrackItem.swift in Sources */,
+				AF300AB11C16CA3D00BC57D9 /* TrackStore.swift in Sources */,
 				31114C241C15B19000396AA8 /* TMDbSearchResource.swift in Sources */,
 				31114C391C15B1AF00396AA8 /* ItunesSearchResource.swift in Sources */,
 				AFADF84D1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift in Sources */,
@@ -547,7 +556,6 @@
 				AF300AA91C0E3D8200BC57D9 /* ViewContext.swift in Sources */,
 				31B842221BF3880D005429FA /* AppDelegate.swift in Sources */,
 				31114C2D1C15B1A200396AA8 /* LastFMAlbumResource.swift in Sources */,
-				AF300AA41C0C90E200BC57D9 /* MediaStore.swift in Sources */,
 				AF300A7F1C0737E000BC57D9 /* Track.swift in Sources */,
 				31114C421C15B1C700396AA8 /* API.swift in Sources */,
 				AF300AA61C0CBFA300BC57D9 /* Storage.swift in Sources */,
