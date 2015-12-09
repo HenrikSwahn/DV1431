@@ -127,8 +127,8 @@ class WishListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let insert = UITableViewRowAction(style: .Normal,  title: "Add",      handler: wishAction(action: .Insert))
-        let delete = UITableViewRowAction(style: .Default, title: "Delete",   handler: wishAction(action: .Delete))
+        let insert = UITableViewRowAction(style: .Normal,  title: "✚\nAdd",    handler: wishAction(action: .Insert))
+        let delete = UITableViewRowAction(style: .Default, title: "✖︎\nDelete", handler: wishAction(action: .Delete))
 
         return [insert, delete]
     }

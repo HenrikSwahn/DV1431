@@ -142,6 +142,11 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
         return UITableViewAutomaticDimension
     }
     
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        return [
+            UITableViewRowAction(style: .Normal, title: "✚\nWish List", handler: wishAction())
+        ]
+    }
     
     // MARK: - SearchBar delegates
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -190,5 +195,13 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     
     func cachableTableView(willStore identifier: String, image: UIImage) {
         cachableStore?[identifier] = image
+    }
+    
+    // MARK: - Wishlist
+    func wishAction() -> (action: UITableViewRowAction, indexPath: NSIndexPath) -> Void {
+        return { [unowned self] (action, indexPath) in
+            // Insert this item to the wishlist
+            self.tableView.setEditing(false, animated: true)
+        }
     }
 }
