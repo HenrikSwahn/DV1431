@@ -14,7 +14,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     // MARK: - Instance variables
     var context = ViewContextEnum.Unkown
     private let movieEntries = ["Age Restriction", "Main Actors", "Director"]
-    private let musicEntries = ["Album Artist", "Tracks", "Track Length"]
+    private let musicEntries = ["Album Artist", "Enter track name", "Track Length"]
     private var tracks = [Track]()
     private var storage = Storage()
     let imagePicker = UIImagePickerController()
@@ -298,16 +298,20 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         return false
     }
     
-    private func addTrackToGUI(trackLengthCell: ManualEntryTableViewCell) {
+    private func addTrackToGUI(trackNameCell: ManualEntryTableViewCell) {
         
-        let indexPath = NSIndexPath(forRow: 1, inSection: 0)
-        let trackNameCell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
+        let indexPath = NSIndexPath(forRow: 2, inSection: 0)
+        let trackLengthCell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
         if let name = trackNameCell.genricEntryTextField.text {
             if let length = trackLengthCell.trackRunTime.text {
-                let trackRuntime = Runtime.getRuntimeBasedOnFormattedString(length)
+                let trackRuntime = Runtime.getRuntimeBasedOnFormattedString("0 h " + length)
                 if trackRuntime.getTotalInSeconds() > 0 {
                     tracks.append(Track(name: name, runtime: trackRuntime, trackNr: tracks.count+1))
+                    trackNameCell.genricEntryTextField.text = nil
+                    trackNameCell.genricEntryTextField.placeholder = "Enter track name"
+                    trackLengthCell.trackRunTime.setSelectedIndexForComponent(0, component: 0)
+                    trackLengthCell.trackRunTime.setSelectedIndexForComponent(0, component: 1)
                     self.trackTableView.reloadData()
                 }
                 else {

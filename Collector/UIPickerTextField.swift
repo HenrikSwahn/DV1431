@@ -105,18 +105,20 @@ class UIPickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if componentState == .OneComponents {
             self.endEditing(true)
+            self.text = selectedRow()
         }
         else if componentState == .TwoComponents {
             if pickerView.selectedRowInComponent(0) > 0 && pickerView.selectedRowInComponent(1) > 0 {
                 self.endEditing(true)
+                self.text = selectedRow()
             }
         }
-        else {
+        else if componentState == .ThreeComponents {
             if pickerView.selectedRowInComponent(0) > 0 && pickerView.selectedRowInComponent(1) > 0 && pickerView.selectedRowInComponent(2) > 0 {
                 self.endEditing(true)
+                self.text = selectedRow()
             }
         }
-        self.text = selectedRow()
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -169,9 +171,14 @@ class UIPickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSour
         }
     }
     
+    func setSelectedIndexForComponent(index: Int, component: Int) {
+        picker.selectRow(index, inComponent: component, animated: false)
+        self.text = selectedRow()
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if (textField == self && componentState == .OneComponents) {
-            //textField.resignFirstResponder()
+        if (textField == self) {
+            textField.resignFirstResponder()
             
             let selected = selectedRow()
             
