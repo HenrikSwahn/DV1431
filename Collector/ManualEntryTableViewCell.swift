@@ -10,6 +10,12 @@ import UIKit
 
 class ManualEntryTableViewCell: UITableViewCell, UITextFieldDelegate {
 
+    @IBOutlet weak var trackName: UITextField! {
+        didSet {
+            self.trackName.delegate = self
+        }
+    }
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var trackRunTime: UIPickerTextField! {
         didSet {
             var seconds: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({

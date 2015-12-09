@@ -14,7 +14,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     // MARK: - Instance variables
     var context = ViewContextEnum.Unkown
     private let movieEntries = ["Age Restriction", "Main Actors", "Director"]
-    private let musicEntries = ["Album Artist", "Enter track name", "Track Length"]
+    private let musicEntries = ["Album Artist", "Enter track name"]
     private var tracks = [Track]()
     private var storage = Storage()
     let imagePicker = UIImagePickerController()
@@ -258,18 +258,27 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
             switch context {
             case .Movie:
                 cell.genricEntryTextField.placeholder = movieEntries[indexPath.row]
+                cell.trackName.hidden = true
+                cell.trackRunTime.hidden = true
+                cell.addButton.hidden = true
                 break;
             case .Music:
-                
-                if indexPath.row == 2 {
+                if indexPath.row == 1 {
                     cell.genricEntryTextField.hidden = true
                     cell.trackRunTime.hidden = false
+                    cell.trackRunTime.delegate = self
+                    cell.addButton.hidden = false
+                    cell.trackName.hidden = false
+                    cell.trackName.placeholder = musicEntries[indexPath.row]
+                    cell.addButton.addTarget(self, action: "addTrackToGUI:", forControlEvents: .TouchUpInside)
                 }
                 else {
                     cell.genricEntryTextField.placeholder = musicEntries[indexPath.row]
                     cell.genricEntryTextField.delegate = self
                     cell.genricEntryTextField.hidden = false
                     cell.trackRunTime.hidden = true
+                    cell.trackName.hidden = true
+                    cell.addButton.hidden = true
                 }
                 
                 break;
@@ -280,38 +289,20 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+    func addTrackToGUI(sender: UIButton) {
+        
         let indexPath = NSIndexPath(forRow: 1, inSection: 0)
         let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
-        
-        if textField == cell.genricEntryTextField {
-            
-            switch context {
-            case .Music:
-                addTrackToGUI(cell)
-                break;
-            default:
-                break;
-            }
-        }
-        return false
-    }
-    
-    private func addTrackToGUI(trackNameCell: ManualEntryTableViewCell) {
-        
-        let indexPath = NSIndexPath(forRow: 2, inSection: 0)
-        let trackLengthCell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
-        
-        if let name = trackNameCell.genricEntryTextField.text {
-            if let length = trackLengthCell.trackRunTime.text {
+        if let name = cell.trackName.text {
+            if let length = cell.trackRunTime.text {
                 let trackRuntime = Runtime.getRuntimeBasedOnFormattedString("0 h " + length)
                 if trackRuntime.getTotalInSeconds() > 0 {
                     tracks.append(Track(name: name, runtime: trackRuntime, trackNr: tracks.count+1))
-                    trackNameCell.genricEntryTextField.text = nil
-                    trackNameCell.genricEntryTextField.placeholder = "Enter track name"
-                    trackLengthCell.trackRunTime.setSelectedIndexForComponent(0, component: 0)
-                    trackLengthCell.trackRunTime.setSelectedIndexForComponent(0, component: 1)
+                    cell.trackName.text = nil
+                    cell.trackName.placeholder = "Enter track name"
+                    cell.trackRunTime.setSelectedIndexForComponent(0, component: 0)
+                    cell.trackRunTime.setSelectedIndexForComponent(0, component: 1)
                     self.trackTableView.reloadData()
                 }
                 else {
