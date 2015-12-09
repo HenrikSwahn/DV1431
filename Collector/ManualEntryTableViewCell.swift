@@ -19,11 +19,11 @@ class ManualEntryTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var trackRunTime: UIPickerTextField! {
         didSet {
             var seconds: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
-                (second, _) -> String in return "\(second) s"
+                (second, _) -> String in return "\(second)s"
             })
             
             var minutes: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
-                (min, _) -> String in return "\(min) m"
+                (min, _) -> String in return "\(min)m"
             })
             
             seconds.insert("-", atIndex: 0)

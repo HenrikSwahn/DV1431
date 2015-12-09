@@ -95,4 +95,8 @@ class SearchAPI {
     func getForSelectedAlbumIndexPath(indexPath: NSIndexPath) -> ItunesAlbumItem {
         return self.musicSearchResults![indexPath.row]
     }
+    
+    func getForSelectedMovieIndexPath(indexPath: NSIndexPath) -> TMDbSearchItem {
+        return self.movieSearchResults![indexPath.row]
+    }
 }

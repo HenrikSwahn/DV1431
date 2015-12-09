@@ -15,6 +15,7 @@ public struct TMDbMovieItem {
     var language: String
     var title: String
     var synopsis: String
+    var runtime: Int
     var cast: [String]
     var genres: [String]
 }

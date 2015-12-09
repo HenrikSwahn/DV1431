@@ -42,32 +42,37 @@ class Runtime {
         return Runtime(hours: hour, minutes: min, seconds: sec)
     }
     
-    static func getRuntimeBasedOnFormattedString(time: String) -> Runtime {
+    static func getRuntimeBasedOnMinutes(minutes: Int) -> Runtime {
+        let hours = minutes / 60
+        let min = minutes % 60
         
-        if let t = Int(time) {
-            return Runtime.getRuntimeBasedOnSeconds(t)
-        }
-        else {
-            let timeArr = time.characters.split{ $0 == " " }.map{String($0)}
-            var hours = 0;
-            var min = 0;
-            var sec = 0;
+        return Runtime(hours: hours, minutes: min, seconds: 0)
+    }
+    
+    static func getRuntimeBasedOnString(time: String) -> Runtime {
+        
+        let timeArr = time.characters.split{ $0 == " "}.map{String($0)}
+        
+        var hours = 0;
+        var min = 0;
+        var sec = 0;
+        
+        for var i = 0; i < timeArr.count; ++i {
+            let truncated = timeArr[i].substringToIndex(timeArr[i].endIndex.predecessor())
             
-            for var i = 0; i < timeArr.count; ++i {
-                if let intVal = Int(timeArr[i]) {
-                    if i == 0 {
-                        hours = intVal
-                    }
-                    else if i == 2 {
-                        min = intVal
-                    }
-                    else if i == 4 {
-                        sec = intVal
-                    }
+            if let intVal = Int(truncated) {
+                if i == 0 {
+                    hours = intVal
+                }
+                else if i == 1 {
+                    min = intVal
+                }
+                else {
+                    sec = intVal
                 }
             }
-            return Runtime(hours: hours, minutes: min, seconds: sec)
         }
+        return Runtime(hours: hours, minutes: min, seconds: sec)
     }
     
     func toString() -> String {

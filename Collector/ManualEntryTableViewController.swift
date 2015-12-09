@@ -15,13 +15,15 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     
     // MARK: - Instance variables
     var context = ViewContextEnum.Unkown
+    var tempImage: UIImage?
+    
+    // MARK: - Movie related
     private let movieEntries = ["Age Restriction", "Main Actors", "Director"]
+    var tmdbSearchItem: TMDbSearchItem?
+    var movieItem: Movie?
     
-    
-    //MARK: - Music related
     private let musicEntries = ["Album Artist", "Enter track name"]
     private var tracks: [Track]?
-    var albumTempImage: UIImage?
     var itunesAlbumItem: ItunesAlbumItem?
     var music: Music?
     
@@ -87,6 +89,10 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     private func initForMovie() {
         self.footerView.hidden = true
         self.formatPickerTextField.dataSource(["DVD", "Blu-Ray", "MP4"], arrayTwo: nil, arrayThree: nil)
+        
+        if (tmdbSearchItem != nil) {
+            setUpInputsFields()
+        }
     }
     
     private func initGeneral() {
@@ -104,15 +110,15 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         self.image.addGestureRecognizer(tap)
         
         var seconds: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
-            (second, _) -> String in return "\(second) s"
+            (second, _) -> String in return "\(second)s"
         })
         
         var minutes: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
-            (min, _) -> String in return "\(min) m"
+            (min, _) -> String in return "\(min)m"
         })
         
         var hours: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
-            (hour, _) -> String in return "\(hour) h"
+            (hour, _) -> String in return "\(hour)h"
         })
         
         seconds.insert("-", atIndex: 0)
@@ -201,7 +207,20 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
             
             switch context {
             case .Movie:
-                cell.genricEntryTextField.placeholder = movieEntries[indexPath.row]
+                if (movieItem == nil) {
+                    cell.genricEntryTextField.placeholder = movieEntries[indexPath.row]
+                }
+                else {
+                    switch indexPath.row {
+                    case 0:
+                        cell.genricEntryTextField.text = "The director" //movieItem.director
+                    case 1:
+                        cell.genricEntryTextField.text = movieItem?.mainActors
+                    case 2:
+                        cell.genricEntryTextField.text = "R"            //movieItem?.ageRestriction
+                    default:break
+                    }
+                }
                 cell.trackName.hidden = true
                 cell.trackRunTime.hidden = true
                 cell.addButton.hidden = true
@@ -246,11 +265,12 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         
         if let name = cell.trackName.text {
             if let length = cell.trackRunTime.text {
-                let trackRuntime = Runtime.getRuntimeBasedOnFormattedString("0 h " + length)
+                let trackRuntime = Runtime.getRuntimeBasedOnString("0h " + length)
                 if trackRuntime.getTotalInSeconds() > 0 {
-                    if (tracks != nil) {
-                        tracks!.append(Track(name: name, runtime: trackRuntime, trackNr: tracks!.count+1))
+                    if (tracks == nil) {
+                        tracks = [Track]()
                     }
+                    tracks!.append(Track(name: name, runtime: trackRuntime, trackNr: tracks!.count+1))
                     cell.trackName.text = nil
                     cell.trackName.placeholder = "Enter track name"
                     cell.trackRunTime.setSelectedIndexForComponent(0, component: 0)
@@ -291,7 +311,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
             Itunes(getAlbum) { result in
                 switch result {
                 case .Success(let response):
-                    let album = Music.fromItunesAlbumItem(Itunes.parseAlbum(JSON(response.data))!, albumImage: self.albumTempImage)
+                    let album = Music.fromItunesAlbumItem(Itunes.parseAlbum(JSON(response.data))!, albumImage: self.tempImage)
                     self.titleField.text = album.title
                     self.releaseYear.text = "\(album.releaseYear)"
                     self.genreFIeld.text = album.genre
@@ -303,6 +323,23 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
                 }
             }
             break
+        case .Movie:
+            let getMovie = TMDbMovieResource(id: tmdbSearchItem!.id)
+            TMDb(getMovie) { result in
+                switch result {
+                case .Success(let response):
+                    self.movieItem = Movie.fromTMDbMovieItem(TMDb.parseMovie(JSON(response.data))!, image: self.tempImage)
+                    self.titleField.text = self.movieItem!.title
+                    self.releaseYear.text = "\(self.movieItem!.releaseYear)"
+                    self.genreFIeld.text = self.movieItem!.genre
+                    self.descTextArea.text = self.movieItem!.desc
+                    self.image.image = self.movieItem!.coverArt
+                    self.runTime.text = self.movieItem?.runtime.toString()
+                    self.tableView.reloadData()
+                  break
+                case .Error(_): break
+                }
+            }
         default:break
         }
     }
@@ -324,7 +361,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         
         switch self.context {
         case .Movie:
-            let newMovie = Movie(title: titleField.text!, released: Int(releaseYear.text!)!, runtime: Runtime(hours: 0, minutes: 0, seconds: 0))
+            let newMovie = Movie(title: titleField.text!, released: Int(releaseYear.text!)!, runtime: Runtime.getRuntimeBasedOnString(runTime.text!))
             if let genre = genreFIeld.text {
                 newMovie.genre = genre
             }
@@ -387,8 +424,8 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         var indexPath = NSIndexPath(forRow: 0, inSection: 0)
         var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
-        if let age = Int(cell.genricEntryTextField.text!) {
-            movie.ageRestriction = age
+        if let director = cell.genricEntryTextField.text {
+            movie.director = director
         }
         
         indexPath = NSIndexPath(forRow: 1, inSection: 0)
@@ -401,8 +438,8 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         indexPath = NSIndexPath(forRow: 2, inSection: 0)
         cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
-        if let director = cell.genricEntryTextField.text {
-            movie.director = director
+        if let age = Int(cell.genricEntryTextField.text!) {
+            movie.ageRestriction = age
         }
         storage.storeMovie(movie)
     }
@@ -450,7 +487,19 @@ extension Music {
 
 extension Track {
     static func fromItunesTrackItem(item: ItunesAlbumTrackItem, trackIndex: Int) -> Track {
-        let track = Track(name: item.title, runtime: Runtime.getRuntimeBasedOnFormattedString(item.duration), trackNr: trackIndex)
+        let track = Track(name: item.title, runtime: Runtime.getRuntimeBasedOnSeconds(Int(item.duration)!), trackNr: trackIndex)
         return track
+    }
+}
+
+extension Movie {
+    static func fromTMDbMovieItem(item: TMDbMovieItem, image: UIImage?) -> Movie {
+        let movie = Movie(title: item.title, released: item.release, runtime: Runtime.getRuntimeBasedOnMinutes(item.runtime))
+        movie.genre = item.genres.joinWithSeparator(", ")
+        movie.mainActors = item.cast.joinWithSeparator(", ")
+        movie.desc = item.synopsis
+        movie.coverArt = image
+        
+        return movie
     }
 }

@@ -648,7 +648,7 @@
                                     <outlet property="releaseLabel" destination="ONM-tr-WuE" id="TfE-aO-bFF"/>
                                     <outlet property="synopsisLabel" destination="nMq-4J-TF8" id="CjA-Dr-BZ3"/>
                                     <outlet property="titleLabel" destination="4Fa-ZS-azH" id="ZwL-16-x62"/>
-                                    <segue destination="ooV-i8-8Z3" kind="show" id="uWx-WX-m7B"/>
+                                    <segue destination="ooV-i8-8Z3" kind="show" identifier="movieSegue" id="uWx-WX-m7B"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MusicResultCell" rowHeight="66" id="S3d-kV-WSq" customClass="SearchMusicEntryTableViewCell" customModule="Collector" customModuleProvider="target">
@@ -1875,7 +1875,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="w4d-6U-9xW"/>
-        <segue reference="H40-cq-heX"/>
+        <segue reference="uWx-WX-m7B"/>
         <segue reference="dHP-W0-m3j"/>
         <segue reference="CnV-X6-7Zv"/>
     </inferredMetricsTieBreakers>

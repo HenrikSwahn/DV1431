@@ -61,6 +61,7 @@ public class TMDb: API {
             language:           json["original_language"].string ?? "en",
             title:              json["original_title"].string ?? "Unavailable",
             synopsis:           json["overview"].string ?? "Unavailable",
+            runtime:            json["runtime"].int ?? 0,
             cast: cast,
             genres: genres
         )
