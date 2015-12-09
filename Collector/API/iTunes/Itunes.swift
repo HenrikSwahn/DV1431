@@ -1,18 +1,16 @@
 import Foundation
 
-public struct Itunes: API {
+public class Itunes: API {
     let request = Request()
     
     /// Creates a instance of the Itunes API
     ///  - parameters:
     ///     - api: resource to use when dispatching a request
     ///     - completion: callback function when the request has been handled
-    public init(_ api: APIResource, completion: (Result<Response>) -> Void) {
+    public required init(_ api: APIResource, completion: (Result<Response>) -> Void) {
+        super.init(api, completion: completion)
         //api.resource.urlDomain("itunes.apple.com", scheme: URL.Scheme.HTTPS)
         api.resource.urlDomain("app.opij.ac")
-        
-        print(api.resource.url)
-        
         request.dispatch(Request.Source.URL(api.resource.url), completion: completion)
     }
     
@@ -46,21 +44,6 @@ public struct Itunes: API {
         }
         
         return nil
-    }
-    
-    /// Returns the year from a date
-    /// parameters:
-    ///     - date: A datestring in Itunes format.
-    private static func dateToYear(date: String?) -> String {
-        if let string = date {
-            if string.characters.count > 4 {
-                return string.substringToIndex(string.startIndex.advancedBy(4))
-            } else {
-                return string
-            }
-        }
-        
-        return "1970"
     }
     
     /// Parses a single track in a album

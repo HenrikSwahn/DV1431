@@ -9,22 +9,37 @@
 import UIKit
 import MobileCoreServices
 
-class SearchEntryTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UISearchBarDelegate, ViewContext, SearchAPIDelegate {
+class SearchEntryTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UISearchBarDelegate, ViewContext, SearchAPIDelegate, UITableViewCachable {
     
     var context = ViewContextEnum.Unkown
     var search: SearchAPI!
     
     private struct Storyboard {
-        static let manualEntrySegueId = "ManualEntrySegue"
+        static let manualEntrySegueId   = "ManualEntrySegue"
         static let movieReuseIdentifier = "MovieResultCell"
         static let musicReuseIdentifier = "MusicResultCell"
     }
     
+    private struct Placeholder {
+        static let Music = "Search for albums ..."
+        static let Movie = "Search for movies ..."
+        static let Unknown = "Unknown context"
+    }
+    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            switch self.context {
+                case .Music: self.searchBar.placeholder = Placeholder.Music
+                case .Movie: self.searchBar.placeholder = Placeholder.Movie
+                default: self.searchBar.placeholder     = Placeholder.Unknown
+            }
+        }
+    }
     @IBAction func cancelButtonItem(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     
     // MARK: - Image
     @IBAction func photoButtonItem(sender: UIBarButtonItem) {
@@ -47,6 +62,7 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
         }
     }
     
+    
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Storyboard.manualEntrySegueId {
@@ -55,6 +71,8 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
         }
     }
     
+    
+    // MARK: - Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -62,14 +80,19 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
         
         self.indicatorShouldStopAnimating()
         
-        self.search = SearchAPI(context: ViewContextEnum.Music,
+        if (context == .Unkown) {
+            self.searchBar.userInteractionEnabled = false
+        }
+        
+        self.search = SearchAPI(context: context,
             reuseIdentifierForMovie: Storyboard.movieReuseIdentifier,
             reuseIdentifierForMusic: Storyboard.musicReuseIdentifier)
         
-        self.search.delegate = self
+        self.search?.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.searchBar.delegate = self
+        self.cachableStore = [String:UIImage]()
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,6 +100,7 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
         // Dispose of any resources that can be recreated.
     }
 
+    
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -87,12 +111,18 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if let dequeued = self.search.cellForIndexPath(tableView, indexPath: indexPath) as? UICachableTableViewCell {
+            dequeued.delegate = self
+            return dequeued
+        }
+        
         return self.search.cellForIndexPath(tableView, indexPath: indexPath)
     }
     
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
     
     // MARK: - SearchBar delegates
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -129,5 +159,17 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     func indicatorShouldStartAnimating() {
         self.activityIndicatorView.startAnimating()
         self.activityIndicatorView.hidden = false
+    }
+    
+    
+    // MARK: - Cachable
+    var cachableStore: [String:UIImage]?
+    
+    func cachableTableView(didStore identifier: String) -> UIImage? {
+        return cachableStore?[identifier]
+    }
+    
+    func cachableTableView(willStore identifier: String, image: UIImage) {
+        cachableStore?[identifier] = image
     }
 }

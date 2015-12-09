@@ -8,13 +8,13 @@
 
 import UIKit
 
-class SearchMovieEntryTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+class SearchMovieEntryTableViewCell: UICachableTableViewCell {
+    var model: TMDbSearchItem? {
+        didSet {
+            updateSelf()
+        }
     }
-
+    
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var releaseLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -23,5 +23,17 @@ class SearchMovieEntryTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    private func updateSelf() {
+        if let movie = self.model {
+            //let link = movie.image
+            let link = "http://app.opij.ac/image.jpg"
+            self.loadImage(link, view: self.movieImage)
 
+            titleLabel.text = movie.title
+            releaseLabel.text = movie.release
+            synopsisLabel.text = movie.synopsis
+            
+        }
+    }
 }
