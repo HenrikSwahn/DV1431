@@ -11,7 +11,7 @@ import Foundation
 public struct TMDbMovieItem {
     var id: Int
     var image: String
-    var release: String
+    var release: Int
     var language: String
     var title: String
     var synopsis: String

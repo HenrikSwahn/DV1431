@@ -44,20 +44,13 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         self.musicCollectionView.hidden = true
         self.musicTableView.hidden = false
-        
-        /*var mu1 = Music(title: "Clayman", released: 1996);
-        mu1.insertTrack(Track(name: "Track1", runtime: Runtime(hours: 0, minutes: 3, seconds: 26), trackNr: 1))
-        mu1.insertTrack(Track(name: "Track2", runtime: Runtime(hours: 0, minutes: 3, seconds: 17), trackNr: 2))
-        mu1.insertTrack(Track(name: "Track3", runtime: Runtime(hours: 0, minutes: 3, seconds: 28), trackNr: 3))
-        mu1.insertTrack(Track(name: "Track4", runtime: Runtime(hours: 0, minutes: 3, seconds: 21), trackNr: 4))
-        mu1.desc = "Awesome inflames album"
-        mu1.setFormat("CD");
-        mu1.setOwningType("Physical");
-        mu1.genre = "Metal"
-        mu1.albumArtist = "inFlames"
-        mu1.ownerLocation = "Section A"
-        storage.storeMusic(mu1);*/
         music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music)) as? [Music]
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music)) as? [Music]
+        self.musicTableView.reloadData()
+        self.musicCollectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

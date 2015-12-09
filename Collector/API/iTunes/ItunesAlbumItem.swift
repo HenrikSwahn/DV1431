@@ -5,7 +5,7 @@ public struct ItunesAlbumItem: CustomStringConvertible {
     var name: String
     var artist: String
     var image: String?
-    var release: String
+    var release: Int
     var trackCount: String? = "0"
     var genre: String
     var tracks: [ItunesAlbumTrackItem]?

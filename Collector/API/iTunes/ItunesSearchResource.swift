@@ -8,6 +8,6 @@ public struct ItunesSearchResource: APIResource {
         resource.urlField(named: "term", term)
         //resource.urlField(named: "album", term)
         
-        resource.urlPath(pathed: "/itunes_search.json")
+        //resource.urlPath(pathed: "/itunes_search.json")
     }
 }

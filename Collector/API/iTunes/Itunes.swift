@@ -9,8 +9,8 @@ public class Itunes: API {
     ///     - completion: callback function when the request has been handled
     public required init(_ api: APIResource, completion: (Result<Response>) -> Void) {
         super.init(api, completion: completion)
-        //api.resource.urlDomain("itunes.apple.com", scheme: URL.Scheme.HTTPS)
-        api.resource.urlDomain("app.opij.ac")
+        api.resource.urlDomain("itunes.apple.com", scheme: URL.Scheme.HTTPS)
+        //api.resource.urlDomain("app.opij.ac")
         request.dispatch(Request.Source.URL(api.resource.url), completion: completion)
     }
     

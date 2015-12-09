@@ -7,6 +7,6 @@ public struct ItunesAlbumResource: APIResource {
         resource.urlField(named: "entity", "song")
         resource.urlField(named: "id", id)
         
-        resource.urlPath(pathed: "/itunes_album.json")
+        //resource.urlPath(pathed: "/itunes_album.json")
     }
 }

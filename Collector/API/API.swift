@@ -11,15 +11,15 @@ public class API {
     /// Returns the year from a date
     /// parameters:
     ///     - date: A datestring in Itunes format.
-    public static func dateToYear(date: String?) -> String {
+    public static func dateToYear(date: String?) -> Int {
         if let string = date {
             if string.characters.count > 4 {
-                return string.substringToIndex(string.startIndex.advancedBy(4))
+                return Int(string.substringToIndex(string.startIndex.advancedBy(4)))!
             } else {
-                return string
+                return Int(string)!
             }
         }
         
-        return "1970"
+        return 1970
     }
 }

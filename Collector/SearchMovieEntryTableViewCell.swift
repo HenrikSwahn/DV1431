@@ -26,12 +26,12 @@ class SearchMovieEntryTableViewCell: UICachableTableViewCell {
     
     private func updateSelf() {
         if let movie = self.model {
-            //let link = movie.image
-            let link = "http://app.opij.ac/image.jpg"
+            let link = movie.image
+            //let link = "http://app.opij.ac/image.jpg"
             self.loadImage(link, view: self.movieImage)
 
             titleLabel.text = movie.title
-            releaseLabel.text = movie.release
+            releaseLabel.text = "\(movie.release)"
             synopsisLabel.text = movie.synopsis
             
         }

@@ -16,6 +16,7 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     
     private struct Storyboard {
         static let manualEntrySegueId   = "ManualEntrySegue"
+        static let musicSegueId = "musicSegue"
         static let movieReuseIdentifier = "MovieResultCell"
         static let musicReuseIdentifier = "MusicResultCell"
     }
@@ -65,9 +66,18 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let dest = segue.destinationViewController as! ManualEntryTableViewController
         if segue.identifier == Storyboard.manualEntrySegueId {
-            let dest = segue.destinationViewController as! ManualEntryTableViewController
             dest.context = context
+        }
+        else if segue.identifier == Storyboard.musicSegueId {
+            dest.context = context
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SearchMusicEntryTableViewCell
+                dest.albumTempImage = cell.albumImage.image
+                dest.itunesAlbumItem = self.search.getForSelectedAlbumIndexPath(indexPath)
+                
+            }
         }
     }
     

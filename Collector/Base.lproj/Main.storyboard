@@ -713,6 +713,7 @@
                                     <outlet property="artistLabel" destination="Mwl-OM-hWF" id="j3O-DJ-0a5"/>
                                     <outlet property="releaseLabel" destination="bdg-gV-T1z" id="4ZF-u6-73p"/>
                                     <outlet property="titleLabel" destination="9oF-w4-eWE" id="wZe-JX-Tbo"/>
+                                    <segue destination="ooV-i8-8Z3" kind="show" identifier="musicSegue" id="H40-cq-heX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1873,9 +1874,9 @@
         <image name="star-fill" width="25" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dHP-W0-m3j"/>
         <segue reference="w4d-6U-9xW"/>
-        <segue reference="UUg-Hg-IZ3"/>
+        <segue reference="H40-cq-heX"/>
+        <segue reference="dHP-W0-m3j"/>
         <segue reference="CnV-X6-7Zv"/>
     </inferredMetricsTieBreakers>
 </document>
