@@ -13,6 +13,8 @@ import UIKit
 enum SearchSet: String {
     case Movie = "Movie"
     case Music = "Music"
+    case Track = "Track"
+    case WishListItem = "WishListItem"
     case Union = "Union"
 }
 
@@ -20,6 +22,11 @@ enum DBTable {
     case Title
     case ReleaseYear
     case Genre
+    
+    //Whist list specific
+    case Id
+    case Aid
+    case Type
 }
 
 struct DBSearch {
@@ -162,13 +169,41 @@ class Storage {
         }
     }
     
+    func storeWishListItem(item: WishListItem) {
+        let wishListItemStoreDesc = NSEntityDescription.entityForName("WishListItem", inManagedObjectContext: managedObjectContext)
+        let storeItem = WishListStore(entity: wishListItemStoreDesc!, insertIntoManagedObjectContext:   managedObjectContext)
+        
+        storeItem.id = item.id
+        storeItem.aid = item.aid
+        storeItem.title = item.title
+        storeItem.type = item.type.rawValue
+        
+        if let detail = item.detail {
+            storeItem.detail = detail
+        }
+        
+        if let imgData = item.imageData {
+            let data = UIImageJPEGRepresentation(imgData, 1)
+            storeItem.imageData = data
+        }
+        
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            fatalError("Error saving Tracks")
+        }
+    }
+    
     // MARK: - Search
-    func searchDatabase(search: DBSearch) -> [Media]? {
+    func searchDatabase(search: DBSearch) -> [AnyObject]? {
         
         switch search.set {
         case .Movie:
             return searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: search.set)
         case .Music:
+            return searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: search.set)
+        case .WishListItem:
             return searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: search.set)
         case .Union:
             let arrOne = searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: .Movie)
@@ -186,10 +221,12 @@ class Storage {
             else {
                 return nil
             }
+        default:break
         }
+        return nil
     }
     
-    private func searchData(table: DBTable?, search: String?, batchSize: Int?, set: SearchSet) -> [Media]? {
+    private func searchData(table: DBTable?, search: String?, batchSize: Int?, set: SearchSet) -> [AnyObject]? {
         
         let request = NSFetchRequest(entityName: set.rawValue)
         
@@ -208,6 +245,15 @@ class Storage {
                 request.predicate = NSPredicate(format: "genre==%@", search!)
                 request.sortDescriptors?.append(NSSortDescriptor(key: "genre", ascending: true))
                 break
+            case .Id:
+                request.predicate = NSPredicate(format: "id==%@", Int(search!)!)
+                request.sortDescriptors?.append(NSSortDescriptor(key: "id", ascending: true))
+            case .Aid:
+                request.predicate = NSPredicate(format: "aid==%@", search!)
+                request.sortDescriptors?.append(NSSortDescriptor(key: "aid", ascending: true))
+            case .Type:
+                request.predicate = NSPredicate(format: "type==%@", search!)
+                request.sortDescriptors?.append(NSSortDescriptor(key: "type", ascending: true))
             }
 
         }
@@ -216,7 +262,8 @@ class Storage {
             request.fetchBatchSize = batchSize!
         }
         
-        if set == .Movie {
+        switch set {
+        case .Movie:
             var results = [MovieStore]()
             do {
                 try results = managedObjectContext.executeFetchRequest(request) as! [MovieStore]
@@ -225,8 +272,8 @@ class Storage {
             catch {
                 fatalError("Error searching for data")
             }
-        }
-        else if set == .Music {
+            break
+        case .Music:
             var results = [MusicStore]()
             do {
                 try results = managedObjectContext.executeFetchRequest(request) as! [MusicStore]
@@ -235,8 +282,19 @@ class Storage {
             catch {
                 fatalError("Error searching for data")
             }
-
+            break
+        case .WishListItem:
+            var results = [WishListStore]()
+            do {
+                try results = managedObjectContext.executeFetchRequest(request) as! [WishListStore]
+                return convertToWishListItem(results)
+            }
+            catch {
+                fatalError("Error searching for data")
+            }
+        default:break
         }
+        
         return nil
     }
     
@@ -338,9 +396,40 @@ class Storage {
         return music
     }
     
+    private func convertToWishListItem(data: [WishListStore]) -> [WishListItem] {
+        var wishListItems = [WishListItem]()
+        
+        for item in data {
+            var mediaType = MediaType.Music
+            var data: NSData?
+            
+            switch item.type! {
+            case "Movie":
+                mediaType = .Movie
+                break
+            case "Music":
+                mediaType = .Music
+                break
+            case "Book":
+                mediaType = .Book
+                break
+            case "Game":
+                mediaType = .Game
+                break
+            default:break
+            }
+            
+            if let data = item.imageData {
+                let newItem = WishListItem(id: Int(item.id!), aid: item.aid!, type: mediaType, imageData: UIImage(data: data), title: item.title!, detail: item.detail)
+                wishListItems.append(newItem)
+            }
+        }
+        return wishListItems
+    }
+    
     // MARK: - Dev
     func emptyDatabase() {
-        let fetchRequest = NSFetchRequest(entityName: "Movie")
+        let fetchRequest = NSFetchRequest(entityName: "WishListItem")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {

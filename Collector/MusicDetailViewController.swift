@@ -78,6 +78,15 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     private func musicSpecificData() {
         
+        if let albumArtist = music?.albumArtist {
+            self.genericData.insert(("Artist: ", albumArtist), atIndex: 0)
+        }
+        
+        self.genericData.append(("Track", ""))
+        
+        for track in (music?.trackList)! {
+            self.genericData.append((track.name, track.runtime.toString()))
+        }
     }
 
     private func updateColor() {
@@ -144,16 +153,23 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaDetailTableCellIdentifier) as! MediaDetailTableViewCell
         
-        cell.keyLabel?.text = genericData[indexPath.row].0
-        cell.valueLabel?.text = genericData[indexPath.row].1
-        
-        // Set the proper background color
-        cell.setDominantColors(with: colors, indexPath: indexPath)
-        
-        return cell
-        
+        if indexPath.row < genericData.count - 2 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaDetailTableCellIdentifier) as! MediaDetailTableViewCell
+            
+            cell.keyLabel?.text = genericData[indexPath.row].0
+            cell.valueLabel?.text = genericData[indexPath.row].1
+            
+            // Set the proper background color
+            cell.setDominantColors(with: colors, indexPath: indexPath)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaDetailTableCellIdentifier) as! TracksTableViewCell
+            cell.tracksLabel.text = "Tracks"
+            cell.setData((music?.trackList)!)
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

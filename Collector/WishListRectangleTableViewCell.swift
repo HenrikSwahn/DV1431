@@ -32,7 +32,7 @@ class WishListRectangleTableViewCell: UITableViewCell {
     func updateUI() {
         if let item = wish {
             if let imageData = item.imageData {
-                self.wishImageView.image = UIImage(data: imageData)
+                self.wishImageView.image = imageData
             }
             
             wishIconType.image = getType(item)

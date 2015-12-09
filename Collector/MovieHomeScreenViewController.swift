@@ -62,12 +62,19 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies!.count
+        
+        if (movies != nil) {
+            return movies!.count
+        }
+        return 0
     }
     
     // MARK: - CollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies!.count
+        if (movies != nil) {
+            return movies!.count
+        }
+        return 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -108,13 +115,13 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         
         self.mediaCollection.hidden = true
-        //storage.emptyDatabase()
-        movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
+        storage.emptyDatabase()
+        //movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
     }
     
     override func viewDidAppear(animated: Bool) {
-        movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
-        mediaTable.reloadData()
+        //movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
+        //mediaTable.reloadData()
         
     }
 }

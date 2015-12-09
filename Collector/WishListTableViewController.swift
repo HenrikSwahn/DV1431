@@ -15,7 +15,7 @@ enum MediaType: String {
     case Book   = "Book"
 }
 
-struct WishListItem {
+class WishListItem {
     // ID for the item in CoreData?
     var id: Int
     
@@ -26,7 +26,7 @@ struct WishListItem {
     var type: MediaType
     
     // The cover art for the media
-    var imageData: NSData?
+    var imageData: UIImage?
     
     // Title for the item
     // Movie: This is should contain the title of the movie
@@ -41,15 +41,28 @@ struct WishListItem {
     // Game: This should be empty
     // Book: This should contain author
     var detail: String?
+    
+    init(id: Int, aid: String, type: MediaType, imageData: UIImage?, title: String, detail: String?) {
+        self.id = id
+        self.aid = aid
+        self.type = type
+        self.imageData = imageData
+        self.title = title
+        self.detail = detail
+    }
 }
 
 class WishListTableViewController: UITableViewController {
-    private var model = [
-        WishListItem(id: 0, aid: "ID from API", type: .Movie, imageData: nil, title: "A Movie", detail: nil),
-        WishListItem(id: 0, aid: "ID from API", type: .Music, imageData: nil, title: "A Album", detail: "Artist"),
-        WishListItem(id: 0, aid: "ID from API", type: .Game,  imageData: nil, title: "A Game",  detail: nil),
-        WishListItem(id: 0, aid: "ID from API", type: .Book,  imageData: nil, title: "A Book",  detail: "Author")
+    private var modell = [
+        WishListItem(id: 0, aid: "ID from API", type: .Movie, imageData: UIImage(named: "i-am-legend-box"), title: "A Movie", detail: nil),
+        WishListItem(id: 0, aid: "ID from API", type: .Music, imageData: UIImage(named: "i-am-legend-box"), title: "A Album", detail: "Artist"),
+        WishListItem(id: 0, aid: "ID from API", type: .Game,  imageData: UIImage(named: "i-am-legend-box"), title: "A Game",  detail: nil),
+        WishListItem(id: 0, aid: "ID from API", type: .Book,  imageData: UIImage(named: "i-am-legend-box"), title: "A Book",  detail: "Author")
     ]
+    
+    private var model: [WishListItem]?
+    
+    private var storage = Storage()
     
     struct Storyboard {
         static let RectReuseIdentifier  = "WishListRectangle"
@@ -65,6 +78,15 @@ class WishListTableViewController: UITableViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        /* To store item */
+        for m in modell {
+            storage.storeWishListItem(m)
+        }
+        
+        /* To get item */
+        model = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .WishListItem)) as? [WishListItem]
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,11 +101,13 @@ class WishListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        
+        return model!.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let item = model[indexPath.row]
+        
+        let item = model![indexPath.row]
         
         switch item.type {
         case .Movie, .Game:
@@ -149,7 +173,7 @@ class WishListTableViewController: UITableViewController {
                     //
                     // Edit this code:
                     // if (item was removed from Core Data) {
-                    self.model.removeAtIndex(indexPath.row)
+                    self.model!.removeAtIndex(indexPath.row)
                     self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                     // } else {
                 })

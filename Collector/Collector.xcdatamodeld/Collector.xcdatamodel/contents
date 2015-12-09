@@ -33,9 +33,18 @@
         <attribute name="trackNr" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Music" inverseName="tracks" inverseEntity="Music" syncable="YES"/>
     </entity>
+    <entity name="WishListItem" representedClassName=".WishListStore" syncable="YES">
+        <attribute name="aid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Movie" positionX="79" positionY="243" width="128" height="223"/>
         <element name="Music" positionX="-225" positionY="261" width="126" height="208"/>
         <element name="Track" positionX="-126" positionY="611" width="126" height="103"/>
+        <element name="WishListItem" positionX="-72" positionY="396" width="128" height="135"/>
     </elements>
 </model>
