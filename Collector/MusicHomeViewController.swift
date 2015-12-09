@@ -12,7 +12,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private struct Storyboard {
         static let musicCellId = "media cell"
-        static let mediaCellId = "AddMusicSegue"
+        static let addMusicSegue = "addMusicSegue"
         static let musicDetailColSegueId = "showMusicDetailCol"
         static let musicDetailTableSegueId = "showMusicDetailTable"
     }
@@ -101,7 +101,12 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - Prepare for Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
-        if segue.identifier == Storyboard.musicDetailTableSegueId {
+        if segue.identifier == Storyboard.addMusicSegue {
+            let navCtr = segue.destinationViewController as! UINavigationController
+            let dest = navCtr.topViewController as! SearchEntryTableViewController
+            dest.context = context
+        }
+        else if segue.identifier == Storyboard.musicDetailTableSegueId {
             let dest = segue.destinationViewController as! MusicDetailViewController
             let indexPath = self.musicTableView.indexPathForSelectedRow
             dest.music = music![(indexPath?.row)!]

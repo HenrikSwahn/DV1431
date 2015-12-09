@@ -9,14 +9,28 @@
 import UIKit
 import MobileCoreServices
 
-class ManualEntryTableViewController: UITableViewController, ViewContext, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ManualEntryTableViewController: UITableViewController, ViewContext, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // MARK: - Instance variables
     var context = ViewContextEnum.Unkown
-    private let genericEntries = ["Age Restriction", "Main Actors", "Director"]
+    private let movieEntries = ["Age Restriction", "Main Actors", "Director"]
+    private let musicEntries = ["Album Artist", "Tracks", "Track Length"]
+    private var tracks = [Track]()
     private var storage = Storage()
     let imagePicker = UIImagePickerController()
     
+    private struct Storyboard {
+        static let addedTracksCellId = "AddedTracksCell"
+    }
+    
+    @IBOutlet weak var trackTableView: UITableView! {
+        didSet {
+            self.trackTableView.delegate = self
+            self.trackTableView.dataSource = self
+        }
+    }
+    
+    @IBOutlet weak var footerView: UIView!
     // MARK: - Outlets
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var genreFIeld: UITextField!
@@ -146,7 +160,21 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     // MARK: - View did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.formatPickerTextField.dataSource(["DVD", "Blu-Ray"], arrayTwo: nil, arrayThree: nil)
+        
+        switch context {
+        case .Movie:
+            self.footerView.hidden = true
+            self.formatPickerTextField.dataSource(["DVD", "Blu-Ray", "MP4"], arrayTwo: nil, arrayThree: nil)
+            break
+        case .Music:
+            self.footerView.hidden = false
+            self.formatPickerTextField.dataSource(["CD", "MP3", "FLAC"], arrayTwo: nil, arrayThree: nil)
+            self.runTime.userInteractionEnabled = false
+            break
+        default:
+            break
+        }
+        
         self.owningType.dataSource(["Digital", "Physical"], arrayTwo: nil, arrayThree: nil)
         
         // Create a array with year range from currentYear - 100 years
@@ -161,20 +189,23 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         self.image.userInteractionEnabled = true
         self.image.addGestureRecognizer(tap)
         
-        let seconds: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
+        var seconds: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
             (second, _) -> String in return "\(second) s"
         })
         
-        let minutes: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
+        var minutes: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
             (min, _) -> String in return "\(min) m"
         })
         
-        let hours: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
+        var hours: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
             (hour, _) -> String in return "\(hour) h"
         })
         
-        self.runTime.dataSource(hours, arrayTwo: minutes, arrayThree: seconds)
+        seconds.insert("-", atIndex: 0)
+        minutes.insert("-", atIndex: 0)
+        hours.insert("-", atIndex: 0)
         
+        self.runTime.dataSource(hours, arrayTwo: minutes, arrayThree: seconds)
         self.imagePicker.delegate = self
     }
 
@@ -191,16 +222,108 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return genericEntries.count
+        
+        if tableView == self.trackTableView {
+            return tracks.count
+        }
+        else {
+            switch context {
+            case .Movie:
+                return movieEntries.count
+            case .Music:
+                return musicEntries.count
+            default:
+                return 0
+            }
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("generic entry") as! ManualEntryTableViewCell
-        cell.genricEntryTextField.placeholder = genericEntries[indexPath.row]
-        return cell
+        if tableView == self.trackTableView {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.addedTracksCellId)
+            
+            switch context {
+            case .Music:
+                cell?.textLabel?.text = self.tracks[indexPath.row].name
+                cell?.detailTextLabel?.text = self.tracks[indexPath.row].runtime.toString()
+                break;
+            default:
+                break
+            }
+            return cell!
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("generic entry") as! ManualEntryTableViewCell
+            
+            switch context {
+            case .Movie:
+                cell.genricEntryTextField.placeholder = movieEntries[indexPath.row]
+                break;
+            case .Music:
+                
+                if indexPath.row == 2 {
+                    cell.genricEntryTextField.hidden = true
+                    cell.trackRunTime.hidden = false
+                }
+                else {
+                    cell.genricEntryTextField.placeholder = musicEntries[indexPath.row]
+                    cell.genricEntryTextField.delegate = self
+                    cell.genricEntryTextField.hidden = false
+                    cell.trackRunTime.hidden = true
+                }
+                
+                break;
+            default:
+                break
+            }
+            return cell
+        }
     }
     
-    //MARK: UIImagePickerView
+    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+        let indexPath = NSIndexPath(forRow: 1, inSection: 0)
+        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
+        
+        
+        if textField == cell.genricEntryTextField {
+            
+            switch context {
+            case .Music:
+                addTrackToGUI(cell)
+                break;
+            default:
+                break;
+            }
+        }
+        return false
+    }
+    
+    private func addTrackToGUI(trackLengthCell: ManualEntryTableViewCell) {
+        
+        let indexPath = NSIndexPath(forRow: 1, inSection: 0)
+        let trackNameCell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
+        
+        if let name = trackNameCell.genricEntryTextField.text {
+            if let length = trackLengthCell.trackRunTime.text {
+                let trackRuntime = Runtime.getRuntimeBasedOnFormattedString(length)
+                if trackRuntime.getTotalInSeconds() > 0 {
+                    tracks.append(Track(name: name, runtime: trackRuntime, trackNr: tracks.count+1))
+                    self.trackTableView.reloadData()
+                }
+                else {
+                    let alert = UIAlertController(title: "No valid track length", message: "Enter track length", preferredStyle: .ActionSheet)
+                    
+                    let okAction = UIAlertAction(title: "Ok", style: .Default) { _ in
+                        alert.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                    alert.addAction(okAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    //MARK: - UIImagePickerView
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:AnyObject]){
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         image.contentMode = .ScaleAspectFit

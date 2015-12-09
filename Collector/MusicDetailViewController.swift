@@ -108,8 +108,6 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // Set mock data
-        //self.setMockData()
         setData()
         
         // Sets the background image to the cover image

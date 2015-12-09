@@ -103,7 +103,19 @@ class UIPickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.endEditing(true)
+        if componentState == .OneComponents {
+            self.endEditing(true)
+        }
+        else if componentState == .TwoComponents {
+            if pickerView.selectedRowInComponent(0) > 0 && pickerView.selectedRowInComponent(1) > 0 {
+                self.endEditing(true)
+            }
+        }
+        else {
+            if pickerView.selectedRowInComponent(0) > 0 && pickerView.selectedRowInComponent(1) > 0 && pickerView.selectedRowInComponent(2) > 0 {
+                self.endEditing(true)
+            }
+        }
         self.text = selectedRow()
     }
     
@@ -151,12 +163,15 @@ class UIPickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        self.picker.hidden = true
+        
+        if componentState == .OneComponents {
+            self.picker.hidden = true
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if (textField == self && componentState == .OneComponents) {
-            textField.resignFirstResponder()
+            //textField.resignFirstResponder()
             
             let selected = selectedRow()
             

@@ -8,9 +8,29 @@
 
 import UIKit
 
-class ManualEntryTableViewCell: UITableViewCell {
+class ManualEntryTableViewCell: UITableViewCell, UITextFieldDelegate {
 
-    @IBOutlet weak var genricEntryTextField: UITextField!
+    @IBOutlet weak var trackRunTime: UIPickerTextField! {
+        didSet {
+            var seconds: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
+                (second, _) -> String in return "\(second) s"
+            })
+            
+            var minutes: [String] = [Int](count: 60, repeatedValue: 0).mapNumber({
+                (min, _) -> String in return "\(min) m"
+            })
+            
+            seconds.insert("-", atIndex: 0)
+            minutes.insert("-", atIndex: 0)
+            self.trackRunTime.dataSource(minutes, arrayTwo: seconds, arrayThree: nil)
+        }
+    }
+    
+    @IBOutlet weak var genricEntryTextField: UITextField! {
+        didSet {
+            self.genricEntryTextField.delegate = self
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +42,4 @@ class ManualEntryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
