@@ -21,7 +21,6 @@
 		31114C3A1C15B1AF00396AA8 /* ItunesTrackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C351C15B1AF00396AA8 /* ItunesTrackItem.swift */; };
 		31114C421C15B1C700396AA8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C3B1C15B1C700396AA8 /* API.swift */; };
 		31114C431C15B1C700396AA8 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C3C1C15B1C700396AA8 /* APIResource.swift */; };
-		31114C441C15B1C700396AA8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 31114C3D1C15B1C700396AA8 /* README.md */; };
 		31114C451C15B1C700396AA8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C3E1C15B1C700396AA8 /* Request.swift */; };
 		31114C461C15B1C700396AA8 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C3F1C15B1C700396AA8 /* Response.swift */; };
 		31114C471C15B1C700396AA8 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C401C15B1C700396AA8 /* Result.swift */; };
@@ -564,7 +563,6 @@
 				31114C201C15B19000396AA8 /* TMDb.swift in Sources */,
 				315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */,
 				AF300AAF1C15D94100BC57D9 /* MusicHomeViewController.swift in Sources */,
-				31114C441C15B1C700396AA8 /* README.md in Sources */,
 				31114C4C1C15FFEE00396AA8 /* SearchAPIDelegate.swift in Sources */,
 				31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */,
 				AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */,
