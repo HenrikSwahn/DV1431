@@ -126,7 +126,8 @@ public class TMDb: API {
     
     /// Saves the configuration to NSUserDefaults
     public static func saveConfigurationToUserDefaults() {
-        _ = TMDb(TMDbConfigurationResource()) { result in
+        let tmdb = TMDb(resource: TMDbConfigurationResource())
+        tmdb.request { result in
             switch result {
                 case .Error(_): break
                 case .Success(let res):

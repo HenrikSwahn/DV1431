@@ -157,8 +157,8 @@ class WishListTableViewController: UITableViewController {
                     
                     switch self.model![indexPath.row].type {
                     case .Movie:
-                        let getMovie = TMDbMovieResource(id: self.model![indexPath.row].aid)
-                        TMDb(getMovie) { result in
+                        let tmdb = TMDb(resource: TMDbMovieResource(id: self.model![indexPath.row].aid))
+                        tmdb.request { result in
                             switch result {
                             case .Success(let response):
                                 let movie = Movie.fromTMDbMovieItem(TMDb.parseMovie(JSON(response.data))!, image: self.model![indexPath.row].imageData)
@@ -172,8 +172,8 @@ class WishListTableViewController: UITableViewController {
                         }
                         break
                     case .Music:
-                        let getAlbum = ItunesAlbumResource(id: self.model![indexPath.row].aid)
-                        Itunes(getAlbum) { result in
+                        let itunes = Itunes(resource: ItunesAlbumResource(id: self.model![indexPath.row].aid))
+                        itunes.request { result in
                             switch result {
                             case .Success(let response):
                                 let album = Music.fromItunesAlbumItem(Itunes.parseAlbum(JSON(response.data))!, albumImage: self.model![indexPath.row].imageData)

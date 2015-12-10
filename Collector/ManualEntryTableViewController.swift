@@ -307,8 +307,8 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         
         switch self.context {
         case .Music:
-            let getAlbum = ItunesAlbumResource(id: itunesAlbumItem!.id)
-            Itunes(getAlbum) { result in
+            let itunes = Itunes(resource: ItunesAlbumResource(id: itunesAlbumItem!.id))
+            itunes.request { result in
                 switch result {
                 case .Success(let response):
                     let album = Music.fromItunesAlbumItem(Itunes.parseAlbum(JSON(response.data))!, albumImage: self.tempImage)
@@ -324,8 +324,8 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
             }
             break
         case .Movie:
-            let getMovie = TMDbMovieResource(id: tmdbSearchItem!.id)
-            TMDb(getMovie) { result in
+            let tmdb = TMDb(resource: TMDbMovieResource(id: tmdbSearchItem!.id))
+            tmdb.request { result in
                 switch result {
                 case .Success(let response):
                     self.movieItem = Movie.fromTMDbMovieItem(TMDb.parseMovie(JSON(response.data))!, image: self.tempImage)
