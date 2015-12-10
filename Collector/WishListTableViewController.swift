@@ -53,13 +53,6 @@ class WishListItem {
 }
 
 class WishListTableViewController: UITableViewController {
-    private var modell = [
-        WishListItem(id: 0, aid: "ID from API", type: .Movie, imageData: UIImage(named: "i-am-legend-box"), title: "A Movie", detail: nil),
-        WishListItem(id: 1, aid: "ID from API", type: .Music, imageData: UIImage(named: "i-am-legend-box"), title: "A Album", detail: "Artist"),
-        WishListItem(id: 2, aid: "ID from API", type: .Game,  imageData: UIImage(named: "i-am-legend-box"), title: "A Game",  detail: nil),
-        WishListItem(id: 3, aid: "ID from API", type: .Book,  imageData: UIImage(named: "i-am-legend-box"), title: "A Book",  detail: "Author")
-    ]
-    
     private var model: [WishListItem]?
     
     private var storage = Storage()
@@ -164,7 +157,7 @@ class WishListTableViewController: UITableViewController {
                     
                     switch self.model![indexPath.row].type {
                     case .Movie:
-                        let getMovie = TMDbMovieResource(id: self.model![indexPath.row].id)
+                        let getMovie = TMDbMovieResource(id: self.model![indexPath.row].aid)
                         TMDb(getMovie) { result in
                             switch result {
                             case .Success(let response):
@@ -179,7 +172,7 @@ class WishListTableViewController: UITableViewController {
                         }
                         break
                     case .Music:
-                        let getAlbum = ItunesAlbumResource(id: String(stringInterpolationSegment: self.model![indexPath.row].id))
+                        let getAlbum = ItunesAlbumResource(id: self.model![indexPath.row].aid)
                         Itunes(getAlbum) { result in
                             switch result {
                             case .Success(let response):
