@@ -9,7 +9,7 @@
 import Foundation
 
 public struct TMDbMovieItem {
-    var id: Int
+    var id: String
     var image: String
     var release: Int
     var language: String

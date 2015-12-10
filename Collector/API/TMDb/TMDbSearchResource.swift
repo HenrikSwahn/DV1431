@@ -13,6 +13,5 @@ public struct TMDbSearchResource: APIResource {
     
     public init(forTerm term: String) {
         resource.urlField(named: "query", term)
-        //resource.urlPath(pathed: "/tmdb_search.json")
     }
 }

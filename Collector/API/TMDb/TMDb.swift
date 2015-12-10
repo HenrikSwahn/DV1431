@@ -14,8 +14,7 @@ public class TMDb: API {
     
     public struct Configuration {
         /// Update interval for configuration
-        public static let UpdateInterval: Double = 60.0
-        //private static let updateInterval: Double = 4 * 24 * 60 * 60
+        public static let UpdateInterval: Double = 4 * 24 * 60 * 60
         
         // Determine if the URLs should use HTTPs requests
         public static let UseHTTPS = true
@@ -35,7 +34,6 @@ public class TMDb: API {
 
         api.resource.urlDomain("api.themoviedb.org")
         api.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
-        //api.resource.urlDomain("app.opij.ac")
         
         self.request?.dispatch(Request.Source.URL(api.resource.url), completion: completion)
     }
@@ -46,7 +44,6 @@ public class TMDb: API {
         
         self.resource?.resource.urlDomain("api.themoviedb.org")
         self.resource?.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
-        //self.resource?.resource.urlDomain("app.opij.ac")
     }
     
     public func request(completion: (Result<Response>) -> Void) {
@@ -75,7 +72,7 @@ public class TMDb: API {
         }
 
         return TMDbMovieItem(
-            id:                 json["id"].int ?? 0,
+            id:                 String(json["id"].int ?? 0),
             image:              appendImageURL(json["poster_path"].string),
             release:            dateToYear(json["release_date"].string),
             language:           json["original_language"].string ?? "en",
@@ -95,7 +92,7 @@ public class TMDb: API {
             var items = [TMDbSearchItem]()
             results.forEach { item in
                 items.append(TMDbSearchItem(
-                    id:         item["id"].int ?? 0,
+                    id:         String(item["id"].int ?? 0),
                     image:      appendImageURL(item["poster_path"].string),
                     release:    dateToYear(item["release_date"].string),
                     title:      item["title"].string ?? "Unavailable",
