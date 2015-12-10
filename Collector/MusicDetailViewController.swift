@@ -167,7 +167,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
             cell.setData((music?.trackList)!)
             
             // Set the proper background color
-            //cell.setDominantColors(with: colors, indexPath: indexPath)
+            cell.setDominantColors(with: colors, indexPath: indexPath)
             return cell
         }
     }

@@ -74,6 +74,7 @@
 		AF300AB31C16FF9000BC57D9 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AB21C16FF9000BC57D9 /* MusicDetailViewController.swift */; };
 		AF833FDB1C18AE9F003D6C0A /* WishListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF833FDA1C18AE9F003D6C0A /* WishListStore.swift */; };
 		AF833FDD1C1961F1003D6C0A /* TracksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF833FDC1C1961F1003D6C0A /* TracksTableViewCell.swift */; };
+		AF833FDF1C197DD2003D6C0A /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF833FDE1C197DD2003D6C0A /* TrackTableViewCell.swift */; };
 		AFADF84D1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84C1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift */; };
 		AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84E1BFC76E80024D9A4 /* Media.swift */; };
 		AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */; };
@@ -174,6 +175,7 @@
 		AF300AB21C16FF9000BC57D9 /* MusicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
 		AF833FDA1C18AE9F003D6C0A /* WishListStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListStore.swift; sourceTree = "<group>"; };
 		AF833FDC1C1961F1003D6C0A /* TracksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksTableViewCell.swift; sourceTree = "<group>"; };
+		AF833FDE1C197DD2003D6C0A /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		AFADF84C1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieHomeScreenViewController.swift; sourceTree = "<group>"; };
 		AFADF84E1BFC76E80024D9A4 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		AFADF8501BFC77290024D9A4 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				31E41FEA1C185F7F003976F9 /* WishListBoxTableViewCell.swift */,
 				31E41FEC1C186390003976F9 /* WishListRectangleTableViewCell.swift */,
 				AF833FDC1C1961F1003D6C0A /* TracksTableViewCell.swift */,
+				AF833FDE1C197DD2003D6C0A /* TrackTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				31E41FED1C186390003976F9 /* WishListRectangleTableViewCell.swift in Sources */,
 				31114C481C15B1C700396AA8 /* URL.swift in Sources */,
 				31114C381C15B1AF00396AA8 /* ItunesAlbumResource.swift in Sources */,
+				AF833FDF1C197DD2003D6C0A /* TrackTableViewCell.swift in Sources */,
 				AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */,
 				AFFC51C01BFDD03400DA5344 /* MediaDetailTableViewCell.swift in Sources */,
 				31114C2B1C15B1A200396AA8 /* LastFM.swift in Sources */,

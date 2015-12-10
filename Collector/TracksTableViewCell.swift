@@ -11,6 +11,7 @@ import UIKit
 class TracksTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
     
     var tracks: [Track]?
+    private var colors: UIImageColors?
     private let cellSeparatorWeight: CGFloat = 0.5
     private struct Storyboard {
         static let trackCellId = "trackCellId"
@@ -42,10 +43,11 @@ class TracksTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.trackCellId)
-        cell?.textLabel?.text = tracks![indexPath.row].name
-        cell?.detailTextLabel?.text = tracks![indexPath.row].runtime.toString()
-        return cell!
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.trackCellId) as! TrackTableViewCell
+        cell.nameLabel.text = tracks![indexPath.row].name
+        cell.lengthLabel.text = tracks![indexPath.row].runtime.toString()
+        cell.setDominantColors(with: colors, indexPath: indexPath)
+        return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,9 +69,11 @@ class TracksTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewData
     
     func setDominantColors(with colors: UIImageColors?, indexPath: NSIndexPath) {
         if let color = colors {
+            self.colors = colors
             backgroundColor = color.secondaryColor
             contentView.backgroundColor = color.secondaryColor
             tracksLabel.textColor = color.detailColor
+            self.tracksTableView.backgroundColor = color.backgroundColor
             
             if indexPath.row == 0 {
                 shadow = color.secondaryColor
@@ -81,3 +85,4 @@ class TracksTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewData
         }
     }
 }
+
