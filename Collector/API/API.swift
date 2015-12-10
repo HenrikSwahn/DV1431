@@ -1,22 +1,29 @@
 import Foundation
 
 protocol API {
-    @available(*, deprecated)
     var request: Request? { get set }
     var resource: APIResource? { get set }
     
-    init(_ api: APIResource, completion: (Result<Response>) -> Void)
     init(resource: APIResource)
     func request(completion: (Result<Response>) -> Void)
 }
 
 extension API {
-    /** Remove **/
-    func request(completion: (Result<Response>) -> Void) {
-        preconditionFailure("This method must be overridden")
-    }
-    
     internal static func dateToYear(date: String?) -> Int {
+        var year: Int?
+
+        if let string = date {
+            if string.characters.count > 4 {
+                year = Int(string.substringToIndex(string.startIndex.advancedBy(4)))
+            } else {
+                year = Int(string)
+            }
+        }
+        
+        if year != nil {
+            return year!
+        }
+        
         return 1970
     }
 }

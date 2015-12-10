@@ -7,16 +7,6 @@ public class Itunes: API {
     /// Creates a instance of the Itunes API
     ///  - parameters:
     ///     - api: resource to use when dispatching a request
-    ///     - completion: callback function when the request has been handled
-    @available(*, deprecated, message="To resolve this do:\nlet itunes = Itunes(resource: APIResource)\nitunes.request() { result in ... }")
-    public required init(_ api: APIResource, completion: (Result<Response>) -> Void) {
-        self.request = Request()
-        self.resource = api
-        api.resource.urlDomain("itunes.apple.com", scheme: URL.Scheme.HTTPS)
-        //api.resource.urlDomain("app.opij.ac")
-        request?.dispatch(Request.Source.URL(api.resource.url), completion: completion)
-    }
-    
     public required init(resource: APIResource) {
         self.request = Request()
         self.resource = resource

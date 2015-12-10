@@ -26,18 +26,6 @@ public class TMDb: API {
     /// Creates a instance of the TMDb API
     ///  - parameters:
     ///     - api: resource to use when dispatching a request
-    ///     - completion: callback function when the request has been handled
-    @available(*, deprecated, message="To resolve this do:\nlet tmdb = TMDb(resource: APIResource)\ntmdb.request() { result in ... }")
-    public required init(_ api: APIResource, completion: (Result<Response>) -> Void) {
-        self.request = Request()
-        self.resource = api
-
-        api.resource.urlDomain("api.themoviedb.org")
-        api.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
-        
-        self.request?.dispatch(Request.Source.URL(api.resource.url), completion: completion)
-    }
-    
     public required init(resource: APIResource) {
         self.request = Request()
         self.resource = resource
