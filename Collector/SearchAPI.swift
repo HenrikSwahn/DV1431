@@ -46,10 +46,10 @@ class SearchAPI {
             switch self.context {
             case .Movie:
                 self.movieSearchResults = TMDb.parseSearch(JSON(response.data))
-                self.delegate?.searchAPI(self.movieSearchResults!.count)
+                self.delegate?.searchAPI(self.movieSearchResults!.count ?? 0)
             case .Music:
                 self.musicSearchResults = Itunes.parseSearch(JSON(response.data))
-                self.delegate?.searchAPI(self.musicSearchResults!.count)
+                self.delegate?.searchAPI(self.musicSearchResults?.count ?? 0)
             default: break
             }
         }
