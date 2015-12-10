@@ -395,6 +395,10 @@ class Storage {
                 mu.albumArtist = albumArtist
             }
             
+            if let rating = mStore.rating {
+                mu.rating = Int(rating)
+            }
+            
             if let trackList = mStore.tracks {
                 let tracks = trackList.allObjects as! [TrackStore]
                 
