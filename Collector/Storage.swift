@@ -196,18 +196,18 @@ class Storage {
     }
     
     // MARK: - Search
-    func searchDatabase(search: DBSearch) -> [AnyObject]? {
+    func searchDatabase(search: DBSearch, doConvert: Bool) -> [AnyObject]? {
         
         switch search.set {
         case .Movie:
-            return searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: search.set)
+            return searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: search.set, doConvert: doConvert)
         case .Music:
-            return searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: search.set)
+            return searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: search.set, doConvert: doConvert)
         case .WishListItem:
-            return searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: search.set)
+            return searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: search.set, doConvert: doConvert)
         case .Union:
-            let arrOne = searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: .Movie)
-            let arrTwo = searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: .Music)
+            let arrOne = searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: .Movie, doConvert: doConvert)
+            let arrTwo = searchData(search.table, search: search.searchString, batchSize: search.batchSize, set: .Music, doConvert: doConvert)
             
             if (arrOne != nil) && (arrTwo != nil) {
                 return arrOne! + arrTwo!
@@ -226,7 +226,7 @@ class Storage {
         return nil
     }
     
-    private func searchData(table: DBTable?, search: String?, batchSize: Int?, set: SearchSet) -> [AnyObject]? {
+    private func searchData(table: DBTable?, search: String?, batchSize: Int?, set: SearchSet, doConvert: Bool) -> [AnyObject]? {
         
         let request = NSFetchRequest(entityName: set.rawValue)
         
@@ -238,7 +238,7 @@ class Storage {
                 request.sortDescriptors?.append(NSSortDescriptor(key: "title", ascending: true))
                 break
             case .ReleaseYear:
-                request.predicate = NSPredicate(format: "releaseYear==%@", Int(search!)!)
+                request.predicate = NSPredicate(format: "releaseYear==%d", Int(search!)!)
                 request.sortDescriptors?.append(NSSortDescriptor(key: "releaseYear", ascending: true))
                 break
             case .Genre:
@@ -246,7 +246,7 @@ class Storage {
                 request.sortDescriptors?.append(NSSortDescriptor(key: "genre", ascending: true))
                 break
             case .Id:
-                request.predicate = NSPredicate(format: "id==%@", Int(search!)!)
+                request.predicate = NSPredicate(format: "id==%d", Int(search!)!)
                 request.sortDescriptors?.append(NSSortDescriptor(key: "id", ascending: true))
             case .Aid:
                 request.predicate = NSPredicate(format: "aid==%@", search!)
@@ -267,7 +267,11 @@ class Storage {
             var results = [MovieStore]()
             do {
                 try results = managedObjectContext.executeFetchRequest(request) as! [MovieStore]
-                return convertToMovie(results)
+                
+                if doConvert {
+                    return convertToMovie(results)
+                }
+                return results
             }
             catch {
                 fatalError("Error searching for data")
@@ -277,7 +281,11 @@ class Storage {
             var results = [MusicStore]()
             do {
                 try results = managedObjectContext.executeFetchRequest(request) as! [MusicStore]
-                return convertToMusic(results)
+                
+                if doConvert {
+                    return convertToMusic(results)
+                }
+                return results
             }
             catch {
                 fatalError("Error searching for data")
@@ -286,8 +294,12 @@ class Storage {
         case .WishListItem:
             var results = [WishListStore]()
             do {
+                
                 try results = managedObjectContext.executeFetchRequest(request) as! [WishListStore]
-                return convertToWishListItem(results)
+                if doConvert {
+                    return convertToWishListItem(results)
+                }
+                return results
             }
             catch {
                 fatalError("Error searching for data")
@@ -424,6 +436,38 @@ class Storage {
             }
         }
         return wishListItems
+    }
+    
+    func removeFromDB(toRemove: DBSearch) {
+        var result = searchData(toRemove.table, search: toRemove.searchString, batchSize: nil, set: toRemove.set, doConvert: false)
+        
+        if result != nil {
+            if result!.count > 0 {
+                switch toRemove.set {
+                case .Movie:
+                    managedObjectContext.deleteObject(result![0] as! MovieStore)
+                    break
+                case .Music:
+                    managedObjectContext.deleteObject(result![0] as! MusicStore)
+                    break
+                case .WishListItem:
+                    managedObjectContext.deleteObject(result![0] as! WishListStore)
+                    break
+                case .Track:
+                    managedObjectContext.deleteObject(result![0] as! TrackStore)
+                    break
+                default:break
+                    
+                }
+                
+                do {
+                    try managedObjectContext.save()
+                }
+                catch {
+                    fatalError("Error deleting object from core data")
+                }
+            }
+        }
     }
     
     // MARK: - Dev

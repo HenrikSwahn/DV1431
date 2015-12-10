@@ -55,9 +55,9 @@ class WishListItem {
 class WishListTableViewController: UITableViewController {
     private var modell = [
         WishListItem(id: 0, aid: "ID from API", type: .Movie, imageData: UIImage(named: "i-am-legend-box"), title: "A Movie", detail: nil),
-        WishListItem(id: 0, aid: "ID from API", type: .Music, imageData: UIImage(named: "i-am-legend-box"), title: "A Album", detail: "Artist"),
-        WishListItem(id: 0, aid: "ID from API", type: .Game,  imageData: UIImage(named: "i-am-legend-box"), title: "A Game",  detail: nil),
-        WishListItem(id: 0, aid: "ID from API", type: .Book,  imageData: UIImage(named: "i-am-legend-box"), title: "A Book",  detail: "Author")
+        WishListItem(id: 1, aid: "ID from API", type: .Music, imageData: UIImage(named: "i-am-legend-box"), title: "A Album", detail: "Artist"),
+        WishListItem(id: 2, aid: "ID from API", type: .Game,  imageData: UIImage(named: "i-am-legend-box"), title: "A Game",  detail: nil),
+        WishListItem(id: 3, aid: "ID from API", type: .Book,  imageData: UIImage(named: "i-am-legend-box"), title: "A Book",  detail: "Author")
     ]
     
     private var model: [WishListItem]?
@@ -86,7 +86,8 @@ class WishListTableViewController: UITableViewController {
         }
         
         /* To get item */
-        model = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .WishListItem)) as? [WishListItem]
+        model = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .WishListItem), doConvert: true) as? [WishListItem]
+        //storage.emptyDatabase()
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,7 +103,10 @@ class WishListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return model!.count
+        if model != nil {
+            return model!.count
+        }
+        return 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -169,10 +173,8 @@ class WishListTableViewController: UITableViewController {
             case .Delete:
                 // Delete this item from the wish list
                 controller.addActions(self.defaultAlertActions(.Default) { [unowned self] _ in
-                    // Here is where you should do Core Data related things
-                    //
-                    // Edit this code:
-                    // if (item was removed from Core Data) {
+                    
+                    self.storage.removeFromDB(DBSearch(table: .Id, searchString: "\(self.model![indexPath.row].id)", batchSize: nil, set: .WishListItem))
                     self.model!.removeAtIndex(indexPath.row)
                     self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                     // } else {

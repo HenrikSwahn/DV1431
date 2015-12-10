@@ -44,11 +44,11 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         self.musicCollectionView.hidden = true
         self.musicTableView.hidden = false
-        music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music)) as? [Music]
+        music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music), doConvert: true) as? [Music]
     }
     
     override func viewDidAppear(animated: Bool) {
-        music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music)) as? [Music]
+        music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music), doConvert: true) as? [Music]
         self.musicTableView.reloadData()
         self.musicCollectionView.reloadData()
     }

@@ -82,8 +82,8 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
-        music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set:.Music)) as? [Music]
+        movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie), doConvert: true) as? [Movie]
+        music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set:.Music), doConvert: true) as? [Music]
     }
 
     override func didReceiveMemoryWarning() {
