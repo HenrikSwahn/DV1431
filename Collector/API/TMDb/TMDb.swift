@@ -9,7 +9,8 @@
 import Foundation
 
 public class TMDb: API {
-    private let request = Request()
+    var request = Request()
+    var resource: APIResource?
     
     public struct Configuration {
         /// Update interval for configuration
@@ -28,8 +29,8 @@ public class TMDb: API {
     ///  - parameters:
     ///     - api: resource to use when dispatching a request
     ///     - completion: callback function when the request has been handled
+    @available(*, deprecated, message="To resolve this do:\nlet tmdb = TMDb(resource: APIResource)\ntmdb.request() { result in ... }")
     public required init(_ api: APIResource, completion: (Result<Response>) -> Void) {
-        super.init(api, completion: completion)
         //api.resource.urlDomain("api.themoviedb.org")
         api.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
         api.resource.urlDomain("app.opij.ac")

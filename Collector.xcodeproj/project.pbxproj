@@ -14,12 +14,6 @@
 		31114C221C15B19000396AA8 /* TMDbMovieResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C1D1C15B19000396AA8 /* TMDbMovieResource.swift */; };
 		31114C231C15B19000396AA8 /* TMDbSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C1E1C15B19000396AA8 /* TMDbSearchItem.swift */; };
 		31114C241C15B19000396AA8 /* TMDbSearchResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C1F1C15B19000396AA8 /* TMDbSearchResource.swift */; };
-		31114C2B1C15B1A200396AA8 /* LastFM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C251C15B1A200396AA8 /* LastFM.swift */; };
-		31114C2C1C15B1A200396AA8 /* LastFMAlbumItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C261C15B1A200396AA8 /* LastFMAlbumItem.swift */; };
-		31114C2D1C15B1A200396AA8 /* LastFMAlbumResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C271C15B1A200396AA8 /* LastFMAlbumResource.swift */; };
-		31114C2E1C15B1A200396AA8 /* LastFMAlbumTrackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C281C15B1A200396AA8 /* LastFMAlbumTrackItem.swift */; };
-		31114C2F1C15B1A200396AA8 /* LastFMSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C291C15B1A200396AA8 /* LastFMSearchItem.swift */; };
-		31114C301C15B1A200396AA8 /* LastFMSearchResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C2A1C15B1A200396AA8 /* LastFMSearchResource.swift */; };
 		31114C361C15B1AF00396AA8 /* Itunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C311C15B1AF00396AA8 /* Itunes.swift */; };
 		31114C371C15B1AF00396AA8 /* ItunesAlbumItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C321C15B1AF00396AA8 /* ItunesAlbumItem.swift */; };
 		31114C381C15B1AF00396AA8 /* ItunesAlbumResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C331C15B1AF00396AA8 /* ItunesAlbumResource.swift */; };
@@ -109,12 +103,6 @@
 		31114C1D1C15B19000396AA8 /* TMDbMovieResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMDbMovieResource.swift; path = API/TMDb/TMDbMovieResource.swift; sourceTree = "<group>"; };
 		31114C1E1C15B19000396AA8 /* TMDbSearchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMDbSearchItem.swift; path = API/TMDb/TMDbSearchItem.swift; sourceTree = "<group>"; };
 		31114C1F1C15B19000396AA8 /* TMDbSearchResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMDbSearchResource.swift; path = API/TMDb/TMDbSearchResource.swift; sourceTree = "<group>"; };
-		31114C251C15B1A200396AA8 /* LastFM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LastFM.swift; path = API/LastFM/LastFM.swift; sourceTree = "<group>"; };
-		31114C261C15B1A200396AA8 /* LastFMAlbumItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LastFMAlbumItem.swift; path = API/LastFM/LastFMAlbumItem.swift; sourceTree = "<group>"; };
-		31114C271C15B1A200396AA8 /* LastFMAlbumResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LastFMAlbumResource.swift; path = API/LastFM/LastFMAlbumResource.swift; sourceTree = "<group>"; };
-		31114C281C15B1A200396AA8 /* LastFMAlbumTrackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LastFMAlbumTrackItem.swift; path = API/LastFM/LastFMAlbumTrackItem.swift; sourceTree = "<group>"; };
-		31114C291C15B1A200396AA8 /* LastFMSearchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LastFMSearchItem.swift; path = API/LastFM/LastFMSearchItem.swift; sourceTree = "<group>"; };
-		31114C2A1C15B1A200396AA8 /* LastFMSearchResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LastFMSearchResource.swift; path = API/LastFM/LastFMSearchResource.swift; sourceTree = "<group>"; };
 		31114C311C15B1AF00396AA8 /* Itunes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Itunes.swift; path = API/iTunes/Itunes.swift; sourceTree = "<group>"; };
 		31114C321C15B1AF00396AA8 /* ItunesAlbumItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItunesAlbumItem.swift; path = API/iTunes/ItunesAlbumItem.swift; sourceTree = "<group>"; };
 		31114C331C15B1AF00396AA8 /* ItunesAlbumResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItunesAlbumResource.swift; path = API/iTunes/ItunesAlbumResource.swift; sourceTree = "<group>"; };
@@ -230,7 +218,6 @@
 				31114C401C15B1C700396AA8 /* Result.swift */,
 				31114C411C15B1C700396AA8 /* URL.swift */,
 				31114C1A1C15B16700396AA8 /* iTunes */,
-				31114C191C15B16200396AA8 /* LastFM */,
 				31114C181C15B15C00396AA8 /* TMDb */,
 			);
 			name = API;
@@ -257,19 +244,6 @@
 				31E41FDA1C16F2C7003976F9 /* TMDbConfigurationItem.swift */,
 			);
 			name = TMDb;
-			sourceTree = "<group>";
-		};
-		31114C191C15B16200396AA8 /* LastFM */ = {
-			isa = PBXGroup;
-			children = (
-				31114C251C15B1A200396AA8 /* LastFM.swift */,
-				31114C261C15B1A200396AA8 /* LastFMAlbumItem.swift */,
-				31114C271C15B1A200396AA8 /* LastFMAlbumResource.swift */,
-				31114C281C15B1A200396AA8 /* LastFMAlbumTrackItem.swift */,
-				31114C291C15B1A200396AA8 /* LastFMSearchItem.swift */,
-				31114C2A1C15B1A200396AA8 /* LastFMSearchResource.swift */,
-			);
-			name = LastFM;
 			sourceTree = "<group>";
 		};
 		31114C1A1C15B16700396AA8 /* iTunes */ = {
@@ -581,7 +555,6 @@
 				315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */,
 				31E41FD91C16F275003976F9 /* TMDbConfigurationResource.swift in Sources */,
 				31D1A6381C16127B00AA02A8 /* SearchMusicEntryTableViewCell.swift in Sources */,
-				31114C2E1C15B1A200396AA8 /* LastFMAlbumTrackItem.swift in Sources */,
 				AFF229581BFCAFED001181AC /* MediaTableViewController.swift in Sources */,
 				AFE9D7151BFE13EC009E5DAA /* ManualEntryTableViewController.swift in Sources */,
 				AF833FDD1C1961F1003D6C0A /* TracksTableViewCell.swift in Sources */,
@@ -594,7 +567,6 @@
 				31114C441C15B1C700396AA8 /* README.md in Sources */,
 				31114C4C1C15FFEE00396AA8 /* SearchAPIDelegate.swift in Sources */,
 				31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */,
-				31114C2C1C15B1A200396AA8 /* LastFMAlbumItem.swift in Sources */,
 				AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */,
 				31114C3A1C15B1AF00396AA8 /* ItunesTrackItem.swift in Sources */,
 				AF300AB11C16CA3D00BC57D9 /* TrackStore.swift in Sources */,
@@ -604,13 +576,11 @@
 				31EA349F1BFE4E4900D7F72B /* UIPickerTextField.swift in Sources */,
 				AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */,
 				31114C371C15B1AF00396AA8 /* ItunesAlbumItem.swift in Sources */,
-				31114C301C15B1A200396AA8 /* LastFMSearchResource.swift in Sources */,
 				315797E91C074F0B0007FAFC /* UIIconImageView.swift in Sources */,
 				31D1A6361C16126C00AA02A8 /* SearchMovieEntryTableViewCell.swift in Sources */,
 				AF300AA91C0E3D8200BC57D9 /* ViewContext.swift in Sources */,
 				31B842221BF3880D005429FA /* AppDelegate.swift in Sources */,
 				31E41FDB1C16F2C7003976F9 /* TMDbConfigurationItem.swift in Sources */,
-				31114C2D1C15B1A200396AA8 /* LastFMAlbumResource.swift in Sources */,
 				AF300A7F1C0737E000BC57D9 /* Track.swift in Sources */,
 				31114C421C15B1C700396AA8 /* API.swift in Sources */,
 				AF300AA61C0CBFA300BC57D9 /* Storage.swift in Sources */,
@@ -622,12 +592,10 @@
 				AF833FDF1C197DD2003D6C0A /* TrackTableViewCell.swift in Sources */,
 				AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */,
 				AFFC51C01BFDD03400DA5344 /* MediaDetailTableViewCell.swift in Sources */,
-				31114C2B1C15B1A200396AA8 /* LastFM.swift in Sources */,
 				315D31521BFF4EA100E08C7D /* ManualEntryTableViewCell.swift in Sources */,
 				AF300A7A1C07151200BC57D9 /* Movie.swift in Sources */,
 				31114C161C15B15700396AA8 /* JSON.swift in Sources */,
 				31E41FE31C1751EA003976F9 /* UITableViewCachable.swift in Sources */,
-				31114C2F1C15B1A200396AA8 /* LastFMSearchItem.swift in Sources */,
 				AF833FDB1C18AE9F003D6C0A /* WishListStore.swift in Sources */,
 				318C2C311C0C8F29008AE6C4 /* UIStretchableTableView.swift in Sources */,
 				31E41FEB1C185F7F003976F9 /* WishListBoxTableViewCell.swift in Sources */,
