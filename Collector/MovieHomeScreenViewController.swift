@@ -115,13 +115,12 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         
         self.mediaCollection.hidden = true
-        storage.emptyDatabase()
-        //movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
+        movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
     }
     
     override func viewDidAppear(animated: Bool) {
-        //movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
-        //mediaTable.reloadData()
+        movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie)) as? [Movie]
+        mediaTable.reloadData()
         
     }
 }

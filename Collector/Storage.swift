@@ -401,7 +401,6 @@ class Storage {
         
         for item in data {
             var mediaType = MediaType.Music
-            var data: NSData?
             
             switch item.type! {
             case "Movie":

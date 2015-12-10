@@ -18,6 +18,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     private var genericData = [(String, String)]()
     private struct Storyboard {
         static let mediaDetailTableCellIdentifier = "media detail cell id"
+        static let trackCellId = "TrackCellId"
     }
     
     @IBOutlet weak var headerImageView: UIImageView!
@@ -81,12 +82,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let albumArtist = music?.albumArtist {
             self.genericData.insert(("Artist: ", albumArtist), atIndex: 0)
         }
-        
-        self.genericData.append(("Track", ""))
-        
-        for track in (music?.trackList)! {
-            self.genericData.append((track.name, track.runtime.toString()))
-        }
+        self.genericData.append(("Tracks:", ""))
     }
 
     private func updateColor() {
@@ -108,7 +104,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         // Set self as delegate and datasource
         tableView.delegate = self
         tableView.dataSource = self
@@ -153,8 +149,8 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        if indexPath.row < genericData.count - 2 {
+
+        if indexPath.row < genericData.count - 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaDetailTableCellIdentifier) as! MediaDetailTableViewCell
             
             cell.keyLabel?.text = genericData[indexPath.row].0
@@ -165,9 +161,13 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaDetailTableCellIdentifier) as! TracksTableViewCell
-            cell.tracksLabel.text = "Tracks"
+            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.trackCellId) as! TracksTableViewCell
+            
+            cell.tracksLabel.text = "Tracks:"
             cell.setData((music?.trackList)!)
+            
+            // Set the proper background color
+            //cell.setDominantColors(with: colors, indexPath: indexPath)
             return cell
         }
     }
