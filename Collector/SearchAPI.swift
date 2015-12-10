@@ -31,8 +31,12 @@ class SearchAPI {
         // If we have no delegates or terms do nothing
         if self.delegate != nil && forTerm != nil {
             switch context {
-            case .Movie: _ = TMDb(TMDbSearchResource(forTerm: forTerm!), completion: self.willSearch)
-            case .Music: _ = Itunes(ItunesSearchResource(forTerm: forTerm!), completion: self.willSearch)
+                case .Movie:
+                    let tmdb = TMDb(resource: TMDbSearchResource(forTerm: forTerm!))
+                        tmdb.request(willSearch)
+                case .Music:
+                    let itunes = Itunes(resource: ItunesSearchResource(forTerm: forTerm!))
+                        itunes.request(willSearch)
             default: break
             }
         }

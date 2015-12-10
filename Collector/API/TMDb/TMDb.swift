@@ -31,6 +31,9 @@ public class TMDb: API {
     @available(*, deprecated, message="To resolve this do:\nlet tmdb = TMDb(resource: APIResource)\ntmdb.request() { result in ... }")
     public required init(_ api: APIResource, completion: (Result<Response>) -> Void) {
         //api.resource.urlDomain("api.themoviedb.org")
+        self.request = Request()
+        self.resource = api
+
         api.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
         api.resource.urlDomain("app.opij.ac")
         

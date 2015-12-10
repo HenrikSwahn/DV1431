@@ -1,7 +1,7 @@
 import Foundation
 
 public class Itunes: API {
-    var request = Request()
+    var request: Request?
     var resource: APIResource?
     
     /// Creates a instance of the Itunes API
@@ -10,9 +10,26 @@ public class Itunes: API {
     ///     - completion: callback function when the request has been handled
     @available(*, deprecated, message="To resolve this do:\nlet itunes = Itunes(resource: APIResource)\nitunes.request() { result in ... }")
     public required init(_ api: APIResource, completion: (Result<Response>) -> Void) {
+        self.request = Request()
+        self.resource = api
         api.resource.urlDomain("itunes.apple.com", scheme: URL.Scheme.HTTPS)
         //api.resource.urlDomain("app.opij.ac")
-        request.dispatch(Request.Source.URL(api.resource.url), completion: completion)
+        request?.dispatch(Request.Source.URL(api.resource.url), completion: completion)
+    }
+    
+    public required init(resource: APIResource) {
+        self.request = Request()
+        self.resource = resource
+        
+        self.resource!.resource.urlDomain("itunes.apple.com", scheme: URL.Scheme.HTTPS)
+    }
+    
+    public func request(completion: (Result<Response>) -> Void) {
+        if let url = self.resource?.resource.url {
+            self.request?.dispatch(Request.Source.URL(url), completion: completion)
+        } else {
+            print("No url has been set.")
+        }
     }
     
     /// Helper function to perform a check for the given data
