@@ -48,6 +48,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music), doConvert: true) as? [Music]
         self.musicTableView.reloadData()
         self.musicCollectionView.reloadData()

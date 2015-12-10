@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext {
+class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate {
     
     var movie: Movie?
     var context = ViewContextEnum.Movie
@@ -113,6 +113,15 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     
     // MARK: - View Lifecycle
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let rat = self.movie?.rating {
+            self.ratingView.rating = Float(rat)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -143,8 +152,11 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.titleLabel.type = .LeftRight
         self.titleLabel.scrollRate = 100.0
         self.titleLabel.fadeLength = 20.0
+        self.ratingView.delegate = self
         
-
+        if let rat = self.movie?.rating {
+            self.ratingView.rating = Float(rat)
+        }
         
         // Hide empty table cells
         self.hideEmptyTableViewCells()
@@ -153,6 +165,16 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Rating View
+    func ratingView(ratingView: UIRatingView, didUpdate rating: Float) {
+        let storage = Storage()
+        movie!.rating = Int(rating)
+        storage.updateMovieObject(movie!)
+    }
+    func ratingView(ratingView: UIRatingView, isUpdating rating: Float) {
+        
     }
     
     

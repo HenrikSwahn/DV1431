@@ -102,6 +102,14 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     // MARK: - View Lifecycle
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let rat = self.music?.rating {
+            self.ratingView.rating = Float(rat)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     

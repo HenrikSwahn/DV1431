@@ -351,6 +351,10 @@ class Storage {
                 movie.director = director
             }
             
+            if let rating = mStore.rating {
+                movie.rating = Int(rating)
+            }
+            
             movies.append(movie)
         }
         return movies
@@ -500,6 +504,35 @@ class Storage {
             }
         }
     }
+    
+    func updateMovieObject(updatedMovie: Movie) {
+        var result = searchData(.Title, search: updatedMovie.title, batchSize: nil, set: .Movie, doConvert: false) as! [MovieStore]
+        
+        if result.count > 0 {
+            let managedObject = result[0] as MovieStore
+            managedObject.setValue(updatedMovie.title, forKey: "title")
+            managedObject.setValue(updatedMovie.genre, forKey: "genre")
+            managedObject.setValue(updatedMovie.runtime.getTotalInSeconds(), forKey: "runtime")
+            managedObject.setValue(updatedMovie.releaseYear, forKey: "releaseYear")
+            managedObject.setValue(updatedMovie.desc, forKey: "desc")
+            managedObject.setValue(updatedMovie.ownerLocation, forKey: "ownerLocation")
+            managedObject.setValue(updatedMovie.owningType?.rawValue, forKey: "owningType")
+            managedObject.setValue(updatedMovie.format?.rawValue, forKey: "format")
+            managedObject.setValue(updatedMovie.rating, forKey: "rating")
+            managedObject.setValue(updatedMovie.director, forKey: "director")
+            managedObject.setValue(updatedMovie.mainActors, forKey: "mainActors")
+            managedObject.setValue(updatedMovie.ageRestriction, forKey: "ageRestriction")
+            managedObject.setValue(UIImageJPEGRepresentation(updatedMovie.coverArt!, 1), forKey: "coverArt")
+            
+            do {
+                try managedObjectContext.save()
+            }
+            catch {
+                fatalError("Error updating object in core data")
+            }
+        }
+    }
+
 
     // MARK: - Dev
     func emptyDatabase() {
