@@ -165,8 +165,40 @@ class WishListTableViewController: UITableViewController {
             case .Insert:
                 // Insert this item to the main library
                 controller.addActions(self.defaultAlertActions(.Destructive) { _ in
-                    // Call the REST API with the given ID (self.model[indexPath.row].aid)
-                    // When done, add it to the library and finally:
+                    
+                    switch self.model![indexPath.row].type {
+                    case .Movie:
+                        let getMovie = TMDbMovieResource(id: self.model![indexPath.row].id)
+                        TMDb(getMovie) { result in
+                            switch result {
+                            case .Success(let response):
+                                let movie = Movie.fromTMDbMovieItem(TMDb.parseMovie(JSON(response.data))!, image: self.model![indexPath.row].imageData)
+                                self.storage.storeMovie(movie)
+                                self.storage.removeFromDB(DBSearch(table: .Id, searchString: "\(self.model![indexPath.row].id)", batchSize: nil, set: .WishListItem))
+                                self.model!.removeAtIndex(indexPath.row)
+                                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                                break
+                            case .Error(_): break
+                            }
+                        }
+                        break
+                    case .Music:
+                        let getAlbum = ItunesAlbumResource(id: String(stringInterpolationSegment: self.model![indexPath.row].id))
+                        Itunes(getAlbum) { result in
+                            switch result {
+                            case .Success(let response):
+                                let album = Music.fromItunesAlbumItem(Itunes.parseAlbum(JSON(response.data))!, albumImage: self.model![indexPath.row].imageData)
+                                self.storage.storeMusic(album)
+                                self.storage.removeFromDB(DBSearch(table: .Id, searchString: "\(self.model![indexPath.row].id)", batchSize: nil, set: .WishListItem))
+                                self.model!.removeAtIndex(indexPath.row)
+                                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                                break
+                            case .Error(_): break
+                            }
+                        }
+                        break
+                    default:break
+                    }
                     self.tableView.setEditing(false, animated: true)
                 })
                 
@@ -177,7 +209,6 @@ class WishListTableViewController: UITableViewController {
                     self.storage.removeFromDB(DBSearch(table: .Id, searchString: "\(self.model![indexPath.row].id)", batchSize: nil, set: .WishListItem))
                     self.model!.removeAtIndex(indexPath.row)
                     self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                    // } else {
                 })
             }
             
