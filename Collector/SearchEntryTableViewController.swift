@@ -200,8 +200,56 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     // MARK: - Wishlist
     func wishAction() -> (action: UITableViewRowAction, indexPath: NSIndexPath) -> Void {
         return { [unowned self] (action, indexPath) in
+            var wishListItem: WishListItem?
+
             // Insert this item to the wishlist
+            switch self.context {
+                case .Movie:
+                    let movie: SearchMovieEntryTableViewCell? = self.search.cellForRowAtIndexPath(self.tableView, indexPath: indexPath)
+                    guard movie != nil else { break }
+                    wishListItem = movie!.toWishListItem()
+                
+                case .Music:
+                    let album: SearchMusicEntryTableViewCell? = self.search.cellForRowAtIndexPath(self.tableView, indexPath: indexPath)
+                    guard album != nil else { break }
+                    wishListItem = album!.toWishListItem()
+                
+                // Future proof
+                //case .Game:
+                //case .Book:
+                default: break;
+            }
+            
+            if let item = wishListItem {
+                let storage = Storage()
+                storage.storeWishListItem(item)
+            }
+
             self.tableView.setEditing(false, animated: true)
         }
+    }
+}
+
+extension SearchMovieEntryTableViewCell {
+    internal func toWishListItem() -> WishListItem {
+        return WishListItem(
+            id:         0,
+            aid:        self.identifier,
+            type:       .Movie,
+            imageData:  self.movieImage.image,
+            title:      self.titleLabel.text ?? "",
+            detail:     self.synopsisLabel.text ?? "")
+    }
+}
+
+extension SearchMusicEntryTableViewCell {
+    internal func toWishListItem() -> WishListItem {
+        return WishListItem(
+            id:         0,
+            aid:        self.identifier,
+            type:       .Music,
+            imageData:  self.albumImage.image,
+            title:      self.titleLabel.text ?? "",
+            detail:     self.artistLabel.text ?? "")
     }
 }

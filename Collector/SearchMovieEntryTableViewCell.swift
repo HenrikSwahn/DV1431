@@ -15,6 +15,9 @@ class SearchMovieEntryTableViewCell: UICachableTableViewCell {
         }
     }
     
+    // Identifier from the API
+    var identifier: String!
+    
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var releaseLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -29,7 +32,8 @@ class SearchMovieEntryTableViewCell: UICachableTableViewCell {
             let link = movie.image
             //let link = "http://app.opij.ac/image.jpg"
             self.loadImage(link, view: self.movieImage)
-
+            
+            identifier = "\(movie.id)"
             titleLabel.text = movie.title
             releaseLabel.text = "\(movie.release)"
             synopsisLabel.text = movie.synopsis

@@ -15,6 +15,7 @@ class SearchMusicEntryTableViewCell: UICachableTableViewCell {
         }
     }
     
+    var identifier: String!
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var releaseLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,6 +27,7 @@ class SearchMusicEntryTableViewCell: UICachableTableViewCell {
             //let link = "http://app.opij.ac/image.jpg"
             self.loadImage(link!, view: self.albumImage)
             
+            identifier = album.id
             releaseLabel.text = "\(album.release)"
             artistLabel.text = album.artist
             titleLabel.text = album.name
