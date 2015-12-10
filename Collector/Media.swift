@@ -29,6 +29,7 @@ class Media {
     var owningType: OwningType?
     var ownerLocation: String?
     var coverArt: UIImage?
+    var rating: Int?
     
     init(title: String, released: Int, runtime: Runtime) {
         self.title = title

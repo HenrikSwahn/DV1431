@@ -22,4 +22,5 @@ class MovieStore: NSManagedObject {
     @NSManaged var ageRestriction: NSNumber?
     @NSManaged var director: String?
     @NSManaged var mainActors: String?
+    @NSManaged var rating: NSNumber?
 }

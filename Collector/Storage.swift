@@ -470,6 +470,33 @@ class Storage {
         }
     }
     
+    func updateMusicObject(updatedMusic: Music) {
+        var result = searchData(.Title, search: updatedMusic.title, batchSize: nil, set: .Music, doConvert: false) as! [MusicStore]
+        
+        if result.count > 0 {
+            let managedObject = result[0] as MusicStore
+            managedObject.setValue(updatedMusic.title, forKey: "title")
+            managedObject.setValue(updatedMusic.genre, forKey: "genre")
+            managedObject.setValue(updatedMusic.albumArtist, forKey: "albumArtist")
+            managedObject.setValue(updatedMusic.runtime.getTotalInSeconds(), forKey: "runtime")
+            //result[0].tracks = NSSet(array: updatedMusic.trackList)
+            managedObject.setValue(updatedMusic.releaseYear, forKey: "releaseYear")
+            managedObject.setValue(updatedMusic.desc, forKey: "desc")
+            managedObject.setValue(updatedMusic.ownerLocation, forKey: "ownerLocation")
+            managedObject.setValue(updatedMusic.owningType?.rawValue, forKey: "owningType")
+            managedObject.setValue(updatedMusic.format?.rawValue, forKey: "format")
+            managedObject.setValue(updatedMusic.rating, forKey: "rating")
+            managedObject.setValue(UIImageJPEGRepresentation(updatedMusic.coverArt!, 1), forKey: "coverArt")
+            
+            do {
+                try managedObjectContext.save()
+            }
+            catch {
+                fatalError("Error updating object in core data")
+            }
+        }
+    }
+
     // MARK: - Dev
     func emptyDatabase() {
         let fetchRequest = NSFetchRequest(entityName: "WishListItem")
@@ -482,3 +509,6 @@ class Storage {
         }
     }
 }
+
+
+

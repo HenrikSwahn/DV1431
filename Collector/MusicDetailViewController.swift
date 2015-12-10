@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext {
+class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate {
     
     var music: Music?
     var context = ViewContextEnum.Unkown
@@ -131,7 +131,11 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.titleLabel.scrollRate = 100.0
         self.titleLabel.fadeLength = 20.0
         
+        self.ratingView.delegate = self
         
+        if let rat = self.music?.rating {
+            self.ratingView.rating = Float(rat)
+        }
         
         // Hide empty table cells
         self.hideEmptyTableViewCells()
@@ -142,6 +146,15 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Rating View
+    func ratingView(ratingView: UIRatingView, didUpdate rating: Float) {
+        let storage = Storage()
+        music!.rating = Int(rating)
+        storage.updateMusicObject(music!)
+    }
+    func ratingView(ratingView: UIRatingView, isUpdating rating: Float) {
+    
+    }
     
     // MARK: - TableView
     private func hideEmptyTableViewCells() {

@@ -22,4 +22,5 @@ class MusicStore: NSManagedObject {
     @NSManaged var coverArt: NSData?
     @NSManaged var albumArtist: String?
     @NSManaged var tracks: NSSet?
+    @NSManaged var rating: NSNumber?
 }
