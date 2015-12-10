@@ -78,16 +78,12 @@ class WishListTableViewController: UITableViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        /* To store item */
-        for m in modell {
-            storage.storeWishListItem(m)
-        }
-        
-        /* To get item */
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         model = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .WishListItem), doConvert: true) as? [WishListItem]
-        //storage.emptyDatabase()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
