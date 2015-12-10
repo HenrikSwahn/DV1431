@@ -2,10 +2,11 @@ import Foundation
 
 protocol API {
     @available(*, deprecated)
-    var request: Request { get set }
+    var request: Request? { get set }
     var resource: APIResource? { get set }
     
     init(_ api: APIResource, completion: (Result<Response>) -> Void)
+    init(resource: APIResource)
     func request(completion: (Result<Response>) -> Void)
 }
 

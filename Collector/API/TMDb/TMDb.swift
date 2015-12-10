@@ -9,7 +9,7 @@
 import Foundation
 
 public class TMDb: API {
-    var request = Request()
+    var request: Request?
     var resource: APIResource?
     
     public struct Configuration {
@@ -24,7 +24,6 @@ public class TMDb: API {
         public static let Key = "TMDbConfiguration"
     }
     
-    
     /// Creates a instance of the TMDb API
     ///  - parameters:
     ///     - api: resource to use when dispatching a request
@@ -35,7 +34,24 @@ public class TMDb: API {
         api.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
         api.resource.urlDomain("app.opij.ac")
         
-        request.dispatch(Request.Source.URL(api.resource.url), completion: completion)
+        self.request?.dispatch(Request.Source.URL(api.resource.url), completion: completion)
+    }
+    
+    public required init(resource: APIResource) {
+        self.request = Request()
+        self.resource = resource
+        
+        //self.resource?.resource.urlDomain("api.themoviedb.org")
+        self.resource?.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
+        self.resource?.resource.urlDomain("app.opij.ac")
+    }
+    
+    public func request(completion: (Result<Response>) -> Void) {
+        if let url = self.resource?.resource.url {
+            self.request?.dispatch(Request.Source.URL(url), completion: completion)
+        } else {
+            print("No url has been set.")
+        }
     }
     
     /// Parses a single movie result
