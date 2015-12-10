@@ -30,12 +30,12 @@ public class TMDb: API {
     ///     - completion: callback function when the request has been handled
     @available(*, deprecated, message="To resolve this do:\nlet tmdb = TMDb(resource: APIResource)\ntmdb.request() { result in ... }")
     public required init(_ api: APIResource, completion: (Result<Response>) -> Void) {
-        //api.resource.urlDomain("api.themoviedb.org")
         self.request = Request()
         self.resource = api
 
+        api.resource.urlDomain("api.themoviedb.org")
         api.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
-        api.resource.urlDomain("app.opij.ac")
+        //api.resource.urlDomain("app.opij.ac")
         
         self.request?.dispatch(Request.Source.URL(api.resource.url), completion: completion)
     }
@@ -44,9 +44,9 @@ public class TMDb: API {
         self.request = Request()
         self.resource = resource
         
-        //self.resource?.resource.urlDomain("api.themoviedb.org")
+        self.resource?.resource.urlDomain("api.themoviedb.org")
         self.resource?.resource.urlField(named: "api_key", "3bde72620dd396beec310a3e1d30ce6a")
-        self.resource?.resource.urlDomain("app.opij.ac")
+        //self.resource?.resource.urlDomain("app.opij.ac")
     }
     
     public func request(completion: (Result<Response>) -> Void) {

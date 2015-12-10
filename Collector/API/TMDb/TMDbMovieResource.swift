@@ -9,19 +9,19 @@
 import Foundation
 
 public struct TMDbMovieResource: APIResource {
-    public var resource = URL(pathed: "/3/movie/id")
+    public var resource = URL(pathed: "/3/movie/%s")
     
     public init(id: String) {
         resource.urlPath(args: id)
         resource.urlField(named: "append_to_response", "credits")
-        resource.urlPath(pathed: "/tmdb_movie.json")
+        //resource.urlPath(pathed: "/tmdb_movie.json")
     }
     
     /// This request method is deprecated. Please use TMDbMovieResource(id: String)
-    @available(*, deprecated)
+    @available(*, deprecated, message="\nPlease use TMDbMovieResource(id: String)")
     public init(id: Int) {
-        //resource.urlPath(args: id)
+        resource.urlPath(args: id)
         resource.urlField(named: "append_to_response", "credits")
-        resource.urlPath(pathed: "/tmdb_movie.json")
+        //resource.urlPath(pathed: "/tmdb_movie.json")
     }
 }
