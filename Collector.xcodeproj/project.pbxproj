@@ -53,6 +53,7 @@
 		31E41FED1C186390003976F9 /* WishListRectangleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E41FEC1C186390003976F9 /* WishListRectangleTableViewCell.swift */; };
 		31E41FF71C19C8B1003976F9 /* TMDbConfigurationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E41FF51C19C8B1003976F9 /* TMDbConfigurationItem.swift */; };
 		31E41FF81C19C8B1003976F9 /* TMDbConfigurationResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E41FF61C19C8B1003976F9 /* TMDbConfigurationResource.swift */; };
+		31E41FFA1C19D1BC003976F9 /* WishListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E41FF91C19D1BC003976F9 /* WishListItem.swift */; };
 		31EA349F1BFE4E4900D7F72B /* UIPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */; };
 		AF300A781C0710E000BC57D9 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A771C0710E000BC57D9 /* Runtime.swift */; };
 		AF300A7A1C07151200BC57D9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A791C07151200BC57D9 /* Movie.swift */; };
@@ -148,6 +149,7 @@
 		31E41FEC1C186390003976F9 /* WishListRectangleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListRectangleTableViewCell.swift; sourceTree = "<group>"; };
 		31E41FF51C19C8B1003976F9 /* TMDbConfigurationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMDbConfigurationItem.swift; path = API/TMDb/TMDbConfigurationItem.swift; sourceTree = "<group>"; };
 		31E41FF61C19C8B1003976F9 /* TMDbConfigurationResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMDbConfigurationResource.swift; path = API/TMDb/TMDbConfigurationResource.swift; sourceTree = "<group>"; };
+		31E41FF91C19D1BC003976F9 /* WishListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListItem.swift; sourceTree = "<group>"; };
 		31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPickerTextField.swift; sourceTree = "<group>"; };
 		AF300A771C0710E000BC57D9 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		AF300A791C07151200BC57D9 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				AF300A771C0710E000BC57D9 /* Runtime.swift */,
 				AF300A791C07151200BC57D9 /* Movie.swift */,
 				31114C491C15FEC400396AA8 /* SearchAPI.swift */,
+				31E41FF91C19D1BC003976F9 /* WishListItem.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				AF833FDF1C197DD2003D6C0A /* TrackTableViewCell.swift in Sources */,
 				AFADF8511BFC77290024D9A4 /* MediaTableViewCell.swift in Sources */,
 				AFFC51C01BFDD03400DA5344 /* MediaDetailTableViewCell.swift in Sources */,
+				31E41FFA1C19D1BC003976F9 /* WishListItem.swift in Sources */,
 				315D31521BFF4EA100E08C7D /* ManualEntryTableViewCell.swift in Sources */,
 				31E41FF71C19C8B1003976F9 /* TMDbConfigurationItem.swift in Sources */,
 				AF300A7A1C07151200BC57D9 /* Movie.swift in Sources */,
