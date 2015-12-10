@@ -34,7 +34,8 @@ class WishListBoxTableViewCell: UITableViewCell {
     func updateUI() {
         if let item = wish {
             if let imageData = item.imageData {
-                self.wishImageView.image = imageData            }
+                self.wishImageView.image = imageData
+            }
 
             wishIconType.image = getType(item)
             wishTitleLabel?.text = item.title

@@ -87,6 +87,26 @@ class SearchAPI {
         return UITableViewCell()
     }
     
+    func cellForRowAtIndexPath(tableView: UITableView, indexPath: NSIndexPath) -> SearchMovieEntryTableViewCell? {
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            if let cellAtPath = cell as? SearchMovieEntryTableViewCell {
+                return cellAtPath
+            }
+        }
+        
+        return nil
+    }
+    
+    func cellForRowAtIndexPath(tableView: UITableView, indexPath: NSIndexPath) -> SearchMusicEntryTableViewCell? {
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            if let cellAtPath = cell as? SearchMusicEntryTableViewCell {
+                return cellAtPath
+            }
+        }
+        
+        return nil
+    }
+    
     internal func empty() {
         self.movieSearchResults = nil
         self.musicSearchResults = nil
