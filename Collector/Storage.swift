@@ -47,7 +47,14 @@ class Storage {
     
     private var managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    func storeMovie(movie: Movie) {
+    func storeMovie(movie: Movie) -> Bool {
+        let results = searchData(.Title, search: movie.title, batchSize: nil, set: .Movie, doConvert: false)
+        
+        if results != nil {
+            if results?.count > 0 {
+                return false
+            }
+        }
         
         let movieStoreDesc = NSEntityDescription.entityForName("Movie", inManagedObjectContext: managedObjectContext)
         let storeMovie = MovieStore(entity: movieStoreDesc!, insertIntoManagedObjectContext: managedObjectContext)
@@ -95,13 +102,23 @@ class Storage {
         
         do {
             try managedObjectContext.save()
+            return true
         }
         catch {
-          fatalError("Error saving Movie")
+            fatalError("Error saving Movie")
         }
     }
     
-    func storeMusic(music: Music) {
+    func storeMusic(music: Music) -> Bool {
+        
+        let results = searchData(.Title, search: music.title, batchSize: nil, set: .Music, doConvert: false)
+        
+        if results != nil {
+            if results?.count > 0 {
+                return false
+            }
+        }
+        
         let musicStoreDesc = NSEntityDescription.entityForName("Music", inManagedObjectContext: managedObjectContext)
         let storeMusic = MusicStore(entity: musicStoreDesc!, insertIntoManagedObjectContext:   managedObjectContext)
         
@@ -141,6 +158,7 @@ class Storage {
         do {
             try managedObjectContext.save()
             storeTracks(music.trackList, music: storeMusic)
+            return true
         }
         catch {
             fatalError("Error saving Music")

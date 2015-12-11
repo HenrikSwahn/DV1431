@@ -155,7 +155,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil) //Should take some function
-        
+    
         menu.addAction(cameraAction)
         menu.addAction(photoAlbumAction)
         menu.addAction(cancelAction)
@@ -346,6 +346,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     
     //MARK: - Save Music
     private func saveMedia() {
+        var success = false
         
         if titleField.text?.characters.count < 0 {
             return
@@ -385,7 +386,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
             if let ownType = owningType.text {
                 newMovie.setOwningType(ownType)
             }
-            movieSpecific(newMovie)
+            success = movieSpecific(newMovie)
 
             break
         case .Music:
@@ -414,13 +415,16 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
             if let ownType = owningType.text {
                 newMusic.setOwningType(ownType)
             }
-            musicSpecific(newMusic)
+            success = musicSpecific(newMusic)
         default:break
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        if success {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
-    private func movieSpecific(movie: Movie) {
+    private func movieSpecific(movie: Movie) -> Bool {
         var indexPath = NSIndexPath(forRow: 0, inSection: 0)
         var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
@@ -445,10 +449,15 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         }
         ////////////////
         
-        storage.storeMovie(movie)
+        if !storage.storeMovie(movie) {
+            alertUser("Movie already exists in Media Library")
+            return false
+        }
+        
+        return true
     }
     
-    private func musicSpecific(music: Music) {
+    private func musicSpecific(music: Music) -> Bool {
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
@@ -459,7 +468,19 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         if (tracks != nil) {
             music.trackList = tracks!
         }
-        storage.storeMusic(music)
+        
+        if !storage.storeMusic(music) {
+            alertUser("Album already exists in Media Library")
+            return false
+        }
+        return true
+    }
+    
+    private func alertUser(msg: String){
+        let alert = UIAlertController(title: "Duplicate entries", message: msg, preferredStyle: .ActionSheet)
+        let OkAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+        alert.addAction(OkAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 
