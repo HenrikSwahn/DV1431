@@ -20,6 +20,7 @@ enum SearchSet: String {
 
 enum DBTable {
     case MovieId
+    case MusicId
     case Title
     case ReleaseYear
     case Genre
@@ -113,7 +114,7 @@ class Storage {
     
     func storeMusic(music: Music) -> Bool {
         
-        let results = searchData(.Title, search: music.title, batchSize: nil, set: .Music, doConvert: false)
+        let results = searchData(.MusicId, search: music.id, batchSize: nil, set: .Music, doConvert: false)
         
         if results != nil {
             if results?.count > 0 {
@@ -124,6 +125,7 @@ class Storage {
         let musicStoreDesc = NSEntityDescription.entityForName("Music", inManagedObjectContext: managedObjectContext)
         let storeMusic = MusicStore(entity: musicStoreDesc!, insertIntoManagedObjectContext:   managedObjectContext)
         
+        storeMusic.id = music.id
         storeMusic.title = music.title
         storeMusic.runtime = music.runtime.getTotalInSeconds()
         storeMusic.releaseYear = music.releaseYear
@@ -264,7 +266,11 @@ class Storage {
             case .Genre:
                 request.predicate = NSPredicate(format: "genre==%@", search!)
                 request.sortDescriptors?.append(NSSortDescriptor(key: "genre", ascending: true))
+                break
             case .MovieId:
+                request.predicate = NSPredicate(format: "id==%@", search!)
+                break
+            case .MusicId:
                 request.predicate = NSPredicate(format: "id==%@", search!)
                 break
             case .Id:
@@ -392,6 +398,10 @@ class Storage {
         for mStore in data {
             let mu = Music(title: mStore.title!, released: Int(mStore.releaseYear!))
             
+            if let id = mStore.id {
+                mu.id = id
+            }
+            
             if let runtime = mStore.runtime {
                 mu.runtime = Runtime.getRuntimeBasedOnSeconds(Int(runtime))
             }
@@ -505,7 +515,7 @@ class Storage {
     }
     
     func updateMusicObject(updatedMusic: Music) {
-        var result = searchData(.Title, search: updatedMusic.title, batchSize: nil, set: .Music, doConvert: false) as! [MusicStore]
+        var result = searchData(.MusicId, search: updatedMusic.id, batchSize: nil, set: .Music, doConvert: false) as! [MusicStore]
         
         if result.count > 0 {
             let managedObject = result[0] as MusicStore

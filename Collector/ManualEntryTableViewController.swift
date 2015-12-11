@@ -404,6 +404,9 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         case .Music:
             let newMusic = Music(title: titleField.text!, released: Int(releaseYear.text!)!)
             
+            if let id = music!.id {
+                newMusic.id = id
+            }
             if let genre = genreFIeld.text {
                 newMusic.genre = genre
             }
@@ -444,6 +447,10 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     private func movieSpecific() -> Bool {
         
         let movie = Movie(title: titleField.text!, released: Int(releaseYear.text!)!, runtime: Runtime.getRuntimeBasedOnString(runTime.text!))
+        
+        if let id = movieItem!.id {
+            movie.id = id
+        }
         
         if let genre = genreFIeld.text {
             movie.genre = genre
@@ -547,6 +554,7 @@ extension Music {
         music.genre = item.genre
         music.desc = item.description
         music.coverArt = albumImage
+        music.id = item.id
         
         
         if let tracks = item.tracks {

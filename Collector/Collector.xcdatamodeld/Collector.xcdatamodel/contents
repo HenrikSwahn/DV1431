@@ -22,6 +22,7 @@
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="format" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ownerLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="owningType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -46,7 +47,7 @@
     </entity>
     <elements>
         <element name="Movie" positionX="79" positionY="243" width="128" height="255"/>
-        <element name="Music" positionX="-225" positionY="261" width="126" height="225"/>
+        <element name="Music" positionX="-225" positionY="261" width="126" height="240"/>
         <element name="Track" positionX="-126" positionY="611" width="126" height="103"/>
         <element name="WishListItem" positionX="-72" positionY="396" width="128" height="135"/>
     </elements>

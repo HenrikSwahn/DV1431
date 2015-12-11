@@ -11,6 +11,7 @@ import CoreData
 
 
 class MusicStore: NSManagedObject {
+    @NSManaged var id: String?
     @NSManaged var title: String?
     @NSManaged var runtime: NSNumber?
     @NSManaged var releaseYear: NSNumber?
