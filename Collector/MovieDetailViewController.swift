@@ -174,7 +174,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func ratingView(ratingView: UIRatingView, didUpdate rating: Float) {
         let storage = Storage()
         movie!.rating = Int(rating)
-        storage.updateMovieObject(movie!, oldTitle: movie!.title)
+        storage.updateMovieObject(movie!)
     }
     
     func ratingView(ratingView: UIRatingView, isUpdating rating: Float) {

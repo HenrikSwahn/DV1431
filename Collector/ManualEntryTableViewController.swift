@@ -494,7 +494,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         ////////////////
         
         if context == .EditMovie {
-            storage.updateMovieObject(movie, oldTitle: movieItem!.title)
+            storage.updateMovieObject(movie)
             return true
         }
         else {
@@ -569,6 +569,7 @@ extension Track {
 extension Movie {
     static func fromTMDbMovieItem(item: TMDbMovieItem, image: UIImage?) -> Movie {
         let movie = Movie(title: item.title, released: item.release, runtime: Runtime.getRuntimeBasedOnMinutes(item.runtime))
+        movie.id = item.id
         movie.genre = item.genres.joinWithSeparator(", ")
         movie.mainActors = item.cast.joinWithSeparator(", ")
         movie.desc = item.synopsis

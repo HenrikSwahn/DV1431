@@ -19,6 +19,7 @@ enum SearchSet: String {
 }
 
 enum DBTable {
+    case MovieId
     case Title
     case ReleaseYear
     case Genre
@@ -48,7 +49,7 @@ class Storage {
     private var managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     func storeMovie(movie: Movie) -> Bool {
-        let results = searchData(.Title, search: movie.title, batchSize: nil, set: .Movie, doConvert: false)
+        let results = searchData(.MovieId, search: movie.id, batchSize: nil, set: .Movie, doConvert: false)
         
         if results != nil {
             if results?.count > 0 {
@@ -59,6 +60,7 @@ class Storage {
         let movieStoreDesc = NSEntityDescription.entityForName("Movie", inManagedObjectContext: managedObjectContext)
         let storeMovie = MovieStore(entity: movieStoreDesc!, insertIntoManagedObjectContext: managedObjectContext)
         
+        storeMovie.id = movie.id
         storeMovie.title = movie.title
         storeMovie.runtime = movie.runtime.getTotalInSeconds()
         storeMovie.releaseYear = movie.releaseYear
@@ -262,6 +264,8 @@ class Storage {
             case .Genre:
                 request.predicate = NSPredicate(format: "genre==%@", search!)
                 request.sortDescriptors?.append(NSSortDescriptor(key: "genre", ascending: true))
+            case .MovieId:
+                request.predicate = NSPredicate(format: "id==%@", search!)
                 break
             case .Id:
                 request.predicate = NSPredicate(format: "id==%d", Int(search!)!)
@@ -332,6 +336,10 @@ class Storage {
         var movies = [Movie]()
         for mStore in data {
             let movie = Movie(title: mStore.title!, released: Int(mStore.releaseYear!), runtime: Runtime.getRuntimeBasedOnSeconds(Int(mStore.runtime!)))
+            
+            if let id = mStore.id {
+                movie.id = id
+            }
             
             if let genre = mStore.genre {
                 movie.genre = genre
@@ -523,8 +531,8 @@ class Storage {
         }
     }
     
-    func updateMovieObject(updatedMovie: Movie, oldTitle: String) {
-        var result = searchData(.Title, search: oldTitle, batchSize: nil, set: .Movie, doConvert: false) as! [MovieStore]
+    func updateMovieObject(updatedMovie: Movie) {
+        var result = searchData(.MovieId, search: updatedMovie.id, batchSize: nil, set: .Movie, doConvert: false) as! [MovieStore]
         
         if result.count > 0 {
             let managedObject = result[0] as MovieStore

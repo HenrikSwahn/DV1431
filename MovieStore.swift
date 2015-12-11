@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 class MovieStore: NSManagedObject {
+    @NSManaged var id: String?
     @NSManaged var coverArt: NSData?
     @NSManaged var desc: String?
     @NSManaged var format: String?
