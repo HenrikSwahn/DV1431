@@ -523,8 +523,8 @@ class Storage {
         }
     }
     
-    func updateMovieObject(updatedMovie: Movie) {
-        var result = searchData(.Title, search: updatedMovie.title, batchSize: nil, set: .Movie, doConvert: false) as! [MovieStore]
+    func updateMovieObject(updatedMovie: Movie, oldTitle: String) {
+        var result = searchData(.Title, search: oldTitle, batchSize: nil, set: .Movie, doConvert: false) as! [MovieStore]
         
         if result.count > 0 {
             let managedObject = result[0] as MovieStore

@@ -11,6 +11,8 @@ import Foundation
 enum ViewContextEnum: String {
     case Movie = "Movie"
     case Music = "Music"
+    case EditMovie = "EditMovie"
+    case EditMusic = "EditMusic"
     case Unkown = "Unkown"
 }
 

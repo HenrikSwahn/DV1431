@@ -63,6 +63,8 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         case .Music:
             initForMusic()
             break
+        case .EditMovie:
+            initForMovie()
         default:
             break
         }
@@ -91,6 +93,9 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         self.formatPickerTextField.dataSource(["DVD", "Blu-Ray", "MP4"], arrayTwo: nil, arrayThree: nil)
         
         if (tmdbSearchItem != nil) {
+            setUpInputsFields()
+        }
+        else if context == .EditMovie {
             setUpInputsFields()
         }
     }
@@ -186,6 +191,8 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
                 return movieEntries.count
             case .Music:
                 return musicEntries.count
+            case .EditMovie:
+                return movieEntries.count
             default:
                 return 0
             }
@@ -207,6 +214,25 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
             
             switch context {
             case .Movie:
+                if (movieItem == nil) {
+                    cell.genricEntryTextField.placeholder = movieEntries[indexPath.row]
+                }
+                else {
+                    switch indexPath.row {
+                    case 0:
+                        cell.genricEntryTextField.text = "The director" //movieItem.director
+                    case 1:
+                        cell.genricEntryTextField.text = movieItem?.mainActors
+                    case 2:
+                        cell.genricEntryTextField.text = "R"            //movieItem?.ageRestriction
+                    default:break
+                    }
+                }
+                cell.trackName.hidden = true
+                cell.trackRunTime.hidden = true
+                cell.addButton.hidden = true
+                break;
+            case .EditMovie:
                 if (movieItem == nil) {
                     cell.genricEntryTextField.placeholder = movieEntries[indexPath.row]
                 }
@@ -340,6 +366,15 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
                 case .Error(_): break
                 }
             }
+        case .EditMovie:
+            self.titleField.text = self.movieItem!.title
+            self.releaseYear.text = "\(self.movieItem!.releaseYear)"
+            self.genreFIeld.text = self.movieItem!.genre
+            self.descTextArea.text = self.movieItem!.desc
+            self.image.image = self.movieItem!.coverArt
+            self.runTime.text = self.movieItem?.runtime.toString()
+            self.tableView.reloadData()
+            break
         default:break
         }
     }
@@ -362,33 +397,10 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         
         switch self.context {
         case .Movie:
-            let newMovie = Movie(title: titleField.text!, released: Int(releaseYear.text!)!, runtime: Runtime.getRuntimeBasedOnString(runTime.text!))
-            if let genre = genreFIeld.text {
-                newMovie.genre = genre
-            }
-            
-            if let format = formatPickerTextField.text {
-                newMovie.setFormat(format)
-            }
-            
-            if let desc = descTextArea.text {
-                newMovie.desc = desc
-            }
-            
-            if let coverArt = image.image {
-                newMovie.coverArt = coverArt
-            }
-            
-            if let ownerLocation = locationField.text {
-                newMovie.ownerLocation = ownerLocation
-            }
-            
-            if let ownType = owningType.text {
-                newMovie.setOwningType(ownType)
-            }
-            success = movieSpecific(newMovie)
-
+            success = movieSpecific()
             break
+        case .EditMovie:
+            success = movieSpecific()
         case .Music:
             let newMusic = Music(title: titleField.text!, released: Int(releaseYear.text!)!)
             
@@ -416,15 +428,47 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
                 newMusic.setOwningType(ownType)
             }
             success = musicSpecific(newMusic)
+            break
         default:break
         }
         
         if success {
+            
+            if context == .EditMovie || context == .EditMusic {
+                self.navigationController?.popViewControllerAnimated(true)
+            }
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
-    private func movieSpecific(movie: Movie) -> Bool {
+    private func movieSpecific() -> Bool {
+        
+        let movie = Movie(title: titleField.text!, released: Int(releaseYear.text!)!, runtime: Runtime.getRuntimeBasedOnString(runTime.text!))
+        
+        if let genre = genreFIeld.text {
+            movie.genre = genre
+        }
+        
+        if let format = formatPickerTextField.text {
+            movie.setFormat(format)
+        }
+        
+        if let desc = descTextArea.text {
+            movie.desc = desc
+        }
+        
+        if let coverArt = image.image {
+            movie.coverArt = coverArt
+        }
+        
+        if let ownerLocation = locationField.text {
+            movie.ownerLocation = ownerLocation
+        }
+        
+        if let ownType = owningType.text {
+            movie.setOwningType(ownType)
+        }
+
         var indexPath = NSIndexPath(forRow: 0, inSection: 0)
         var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
@@ -449,11 +493,16 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         }
         ////////////////
         
-        if !storage.storeMovie(movie) {
-            alertUser("Movie already exists in Media Library")
-            return false
+        if context == .EditMovie {
+            storage.updateMovieObject(movie, oldTitle: movieItem!.title)
+            return true
         }
-        
+        else {
+            if !storage.storeMovie(movie) {
+                alertUser("Movie already exists in Media Library")
+                return false
+            }
+        }
         return true
     }
     

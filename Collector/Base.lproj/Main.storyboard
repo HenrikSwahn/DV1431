@@ -1193,7 +1193,7 @@
                     <navigationItem key="navigationItem" id="w8N-EV-lKt">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="c1h-3p-O8O" customClass="UIRatingView" customModule="Collector" customModuleProvider="target">
-                            <rect key="frame" x="238" y="14" width="124" height="17"/>
+                            <rect key="frame" x="238" y="13.5" width="124" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <userDefinedRuntimeAttributes>
@@ -1203,7 +1203,11 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="floatRatings" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="cHQ-Sy-8qA"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="cHQ-Sy-8qA">
+                            <connections>
+                                <segue destination="ooV-i8-8Z3" kind="show" identifier="editMovieSegue" id="Lem-uA-MZG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="coverImageView" destination="07R-X7-s3O" id="p4g-YW-KSX"/>
@@ -1961,9 +1965,9 @@
         <image name="wish-list" width="23" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="w4d-6U-9xW"/>
-        <segue reference="uWx-WX-m7B"/>
-        <segue reference="dHP-W0-m3j"/>
+        <segue reference="Lem-uA-MZG"/>
         <segue reference="CnV-X6-7Zv"/>
+        <segue reference="w4d-6U-9xW"/>
+        <segue reference="dHP-W0-m3j"/>
     </inferredMetricsTieBreakers>
 </document>

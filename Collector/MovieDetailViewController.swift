@@ -18,6 +18,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     private var genericData = [(String, String)]()
     private struct Storyboard {
         static let mediaDetailTableCellIdentifier = "media detail cell id"
+        static let editMovieSegue = "editMovieSegue"
     }
     
     @IBOutlet weak var headerImageView: UIImageView!
@@ -120,6 +121,8 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let rat = self.movie?.rating {
             self.ratingView.rating = Float(rat)
         }
+        
+        var storage = Storage()
     }
     
     override func viewDidLoad() {
@@ -171,8 +174,9 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func ratingView(ratingView: UIRatingView, didUpdate rating: Float) {
         let storage = Storage()
         movie!.rating = Int(rating)
-        storage.updateMovieObject(movie!)
+        storage.updateMovieObject(movie!, oldTitle: movie!.title)
     }
+    
     func ratingView(ratingView: UIRatingView, isUpdating rating: Float) {
         
     }
@@ -198,6 +202,15 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return genericData.count
+    }
+    
+    // MARK: - Prepare for segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Storyboard.editMovieSegue {
+            let dest = segue.destinationViewController as! ManualEntryTableViewController
+            dest.context = .EditMovie
+            dest.movieItem = movie!
+        }
     }
 }
 
