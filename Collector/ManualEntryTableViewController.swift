@@ -25,7 +25,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
     private let musicEntries = ["Album Artist", "Enter track name"]
     private var tracks: [Track]?
     var itunesAlbumItem: ItunesAlbumItem?
-    var music: Music?
+    var album: Music?
     
     let imagePicker = UIImagePickerController()
     private struct Storyboard {
@@ -337,13 +337,13 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
             itunes.request { result in
                 switch result {
                 case .Success(let response):
-                    let album = Music.fromItunesAlbumItem(Itunes.parseAlbum(JSON(response.data))!, albumImage: self.tempImage)
-                    self.titleField.text = album.title
-                    self.releaseYear.text = "\(album.releaseYear)"
-                    self.genreFIeld.text = album.genre
-                    self.descTextArea.text = album.desc
-                    self.image.image = album.coverArt
-                    self.tracks = album.trackList
+                    self.album = Music.fromItunesAlbumItem(Itunes.parseAlbum(JSON(response.data))!, albumImage: self.tempImage)
+                    self.titleField.text = self.album!.title
+                    self.releaseYear.text = "\(self.album!.releaseYear)"
+                    self.genreFIeld.text = self.album!.genre
+                    self.descTextArea.text = self.album!.desc
+                    self.image.image = self.album!.coverArt
+                    self.tracks = self.album!.trackList
                     self.trackTableView.reloadData()
                 case .Error(_): break
                 }
@@ -404,7 +404,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         case .Music:
             let newMusic = Music(title: titleField.text!, released: Int(releaseYear.text!)!)
             
-            if let id = music!.id {
+            if let id = album!.id {
                 newMusic.id = id
             }
             if let genre = genreFIeld.text {

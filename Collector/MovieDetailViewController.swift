@@ -122,7 +122,15 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             self.ratingView.rating = Float(rat)
         }
         
-        var storage = Storage()
+        let storage = Storage()
+        var results = (storage.searchDatabase(DBSearch(table: .MovieId, searchString: movie!.id, batchSize: nil, set: .Movie), doConvert: true) as? [Movie])
+        
+        if results != nil {
+            if results!.count > 0 {
+                movie = results![0]
+                setData()
+            }
+        }
     }
     
     override func viewDidLoad() {
