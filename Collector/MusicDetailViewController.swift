@@ -197,15 +197,3 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         return genericData.count
     }
 }
-
-// Drops an shadow around a UIImageView
-private extension UIImageView {
-    func dropShadow(colored: UIColor? = nil, offset: CGSize = CGSizeMake(0,0), opacity: Float = 1, radius: CGFloat = 1.0) {
-        let color = (colored != nil) ? colored!.CGColor : UIColor.blackColor().CGColor
-        
-        layer.shadowColor = color
-        layer.shadowOffset = offset
-        layer.shadowOpacity = opacity
-        layer.shadowRadius = radius
-    }
-}
