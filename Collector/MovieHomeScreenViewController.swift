@@ -28,6 +28,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
             else {
                 filteredMovies = filter!.filterMovies(movies!);
                 self.mediaTable.reloadData()
+                self.mediaCollection.reloadData()
             }
         }
     }
@@ -42,6 +43,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
             else {
                 filteredMovies = filter!.filterMovies(movies!);
                 self.mediaTable.reloadData()
+                self.mediaCollection.reloadData()
             }
         }
     }
