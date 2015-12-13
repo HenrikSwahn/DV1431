@@ -42,6 +42,7 @@
 		317743791C1DAA7100C44715 /* GeneralDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317743781C1DAA7100C44715 /* GeneralDetailTableViewCell.swift */; };
 		3177437B1C1DAAB200C44715 /* ColoredTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3177437A1C1DAAB200C44715 /* ColoredTableViewCell.swift */; };
 		3177437D1C1DAB1100C44715 /* ValueDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3177437C1C1DAB1100C44715 /* ValueDetailCell.swift */; };
+		3177437F1C1DE3B200C44715 /* MediaRectangleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3177437E1C1DE3B200C44715 /* MediaRectangleTableViewCell.swift */; };
 		318C2C311C0C8F29008AE6C4 /* UIStretchableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318C2C301C0C8F29008AE6C4 /* UIStretchableTableView.swift */; };
 		318C2C331C0CB5C8008AE6C4 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318C2C321C0CB5C8008AE6C4 /* FilterTableViewController.swift */; };
 		31B842221BF3880D005429FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B842211BF3880D005429FA /* AppDelegate.swift */; };
@@ -139,6 +140,7 @@
 		317743781C1DAA7100C44715 /* GeneralDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralDetailTableViewCell.swift; sourceTree = "<group>"; };
 		3177437A1C1DAAB200C44715 /* ColoredTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredTableViewCell.swift; sourceTree = "<group>"; };
 		3177437C1C1DAB1100C44715 /* ValueDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueDetailCell.swift; sourceTree = "<group>"; };
+		3177437E1C1DE3B200C44715 /* MediaRectangleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaRectangleTableViewCell.swift; sourceTree = "<group>"; };
 		318C2C301C0C8F29008AE6C4 /* UIStretchableTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStretchableTableView.swift; sourceTree = "<group>"; };
 		318C2C321C0CB5C8008AE6C4 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		31B8421E1BF3880D005429FA /* Collector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collector.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -411,6 +413,7 @@
 				AF833FDE1C197DD2003D6C0A /* TrackTableViewCell.swift */,
 				317743781C1DAA7100C44715 /* GeneralDetailTableViewCell.swift */,
 				3177437C1C1DAB1100C44715 /* ValueDetailCell.swift */,
+				3177437E1C1DE3B200C44715 /* MediaRectangleTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				31114C241C15B19000396AA8 /* TMDbSearchResource.swift in Sources */,
 				31114C391C15B1AF00396AA8 /* ItunesSearchResource.swift in Sources */,
 				AFADF84D1BFC6F180024D9A4 /* MovieHomeScreenViewController.swift in Sources */,
+				3177437F1C1DE3B200C44715 /* MediaRectangleTableViewCell.swift in Sources */,
 				31EA349F1BFE4E4900D7F72B /* UIPickerTextField.swift in Sources */,
 				AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */,
 				31114C371C15B1AF00396AA8 /* ItunesAlbumItem.swift in Sources */,
