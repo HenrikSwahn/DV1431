@@ -192,5 +192,31 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: - Actions (rating, delete)
     @IBAction func deleteAction(sender: UIButton) {
+        if let item = movie {
+            
+            let controller = UIAlertController(
+                title:          "Delete",
+                message:        "Would you like to delete this item from the library?",
+                preferredStyle: .ActionSheet
+            )
+            
+            controller.addAction(UIAlertAction(
+                title: "Delete",
+                style: .Destructive,
+                handler: { [unowned self] (_) -> Void in
+                    let storage = Storage()
+                    storage.removeFromDB(DBSearch(
+                        table: .Id,
+                        searchString: item.id,
+                        batchSize: nil,
+                        set: .Movie))
+                    
+                    self.navigationController?.popViewControllerAnimated(true)
+                }))
+            
+            controller.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
     }
 }

@@ -231,10 +231,36 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func updateData(music: Music) {
         data = AlbumAdapter.tableView(music)
-        //tableView.reloadData()
+        tableView.reloadData()
         updateUI()
     }
     
     @IBAction func deleteAction(sender: UIButton) {
+        if let item = music {
+
+            let controller = UIAlertController(
+                title:          "Delete",
+                message:        "Would you like to delete this item from the library?",
+                preferredStyle: .ActionSheet
+            )
+            
+            controller.addAction(UIAlertAction(
+                title: "Delete",
+                style: .Destructive,
+                handler: { [unowned self] (_) -> Void in
+                    let storage = Storage()
+                    storage.removeFromDB(DBSearch(
+                        table: .Id,
+                        searchString: item.id,
+                        batchSize: nil,
+                        set: .Music))
+                
+                    self.navigationController?.popViewControllerAnimated(true)
+                }))
+            
+            controller.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
     }
 }
