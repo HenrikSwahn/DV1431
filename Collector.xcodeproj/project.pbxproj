@@ -66,6 +66,8 @@
 		AF300AAF1C15D94100BC57D9 /* MusicHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AAE1C15D94100BC57D9 /* MusicHomeViewController.swift */; };
 		AF300AB11C16CA3D00BC57D9 /* TrackStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AB01C16CA3D00BC57D9 /* TrackStore.swift */; };
 		AF300AB31C16FF9000BC57D9 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AB21C16FF9000BC57D9 /* MusicDetailViewController.swift */; };
+		AF4E1D0F1C1DA0FE00AB1717 /* FilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E1D0E1C1DA0FE00AB1717 /* FilterProtocol.swift */; };
+		AF4E1D111C1DA15400AB1717 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E1D101C1DA15400AB1717 /* Filter.swift */; };
 		AF833FDB1C18AE9F003D6C0A /* WishListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF833FDA1C18AE9F003D6C0A /* WishListStore.swift */; };
 		AF833FDD1C1961F1003D6C0A /* TracksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF833FDC1C1961F1003D6C0A /* TracksTableViewCell.swift */; };
 		AF833FDF1C197DD2003D6C0A /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF833FDE1C197DD2003D6C0A /* TrackTableViewCell.swift */; };
@@ -162,6 +164,8 @@
 		AF300AAE1C15D94100BC57D9 /* MusicHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicHomeViewController.swift; sourceTree = "<group>"; };
 		AF300AB01C16CA3D00BC57D9 /* TrackStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackStore.swift; sourceTree = "<group>"; };
 		AF300AB21C16FF9000BC57D9 /* MusicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
+		AF4E1D0E1C1DA0FE00AB1717 /* FilterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterProtocol.swift; sourceTree = "<group>"; };
+		AF4E1D101C1DA15400AB1717 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		AF833FDA1C18AE9F003D6C0A /* WishListStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListStore.swift; sourceTree = "<group>"; };
 		AF833FDC1C1961F1003D6C0A /* TracksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksTableViewCell.swift; sourceTree = "<group>"; };
 		AF833FDE1C197DD2003D6C0A /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 				AF300AA81C0E3D8200BC57D9 /* ViewContext.swift */,
 				31114C4B1C15FFEE00396AA8 /* SearchAPIDelegate.swift */,
 				31E41FE21C1751EA003976F9 /* UITableViewCachable.swift */,
+				AF4E1D0E1C1DA0FE00AB1717 /* FilterProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				AF300A791C07151200BC57D9 /* Movie.swift */,
 				31114C491C15FEC400396AA8 /* SearchAPI.swift */,
 				31E41FF91C19D1BC003976F9 /* WishListItem.swift */,
+				AF4E1D101C1DA15400AB1717 /* Filter.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -554,6 +560,8 @@
 				31114C231C15B19000396AA8 /* TMDbSearchItem.swift in Sources */,
 				AF300AB31C16FF9000BC57D9 /* MusicDetailViewController.swift in Sources */,
 				31114C4A1C15FEC400396AA8 /* SearchAPI.swift in Sources */,
+				AF4E1D111C1DA15400AB1717 /* Filter.swift in Sources */,
+				AF4E1D0F1C1DA0FE00AB1717 /* FilterProtocol.swift in Sources */,
 				AF300A781C0710E000BC57D9 /* Runtime.swift in Sources */,
 				315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */,
 				31D1A6381C16127B00AA02A8 /* SearchMusicEntryTableViewCell.swift in Sources */,
@@ -750,7 +758,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Collector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dv1431.Collector;
+				PRODUCT_BUNDLE_IDENTIFIER = dv1431.Collector1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -764,7 +772,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Collector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dv1431.Collector;
+				PRODUCT_BUNDLE_IDENTIFIER = dv1431.Collector1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

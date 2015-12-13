@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, ViewContext {
+class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, ViewContext, FilterDelegate {
     
     // MARK: - Variables and constatns
     private struct Storyboard {
@@ -16,11 +16,35 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         static let addMovieSegueId = "AddMovieSegue"
         static let detailMovieSegueTableId = "DetailMovieSegueTable"
         static let detailMovieSegueCollectionId = "DetailMovieSegueCollection"
+        static let filterSegue = "filterSegue"
     }
     
     private let storage = Storage()
-    private var movies: [Movie]?
+    private var movies: [Movie]? {
+        didSet {
+            if self.filter == nil {
+                filteredMovies = movies;
+            }
+            else {
+                filteredMovies = filter!.filterMovies(movies!);
+                self.mediaTable.reloadData()
+            }
+        }
+    }
+    private var filteredMovies:[Movie]?
     internal var context = ViewContextEnum.Movie
+    
+    var filter: Filter? {
+        didSet {
+            if self.filter == nil {
+                filteredMovies = movies;
+            }
+            else {
+                filteredMovies = filter!.filterMovies(movies!);
+                self.mediaTable.reloadData()
+            }
+        }
+    }
     
     @IBOutlet weak var mediaTable: UITableView! {
         didSet {
@@ -54,34 +78,34 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId) as! MediaTableViewCell
-        cell.titleLabel.text = movies![indexPath.row].title
-        cell.releaseYearLabel.text = "\(movies![indexPath.row].releaseYear)"
-        cell.runtimeLabel.text = "\(movies![indexPath.row].runtime.toString())"
-        cell.coverArt.image = movies![indexPath.row].coverArt
+        cell.titleLabel.text = filteredMovies![indexPath.row].title
+        cell.releaseYearLabel.text = "\(filteredMovies![indexPath.row].releaseYear)"
+        cell.runtimeLabel.text = "\(filteredMovies![indexPath.row].runtime.toString())"
+        cell.coverArt.image = filteredMovies![indexPath.row].coverArt
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if (movies != nil) {
-            return movies!.count
+        if (filteredMovies != nil) {
+            return filteredMovies!.count
         }
         return 0
     }
     
     // MARK: - CollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (movies != nil) {
-            return movies!.count
+        if (filteredMovies != nil) {
+            return filteredMovies!.count
         }
         return 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.mediaCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
-        cell.titleLabel.text = movies![indexPath.row].title
-        cell.releaseYearLabel.text = "\(movies![indexPath.row].releaseYear)"
-        cell.coverArt.image = movies![indexPath.row].coverArt
+        cell.titleLabel.text = filteredMovies![indexPath.row].title
+        cell.releaseYearLabel.text = "\(filteredMovies![indexPath.row].releaseYear)"
+        cell.coverArt.image = filteredMovies![indexPath.row].coverArt
         return cell
     }
     
@@ -108,6 +132,11 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
                 dest.context = context
             }
         }
+        else if segue.identifier == Storyboard.filterSegue {
+            let dest = segue.destinationViewController as! UINavigationController
+            let destTop = dest.topViewController as! FilterTableViewController
+            destTop.delegate = self
+        }
     }
     
     // MARK: - ViewDidLoad
@@ -122,5 +151,10 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         movies = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Movie), doConvert: true) as? [Movie]
         mediaTable.reloadData()
         
+    }
+    
+    // MARK: - Filter
+    func didSelectFilter(filter: Filter?) {
+        self.filter = filter
     }
 }
