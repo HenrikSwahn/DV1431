@@ -119,7 +119,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         else if segue.identifier == Storyboard.detailMovieSegueTableId {
             let dest = segue.destinationViewController as! MovieDetailViewController
             let indexPath = self.mediaTable.indexPathForSelectedRow
-            dest.movie = movies![(indexPath?.row)!]
+            dest.movie = filteredMovies![(indexPath?.row)!]
             dest.context = context
         }
         else if segue.identifier == Storyboard.detailMovieSegueCollectionId {
@@ -127,7 +127,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
             if (indexPaths != nil) {
                 let indexPath = indexPaths![0]
                 let dest = segue.destinationViewController as! MovieDetailViewController
-                dest.movie = movies![indexPath.row]
+                dest.movie = filteredMovies![indexPath.row]
                 dest.context = context
             }
         }
@@ -135,6 +135,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
             let dest = segue.destinationViewController as! UINavigationController
             let destTop = dest.topViewController as! FilterTableViewController
             destTop.delegate = self
+            destTop.context = context
         }
     }
     

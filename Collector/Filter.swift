@@ -28,10 +28,17 @@ class Filter {
     }
     
     func filterMovies(movies: [Movie]) -> [Movie] {
+        return filterMedia(movies) as! [Movie]
+    }
+    
+    func filterMusic(music: [Music]) -> [Music] {
+        return filterMedia(music) as! [Music]
+    }
+    
+    private func filterMedia(unFilteredMedia: [Media]) -> [Media] {
         
-        var filteredMovies = [Movie]()
-        
-        for movie in movies {
+        var filteredMedia = [Media]()
+        for media in unFilteredMedia {
             
             var genrePass = false
             var yearPass = false
@@ -41,7 +48,7 @@ class Filter {
                 genrePass = true
             }
             else {
-                genrePass = checkGenre(movie.genre)
+                genrePass = checkGenre(media.genre)
             }
             
             if genrePass {
@@ -49,7 +56,7 @@ class Filter {
                     yearPass = true
                 }
                 else {
-                    yearPass = checkYear(movie.releaseYear)
+                    yearPass = checkYear(media.releaseYear)
                 }
             }
             
@@ -58,15 +65,15 @@ class Filter {
                     ratingPass = true
                 }
                 else {
-                    ratingPass = checkRating(movie.rating)
+                    ratingPass = checkRating(media.rating)
                 }
             }
             
             if genrePass && yearPass && ratingPass {
-                filteredMovies.append(movie)
+                filteredMedia.append(media)
             }
         }
-        return filteredMovies
+        return filteredMedia
     }
     
     private func checkGenre(mediaGenre: String?) -> Bool {

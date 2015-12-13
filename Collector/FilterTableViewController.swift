@@ -8,10 +8,11 @@
 
 import UIKit
 
-class FilterTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class FilterTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, ViewContext {
     
     weak var delegate: FilterDelegate?
     var filter = Filter()
+    var context = ViewContextEnum.Unkown
     
     var genresData: [String]?
     var releaseYearsData: [String]?
@@ -49,10 +50,15 @@ class FilterTableViewController: UITableViewController, UIPickerViewDataSource, 
    
     override func viewDidLoad() {
         
-        genresData = [String]()
-        genresData! += ["-", "Action", "Thriller", "Drama", "Science Fiction"]
-        genres.dataSource = self
-        genres.delegate = self
+        switch context {
+        case .Movie:
+            setUpForMovie()
+            break
+        case .Music:
+            setUpForMusic()
+            break
+        default:break
+        }
         
         releaseYearsData = [Int](count: 100, repeatedValue: 0).mapNumber({
             (year, _) -> String in return "\(2015 - year)"
@@ -67,6 +73,20 @@ class FilterTableViewController: UITableViewController, UIPickerViewDataSource, 
         ratings.dataSource = self
         ratings.delegate = self
         
+    }
+    
+    private func setUpForMovie() {
+        genresData = [String]()
+        genresData! += ["-", "Action", "Thriller", "Drama", "Science Fiction"]
+        genres.dataSource = self
+        genres.delegate = self
+    }
+    
+    private func setUpForMusic() {
+        genresData = [String]()
+        genresData! += ["-", "Rock", "Metal", "Classic", "Pop", "Hip-Hop", "Rap", "Hip-Hop/Rap"]
+        genres.dataSource = self
+        genres.delegate = self
     }
     
     //MARK: - Delegates and data sources
