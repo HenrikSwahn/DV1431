@@ -17,7 +17,7 @@ class TrackTableViewCell: ColoredTableViewCell {
         if let track = model as? Track {
             self.numberLabel.text = "\(track.trackNr)"
             self.titleLabel.text = track.name
-            self.runtimeLabel.text = track.runtime.toString()
+            self.runtimeLabel.text = track.runtime.toTrackString()
         }
     }
     

@@ -31,7 +31,7 @@ struct AlbumAdapter {
         return [
             Section.General,
             KeyValueAdapter("Format", album.format?.rawValue),
-            KeyValueAdapter("Runtime", album.runtime.toString()),
+            KeyValueAdapter("Runtime", album.runtime.toTrackString()),
             KeyValueAdapter("Genre", album.genre),
             KeyValueAdapter("Release", String(album.releaseYear)),
             KeyValueAdapter("Tracks", String(album.trackList.count))
