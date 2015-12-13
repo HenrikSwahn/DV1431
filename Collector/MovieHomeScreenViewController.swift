@@ -50,6 +50,8 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         didSet {
             self.mediaTable.delegate = self
             self.mediaTable.dataSource = self
+            mediaTable.estimatedRowHeight = mediaTable.rowHeight
+            mediaTable.rowHeight = UITableViewAutomaticDimension
         }
     }
     
@@ -77,11 +79,8 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId) as! MediaTableViewCell
-        cell.titleLabel.text = filteredMovies![indexPath.row].title
-        cell.releaseYearLabel.text = "\(filteredMovies![indexPath.row].releaseYear)"
-        cell.runtimeLabel.text = "\(filteredMovies![indexPath.row].runtime.toString())"
-        cell.coverArt.image = filteredMovies![indexPath.row].coverArt
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId) as! MediaRectangleTableViewCell
+        cell.media = filteredMovies![indexPath.row]
         return cell
     }
     

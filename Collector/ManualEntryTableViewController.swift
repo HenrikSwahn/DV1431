@@ -493,7 +493,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         indexPath = NSIndexPath(forRow: 2, inSection: 0)
         
         // Potential bug
-        cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
+        // cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
         if let age = Int(cell.genricEntryTextField.text!) {
             movie.ageRestriction = age

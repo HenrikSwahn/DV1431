@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TracksTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
+/*class TracksTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
     
     var tracks: [Track]?
     private var colors: UIImageColors?
@@ -84,5 +84,5 @@ class TracksTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewData
             }
         }
     }
-}
+}*/
 
