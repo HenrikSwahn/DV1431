@@ -2086,7 +2086,11 @@
                                 <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="star-fill"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="1xa-dp-BpK"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="1xa-dp-BpK">
+                            <connections>
+                                <segue destination="ooV-i8-8Z3" kind="show" identifier="editMovieSegue" id="FVE-sg-vtr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundImageView" destination="463-nX-dni" id="RVN-41-OOM"/>
@@ -2099,7 +2103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWo-q2-3SN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4573" y="-288"/>
+            <point key="canvasLocation" x="4537" y="-1038"/>
         </scene>
     </scenes>
     <resources>
@@ -2120,8 +2124,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0Jf-ot-bv2"/>
-        <segue reference="uWx-WX-m7B"/>
         <segue reference="7n8-3M-h6M"/>
         <segue reference="dHP-W0-m3j"/>
+        <segue reference="FVE-sg-vtr"/>
     </inferredMetricsTieBreakers>
 </document>
