@@ -1311,7 +1311,11 @@
                                 <action selector="changeViewLayout:" destination="LQr-47-KTt" eventType="valueChanged" id="ER8-Ed-QQx"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" image="sort" id="se4-nO-YAx"/>
+                        <barButtonItem key="rightBarButtonItem" image="sort" id="se4-nO-YAx">
+                            <connections>
+                                <segue destination="JWl-4l-s0r" kind="presentation" identifier="filterMusicSegue" id="a2V-SC-hXR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="musicCollectionView" destination="G49-Mf-Jnh" id="4kc-sD-Hfw"/>
@@ -1854,8 +1858,9 @@
         <image name="wish-list" width="23" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Jf-ot-bv2"/>
         <segue reference="ZmP-85-umx"/>
+        <segue reference="w4d-6U-9xW"/>
+        <segue reference="a2V-SC-hXR"/>
         <segue reference="9md-m2-1x2"/>
         <segue reference="FVE-sg-vtr"/>
     </inferredMetricsTieBreakers>

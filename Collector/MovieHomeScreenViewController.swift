@@ -153,7 +153,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         
     }
     
-    // MARK: - Filter
+    // MARK: - Filter Delegate
     func didSelectFilter(filter: Filter?) {
         self.filter = filter
     }

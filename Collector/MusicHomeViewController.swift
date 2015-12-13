@@ -8,18 +8,46 @@
 
 import UIKit
 
-class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, ViewContext {
+class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, ViewContext, FilterDelegate {
     
     private struct Storyboard {
         static let musicCellId = "media cell"
         static let addMusicSegue = "addMusicSegue"
         static let musicDetailColSegueId = "showMusicDetailCol"
         static let musicDetailTableSegueId = "showMusicDetailTable"
+        static let filterMusicSegue = "filterMusicSegue"
     }
     
     var context = ViewContextEnum.Music
-    var music: [Music]?
+    
+    var filter: Filter? {
+        didSet {
+            if self.filter == nil {
+                filteredMusic = music
+            }
+            else {
+                filteredMusic = filter!.filterMusic(music!)
+                self.musicTableView.reloadData()
+                self.musicCollectionView.reloadData()
+            }
+        }
+    }
+    
+    private var music: [Music]? {
+        didSet {
+            if self.filter == nil {
+                filteredMusic = music
+            }
+            else {
+                filteredMusic = filter!.filterMusic(music!);
+                self.musicTableView.reloadData()
+                self.musicCollectionView.reloadData()
+            }
+        }
+    }
+    var filteredMusic: [Music]?
     let storage = Storage();
+    
     
     @IBOutlet weak var musicTableView: UITableView! {
         didSet {
@@ -40,6 +68,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         self.musicCollectionView.hidden = !self.musicCollectionView.hidden
         self.musicTableView.hidden = !self.musicTableView.hidden
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.musicCollectionView.hidden = true
@@ -61,16 +90,16 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.musicCellId) as! MediaTableViewCell
-        cell.titleLabel.text = music![indexPath.row].title
-        cell.releaseYearLabel.text = "\(music![indexPath.row].releaseYear)"
-        cell.runtimeLabel.text = "\(music![indexPath.row].runtime.toString())"
-        cell.coverArt.image = music![indexPath.row].coverArt
+        cell.titleLabel.text = filteredMusic![indexPath.row].title
+        cell.releaseYearLabel.text = "\(filteredMusic![indexPath.row].releaseYear)"
+        cell.runtimeLabel.text = "\(filteredMusic![indexPath.row].runtime.toString())"
+        cell.coverArt.image = filteredMusic![indexPath.row].coverArt
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (music != nil) {
-            return music!.count
+        if (filteredMusic != nil) {
+            return filteredMusic!.count
         }
         return 0
     }
@@ -78,17 +107,17 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - CollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if (music != nil) {
-            return music!.count
+        if (filteredMusic != nil) {
+            return filteredMusic!.count
         }
         return 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.musicCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
-        cell.titleLabel.text = music![indexPath.row].title
-        cell.releaseYearLabel.text = "\(music![indexPath.row].releaseYear)"
-        cell.coverArt.image = music![indexPath.row].coverArt
+        cell.titleLabel.text = filteredMusic![indexPath.row].title
+        cell.releaseYearLabel.text = "\(filteredMusic![indexPath.row].releaseYear)"
+        cell.coverArt.image = filteredMusic![indexPath.row].coverArt
         return cell
     }
     
@@ -103,7 +132,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         else if segue.identifier == Storyboard.musicDetailTableSegueId {
             let dest = segue.destinationViewController as! MusicDetailViewController
             let indexPath = self.musicTableView.indexPathForSelectedRow
-            dest.music = music![(indexPath?.row)!]
+            dest.music = filteredMusic![(indexPath?.row)!]
             dest.context = context
         }
         else if segue.identifier == Storyboard.musicDetailColSegueId {
@@ -111,9 +140,20 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
             if (indexPaths != nil) {
                 let indexPath = indexPaths![0]
                 let dest = segue.destinationViewController as! MusicDetailViewController
-                dest.music = music![indexPath.row]
+                dest.music = filteredMusic![indexPath.row]
                 dest.context = context
             }
         }
+        else if segue.identifier == Storyboard.filterMusicSegue {
+            let dest = segue.destinationViewController as! UINavigationController
+            let destTop = dest.topViewController as! FilterTableViewController
+            destTop.delegate = self
+            destTop.context = context
+        }
+    }
+    
+    // MARK: - Filter Delegate
+    func didSelectFilter(filter: Filter?) {
+        self.filter = filter
     }
 }
