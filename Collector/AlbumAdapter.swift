@@ -15,11 +15,14 @@ struct AlbumAdapter {
         static var Tracks: String = "Tracks"
     }
     
-    private static func ownership(album: Music) -> [AnyObject] {
+    private static func ownership(music: Music) -> [AnyObject] {
+        let type = getString(music.owningType?.rawValue)
+        let location = getString(music.ownerLocation)
+        
         return [
             Section.Ownership,
-            KeyValueAdapter("Type", album.owningType?.rawValue ?? "Not set"),
-            KeyValueAdapter("Location", album.ownerLocation ?? "Not set")
+            KeyValueAdapter("Type", type),
+            KeyValueAdapter("Location", location)
         ]
     }
     
@@ -51,4 +54,13 @@ struct AlbumAdapter {
         return adapter
     }
     
+    private static func getString(str: String?) -> String {
+        if let s = str {
+            if s.characters.count > 0 {
+                return s
+            }
+        }
+        
+        return "Not set"
+    }
 }
