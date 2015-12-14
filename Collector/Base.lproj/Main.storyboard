@@ -2364,10 +2364,10 @@
         <image name="wish-list" width="23" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9md-m2-1x2"/>
-        <segue reference="FVE-sg-vtr"/>
-        <segue reference="a2V-SC-hXR"/>
-        <segue reference="w4d-6U-9xW"/>
+        <segue reference="BEH-k7-2Q1"/>
         <segue reference="ZmP-85-umx"/>
+        <segue reference="9md-m2-1x2"/>
+        <segue reference="0Jf-ot-bv2"/>
+        <segue reference="FVE-sg-vtr"/>
     </inferredMetricsTieBreakers>
 </document>
