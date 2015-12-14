@@ -50,7 +50,13 @@ public class TMDb: API {
         var genres = [String]()
         
         if let actors = json["credits"]["cast"].array {
-            cast = actors.map({ $0["name"].string! })
+            let allActors = actors.map({ $0["name"].string! })
+            
+            if allActors.count >= 3 {
+                cast = Array(allActors.prefixUpTo(3))
+            } else {
+                cast = allActors
+            }
         }
         
         if let genrez = json["genres"].array {
@@ -68,7 +74,8 @@ public class TMDb: API {
             synopsis:           json["overview"].string ?? "Unavailable",
             runtime:            json["runtime"].int ?? 0,
             cast: cast,
-            genres: genres
+            genres: genres,
+            videos: nil
         )
     }
     

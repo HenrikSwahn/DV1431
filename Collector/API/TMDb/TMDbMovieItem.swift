@@ -17,5 +17,7 @@ public struct TMDbMovieItem {
     var synopsis: String
     var runtime: Int
     var cast: [String]
+    var directors: [String]?
     var genres: [String]
+    var videos: [(title: String, URL: String)]?
 }
