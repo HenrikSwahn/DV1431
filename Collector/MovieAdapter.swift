@@ -14,6 +14,7 @@ struct MovieAdapter {
         static var Ownership: String = "Ownership"
         static var Description: String = "Description"
         static var People: String = "People"
+        static var Video: String = "Videos"
     }
     
     private static func getString(str: String?) -> String {
@@ -62,13 +63,22 @@ struct MovieAdapter {
         ]
     }
     
+    private static func videos(movie: Movie) -> [AnyObject] {
+        return [
+            Section.Video,
+            KeyValueAdapter("trailer name", "link to youtube"),
+            KeyValueAdapter("trailer name", "link to youtube"),
+            KeyValueAdapter("trailer name", "link to youtube")
+        ]
+    }
+    
     static func tableView(movie: Movie) -> [[AnyObject]] {
         var adapter = [[AnyObject]]()
         adapter.append(MovieAdapter.desc(movie))
         adapter.append(MovieAdapter.people(movie))
         adapter.append(MovieAdapter.general(movie))
         adapter.append(MovieAdapter.ownership(movie))
-        
+        adapter.append(MovieAdapter.videos(movie))
         
         return adapter
     }
