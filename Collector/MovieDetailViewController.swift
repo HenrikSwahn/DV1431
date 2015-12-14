@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AVKit
 
-class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate {
+class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter {
 
     // MARK: - Context
     var context = ViewContextEnum.Movie
@@ -22,6 +23,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
         static let editMovieSegue = "editMovieSegue"
         static let generalCell = "generalCell"
         static let descriptionCell = "descriptionCell"
+        static let trailerCellID = "trailerCellID"
     }
     
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -118,7 +120,11 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.colors = colors
                 return cell
             }
-            
+        case 4:
+            if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.trailerCellID, forIndexPath: indexPath) as? TrailerTableViewCell {
+                cell.delegate = self
+                return cell
+            }
         case 0:
             if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.descriptionCell, forIndexPath: indexPath) as? ValueTableViewCell {
                 cell.model = data?[indexPath.section][indexPath.row + 1]
@@ -217,6 +223,13 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             controller.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
             
             self.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: - PlayerPresenter
+    func presentPlayer(playerVC: AVPlayerViewController) {
+        self.presentViewController(playerVC, animated: true) {
+            playerVC.player!.play()
         }
     }
 }
