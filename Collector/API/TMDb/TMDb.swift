@@ -48,6 +48,7 @@ public class TMDb: API {
     public static func parseMovie(json: JSON) -> TMDbMovieItem? {
         var cast = [String]()
         var genres = [String]()
+        var director = "None available"
         
         if let actors = json["credits"]["cast"].array {
             let allActors = actors.map({ $0["name"].string! })
@@ -57,6 +58,18 @@ public class TMDb: API {
             } else {
                 cast = allActors
             }
+        }
+        
+        if let directors = json["credits"]["crew"].array {
+            let filteredDirectors = directors.filter({ (item) -> Bool in
+                if let d = item["job"].string {
+                    return d == "Director"
+                }
+                return false
+            })
+            
+            let directors = filteredDirectors.map({ $0["name"].string! })
+            director = directors.joinWithSeparator(" ")
         }
         
         if let genrez = json["genres"].array {
@@ -73,9 +86,10 @@ public class TMDb: API {
             title:              json["original_title"].string ?? "Unavailable",
             synopsis:           json["overview"].string ?? "Unavailable",
             runtime:            json["runtime"].int ?? 0,
-            cast: cast,
-            genres: genres,
-            videos: nil
+            cast:               cast,
+            director:           director,
+            genres:             genres,
+            videos:             nil
         )
     }
     

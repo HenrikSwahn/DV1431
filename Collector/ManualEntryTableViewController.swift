@@ -220,7 +220,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
                 else {
                     switch indexPath.row {
                     case 0:
-                        cell.genricEntryTextField.text = "The director" //movieItem.director
+                        cell.genricEntryTextField.text = movieItem?.director //movieItem.director
                     case 1:
                         cell.genricEntryTextField.text = movieItem?.mainActors
                     case 2:
@@ -239,7 +239,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
                 else {
                     switch indexPath.row {
                     case 0:
-                        cell.genricEntryTextField.text = "The director" //movieItem.director
+                        cell.genricEntryTextField.text = movieItem?.director //movieItem.director
                     case 1:
                         cell.genricEntryTextField.text = movieItem?.mainActors
                     case 2:
@@ -582,7 +582,7 @@ extension Movie {
         movie.mainActors = item.cast.joinWithSeparator(", ")
         movie.desc = item.synopsis
         movie.coverArt = image
-        
+        movie.director = item.director
         return movie
     }
 }
