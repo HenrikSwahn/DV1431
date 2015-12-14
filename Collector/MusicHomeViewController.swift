@@ -97,11 +97,12 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.musicCellId) as! MediaTableViewCell
-        cell.titleLabel.text = filteredMusic![indexPath.row].title
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.musicCellId) as! MediaBoxTableViewCell
+        /*cell.titleLabel.text = filteredMusic![indexPath.row].title
         cell.releaseYearLabel.text = "\(filteredMusic![indexPath.row].releaseYear)"
         cell.runtimeLabel.text = "\(filteredMusic![indexPath.row].runtime.toString())"
-        cell.coverArt.image = filteredMusic![indexPath.row].coverArt
+        cell.coverArt.image = filteredMusic![indexPath.row].coverArt*/
+        cell.media = filteredMusic![indexPath.row]
         return cell
     }
     
