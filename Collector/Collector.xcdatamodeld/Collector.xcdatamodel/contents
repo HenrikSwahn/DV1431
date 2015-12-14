@@ -15,6 +15,7 @@
         <attribute name="releaseYear" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="runtime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="trailers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trailer" inverseName="movie" inverseEntity="Trailer" syncable="YES"/>
     </entity>
     <entity name="Music" representedClassName=".MusicStore" syncable="YES">
         <attribute name="albumArtist" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,6 +38,11 @@
         <attribute name="trackNr" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Music" inverseName="tracks" inverseEntity="Music" syncable="YES"/>
     </entity>
+    <entity name="Trailer" representedClassName=".TrailerStore" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="trailers" inverseEntity="Movie" syncable="YES"/>
+    </entity>
     <entity name="WishListItem" representedClassName=".WishListStore" syncable="YES">
         <attribute name="aid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
@@ -46,9 +52,10 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Movie" positionX="79" positionY="243" width="128" height="255"/>
+        <element name="Movie" positionX="79" positionY="243" width="128" height="270"/>
         <element name="Music" positionX="-225" positionY="261" width="126" height="240"/>
         <element name="Track" positionX="-126" positionY="611" width="126" height="103"/>
         <element name="WishListItem" positionX="-72" positionY="396" width="128" height="135"/>
+        <element name="Trailer" positionX="97" positionY="621" width="128" height="88"/>
     </elements>
 </model>

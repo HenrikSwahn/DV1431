@@ -492,6 +492,8 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         
         indexPath = NSIndexPath(forRow: 2, inSection: 0)
         
+        movie.trailers = movieItem!.trailers
+        
         // Potential bug
         // cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
         
@@ -583,7 +585,11 @@ extension Movie {
         movie.desc = item.synopsis
         movie.coverArt = image
         movie.director = item.director
-        //movie.videos = item.videos
+        
+        if let videos = item.videos {
+            movie.trailers = videos
+        }
+        
         return movie
     }
 }

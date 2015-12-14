@@ -68,6 +68,7 @@
 		AF0450571C1EEC6100E8E7EC /* TrailerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0450561C1EEC6100E8E7EC /* TrailerTableViewCell.swift */; };
 		AF0450591C1EEFDE00E8E7EC /* PlayerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0450581C1EEFDE00E8E7EC /* PlayerPresenter.swift */; };
 		AF04505C1C1EF45B00E8E7EC /* YoutubeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04505B1C1EF45B00E8E7EC /* YoutubeParser.swift */; };
+		AF04505E1C1EFE8500E8E7EC /* TrailerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04505D1C1EFE8500E8E7EC /* TrailerStore.swift */; };
 		AF300A781C0710E000BC57D9 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A771C0710E000BC57D9 /* Runtime.swift */; };
 		AF300A7A1C07151200BC57D9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A791C07151200BC57D9 /* Movie.swift */; };
 		AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A7B1C07370E00BC57D9 /* Music.swift */; };
@@ -179,6 +180,7 @@
 		AF0450561C1EEC6100E8E7EC /* TrailerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailerTableViewCell.swift; sourceTree = "<group>"; };
 		AF0450581C1EEFDE00E8E7EC /* PlayerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPresenter.swift; sourceTree = "<group>"; };
 		AF04505B1C1EF45B00E8E7EC /* YoutubeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeParser.swift; sourceTree = "<group>"; };
+		AF04505D1C1EFE8500E8E7EC /* TrailerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailerStore.swift; sourceTree = "<group>"; };
 		AF300A771C0710E000BC57D9 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		AF300A791C07151200BC57D9 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		AF300A7B1C07370E00BC57D9 /* Music.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				AF300AB01C16CA3D00BC57D9 /* TrackStore.swift */,
 				AF300AA51C0CBFA300BC57D9 /* Storage.swift */,
 				AF833FDA1C18AE9F003D6C0A /* WishListStore.swift */,
+				AF04505D1C1EFE8500E8E7EC /* TrailerStore.swift */,
 			);
 			name = Storage;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				317743771C1DA90400C44715 /* KeyValueAdapter.swift in Sources */,
 				31E41FF81C19C8B1003976F9 /* TMDbConfigurationResource.swift in Sources */,
 				315797ED1C074F190007FAFC /* MovieDetailViewController.swift in Sources */,
+				AF04505E1C1EFE8500E8E7EC /* TrailerStore.swift in Sources */,
 				31114C431C15B1C700396AA8 /* APIResource.swift in Sources */,
 				31114C361C15B1AF00396AA8 /* Itunes.swift in Sources */,
 			);

@@ -13,6 +13,7 @@ class Movie:Media {
     var ageRestriction: Int?
     var mainActors: String?
     var director: String?
+    var trailers = [(title: String, URL: String)]()
     
     override init(title: String, released: Int, runtime: Runtime) {
         super.init(title: title, released: released, runtime: runtime)

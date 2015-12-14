@@ -105,10 +105,31 @@ class Storage {
         
         do {
             try managedObjectContext.save()
+            storeTrailers(movie.trailers, movie: storeMovie)
             return true
         }
         catch {
             fatalError("Error saving Movie")
+        }
+    }
+    
+    private func storeTrailers(trailers: [(title: String, URL: String)], movie: MovieStore) {
+        
+        for trailer in trailers {
+            
+            let trailerStoreDesc = NSEntityDescription.entityForName("Trailer", inManagedObjectContext: managedObjectContext)
+            let storeTrailer = TrailerStore(entity: trailerStoreDesc!, insertIntoManagedObjectContext: managedObjectContext)
+            
+            storeTrailer.name = trailer.0
+            storeTrailer.url = trailer.1
+            storeTrailer.movie = movie
+            
+            do {
+                try managedObjectContext.save()
+            }
+            catch {
+                fatalError("Error saving Tracks")
+            }
         }
     }
     
@@ -385,6 +406,14 @@ class Storage {
             
             if let rating = mStore.rating {
                 movie.rating = Int(rating)
+            }
+            
+            if let trailersSet = mStore.trailers {
+                let trailers = trailersSet.allObjects as! [TrailerStore]
+                
+                for trailer in trailers {
+                    movie.trailers.append((trailer.name, trailer.url))
+                }
             }
             
             movies.append(movie)

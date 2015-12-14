@@ -24,4 +24,5 @@ class MovieStore: NSManagedObject {
     @NSManaged var director: String?
     @NSManaged var mainActors: String?
     @NSManaged var rating: NSNumber?
+    @NSManaged var trailers: NSSet?
 }
