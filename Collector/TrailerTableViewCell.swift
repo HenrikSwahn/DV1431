@@ -12,19 +12,28 @@ import AVKit
 
 class TrailerTableViewCell: ColoredTableViewCell {
     
-    weak var delegate: PlayerPresenter?
-    /*var model: Movie? {
+    weak var delegate: PlayerPresenter? {
         didSet {
             updateUI()
         }
     }
     
-    func updateUI() {
-        if let item = model {
-            
-        
+    override func updateUI() {
+        if let data = model {
+            print("Adding data here")
         }
-    }*/
+    }
+    
+    override func updateUIColor() {
+        contentView.backgroundColor = self.backgroundUIColor()
+        titleLabel.textColor = self.primaryUIColor()
+        playButton.tintColor = self.secondaryUIColor()
+    }
+    
+    
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    
     @IBAction func playTrailer(sender: UIButton) {
         
         let videoURL = NSURL(string: "https://www.youtube.com/watch?v=Aj7ty6sViiU")

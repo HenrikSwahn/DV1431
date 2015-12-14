@@ -123,6 +123,8 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
         case 4:
             if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.trailerCellID, forIndexPath: indexPath) as? TrailerTableViewCell {
                 cell.delegate = self
+                cell.model = data?[indexPath.section][indexPath.row + 1]
+                cell.colors = colors
                 return cell
             }
         case 0:
@@ -176,6 +178,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let color = colors {
             let saturation = color.backgroundColor.colorWithMinimumSaturation(0.1)
             tableView.backgroundColor = saturation
+            tableView.separatorColor = color.primaryColor
         }
         
         // Sets the background image to the cover image

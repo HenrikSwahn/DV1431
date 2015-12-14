@@ -216,6 +216,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let color = colors {
             let saturation = color.backgroundColor.colorWithMinimumSaturation(0.1)
             tableView.backgroundColor = saturation
+            tableView.separatorColor = color.primaryColor
         }
         
         // Sets the background image to the cover image
