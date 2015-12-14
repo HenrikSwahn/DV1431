@@ -631,22 +631,22 @@
         <scene sceneID="beV-Mn-vEe">
             <objects>
                 <tableViewController id="dBo-Ca-u3h" customClass="FilterTableViewController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iBs-GP-u16">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="iBs-GP-u16">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Genre" id="OAY-6h-HFT">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="4sF-u3-X9d">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="88" id="4sF-u3-X9d">
+                                        <rect key="frame" x="0.0" y="114" width="600" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4sF-u3-X9d" id="EUo-3W-hZJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cl4-yQ-kz3">
-                                                    <rect key="frame" x="8" y="8" width="584" height="134"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cl4-yQ-kz3">
+                                                    <rect key="frame" x="8" y="8" width="584" height="71"/>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
@@ -661,15 +661,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Release Year" id="gsr-tR-23o">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="V0i-4a-fbi">
-                                        <rect key="frame" x="0.0" y="270" width="600" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="88" id="V0i-4a-fbi">
+                                        <rect key="frame" x="0.0" y="253" width="600" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V0i-4a-fbi" id="d6y-6u-3ES">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pL1-1U-R5N">
-                                                    <rect key="frame" x="8" y="7" width="584" height="134"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pL1-1U-R5N">
+                                                    <rect key="frame" x="8" y="7" width="584" height="71"/>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
@@ -684,15 +684,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Rating" id="8gc-UR-vGz">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="saH-Em-zdP">
-                                        <rect key="frame" x="0.0" y="448" width="600" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="88" id="saH-Em-zdP">
+                                        <rect key="frame" x="0.0" y="392" width="600" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="saH-Em-zdP" id="g8m-Dd-tJV">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ox6-Lo-wYY">
-                                                    <rect key="frame" x="8" y="7" width="584" height="134"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ox6-Lo-wYY">
+                                                    <rect key="frame" x="8" y="7" width="584" height="71"/>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
@@ -717,7 +717,7 @@
                                 <action selector="didCancel:" destination="dBo-Ca-u3h" id="kWf-6h-upS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="hl2-N0-sPu">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hl2-N0-sPu">
                             <connections>
                                 <action selector="doneTapped:" destination="dBo-Ca-u3h" id="kpI-FI-ddN"/>
                             </connections>
@@ -2326,7 +2326,7 @@
                     <navigationItem key="navigationItem" id="Ju8-Jn-25w">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="Kb9-p1-cGY" customClass="UIRatingView" customModule="Collector" customModuleProvider="target">
-                            <rect key="frame" x="238" y="13.5" width="124" height="17"/>
+                            <rect key="frame" x="238" y="14" width="124" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <userDefinedRuntimeAttributes>
