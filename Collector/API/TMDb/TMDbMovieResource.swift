@@ -13,6 +13,6 @@ public struct TMDbMovieResource: APIResource {
     
     public init(id: String) {
         resource.urlPath(pathed: "/3/movie/%@", args: id)
-        resource.urlField(named: "append_to_response", "credits")
+        resource.urlField(named: "append_to_response", "credits,videos")
     }
 }

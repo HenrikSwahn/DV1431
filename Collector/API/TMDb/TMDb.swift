@@ -49,6 +49,7 @@ public class TMDb: API {
         var cast = [String]()
         var genres = [String]()
         var director = "None available"
+        var videos: [(title: String, URL: String)]? = nil
         
         if let actors = json["credits"]["cast"].array {
             let allActors = actors.map({ $0["name"].string! })
@@ -77,7 +78,15 @@ public class TMDb: API {
                 genres.append(item["name"].string!)
             }
         }
-
+        
+        if let videoResults = json["videos"]["results"].array {
+            videos = [(title: String, URL: String)]()
+            videoResults.forEach() { item in
+                let title = String(format: "%@ (%dp)", item["name"].string!, item["size"].int!)
+                videos?.append((title: title, URL: item["key"].string!))
+            }
+        }
+        
         return TMDbMovieItem(
             id:                 String(json["id"].int ?? 0),
             image:              appendImageURL(json["poster_path"].string),
@@ -89,7 +98,7 @@ public class TMDb: API {
             cast:               cast,
             director:           director,
             genres:             genres,
-            videos:             nil
+            videos:             videos
         )
     }
     
