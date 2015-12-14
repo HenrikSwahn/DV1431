@@ -51,6 +51,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
+    
     var filteredMusic: [Music]?
     let storage = Storage();
     
@@ -70,7 +71,6 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func changeViewLayout(sender: AnyObject) {
-        
         self.musicCollectionView.hidden = !self.musicCollectionView.hidden
         self.musicTableView.hidden = !self.musicTableView.hidden
     }
@@ -98,19 +98,12 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.musicCellId) as! MediaBoxTableViewCell
-        /*cell.titleLabel.text = filteredMusic![indexPath.row].title
-        cell.releaseYearLabel.text = "\(filteredMusic![indexPath.row].releaseYear)"
-        cell.runtimeLabel.text = "\(filteredMusic![indexPath.row].runtime.toString())"
-        cell.coverArt.image = filteredMusic![indexPath.row].coverArt*/
         cell.media = filteredMusic![indexPath.row]
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (filteredMusic != nil) {
-            return filteredMusic!.count
-        }
-        return 0
+        return filteredMusic != nil ? filteredMusic!.count : 0
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -147,21 +140,12 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        if filter != nil {
-            return 30.0
-        }
-        
-        return 0.0
+        return filter != nil ? 44.0 : 0.0
     }
     
     // MARK: - CollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if (filteredMusic != nil) {
-            return filteredMusic!.count
-        }
-        return 0
+        return filteredMusic != nil ? filteredMusic!.count : 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -209,12 +193,10 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         referenceSizeForHeaderInSection section: Int) -> CGSize {
-            if filter != nil {
-                return CGSize(width: self.musicCollectionView.frame.width, height: 50)
-            }
-            else {
-                return CGSize(width: self.musicCollectionView.frame.width, height: 0)
-            }
+            return CGSize(
+                width: self.musicCollectionView.frame.width,
+                height: filter != nil ? 64 : 0
+            )
     }
     // MARK: - Prepare for Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
