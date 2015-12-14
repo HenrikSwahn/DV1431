@@ -42,7 +42,7 @@ struct MovieAdapter {
         return [
             Section.General,
             KeyValueAdapter("Format", movie.format?.rawValue),
-            KeyValueAdapter("Runtime", movie.runtime.toString()),
+            KeyValueAdapter("Runtime", getString(movie.runtime.toString())),
             KeyValueAdapter("Genre", movie.genre),
             KeyValueAdapter("Release", String(movie.releaseYear)),
         ]
