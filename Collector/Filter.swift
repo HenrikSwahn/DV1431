@@ -14,16 +14,29 @@ class Filter {
     var genre: String?
     var year: Int?
     var rating: Int?
+    var isActive = false
     
     func setFilter(genre: String?, year: String?, rating: String?) {
-        self.genre = genre
+        
+        if let g = genre {
+            self.genre = g
+        }
+        else {
+            self.genre = nil
+        }
         
         if let y = year {
             self.year = Int(y)
         }
+        else {
+            self.year = nil
+        }
         
         if let r = rating {
             self.rating = Int(r)
+        }
+        else {
+            self.rating = nil
         }
     }
     

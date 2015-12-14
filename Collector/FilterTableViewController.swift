@@ -34,17 +34,32 @@ class FilterTableViewController: UITableViewController, UIPickerViewDataSource, 
         if genresData![genres.selectedRowInComponent(0)] != "-" {
             genre = genresData![genres.selectedRowInComponent(0)]
         }
+        else {
+            genre = nil
+        }
         
         if releaseYearsData![self.releaseYear.selectedRowInComponent(0)] != "-" {
             releaseYear = releaseYearsData![self.releaseYear.selectedRowInComponent(0)]
+        }
+        else {
+            releaseYear = nil
         }
         
         if ratingsData![self.ratings.selectedRowInComponent(0)] != "-" {
             rating = ratingsData![self.ratings.selectedRowInComponent(0)]
         }
+        else {
+            rating = nil
+        }
         
         filter.setFilter(genre, year: releaseYear, rating: rating)
-        delegate?.didSelectFilter(filter)
+        
+        if genre == nil && releaseYear == nil && rating == nil {
+            delegate?.didSelectFilter(nil)
+        }
+        else {
+            delegate?.didSelectFilter(filter)
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
    
@@ -73,6 +88,24 @@ class FilterTableViewController: UITableViewController, UIPickerViewDataSource, 
         ratings.dataSource = self
         ratings.delegate = self
         
+        if filter.isActive {
+            setRows()
+        }
+    }
+    
+    private func setRows() {
+        
+        if let genre = filter.genre {
+            genres.selectRow((genresData?.indexOf(genre))!, inComponent: 0, animated: true)
+        }
+        
+        if let year = filter.year {
+            releaseYear.selectRow((releaseYearsData?.indexOf("\(year)"))!, inComponent: 0, animated: true)
+        }
+        
+        if let rating = filter.rating {
+            ratings.selectRow((ratingsData?.indexOf("\(rating)"))!, inComponent: 0, animated: true)
+        }
     }
     
     private func setUpForMovie() {

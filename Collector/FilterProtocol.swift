@@ -10,4 +10,5 @@ import Foundation
 
 protocol FilterDelegate: class {
     func didSelectFilter(filter: Filter?);
+    func removeFilter();
 }

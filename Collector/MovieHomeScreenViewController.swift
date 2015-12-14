@@ -17,6 +17,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         static let detailMovieSegueTableId = "DetailMovieSegueTable"
         static let detailMovieSegueCollectionId = "DetailMovieSegueCollection"
         static let filterSegue = "filterSegue"
+        static let headerCell = "HeaderCell"
     }
     
     private let storage = Storage()
@@ -24,6 +25,8 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         didSet {
             if self.filter == nil {
                 filteredMovies = movies;
+                self.mediaTable.reloadData()
+                self.mediaCollection.reloadData()
             }
             else {
                 filteredMovies = filter!.filterMovies(movies!);
@@ -39,6 +42,8 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         didSet {
             if self.filter == nil {
                 filteredMovies = movies;
+                self.mediaTable.reloadData()
+                self.mediaCollection.reloadData()
             }
             else {
                 filteredMovies = filter!.filterMovies(movies!);
@@ -94,6 +99,47 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         return 0
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if filter != nil {
+            var headerView = tableView.dequeueReusableCellWithIdentifier(Storyboard.headerCell) as! HeaderTableViewCell
+            headerView.delegate = self
+            
+            if let genre = filter!.genre {
+                headerView.genreLabel.text = genre
+            }
+            else {
+                headerView.genreLabel.text = "N/A"
+            }
+            
+            if let year = filter?.year {
+                headerView.yearLabel.text = "\(year)"
+            }
+            else {
+                headerView.yearLabel.text = "N/A"
+            }
+            
+            if let rating = filter!.rating {
+                headerView.ratingLabel.text = "\(rating)"
+            }
+            else {
+                headerView.ratingLabel.text = "N/A"
+            }
+            
+            return headerView
+        
+        }
+        return nil
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if filter != nil {
+            return 30.0
+        }
+        
+        return 0.0
+    }
+    
     // MARK: - CollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (filteredMovies != nil) {
@@ -138,6 +184,11 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
             let destTop = dest.topViewController as! FilterTableViewController
             destTop.delegate = self
             destTop.context = context
+            
+            if filter != nil {
+                filter!.isActive = true
+                destTop.filter = filter!
+            }
         }
     }
     
@@ -158,5 +209,9 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - Filter Delegate
     func didSelectFilter(filter: Filter?) {
         self.filter = filter
+    }
+    
+    func removeFilter() {
+        self.filter = nil
     }
 }

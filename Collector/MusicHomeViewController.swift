@@ -16,6 +16,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         static let musicDetailColSegueId = "showMusicDetailCol"
         static let musicDetailTableSegueId = "showMusicDetailTable"
         static let filterMusicSegue = "filterMusicSegue"
+        static let headerCell = "HeaderCell"
     }
     
     var context = ViewContextEnum.Music
@@ -24,6 +25,8 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         didSet {
             if self.filter == nil {
                 filteredMusic = music
+                self.musicTableView.reloadData()
+                self.musicCollectionView.reloadData()
             }
             else {
                 filteredMusic = filter!.filterMusic(music!)
@@ -37,6 +40,8 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         didSet {
             if self.filter == nil {
                 filteredMusic = music
+                self.musicTableView.reloadData()
+                self.musicCollectionView.reloadData()
             }
             else {
                 filteredMusic = filter!.filterMusic(music!);
@@ -47,7 +52,6 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     var filteredMusic: [Music]?
     let storage = Storage();
-    
     
     @IBOutlet weak var musicTableView: UITableView! {
         didSet {
@@ -71,6 +75,8 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.musicTableView.tableHeaderView = nil
+        self.musicTableView.tableHeaderView?.hidden = true
         self.musicCollectionView.hidden = true
         self.musicTableView.hidden = false
         music = storage.searchDatabase(DBSearch(table: nil, searchString: nil, batchSize: nil, set: .Music), doConvert: true) as? [Music]
@@ -102,6 +108,48 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
             return filteredMusic!.count
         }
         return 0
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if filter != nil {
+            let headerView = tableView.dequeueReusableCellWithIdentifier(Storyboard.headerCell) as! HeaderTableViewCell
+            headerView.delegate = self
+            
+            if let genre = filter!.genre {
+                headerView.genreLabel.text = genre
+            }
+            else {
+                headerView.genreLabel.text = "N/A"
+            }
+            
+            if let year = filter?.year {
+                headerView.yearLabel.text = "\(year)"
+            }
+            else {
+                headerView.yearLabel.text = "N/A"
+            }
+            
+            if let rating = filter!.rating {
+                headerView.ratingLabel.text = "\(rating)"
+            }
+            else {
+                headerView.ratingLabel.text = "N/A"
+            }
+
+            return headerView
+        }
+        
+        return nil
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if filter != nil {
+            return 30.0
+        }
+        
+        return 0.0
     }
     
     // MARK: - CollectionView
@@ -149,11 +197,20 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
             let destTop = dest.topViewController as! FilterTableViewController
             destTop.delegate = self
             destTop.context = context
+            
+            if filter != nil {
+                filter!.isActive = true
+                destTop.filter = filter!
+            }
         }
     }
     
     // MARK: - Filter Delegate
     func didSelectFilter(filter: Filter?) {
         self.filter = filter
+    }
+    
+    func removeFilter() {
+        self.filter = nil
     }
 }
