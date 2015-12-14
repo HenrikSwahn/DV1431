@@ -17,6 +17,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         static let musicDetailTableSegueId = "showMusicDetailTable"
         static let filterMusicSegue = "filterMusicSegue"
         static let headerCell = "HeaderCell"
+        static let colFilterHeader = "ColFilterHeader"
     }
     
     var context = ViewContextEnum.Music
@@ -64,6 +65,7 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         didSet {
             self.musicCollectionView.delegate = self
             self.musicCollectionView.dataSource = self
+            self.musicCollectionView.backgroundColor = UIColor.whiteColor()
         }
     }
     
@@ -169,6 +171,50 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if filter != nil {
+            if kind == UICollectionElementKindSectionHeader {
+                let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: Storyboard.colFilterHeader, forIndexPath: indexPath) as! HeaderCollectionReusableView
+                headerView.delegate = self
+                if let genre = filter!.genre {
+                    headerView.genreLabel.text = genre
+                }
+                else {
+                    headerView.genreLabel.text = "N/A"
+                }
+                
+                if let year = filter?.year {
+                    headerView.yearLabel.text = "\(year)"
+                }
+                else {
+                    headerView.yearLabel.text = "N/A"
+                }
+                
+                if let rating = filter!.rating {
+                    headerView.ratingLabel.text = "\(rating)"
+                }
+                else {
+                    headerView.ratingLabel.text = "N/A"
+                }
+                
+                return headerView
+            }
+        }
+        
+        let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: Storyboard.colFilterHeader, forIndexPath: indexPath) as! HeaderCollectionReusableView
+        return view
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int) -> CGSize {
+            if filter != nil {
+                return CGSize(width: self.musicCollectionView.frame.width, height: 50)
+            }
+            else {
+                return CGSize(width: self.musicCollectionView.frame.width, height: 0)
+            }
+    }
     // MARK: - Prepare for Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 

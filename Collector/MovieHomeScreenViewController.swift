@@ -18,6 +18,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         static let detailMovieSegueCollectionId = "DetailMovieSegueCollection"
         static let filterSegue = "filterSegue"
         static let headerCell = "HeaderCell"
+        static let colFilterHeader = "colFilterHeader"
     }
     
     private let storage = Storage()
@@ -101,7 +102,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if filter != nil {
-            var headerView = tableView.dequeueReusableCellWithIdentifier(Storyboard.headerCell) as! HeaderTableViewCell
+            let headerView = tableView.dequeueReusableCellWithIdentifier(Storyboard.headerCell) as! HeaderTableViewCell
             headerView.delegate = self
             
             if let genre = filter!.genre {
@@ -154,6 +155,51 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         cell.releaseYearLabel.text = "\(filteredMovies![indexPath.row].releaseYear)"
         cell.coverArt.image = filteredMovies![indexPath.row].coverArt
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if filter != nil {
+            if kind == UICollectionElementKindSectionHeader {
+                let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: Storyboard.colFilterHeader, forIndexPath: indexPath) as! HeaderCollectionReusableView
+                headerView.delegate = self
+                if let genre = filter!.genre {
+                    headerView.genreLabel.text = genre
+                }
+                else {
+                    headerView.genreLabel.text = "N/A"
+                }
+                
+                if let year = filter?.year {
+                    headerView.yearLabel.text = "\(year)"
+                }
+                else {
+                    headerView.yearLabel.text = "N/A"
+                }
+                
+                if let rating = filter!.rating {
+                    headerView.ratingLabel.text = "\(rating)"
+                }
+                else {
+                    headerView.ratingLabel.text = "N/A"
+                }
+                
+                return headerView
+            }
+        }
+        
+        let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: Storyboard.colFilterHeader, forIndexPath: indexPath) as! HeaderCollectionReusableView
+        return view
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int) -> CGSize {
+            if filter != nil {
+                return CGSize(width: self.mediaCollection.frame.width, height: 50)
+            }
+            else {
+                return CGSize(width: self.mediaCollection.frame.width, height: 0)
+            }
     }
     
     // MARK: - Segue
