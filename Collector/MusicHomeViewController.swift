@@ -251,6 +251,11 @@ class MusicHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeFilter()
+    }
+    
     // MARK: - Filter Delegate
     func didSelectFilter(filter: Filter?) {
         self.filter = filter

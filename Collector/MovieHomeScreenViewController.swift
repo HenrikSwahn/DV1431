@@ -252,6 +252,11 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
         
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeFilter()
+    }
+    
     // MARK: - Filter Delegate
     func didSelectFilter(filter: Filter?) {
         self.filter = filter
