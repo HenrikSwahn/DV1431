@@ -41,7 +41,6 @@ struct AlbumAdapter {
     private static func tracks(album: Music) -> [AnyObject] {
         var tracks: [AnyObject] = album.trackList
         tracks.insert(Section.Tracks, atIndex: 0)
-        
         return tracks
     }
     

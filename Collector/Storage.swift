@@ -415,7 +415,7 @@ class Storage {
                     movie.trailers.append((trailer.name, trailer.url))
                 }
             }
-            
+            movie.trailers.sortInPlace({$0.title < $1.title})
             movies.append(movie)
         }
         return movies

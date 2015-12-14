@@ -64,12 +64,17 @@ struct MovieAdapter {
     }
     
     private static func videos(movie: Movie) -> [AnyObject] {
-        return [
+        
+        var videos: [AnyObject] = movie.trailers.map({ KeyValueAdapter($0.title, $0.URL) })
+        videos.insert(Section.Video, atIndex: 0)
+        return videos
+        
+        /*return [
             Section.Video,
             KeyValueAdapter("trailer name", "link to youtube"),
             KeyValueAdapter("trailer name", "link to youtube"),
             KeyValueAdapter("trailer name", "link to youtube")
-        ]
+        ]*/
     }
     
     static func tableView(movie: Movie) -> [[AnyObject]] {
