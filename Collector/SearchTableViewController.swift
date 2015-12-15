@@ -53,7 +53,9 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
         if (movies != nil) {
             self.filteredMovies = self.movies!.filter({(movie: Movie) -> Bool in
                 let titleMatch = movie.title.rangeOfString(text)
-                return (titleMatch != nil) 
+                let genreMatch = movie.genre!.lowercaseString.rangeOfString(text.lowercaseString)
+                let yearMatch = String(movie.releaseYear).lowercaseString.rangeOfString(text.lowercaseString)
+                return (titleMatch != nil) || (genreMatch != nil) || (yearMatch != nil)
             })
         }
         
@@ -61,7 +63,9 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
             self.filteredMusic = self.music!.filter({(music: Music) -> Bool in
                 let titleMatch = music.title.lowercaseString.rangeOfString(text.lowercaseString)
                 let artistMatch = music.albumArtist!.lowercaseString.rangeOfString(text.lowercaseString)
-                return (titleMatch != nil) || (artistMatch != nil)
+                let genreMatch = music.genre!.lowercaseString.rangeOfString(text.lowercaseString)
+                let yearMatch = String(music.releaseYear).lowercaseString.rangeOfString(text.lowercaseString)
+                return (titleMatch != nil) || (genreMatch != nil) || (yearMatch != nil) || (artistMatch != nil)
             })
         }
     }
@@ -72,16 +76,22 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
             filtered = false
             self.movieResultsCollectionView.reloadData()
             self.musicResultsCollectionView.reloadData()
+            self.tableView.reloadData()
         }
         else {
             filtered = true
             filter(searchText)
             self.movieResultsCollectionView.reloadData()
             self.musicResultsCollectionView.reloadData()
+            self.tableView.reloadData()
         }
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.view.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.view.endEditing(true)
     }
 
@@ -112,7 +122,6 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
                 }
             }
         }
-        
         return 0
     }
     

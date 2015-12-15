@@ -110,7 +110,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDataSource, 
     
     private func setUpForMovie() {
         genresData = [String]()
-        genresData! += ["-", "Action", "Thriller", "Drama", "Science Fiction"]
+        genresData! += ["-", "Action", "Thriller", "Drama", "Science Fiction","Horror", "Comedy", "Fantasy", "Adventure", "Crime", "Mystery"]
         genres.dataSource = self
         genres.delegate = self
     }
