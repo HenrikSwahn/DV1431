@@ -94,7 +94,7 @@ class MusicCollectionViewController: UIViewController, UICollectionViewDataSourc
         referenceSizeForHeaderInSection section: Int) -> CGSize {
             return CGSize(
                 width: collectionView.frame.width,
-                height: controller!.filter != nil ? 64 : 0
+                height: controller!.filter != nil ? 55.0 : 0
             )
     }
     
