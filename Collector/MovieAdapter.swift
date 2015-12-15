@@ -41,9 +41,9 @@ struct MovieAdapter {
     private static func general(movie: Movie) -> [AnyObject] {
         return [
             Section.General,
-            KeyValueAdapter("Format", movie.format?.rawValue),
+            KeyValueAdapter("Format", getString(movie.format?.rawValue)),
             KeyValueAdapter("Runtime", getString(movie.runtime.toString())),
-            KeyValueAdapter("Genre", movie.genre),
+            KeyValueAdapter("Genre", getString(movie.genre)),
             KeyValueAdapter("Release", String(movie.releaseYear)),
         ]
     }
