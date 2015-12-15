@@ -28,13 +28,11 @@ class TrackTableViewCell: ColoredTableViewCell {
             delegate?.playMusic!(player!)
             isPlaying = true
             updatePreviewButton()
-            previewButton.setNeedsDisplay()
         }
         else {
             delegate?.stopMusic!();
             isPlaying = false
             updatePreviewButton()
-            previewButton.setNeedsDisplay()
         }
     }
     

@@ -60,7 +60,7 @@ class MusicTableViewController: UIViewController, UITableViewDataSource, UITable
         if controller!.filter != nil {
             let headerView = tableView.dequeueReusableCellWithIdentifier(Storyboard.headerCell) as! HeaderTableViewCell
             headerView.delegate = controller!
-            
+
             if let genre = controller!.filter!.genre {
                 headerView.genreLabel.text = genre
             }
@@ -110,10 +110,5 @@ class MusicTableViewController: UIViewController, UITableViewDataSource, UITable
         if tableView != nil {
             tableView.reloadData()
         }
-    }
-    
-    func indexPaths() -> [NSIndexPath]? {
-        return [NSIndexPath()]
-        //return collectionView.indexPathsForSelectedItems()
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MusicCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MediaPageControllerDelegate {
+class MusicCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIViewControllerPreviewingDelegate, MediaPageControllerDelegate {
 
     var parentController: MediaPageViewController?
     var controller: MusicPageController? {
@@ -34,7 +34,9 @@ class MusicCollectionViewController: UIViewController, UICollectionViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if traitCollection.forceTouchCapability == .Available {
+            registerForPreviewingWithDelegate(self, sourceView: view)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,14 +116,28 @@ class MusicCollectionViewController: UIViewController, UICollectionViewDataSourc
         }
     }
 
+    // MARK: - UIViewPreviewingDelegate
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView?.indexPathForItemAtPoint(location) else { return nil }
+        guard let cell = collectionView?.cellForItemAtIndexPath(indexPath) else { return nil }
+        
+        guard let detailVC = storyboard?.instantiateViewControllerWithIdentifier("MusicDetailViewController") as? MusicDetailViewController else { return nil }
+        
+        detailVC.music = controller!.filteredMusic![indexPath.row]
+        detailVC.context = controller!.context
+        
+        detailVC.preferredContentSize = CGSize(width: 0.0, height: 500)
+        previewingContext.sourceRect = cell.frame
+        return detailVC
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+        showViewController(viewControllerToCommit, sender: self)
+    }
+    
     func reloadData() {
         if collectionView != nil {
             collectionView.reloadData()
         }
-    }
-    
-    func indexPaths() -> [NSIndexPath]? {
-        return [NSIndexPath()]
-        //return collectionView.indexPathsForSelectedItems()
     }
 }

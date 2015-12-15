@@ -98,10 +98,6 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDataSourc
         }
     }
     
-    func indexPaths() -> [NSIndexPath]? {
-        return collectionView.indexPathsForSelectedItems()
-    }
-    
     // Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Storyboard.detailMovieSegueCollectionId {

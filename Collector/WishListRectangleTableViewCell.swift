@@ -18,17 +18,7 @@ class WishListRectangleTableViewCell: UITableViewCell {
     @IBOutlet weak var wishIconType: UIIconImageView!
     @IBOutlet weak var wishImageView: UIImageView!
     @IBOutlet weak var wishTitleLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
     func updateUI() {
         if let item = wish {
             if let imageData = item.imageData {

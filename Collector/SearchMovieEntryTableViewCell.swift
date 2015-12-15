@@ -30,7 +30,6 @@ class SearchMovieEntryTableViewCell: UICachableTableViewCell {
     private func updateSelf() {
         if let movie = self.model {
             let link = movie.image
-            //let link = "http://app.opij.ac/image.jpg"
             self.loadImage(link, view: self.movieImage)
             
             identifier = "\(movie.id)"

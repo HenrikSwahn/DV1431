@@ -102,34 +102,3 @@ public class Runtime {
         }
     }
 }
-
-public protocol RuntimeFormatable: CustomStringConvertible {
-    var runtime: Runtime { get set }
-}
-
-public class RuntimeTrackFormatter: RuntimeFormatable {
-    public var runtime: Runtime
-    
-    public var description: String {
-        var fmt = ""
-        fmt += format(0, runtime.hours)
-        fmt += format(runtime.hours, runtime.minutes)
-        fmt += format(runtime.minutes, runtime.hours)
-        return fmt
-    }
-    
-    private func format(first: Int, _ second: Int) -> String {
-        switch (first, second) {
-            case (0, let s) where s > 0: // 0 1
-                return "\(s)"
-            case (let m, let s) where m > 0 && s > 0: // 1 1 -> :1
-                return ":\(s)"
-            default:
-                return ""
-        }
-    }
-    
-    required public init(runtime: Runtime) {
-        self.runtime = runtime
-    }
-}

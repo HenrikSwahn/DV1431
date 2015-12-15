@@ -14,7 +14,8 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="SEl-fb-XEc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" id="3pw-i7-00t">
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -30,7 +31,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="176"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tj3-WF-kx9">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tj3-WF-kx9">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="166"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xpg-S7-4FG">
@@ -47,7 +48,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="89" height="166"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="i-am-legend-box" translatesAutoresizingMaskIntoConstraints="NO" id="aV1-9t-6Zy">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-movie" translatesAutoresizingMaskIntoConstraints="NO" id="aV1-9t-6Zy">
                                                                         <rect key="frame" x="7" y="4" width="75" height="111"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="75" id="cSw-Ay-l6L"/>
@@ -97,7 +98,7 @@
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="leadingMargin" secondItem="Tj3-WF-kx9" secondAttribute="leading" id="ZA0-9O-0O0"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Tj3-WF-kx9" secondAttribute="bottom" constant="2" id="Zxj-PT-2Gp"/>
@@ -105,6 +106,7 @@
                                                 <constraint firstItem="Tj3-WF-kx9" firstAttribute="top" secondItem="i3s-fz-sLB" secondAttribute="topMargin" constant="-8" id="zkQ-St-pkQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -117,7 +119,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dPD-cT-erq">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dPD-cT-erq">
                                                     <rect key="frame" x="8" y="-1" width="584" height="126"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g7s-6H-bnz">
@@ -134,7 +136,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="89" height="126"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="i-am-legend-box" translatesAutoresizingMaskIntoConstraints="NO" id="2mf-Oz-GIU">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-music" translatesAutoresizingMaskIntoConstraints="NO" id="2mf-Oz-GIU">
                                                                         <rect key="frame" x="7" y="4" width="75" height="75"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="75" id="ibU-rU-hhX"/>
@@ -184,7 +186,7 @@
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="dPD-cT-erq" firstAttribute="top" secondItem="OMW-6N-Wlx" secondAttribute="topMargin" constant="-9" id="4Qo-ZC-iGl"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="dPD-cT-erq" secondAttribute="bottom" constant="17" id="C4i-Kt-Rwl"/>
@@ -618,7 +620,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <prototypes>
-                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddedTracksCell" textLabel="SG6-IJ-9TQ" detailTextLabel="otU-zP-cjb" rowHeight="30" style="IBUITableViewCellStyleValue2" id="pY9-G3-Ldq" customClass="MediaDetailTableViewCell" customModule="Collector" customModuleProvider="target">
+                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddedTracksCell" textLabel="SG6-IJ-9TQ" detailTextLabel="otU-zP-cjb" rowHeight="30" style="IBUITableViewCellStyleValue2" id="pY9-G3-Ldq">
                                             <rect key="frame" x="0.0" y="28" width="600" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pY9-G3-Ldq" id="aDx-KT-adG">
@@ -1680,7 +1682,7 @@
         <!--Music Detail View Controller-->
         <scene sceneID="eED-Gd-3FV">
             <objects>
-                <viewController id="nMo-yQ-95N" customClass="MusicDetailViewController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MusicDetailViewController" id="nMo-yQ-95N" customClass="MusicDetailViewController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TWO-dj-SmA"/>
                         <viewControllerLayoutGuide type="bottom" id="cbY-uM-eeh"/>
@@ -2463,22 +2465,21 @@
     <resources>
         <image name="film" width="24" height="25"/>
         <image name="grid" width="22" height="21"/>
-        <image name="i-am-legend-box" width="972" height="1440"/>
         <image name="list" width="22" height="18"/>
         <image name="music" width="20" height="25"/>
         <image name="placeholder-movie" width="75" height="111"/>
         <image name="placeholder-music" width="100" height="100"/>
         <image name="play" width="25" height="25"/>
         <image name="sort" width="22" height="18"/>
-        <image name="star" width="25" height="22"/>
-        <image name="star-fill" width="25" height="22"/>
+        <image name="star" width="25" height="24"/>
+        <image name="star-fill" width="25" height="24"/>
         <image name="wish-list" width="23" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qoA-Sp-efD"/>
-        <segue reference="02z-5J-0ZC"/>
         <segue reference="cSo-Dd-EVU"/>
+        <segue reference="02z-5J-0ZC"/>
         <segue reference="uWx-WX-m7B"/>
-        <segue reference="uaZ-uw-PtA"/>
+        <segue reference="gvY-JJ-dgj"/>
+        <segue reference="7n8-3M-h6M"/>
     </inferredMetricsTieBreakers>
 </document>

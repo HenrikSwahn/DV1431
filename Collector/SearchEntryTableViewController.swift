@@ -242,6 +242,7 @@ extension SearchMovieEntryTableViewCell {
     }
 }
 
+
 extension SearchMusicEntryTableViewCell {
     internal func toWishListItem() -> WishListItem {
         return WishListItem(
