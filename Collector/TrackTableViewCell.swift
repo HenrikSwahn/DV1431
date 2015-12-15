@@ -69,5 +69,6 @@ class TrackTableViewCell: ColoredTableViewCell {
         numberLabel.textColor = self.detailUIColor()
         runtimeLabel.textColor = self.detailUIColor()
         titleLabel.textColor = self.primaryUIColor()
+        previewButton.tintColor = self.secondaryUIColor()
     }
 }
