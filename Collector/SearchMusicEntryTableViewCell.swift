@@ -24,7 +24,6 @@ class SearchMusicEntryTableViewCell: UICachableTableViewCell {
     private func updateSelf() {
         if let album = self.model {
             let link = album.image
-            //let link = "http://app.opij.ac/image.jpg"
             self.loadImage(link!, view: self.albumImage)
             
             identifier = album.id

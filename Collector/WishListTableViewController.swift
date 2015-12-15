@@ -172,9 +172,3 @@ class WishListTableViewController: UITableViewController {
     }
     */
 }
-
-extension UIAlertController {
-    func addActions(actions: [UIAlertAction]) {
-        actions.forEach() { self.addAction($0) }
-    }
-}

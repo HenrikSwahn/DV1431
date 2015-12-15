@@ -618,7 +618,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <prototypes>
-                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddedTracksCell" textLabel="SG6-IJ-9TQ" detailTextLabel="otU-zP-cjb" rowHeight="30" style="IBUITableViewCellStyleValue2" id="pY9-G3-Ldq" customClass="MediaDetailTableViewCell" customModule="Collector" customModuleProvider="target">
+                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddedTracksCell" textLabel="SG6-IJ-9TQ" detailTextLabel="otU-zP-cjb" rowHeight="30" style="IBUITableViewCellStyleValue2" id="pY9-G3-Ldq">
                                             <rect key="frame" x="0.0" y="28" width="600" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pY9-G3-Ldq" id="aDx-KT-adG">
