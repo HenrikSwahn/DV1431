@@ -93,11 +93,7 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if (filteredMovies != nil) {
-            return filteredMovies!.count
-        }
-        return 0
+        return filteredMovies != nil ? filteredMovies!.count : 0
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -133,20 +129,12 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        if filter != nil {
-            return 30.0
-        }
-        
-        return 0.0
+        return filter != nil ? 44.0 : 0.0
     }
     
     // MARK: - CollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (filteredMovies != nil) {
-            return filteredMovies!.count
-        }
-        return 0
+        return filteredMovies != nil ? filteredMovies!.count : 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -194,12 +182,10 @@ class MovieHomeScreenViewController: UIViewController, UITableViewDataSource, UI
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         referenceSizeForHeaderInSection section: Int) -> CGSize {
-            if filter != nil {
-                return CGSize(width: self.mediaCollection.frame.width, height: 50)
-            }
-            else {
-                return CGSize(width: self.mediaCollection.frame.width, height: 0)
-            }
+            return CGSize(
+                width: self.mediaCollection.frame.width,
+                height: filter != nil ? 64 : 0
+            )
     }
     
     // MARK: - Segue

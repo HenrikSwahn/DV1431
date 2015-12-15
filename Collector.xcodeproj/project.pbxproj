@@ -28,6 +28,10 @@
 		31114C4A1C15FEC400396AA8 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C491C15FEC400396AA8 /* SearchAPI.swift */; };
 		31114C4C1C15FFEE00396AA8 /* SearchAPIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31114C4B1C15FFEE00396AA8 /* SearchAPIDelegate.swift */; };
 		3124B2021C1F137600ACE6D9 /* MediaBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124B2011C1F137600ACE6D9 /* MediaBoxTableViewCell.swift */; };
+		3124B2041C1F36C000ACE6D9 /* MoviePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124B2031C1F36C000ACE6D9 /* MoviePageController.swift */; };
+		3124B20A1C1F41C800ACE6D9 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124B2091C1F41C800ACE6D9 /* MovieTableViewController.swift */; };
+		3124B20C1C1F41DF00ACE6D9 /* MovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124B20B1C1F41DF00ACE6D9 /* MovieCollectionViewController.swift */; };
+		3124B20E1C1F602800ACE6D9 /* MediaPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124B20D1C1F602800ACE6D9 /* MediaPageViewController.swift */; };
 		315797E91C074F0B0007FAFC /* UIIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E61C074F0B0007FAFC /* UIIconImageView.swift */; };
 		315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */; };
 		315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E81C074F0B0007FAFC /* UIRatingView.swift */; };
@@ -135,6 +139,10 @@
 		31114C491C15FEC400396AA8 /* SearchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
 		31114C4B1C15FFEE00396AA8 /* SearchAPIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAPIDelegate.swift; sourceTree = "<group>"; };
 		3124B2011C1F137600ACE6D9 /* MediaBoxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaBoxTableViewCell.swift; sourceTree = "<group>"; };
+		3124B2031C1F36C000ACE6D9 /* MoviePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePageController.swift; sourceTree = "<group>"; };
+		3124B2091C1F41C800ACE6D9 /* MovieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
+		3124B20B1C1F41DF00ACE6D9 /* MovieCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewController.swift; sourceTree = "<group>"; };
+		3124B20D1C1F602800ACE6D9 /* MediaPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPageViewController.swift; sourceTree = "<group>"; };
 		315797E61C074F0B0007FAFC /* UIIconImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIIconImageView.swift; sourceTree = "<group>"; };
 		315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMarqueeLabel.swift; sourceTree = "<group>"; };
 		315797E81C074F0B0007FAFC /* UIRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRatingView.swift; sourceTree = "<group>"; };
@@ -480,6 +488,10 @@
 				AF300AAE1C15D94100BC57D9 /* MusicHomeViewController.swift */,
 				AF300AB21C16FF9000BC57D9 /* MusicDetailViewController.swift */,
 				31E41FE81C185A88003976F9 /* WishListTableViewController.swift */,
+				3124B2031C1F36C000ACE6D9 /* MoviePageController.swift */,
+				3124B2091C1F41C800ACE6D9 /* MovieTableViewController.swift */,
+				3124B20B1C1F41DF00ACE6D9 /* MovieCollectionViewController.swift */,
+				3124B20D1C1F602800ACE6D9 /* MediaPageViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -621,17 +633,20 @@
 				31E41FDF1C173380003976F9 /* UICachableTableViewCell.swift in Sources */,
 				AF300AA01C0C908300BC57D9 /* MovieStore.swift in Sources */,
 				31B8422A1BF3880E005429FA /* Collector.xcdatamodeld in Sources */,
+				3124B2041C1F36C000ACE6D9 /* MoviePageController.swift in Sources */,
 				315797EF1C075FC60007FAFC /* UIImageColors.swift in Sources */,
 				31114C211C15B19000396AA8 /* TMDbMovieItem.swift in Sources */,
 				31E41FE91C185A88003976F9 /* WishListTableViewController.swift in Sources */,
 				31114C221C15B19000396AA8 /* TMDbMovieResource.swift in Sources */,
 				31749C031BFDE7B400E76648 /* SearchTableViewController.swift in Sources */,
 				AF0450591C1EEFDE00E8E7EC /* PlayerPresenter.swift in Sources */,
+				3124B20E1C1F602800ACE6D9 /* MediaPageViewController.swift in Sources */,
 				AF300AAD1C15D11A00BC57D9 /* MusicStore.swift in Sources */,
 				3177437B1C1DAAB200C44715 /* ColoredTableViewCell.swift in Sources */,
 				AF0450531C1EB62700E8E7EC /* HeaderCollectionReusableView.swift in Sources */,
 				31114C231C15B19000396AA8 /* TMDbSearchItem.swift in Sources */,
 				AF300AB31C16FF9000BC57D9 /* MusicDetailViewController.swift in Sources */,
+				3124B20C1C1F41DF00ACE6D9 /* MovieCollectionViewController.swift in Sources */,
 				31114C4A1C15FEC400396AA8 /* SearchAPI.swift in Sources */,
 				AF4E1D111C1DA15400AB1717 /* Filter.swift in Sources */,
 				3124B2021C1F137600ACE6D9 /* MediaBoxTableViewCell.swift in Sources */,
@@ -683,6 +698,7 @@
 				AFFC51C01BFDD03400DA5344 /* MediaDetailTableViewCell.swift in Sources */,
 				31E41FFA1C19D1BC003976F9 /* WishListItem.swift in Sources */,
 				315D31521BFF4EA100E08C7D /* ManualEntryTableViewCell.swift in Sources */,
+				3124B20A1C1F41C800ACE6D9 /* MovieTableViewController.swift in Sources */,
 				31E41FF71C19C8B1003976F9 /* TMDbConfigurationItem.swift in Sources */,
 				AF300A7A1C07151200BC57D9 /* Movie.swift in Sources */,
 				31114C161C15B15700396AA8 /* JSON.swift in Sources */,
