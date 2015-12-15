@@ -53,14 +53,15 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
         if (movies != nil) {
             self.filteredMovies = self.movies!.filter({(movie: Movie) -> Bool in
                 let titleMatch = movie.title.rangeOfString(text)
-                return (titleMatch != nil)
+                return (titleMatch != nil) 
             })
         }
         
         if (music != nil) {
             self.filteredMusic = self.music!.filter({(music: Music) -> Bool in
-                let titleMatch = music.title.rangeOfString(text)
-                return (titleMatch != nil)
+                let titleMatch = music.title.lowercaseString.rangeOfString(text.lowercaseString)
+                let artistMatch = music.albumArtist!.lowercaseString.rangeOfString(text.lowercaseString)
+                return (titleMatch != nil) || (artistMatch != nil)
             })
         }
     }
@@ -78,6 +79,10 @@ class SearchTableViewController: UITableViewController, UICollectionViewDelegate
             self.movieResultsCollectionView.reloadData()
             self.musicResultsCollectionView.reloadData()
         }
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.view.endEditing(true)
     }
 
     override func viewDidLoad() {

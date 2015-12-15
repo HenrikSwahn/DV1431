@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum AlbumSection {
+    case General
+    case Ownership
+    case Tracks
+}
+
 struct AlbumAdapter {
     private struct Section {
         static var General: String = "General"
@@ -53,6 +59,17 @@ struct AlbumAdapter {
         return adapter
     }
     
+    static func getSectionPosition(section: AlbumSection) -> Int {
+        switch(section) {
+        case .General:
+            return 0
+        case .Ownership:
+            return 1
+        case .Tracks:
+            return 2
+        }
+    }
+
     private static func getString(str: String?) -> String {
         if let s = str {
             if s.characters.count > 0 {

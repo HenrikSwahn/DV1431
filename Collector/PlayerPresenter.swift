@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import MediaPlayer
 import AVKit
 
 @objc protocol PlayerPresenter: class {
     optional func presentPlayer(playerVC: AVPlayerViewController)
-    optional func playMusic(url: String)
+    optional func playMusic(player: AVPlayer)
     optional func stopMusic()
     
 }

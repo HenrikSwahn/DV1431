@@ -19,8 +19,8 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - Private Members
     private var data: [[AnyObject]]?
     private var colors: UIImageColors?
-    private var musicPlayer: AVPlayer?
-
+    var musicPlayer: AVPlayer?
+    
     private struct Storyboard {
         static let mediaDetailTableCellIdentifier = "media detail cell id"
         static let trackCellId = "TrackCellId"
@@ -35,6 +35,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var detailLabel: UIMarqueeLabel!
     
     @IBOutlet weak var tableView: UIStretchableTableView!
+    
     
     private func setData() {
         
@@ -128,6 +129,12 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.ratingView.delegate = self
         
         setData()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopMusic()
+        self.musicPlayer = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -273,13 +280,13 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     // MARK: - Player presenter
-    func playMusic(url: String) {
+    func playMusic(player: AVPlayer) {
         
         if musicPlayer != nil {
             stopMusic()
         }
-        let url = NSURL(string: url)
-        self.musicPlayer = AVPlayer(URL: url!)
+        musicPlayer = player
+        checkWhosPlaying()
         musicPlayer?.play()
     }
     
@@ -287,6 +294,21 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         if musicPlayer != nil {
             musicPlayer?.pause()
+        }
+    }
+    
+    func checkWhosPlaying() {
+        
+        for(var i = 0; i < self.tableView.numberOfRowsInSection(AlbumAdapter.getSectionPosition(.Tracks)); i++) {
+            let cellOpt = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: AlbumAdapter.getSectionPosition(.Tracks))) as? TrackTableViewCell;
+            
+            if let cell = cellOpt {
+                if cell.player != self.musicPlayer && cell.isPlaying {
+                    cell.isPlaying = false
+                    cell.updatePreviewButton()
+                    break;
+                }
+            }
         }
     }
 }

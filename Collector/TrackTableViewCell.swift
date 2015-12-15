@@ -17,12 +17,12 @@ class TrackTableViewCell: ColoredTableViewCell {
     @IBOutlet weak var previewButton: UIButton!
     
     weak var delegate: PlayerPresenter?
-    private var url: String?
-    private var isPlaying = false
+    var player: AVPlayer?
+    var isPlaying = false
     @IBAction func previewTrackAction(sender: UIButton) {
         
         if !isPlaying {
-            delegate?.playMusic!(self.url!)
+            delegate?.playMusic!(player!)
             isPlaying = true
             updatePreviewButton()
             previewButton.setNeedsDisplay()
@@ -53,7 +53,8 @@ class TrackTableViewCell: ColoredTableViewCell {
             self.runtimeLabel.text = track.runtime.toTrackString()
             
             if let url = track.url {
-                self.url = url
+                let nsUrl = NSURL(string: url)
+                player = AVPlayer(URL: nsUrl!)
             }
             else {
                 previewButton.hidden = true
