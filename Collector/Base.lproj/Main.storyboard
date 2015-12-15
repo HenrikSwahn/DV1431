@@ -2366,7 +2366,7 @@
                                             </view>
                                             <blurEffect style="dark"/>
                                         </visualEffectView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7CC04389-F16A-45E7-A199-11FE72205122" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-tH-aSR">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5081E045-DBB4-4859-8391-3C272997029B" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-tH-aSR">
                                             <rect key="frame" x="12" y="13" width="75" height="111"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="111" id="UKc-2x-Ogy"/>
@@ -2837,7 +2837,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="7CC04389-F16A-45E7-A199-11FE72205122" width="37" height="55">
+        <image name="5081E045-DBB4-4859-8391-3C272997029B" width="37" height="55">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

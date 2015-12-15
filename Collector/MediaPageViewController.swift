@@ -76,7 +76,9 @@ class MediaPageViewController:
     }
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        viewDidChange(pageIndex)
+        if completed {
+            viewDidChange(pageIndex)
+        }
     }
     
     func addViewController(controller: UIViewController) {
