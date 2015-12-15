@@ -2366,7 +2366,7 @@
                                             </view>
                                             <blurEffect style="dark"/>
                                         </visualEffectView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5081E045-DBB4-4859-8391-3C272997029B" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-tH-aSR">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DF0CE901-17D4-4F2D-80D6-93F01489F91E" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-tH-aSR">
                                             <rect key="frame" x="12" y="13" width="75" height="111"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="111" id="UKc-2x-Ogy"/>
@@ -2489,8 +2489,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8U-DV-SUa">
+                                                    <rect key="frame" x="21" y="12" width="541" height="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDW-Ef-iZG">
-                                                    <rect key="frame" x="570" y="11" width="22" height="22"/>
+                                                    <rect key="frame" x="563" y="10" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="Iq1-eQ-hpV"/>
                                                         <constraint firstAttribute="width" constant="22" id="rkg-TR-Nl0"/>
@@ -2500,20 +2506,14 @@
                                                         <action selector="playTrailer:" destination="McA-nS-cxk" eventType="touchUpInside" id="0Jw-JQ-dst"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8U-DV-SUa">
-                                                    <rect key="frame" x="21" y="12" width="541" height="17"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Y8U-DV-SUa" firstAttribute="leading" secondItem="2uT-Ba-a7C" secondAttribute="leadingMargin" constant="13" id="8Mv-0q-OWS"/>
-                                                <constraint firstItem="RDW-Ef-iZG" firstAttribute="leading" secondItem="Y8U-DV-SUa" secondAttribute="trailing" constant="8" id="Rgh-Gc-Lzp"/>
+                                                <constraint firstItem="RDW-Ef-iZG" firstAttribute="leading" secondItem="Y8U-DV-SUa" secondAttribute="trailing" constant="1" id="Rgh-Gc-Lzp"/>
                                                 <constraint firstItem="Y8U-DV-SUa" firstAttribute="top" secondItem="2uT-Ba-a7C" secondAttribute="topMargin" constant="4" id="c7k-yN-MvJ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Y8U-DV-SUa" secondAttribute="bottom" constant="6" id="f74-W4-pJ6"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="RDW-Ef-iZG" secondAttribute="trailing" id="oAP-Xw-xES"/>
-                                                <constraint firstItem="RDW-Ef-iZG" firstAttribute="top" secondItem="2uT-Ba-a7C" secondAttribute="topMargin" constant="3" id="pZ2-m0-pRu"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="RDW-Ef-iZG" secondAttribute="trailing" constant="7" id="oAP-Xw-xES"/>
+                                                <constraint firstItem="RDW-Ef-iZG" firstAttribute="top" secondItem="2uT-Ba-a7C" secondAttribute="topMargin" constant="2" id="pZ2-m0-pRu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2837,7 +2837,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="5081E045-DBB4-4859-8391-3C272997029B" width="37" height="55">
+        <image name="DF0CE901-17D4-4F2D-80D6-93F01489F91E" width="37" height="55">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -3037,10 +3037,10 @@ AEEAAAAAAAAAAAAAAAAAACoYA
         <image name="wish-list" width="23" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qoA-Sp-efD"/>
-        <segue reference="FVE-sg-vtr"/>
         <segue reference="w4d-6U-9xW"/>
         <segue reference="cQZ-ie-XpU"/>
         <segue reference="a2V-SC-hXR"/>
+        <segue reference="7n8-3M-h6M"/>
+        <segue reference="FVE-sg-vtr"/>
     </inferredMetricsTieBreakers>
 </document>
