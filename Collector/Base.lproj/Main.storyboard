@@ -47,7 +47,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="89" height="166"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="i-am-legend-box" translatesAutoresizingMaskIntoConstraints="NO" id="aV1-9t-6Zy">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-movie" translatesAutoresizingMaskIntoConstraints="NO" id="aV1-9t-6Zy">
                                                                         <rect key="frame" x="7" y="4" width="75" height="111"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="75" id="cSw-Ay-l6L"/>
@@ -2475,10 +2475,10 @@
         <image name="wish-list" width="23" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qoA-Sp-efD"/>
-        <segue reference="02z-5J-0ZC"/>
         <segue reference="cSo-Dd-EVU"/>
+        <segue reference="02z-5J-0ZC"/>
         <segue reference="uWx-WX-m7B"/>
-        <segue reference="uaZ-uw-PtA"/>
+        <segue reference="gvY-JJ-dgj"/>
+        <segue reference="7n8-3M-h6M"/>
     </inferredMetricsTieBreakers>
 </document>

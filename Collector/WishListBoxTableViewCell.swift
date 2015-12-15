@@ -20,17 +20,6 @@ class WishListBoxTableViewCell: UITableViewCell {
     @IBOutlet weak var wishTitleLabel: UILabel!
     @IBOutlet weak var wishDetailLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func updateUI() {
         if let item = wish {
             if let imageData = item.imageData {
