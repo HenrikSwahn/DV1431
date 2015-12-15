@@ -9,6 +9,8 @@
 import Foundation
 import AVKit
 
-protocol PlayerPresenter: class {
-    func presentPlayer(playerVC: AVPlayerViewController)
+@objc protocol PlayerPresenter: class {
+    optional func presentPlayer(playerVC: AVPlayerViewController)
+    optional func playMusic(url: String)
+    optional func stopMusic()
 }

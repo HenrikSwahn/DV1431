@@ -200,6 +200,7 @@ class Storage {
             storeTrack.name = track.name
             storeTrack.runtime = track.runtime.getTotalInSeconds()
             storeTrack.trackNr = track.trackNr
+            storeTrack.url = track.url
             
             storeTrack.album = music
             
@@ -472,7 +473,7 @@ class Storage {
                 let tracks = trackList.allObjects as! [TrackStore]
                 
                 for track in tracks {
-                    mu.insertTrack(Track(name: track.name , runtime: Runtime.getRuntimeBasedOnSeconds(Int(track.runtime)), trackNr: Int(track.trackNr)))
+                    mu.insertTrack(Track(name: track.name , runtime: Runtime.getRuntimeBasedOnSeconds(Int(track.runtime)), trackNr: Int(track.trackNr), url: track.url))
                 }
             }
             mu.sortAlbum()

@@ -13,5 +13,6 @@ class TrackStore: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var runtime: NSNumber
     @NSManaged var trackNr: NSNumber
+    @NSManaged var url: String?
     @NSManaged var album: MusicStore
 }

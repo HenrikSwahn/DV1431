@@ -296,7 +296,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
                     if (tracks == nil) {
                         tracks = [Track]()
                     }
-                    tracks!.append(Track(name: name, runtime: trackRuntime, trackNr: tracks!.count+1))
+                    tracks!.append(Track(name: name, runtime: trackRuntime, trackNr: tracks!.count+1, url: nil))
                     cell.trackName.text = nil
                     cell.trackName.placeholder = "Enter track name"
                     cell.trackRunTime.setSelectedIndexForComponent(0, component: 0)
@@ -523,9 +523,7 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
             music.albumArtist = albumArtist
         }
         
-        if (tracks != nil) {
-            music.trackList = tracks!
-        }
+        music.trackList = (self.album?.trackList)!
         
         if !storage.storeMusic(music) {
             alertUser("Album already exists in Media Library")
@@ -558,7 +556,6 @@ extension Music {
         music.coverArt = albumImage
         music.id = item.id
         
-        
         if let tracks = item.tracks {
             for var i = 0; i < tracks.count; ++i {
                 music.insertTrack(Track.fromItunesTrackItem(tracks[i], trackIndex: (i+1)))
@@ -571,7 +568,7 @@ extension Music {
 
 extension Track {
     static func fromItunesTrackItem(item: ItunesAlbumTrackItem, trackIndex: Int) -> Track {
-        let track = Track(name: item.title, runtime: Runtime.getRuntimeBasedOnSeconds(Int(item.duration)!), trackNr: trackIndex)
+        let track = Track(name: item.title, runtime: Runtime.getRuntimeBasedOnSeconds(Int(item.duration)!), trackNr: trackIndex, url: item.url)
         return track
     }
 }

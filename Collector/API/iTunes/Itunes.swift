@@ -61,11 +61,23 @@ public class Itunes: API {
         if json["wrapperType"].string! == "track" {
             let durationOptional = json["trackTimeMillis"].int
             if let duration = durationOptional {
-                return ItunesAlbumTrackItem(
-                    title:      json["trackName"].string!,
-                    artist:     json["artistName"].string!,
-                    duration:   duration > 0 ? "\(Int(duration / 1000))" : "0"
-                )
+                let previewOptional = json["previewUrl"].string
+                if let hasPreview = previewOptional {
+                    return ItunesAlbumTrackItem(
+                        title:      json["trackName"].string!,
+                        artist:     json["artistName"].string!,
+                        duration:   duration > 0 ? "\(Int(duration / 1000))" : "0",
+                        url:        hasPreview
+                    )
+                }
+                else {
+                    return ItunesAlbumTrackItem(
+                        title:      json["trackName"].string!,
+                        artist:     json["artistName"].string!,
+                        duration:   duration > 0 ? "\(Int(duration / 1000))" : "0",
+                        url:        nil
+                    )
+                }
             }
         }
         

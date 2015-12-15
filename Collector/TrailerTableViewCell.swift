@@ -35,7 +35,7 @@ class TrailerTableViewCell: ColoredTableViewCell {
                     let player = AVPlayer(URL: url!)
                     let playerVC = AVPlayerViewController()
                     playerVC.player = player
-                    self.delegate?.presentPlayer(playerVC)
+                    self.delegate?.presentPlayer!(playerVC)
             }
         })
     }

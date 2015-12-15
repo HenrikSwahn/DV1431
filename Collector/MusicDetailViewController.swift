@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import MediaPlayer
+import AVKit
 
-class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate {
+class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter {
     
     // MARK: - Context
     var context = ViewContextEnum.Movie
@@ -17,6 +19,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - Private Members
     private var data: [[AnyObject]]?
     private var colors: UIImageColors?
+    private var musicPlayer: AVPlayer?
 
     private struct Storyboard {
         static let mediaDetailTableCellIdentifier = "media detail cell id"
@@ -180,6 +183,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
             if let cell = tableView.dequeueReusableCellWithIdentifier("trackCell", forIndexPath: indexPath) as? TrackTableViewCell {
                 cell.model = data?[indexPath.section][indexPath.row + 1]
                 cell.colors = colors
+                cell.delegate = self
                 return cell
             }
         default: break
@@ -262,6 +266,24 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
             controller.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
             
             self.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: - Player presenter
+    func playMusic(url: String) {
+        
+        if musicPlayer != nil {
+            stopMusic()
+        }
+        let url = NSURL(string: url)
+        self.musicPlayer = AVPlayer(URL: url!)
+        musicPlayer?.play()
+    }
+    
+    func stopMusic() {
+        
+        if musicPlayer != nil {
+            musicPlayer?.pause()
         }
     }
 }

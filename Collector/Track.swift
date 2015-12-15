@@ -13,11 +13,13 @@ class Track: NSObject {
     var name: String
     var runtime: Runtime
     var trackNr: Int
+    var url: String?
     
-    init(name: String, runtime: Runtime, trackNr: Int) {
+    init(name: String, runtime: Runtime, trackNr: Int, url: String?) {
         self.name = name
         self.runtime = runtime
         self.trackNr = trackNr
+        self.url = url
         super.init()
     }
 }
