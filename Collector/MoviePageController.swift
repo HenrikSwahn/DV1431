@@ -21,6 +21,9 @@ class MoviePageController: MediaPageViewController, ViewContext, FilterDelegate 
         static let filterSegue = "filterSegue"
     }
     
+    // MARK: - Privates
+    let reachability = Reachability()
+    
     // Outlets
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
@@ -101,8 +104,26 @@ class MoviePageController: MediaPageViewController, ViewContext, FilterDelegate 
     }
     
     // MARK: - Segue
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        
+        if identifier == Storyboard.addMovieSegueId {
+            if reachability.isConnectedToNetwork() {
+                return true
+            }
+            else {
+                let popup = UIAlertController(title: "Error", message: "No internet", preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+                popup.addAction(okAction)
+                self.presentViewController(popup, animated: true, completion: nil)
+                return false
+            }
+        }
+        return false
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Storyboard.addMovieSegueId {
+            
             let navCtr = segue.destinationViewController as! UINavigationController
             let dest = navCtr.topViewController as! SearchEntryTableViewController
             dest.context = context

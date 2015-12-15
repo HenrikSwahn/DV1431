@@ -440,7 +440,8 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
             if context == .EditMovie || context == .EditMusic {
                 self.navigationController?.popViewControllerAnimated(true)
             }
-            self.dismissViewControllerAnimated(true, completion: nil)
+            //self.dismissViewControllerAnimated(true, completion: nil)
+            self.navigationController?.popViewControllerAnimated(true)
         }
     }
     

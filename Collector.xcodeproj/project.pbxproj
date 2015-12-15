@@ -74,6 +74,7 @@
 		AF0450591C1EEFDE00E8E7EC /* PlayerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0450581C1EEFDE00E8E7EC /* PlayerPresenter.swift */; };
 		AF04505C1C1EF45B00E8E7EC /* YoutubeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04505B1C1EF45B00E8E7EC /* YoutubeParser.swift */; };
 		AF04505E1C1EFE8500E8E7EC /* TrailerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04505D1C1EFE8500E8E7EC /* TrailerStore.swift */; };
+		AF0450631C2037A500E8E7EC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0450621C2037A500E8E7EC /* Reachability.swift */; };
 		AF300A781C0710E000BC57D9 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A771C0710E000BC57D9 /* Runtime.swift */; };
 		AF300A7A1C07151200BC57D9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A791C07151200BC57D9 /* Movie.swift */; };
 		AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300A7B1C07370E00BC57D9 /* Music.swift */; };
@@ -191,6 +192,7 @@
 		AF0450581C1EEFDE00E8E7EC /* PlayerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPresenter.swift; sourceTree = "<group>"; };
 		AF04505B1C1EF45B00E8E7EC /* YoutubeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeParser.swift; sourceTree = "<group>"; };
 		AF04505D1C1EFE8500E8E7EC /* TrailerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailerStore.swift; sourceTree = "<group>"; };
+		AF0450621C2037A500E8E7EC /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		AF300A771C0710E000BC57D9 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		AF300A791C07151200BC57D9 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		AF300A7B1C07370E00BC57D9 /* Music.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				AF04505A1C1EF44B00E8E7EC /* Youtube */,
 				31114C131C15B14800396AA8 /* JSON */,
 				31114C121C15B14200396AA8 /* API */,
+				AF0450621C2037A500E8E7EC /* Reachability.swift */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				AF0450511C1E0D1900E8E7EC /* HeaderTableViewCell.swift in Sources */,
 				31E41FDF1C173380003976F9 /* UICachableTableViewCell.swift in Sources */,
 				AF300AA01C0C908300BC57D9 /* MovieStore.swift in Sources */,
+				AF0450631C2037A500E8E7EC /* Reachability.swift in Sources */,
 				31B8422A1BF3880E005429FA /* Collector.xcdatamodeld in Sources */,
 				3124B2041C1F36C000ACE6D9 /* MoviePageController.swift in Sources */,
 				315797EF1C075FC60007FAFC /* UIImageColors.swift in Sources */,
