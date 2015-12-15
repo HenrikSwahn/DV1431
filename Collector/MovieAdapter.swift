@@ -51,39 +51,37 @@ struct MovieAdapter {
     private static func desc(movie: Movie) -> [AnyObject] {
         return [
             Section.Description,
-            ValueAdapter(movie.desc)
+            ValueAdapter(getString(movie.desc))
         ]
     }
     
     private static func people(movie: Movie) -> [AnyObject] {
         return [
             Section.People,
-            KeyValueAdapter("Actor(s)", movie.mainActors),
-            KeyValueAdapter("Director(s)", movie.director)
+            KeyValueAdapter("Actor(s)", getString(movie.mainActors)),
+            KeyValueAdapter("Director(s)", getString(movie.director))
         ]
     }
     
     private static func videos(movie: Movie) -> [AnyObject] {
-        
         var videos: [AnyObject] = movie.trailers.map({ KeyValueAdapter($0.title, $0.URL) })
         videos.insert(Section.Video, atIndex: 0)
         return videos
-        
-        /*return [
-            Section.Video,
-            KeyValueAdapter("trailer name", "link to youtube"),
-            KeyValueAdapter("trailer name", "link to youtube"),
-            KeyValueAdapter("trailer name", "link to youtube")
-        ]*/
     }
     
     static func tableView(movie: Movie) -> [[AnyObject]] {
         var adapter = [[AnyObject]]()
+        
         adapter.append(MovieAdapter.desc(movie))
         adapter.append(MovieAdapter.people(movie))
         adapter.append(MovieAdapter.general(movie))
         adapter.append(MovieAdapter.ownership(movie))
-        adapter.append(MovieAdapter.videos(movie))
+        
+        let videos = MovieAdapter.videos(movie)
+
+        if videos.count > 1 {
+            adapter.append(MovieAdapter.videos(movie))
+        }
         
         return adapter
     }
