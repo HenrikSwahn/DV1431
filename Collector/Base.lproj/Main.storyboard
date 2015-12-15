@@ -419,7 +419,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-movie" translatesAutoresizingMaskIntoConstraints="NO" id="xnZ-eR-JMK">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-music" translatesAutoresizingMaskIntoConstraints="NO" id="xnZ-eR-JMK">
                                             <rect key="frame" x="8" y="8" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="DSn-qL-gvB"/>
@@ -764,7 +764,7 @@
         <!--Movie Page Controller-->
         <scene sceneID="fyL-P8-5zd">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="20" navigationOrientation="horizontal" spineLocation="none" id="sUg-Sr-pUz" customClass="MoviePageController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="44" navigationOrientation="horizontal" spineLocation="none" id="sUg-Sr-pUz" customClass="MoviePageController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="F01-q7-4Za">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="cj6-5m-Qb8">
@@ -952,7 +952,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dW6-7Z-vvs">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-movie" translatesAutoresizingMaskIntoConstraints="NO" id="dW6-7Z-vvs">
                                                     <rect key="frame" x="12" y="8" width="37" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="55" id="UK0-cd-gov"/>
@@ -1042,7 +1042,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="89" height="113"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="i-am-legend-box" translatesAutoresizingMaskIntoConstraints="NO" id="5XA-OK-z80">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-movie" translatesAutoresizingMaskIntoConstraints="NO" id="5XA-OK-z80">
                                                     <rect key="frame" x="26" y="8" width="37" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="37" id="2OE-py-5E3"/>
@@ -1321,7 +1321,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-movie" translatesAutoresizingMaskIntoConstraints="NO" id="xO9-M9-zTQ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-music" translatesAutoresizingMaskIntoConstraints="NO" id="xO9-M9-zTQ">
                                             <rect key="frame" x="8" y="16" width="37" height="37"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="37" id="ehA-0f-2LN"/>
@@ -1488,7 +1488,7 @@
                                             </view>
                                             <blurEffect style="dark"/>
                                         </visualEffectView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2FE325E7-9B64-4642-8332-00B72B9FB667" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-tH-aSR">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-movie" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-tH-aSR">
                                             <rect key="frame" x="12" y="13" width="75" height="111"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="111" id="UKc-2x-Ogy"/>
@@ -1756,7 +1756,7 @@
                                             </view>
                                             <blurEffect style="dark"/>
                                         </visualEffectView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SeK-ug-ai0">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-music" translatesAutoresizingMaskIntoConstraints="NO" id="SeK-ug-ai0">
                                             <rect key="frame" x="250" y="8" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="keX-C4-Nby"/>
@@ -1974,7 +1974,7 @@
         <!--Music Page Controller-->
         <scene sceneID="37Z-im-dRi">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="20" navigationOrientation="horizontal" spineLocation="none" id="yxR-8d-G5O" customClass="MusicPageController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="44" navigationOrientation="horizontal" spineLocation="none" id="yxR-8d-G5O" customClass="MusicPageController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="rMV-3s-KKG">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="jOh-Qg-agu">
@@ -2175,7 +2175,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q1L-1S-Kx8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-music" translatesAutoresizingMaskIntoConstraints="NO" id="Q1L-1S-Kx8">
                                                     <rect key="frame" x="12" y="8" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Emf-qo-Y67"/>
@@ -2281,7 +2281,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="89" height="113"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QL6-9v-xBG">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-music" translatesAutoresizingMaskIntoConstraints="NO" id="QL6-9v-xBG">
                                                     <rect key="frame" x="19" y="8" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="6Id-D3-XtJ"/>
@@ -2469,199 +2469,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2FE325E7-9B64-4642-8332-00B72B9FB667" width="37" height="55">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
-GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
-c1dOU0NvbG9ygAKADRIgwAAAgAOAC1h7MzcsIDU1fdIVChYYWk5TLm9iamVjdHOhF4AEgArSFQoaHaIb
-HIAFgAaACRAA0iAKISJfEBROU1RJRkZSZXByZXNlbnRhdGlvboAHgAhPEShqTU0AKgAAH9TPz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//R0dH/09PT
-/9PT0//T09P/0NDQ/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//0dHR/9PT0//T09P/0dHR/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Q0ND/tbW1/6ysrP+srKz/ra2t/8XFxf/Q0ND/z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Q0ND/y8vL/6+vr/+srKz/rKys/7CwsP/Nzc3/0NDQ
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/5eXl/+srKz/tLS0
-/5mZmf+1tbX/0NDQ/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/z8/P
-/8PDw/+VlZX/sbGx/7CwsP+VlZX/xcXF/9DQ0P/Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz/+fn5//sbGx/6ioqP+srKz/k5OT/56env+dnZ3/nZ2d/52dnf+dnZ3/nZ2d
-/52dnf+dnZ3/nZ2d/52dnf+dnZ3/nZ2d/56env+Xl5f/n5+f/66urv+urq7/oKCg/8XFxf/Q0ND/z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//n5+f/6ioqP+bm5v/q6ur
-/6+vr//Jycn/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//IyMj/vLy8
-/6Kiov+jo6P/o6Oj/6CgoP/FxcX/0NDQ/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/56env+/v7//xMTE/6mpqf+2trb/09PT/9DQ0P/Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ
-/9DQ0P/Q0ND/0NDQ/9DQ0P/Q0ND/0dHR/8TExP+goKD/xMTE/8PDw/+fn5//xcXF/9DQ0P/Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz/+dnZ3/x8fH/9HR0f+oqKj/tbW1
-/9HR0f/Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/9DQ0P/Dw8P/n5+f
-/8/Pz//Ozs7/np6e/8XFxf/Q0ND/z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//n5+f/62trf+ioqL/q6ur/7W1tf/R0dH/z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Q0ND/w8PD/6Kiov+oqKj/qKio/6CgoP/FxcX/0NDQ/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/5+fn/+pqan/nJyc/6urq/+1tbX/0dHR
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//0NDQ/8PDw/+ioqL/pKSk
-/6SkpP+goKD/xcXF/9DQ0P/Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz/+dnZ3/wsLC/8nJyf+oqKj/tbW1/9HR0f/Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/9DQ0P/Dw8P/n5+f/8jIyP/IyMj/np6e/8XFxf/Q0ND/z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//nZ2d/8rKyv/W1tb/qKio/7W1tf/R0dH/z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Q0ND/w8PD/5+fn//T09P/0dHR
-/56env/FxcX/0NDQ/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/56env+6urr/uLi4/6mpqf+1tbX/0dHR/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//0NDQ/8PDw/+goKD/u7u7/7u7u/+fn5//xcXF/9DQ0P/Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz/+fn5//p6en/5eXl/+rq6v/tbW1/9HR0f/Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/9DQ0P/Dw8P/oqKi/6CgoP+goKD/oKCg
-/8XFxf/Q0ND/z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//np6e
-/7W1tf+wsLD/q6ur/5OTk/+dnZ3/nZ2d/52dnf+dnZ3/nZ2d/52dnf+dnZ3/nZ2d/52dnf+dnZ3/nZ2d
-/52dnf+dnZ3/l5eX/56env+0tLT/tLS0/5+fn//FxcX/0NDQ/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/52dnf/Kysr/1tbW/6ioqP+vr6//ycnJ/8fHx//Hx8f/x8fH
-/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/yMjI/7y8vP+enp7/1NTU/9HR0f+enp7/xcXF
-/9DQ0P/Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz/+dnZ3/wcHB
-/8XFxf+oqKj/tbW1/9PT0//Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ
-/9HR0f/ExMT/n5+f/8XFxf/ExMT/np6e/8XFxf/Q0ND/z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//n5+f/6mpqf+bm5v/q6ur/7W1tf/R0dH/z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Q0ND/w8PD/6Kiov+jo6P/o6Oj/6CgoP/FxcX/0NDQ
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/5+fn/+urq7/paWl
-/6urq/+1tbX/0dHR/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//0NDQ
-/8PDw/+ioqL/q6ur/6urq/+goKD/xcXF/9DQ0P/Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz/+dnZ3/yMjI/9PT0/+oqKj/tbW1/9HR0f/Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/9DQ0P/Dw8P/n5+f/9DQ0P/Pz8//np6e/8XFxf/Q0ND/z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//np6e/729vf/BwcH/qamp
-/7W1tf/R0dH/z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Q0ND/w8PD
-/6CgoP/BwcH/wcHB/5+fn//FxcX/0NDQ/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/5+fn/+oqKj/mZmZ/6urq/+1tbX/0dHR/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//0NDQ/8PDw/+ioqL/oqKi/6Kiov+goKD/xcXF/9DQ0P/Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz/+enp7/sbGx/6mpqf+pqan/tbW1
-/9HR0f/Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/9DQ0P/Dw8P/oKCg
-/6+vr/+urq7/n5+f/8XFxf/Q0ND/z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//nZ2d/8jIyP/T09P/qKio/7a2tv/T09P/0NDQ/9DQ0P/Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ
-/9DQ0P/Q0ND/0NDQ/9DQ0P/R0dH/xMTE/5+fn//Q0ND/z8/P/56env/FxcX/0NDQ/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/52dnf/IyMj/09PT/6mpqf+VlZX/oqKi
-/6CgoP+goKD/oKCg/6CgoP+goKD/oKCg/6CgoP+goKD/oKCg/6CgoP+goKD/oKCg/5ubm/+cnJz/0NDQ
-/8/Pz/+enp7/xcXF/9DQ0P/Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz/+dnZ3/rKys/6SkpP+np6f/q6ur/8PDw//BwcH/wcHB/8HBwf/BwcH/wcHB/8HBwf/BwcH/wcHB
-/8HBwf/BwcH/wcHB/8LCwv+2trb/nZ2d/6mpqf+oqKj/nZ2d/8XFxf/Q0ND/z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Q0ND/n5+f/5SUlP+Tk5P/lpaW/729vf/T09P/0NDQ
-/9DQ0P/Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ/9DQ0P/R0dH/yMjI/5mZmf+UlJT/lJSU
-/5qamv/Jycn/0NDQ/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Ozs7/zs7O/87Ozv/Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Ozs7/zs7O/87Ozv/Ozs7/z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P
-/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//AA4BAAADAAAAAQAlAAABAQADAAAAAQA3AAAB
-AgADAAAABAAAIIIBAwADAAAAAQABAAABBgADAAAAAQACAAABEQAEAAAAAQAAAAgBEgADAAAAAQABAAAB
-FQADAAAAAQAEAAABFgADAAAAAQA3AAABFwAEAAAAAQAAH8wBHAADAAAAAQABAAABUgADAAAAAQABAAAB
-UwADAAAABAAAIIqHcwAHAAAH2AAAIJIAAAAAAAgACAAIAAgAAQABAAEAAQAAB9hhcHBsAiAAAG1udHJS
-R0IgWFlaIAfZAAIAGQALABoAC2Fjc3BBUFBMAAAAAGFwcGwAAAAAAAAAAAAAAAAAAAAAAAD21gABAAAA
-ANMtYXBwbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC2Rlc2MA
-AAEIAAAAb2RzY20AAAF4AAAFnGNwcnQAAAcUAAAAOHd0cHQAAAdMAAAAFHJYWVoAAAdgAAAAFGdYWVoA
-AAd0AAAAFGJYWVoAAAeIAAAAFHJUUkMAAAecAAAADmNoYWQAAAesAAAALGJUUkMAAAecAAAADmdUUkMA
-AAecAAAADmRlc2MAAAAAAAAAFEdlbmVyaWMgUkdCIFByb2ZpbGUAAAAAAAAAAAAAABRHZW5lcmljIFJH
-QiBQcm9maWxlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABt
-bHVjAAAAAAAAAB8AAAAMc2tTSwAAACgAAAGEZGFESwAAAC4AAAGsY2FFUwAAACQAAAHadmlWTgAAACQA
-AAH+cHRCUgAAACYAAAIidWtVQQAAACoAAAJIZnJGVQAAACgAAAJyaHVIVQAAACgAAAKaemhUVwAAABYA
-AALCbmJOTwAAACYAAALYY3NDWgAAACIAAAL+aGVJTAAAAB4AAAMgaXRJVAAAACgAAAM+cm9STwAAACQA
-AANmZGVERQAAACwAAAOKa29LUgAAABYAAAO2c3ZTRQAAACYAAALYemhDTgAAABYAAAPMamFKUAAAABoA
-AAPiZWxHUgAAACIAAAP8cHRQTwAAACYAAAQebmxOTAAAACgAAAREZXNFUwAAACYAAAQedGhUSAAAACQA
-AARsdHJUUgAAACIAAASQZmlGSQAAACgAAASyaHJIUgAAACgAAATacGxQTAAAACwAAAUCcnVSVQAAACIA
-AAUuYXJFRwAAACYAAAVQZW5VUwAAACYAAAV2AFYBYQBlAG8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIA
-bwBmAGkAbABHAGUAbgBlAHIAZQBsACAAUgBHAEIALQBiAGUAcwBrAHIAaQB2AGUAbABzAGUAUABlAHIA
-ZgBpAGwAIABSAEcAQgAgAGcAZQBuAOgAcgBpAGMAQx6lAHUAIABoAOwAbgBoACAAUgBHAEIAIABDAGgA
-dQBuAGcAUABlAHIAZgBpAGwAIABSAEcAQgAgAEcAZQBuAOkAcgBpAGMAbwQXBDAEMwQwBDsETAQ9BDgE
-OQAgBD8EQAQ+BEQEMAQ5BDsAIABSAEcAQgBQAHIAbwBmAGkAbAAgAGcA6QBuAOkAcgBpAHEAdQBlACAA
-UgBWAEIAwQBsAHQAYQBsAOEAbgBvAHMAIABSAEcAQgAgAHAAcgBvAGYAaQBskBp1KAAgAFIARwBCACCC
-cl9pY8+P8ABHAGUAbgBlAHIAaQBzAGsAIABSAEcAQgAtAHAAcgBvAGYAaQBsAE8AYgBlAGMAbgD9ACAA
-UgBHAEIAIABwAHIAbwBmAGkAbAXkBegF1QXkBdkF3AAgAFIARwBCACAF2wXcBdwF2QBQAHIAbwBmAGkA
-bABvACAAUgBHAEIAIABnAGUAbgBlAHIAaQBjAG8AUAByAG8AZgBpAGwAIABSAEcAQgAgAGcAZQBuAGUA
-cgBpAGMAQQBsAGwAZwBlAG0AZQBpAG4AZQBzACAAUgBHAEIALQBQAHIAbwBmAGkAbMd8vBgAIABSAEcA
-QgAg1QS4XNMMx3xmbpAaACAAUgBHAEIAIGPPj/Blh072TgCCLAAgAFIARwBCACAw1zDtMNUwoTCkMOsD
-kwO1A70DuQO6A8wAIAPAA8EDvwPGA68DuwAgAFIARwBCAFAAZQByAGYAaQBsACAAUgBHAEIAIABnAGUA
-bgDpAHIAaQBjAG8AQQBsAGcAZQBtAGUAZQBuACAAUgBHAEIALQBwAHIAbwBmAGkAZQBsDkIOGw4jDkQO
-Hw4lDkwAIABSAEcAQgAgDhcOMQ5IDicORA4bAEcAZQBuAGUAbAAgAFIARwBCACAAUAByAG8AZgBpAGwA
-aQBZAGwAZQBpAG4AZQBuACAAUgBHAEIALQBwAHIAbwBmAGkAaQBsAGkARwBlAG4AZQByAGkBDQBrAGkA
-IABSAEcAQgAgAHAAcgBvAGYAaQBsAFUAbgBpAHcAZQByAHMAYQBsAG4AeQAgAHAAcgBvAGYAaQBsACAA
-UgBHAEIEHgQxBEkEOAQ5ACAEPwRABD4ERAQ4BDsETAAgAFIARwBCBkUGRAZBACAGKgY5BjEGSgZBACAA
-UgBHAEIAIAYnBkQGOQYnBkUARwBlAG4AZQByAGkAYwAgAFIARwBCACAAUAByAG8AZgBpAGwAZXRleHQA
-AAAAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC4AWFlaIAAAAAAA
-APNSAAEAAAABFs9YWVogAAAAAAAAdE0AAD3uAAAD0FhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAA
-ACgaAAAVnwAAuDZjdXJ2AAAAAAAAAAEBzQAAc2YzMgAAAAAAAQxCAAAF3v//8yYAAAeSAAD9kf//+6L/
-//2jAAAD3AAAwGzSJSYnKFokY2xhc3NuYW1lWCRjbGFzc2VzXxAQTlNCaXRtYXBJbWFnZVJlcKMnKSpa
-TlNJbWFnZVJlcFhOU09iamVjdNIlJiwtV05TQXJyYXmiLCrSJSYvMF5OU011dGFibGVBcnJheaMvLCrT
-MjMKNDU2V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AM0iUmODlXTlNDb2xvcqI4KtIlJjs8V05T
-SW1hZ2WiOypfEA9OU0tleWVkQXJjaGl2ZXLRP0BUcm9vdIABAAgAEQAaACMALQAyADcARgBMAFcAXgBl
-AHIAeQCBAIMAhQCKAIwAjgCXAJwApwCpAKsArQCyALUAtwC5ALsAvQDCANkA2wDdKUspUClbKWQpdyl7
-KYYpjymUKZwpnymkKbMptym+KcYp0ynYKdop3CnhKekp7CnxKfkp/CoOKhEqFgAAAAAAAAIBAAAAAAAA
-AEEAAAAAAAAAAAAAAAAAACoYA
-</mutableData>
-        </image>
         <image name="film" width="24" height="25"/>
         <image name="grid" width="22" height="21"/>
         <image name="i-am-legend-box" width="972" height="1440"/>
         <image name="list" width="22" height="18"/>
         <image name="music" width="20" height="25"/>
-        <image name="placeholder-movie" width="37" height="55"/>
+        <image name="placeholder-movie" width="75" height="111"/>
+        <image name="placeholder-music" width="100" height="100"/>
         <image name="play" width="25" height="25"/>
         <image name="sort" width="22" height="18"/>
         <image name="star" width="25" height="24"/>
@@ -2672,7 +2486,7 @@ AEEAAAAAAAAAAAAAAAAAACoYA
         <segue reference="cSo-Dd-EVU"/>
         <segue reference="02z-5J-0ZC"/>
         <segue reference="uaZ-uw-PtA"/>
-        <segue reference="EWG-rN-Bge"/>
+        <segue reference="qoA-Sp-efD"/>
         <segue reference="FVE-sg-vtr"/>
     </inferredMetricsTieBreakers>
 </document>
