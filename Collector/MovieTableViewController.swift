@@ -93,10 +93,7 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
             tableView.reloadData()
         }
     }
-    
-    func indexPaths() -> [NSIndexPath]? {
-        return tableView.indexPathsForSelectedRows
-    }
+
     
     // Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

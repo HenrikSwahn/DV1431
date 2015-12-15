@@ -8,14 +8,6 @@
 
 import UIKit
 
-protocol MediaPageControllerDelegate {
-    var parentController: MediaPageViewController? { get set }
-    func reloadData()
-    
-    @available(*, deprecated)
-    func indexPaths() -> [NSIndexPath]?
-}
-
 class MediaPageViewController:
     UIPageViewController,
     UIPageViewControllerDelegate,

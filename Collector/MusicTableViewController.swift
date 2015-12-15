@@ -111,9 +111,4 @@ class MusicTableViewController: UIViewController, UITableViewDataSource, UITable
             tableView.reloadData()
         }
     }
-    
-    func indexPaths() -> [NSIndexPath]? {
-        return [NSIndexPath()]
-        //return collectionView.indexPathsForSelectedItems()
-    }
 }

@@ -35,6 +35,7 @@
 		3124B2101C20405600ACE6D9 /* MusicPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124B20F1C20405600ACE6D9 /* MusicPageController.swift */; };
 		3124B2121C2040E500ACE6D9 /* MusicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124B2111C2040E500ACE6D9 /* MusicCollectionViewController.swift */; };
 		3124B2141C20410D00ACE6D9 /* MusicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124B2131C20410D00ACE6D9 /* MusicTableViewController.swift */; };
+		3149A8F21C207C0F0078E1AE /* MediaPageControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149A8F11C207C0F0078E1AE /* MediaPageControllerDelegate.swift */; };
 		315797E91C074F0B0007FAFC /* UIIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E61C074F0B0007FAFC /* UIIconImageView.swift */; };
 		315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */; };
 		315797EB1C074F0B0007FAFC /* UIRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315797E81C074F0B0007FAFC /* UIRatingView.swift */; };
@@ -150,6 +151,7 @@
 		3124B20F1C20405600ACE6D9 /* MusicPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPageController.swift; sourceTree = "<group>"; };
 		3124B2111C2040E500ACE6D9 /* MusicCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicCollectionViewController.swift; sourceTree = "<group>"; };
 		3124B2131C20410D00ACE6D9 /* MusicTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewController.swift; sourceTree = "<group>"; };
+		3149A8F11C207C0F0078E1AE /* MediaPageControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPageControllerDelegate.swift; sourceTree = "<group>"; };
 		315797E61C074F0B0007FAFC /* UIIconImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIIconImageView.swift; sourceTree = "<group>"; };
 		315797E71C074F0B0007FAFC /* UIMarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMarqueeLabel.swift; sourceTree = "<group>"; };
 		315797E81C074F0B0007FAFC /* UIRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRatingView.swift; sourceTree = "<group>"; };
@@ -263,8 +265,7 @@
 		31114C121C15B14200396AA8 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				31114C3B1C15B1C700396AA8 /* API.swift */,
-				31114C3C1C15B1C700396AA8 /* APIResource.swift */,
+				3149A8F31C207C830078E1AE /* Protocols */,
 				31114C3D1C15B1C700396AA8 /* README.md */,
 				31114C3E1C15B1C700396AA8 /* Request.swift */,
 				31114C3F1C15B1C700396AA8 /* Response.swift */,
@@ -309,6 +310,15 @@
 				31114C351C15B1AF00396AA8 /* ItunesTrackItem.swift */,
 			);
 			name = iTunes;
+			sourceTree = "<group>";
+		};
+		3149A8F31C207C830078E1AE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				31114C3B1C15B1C700396AA8 /* API.swift */,
+				31114C3C1C15B1C700396AA8 /* APIResource.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		3177436E1C1DA77800C44715 /* Extensions */ = {
@@ -440,6 +450,7 @@
 				31E41FE21C1751EA003976F9 /* UITableViewCachable.swift */,
 				AF4E1D0E1C1DA0FE00AB1717 /* FilterProtocol.swift */,
 				AF0450581C1EEFDE00E8E7EC /* PlayerPresenter.swift */,
+				3149A8F11C207C0F0078E1AE /* MediaPageControllerDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -706,6 +717,7 @@
 				31114C461C15B1C700396AA8 /* Response.swift in Sources */,
 				31114C451C15B1C700396AA8 /* Request.swift in Sources */,
 				31E41FED1C186390003976F9 /* WishListRectangleTableViewCell.swift in Sources */,
+				3149A8F21C207C0F0078E1AE /* MediaPageControllerDelegate.swift in Sources */,
 				31114C481C15B1C700396AA8 /* URL.swift in Sources */,
 				31114C381C15B1AF00396AA8 /* ItunesAlbumResource.swift in Sources */,
 				AF833FDF1C197DD2003D6C0A /* TrackTableViewCell.swift in Sources */,

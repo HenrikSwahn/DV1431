@@ -1680,7 +1680,7 @@
         <!--Music Detail View Controller-->
         <scene sceneID="eED-Gd-3FV">
             <objects>
-                <viewController id="nMo-yQ-95N" customClass="MusicDetailViewController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MusicDetailViewController" id="nMo-yQ-95N" customClass="MusicDetailViewController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TWO-dj-SmA"/>
                         <viewControllerLayoutGuide type="bottom" id="cbY-uM-eeh"/>
@@ -2470,8 +2470,8 @@
         <image name="placeholder-music" width="100" height="100"/>
         <image name="play" width="25" height="25"/>
         <image name="sort" width="22" height="18"/>
-        <image name="star" width="25" height="22"/>
-        <image name="star-fill" width="25" height="22"/>
+        <image name="star" width="25" height="24"/>
+        <image name="star-fill" width="25" height="24"/>
         <image name="wish-list" width="23" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
