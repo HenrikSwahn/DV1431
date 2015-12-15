@@ -134,13 +134,11 @@ class MusicPageController: MediaPageViewController, ViewContext, FilterDelegate 
             if let tvc = sb.instantiateViewControllerWithIdentifier(Storyboard.tvc) as? MusicTableViewController {
                 tvc.parentController = self
                 self.addViewController(tvc)
-                print("a \(controllers.count)")
             }
             
             if let cvc = sb.instantiateViewControllerWithIdentifier(Storyboard.cvc) as? MusicCollectionViewController {
                 cvc.parentController = self
                 self.addViewController(cvc)
-                                print("a \(controllers.count)")
             }
             
             if controllers.count > 0 {

@@ -171,7 +171,6 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     }
     
     func searchAPI(didFail error: NSError) {
-        print(error)
         self.indicatorShouldStopAnimating()
     }
     
