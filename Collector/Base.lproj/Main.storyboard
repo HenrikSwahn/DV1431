@@ -1824,10 +1824,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJ5-YU-Vcq">
-                                                    <rect key="frame" x="517" y="15" width="15" height="15"/>
+                                                    <rect key="frame" x="515" y="10" width="22" height="22"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="hzh-6K-jzj"/>
-                                                        <constraint firstAttribute="width" constant="15" id="vJD-nw-M5s"/>
+                                                        <constraint firstAttribute="height" constant="22" id="hzh-6K-jzj"/>
+                                                        <constraint firstAttribute="width" constant="22" id="vJD-nw-M5s"/>
                                                     </constraints>
                                                     <state key="normal" image="play"/>
                                                     <connections>
@@ -1839,15 +1839,15 @@
                                             <constraints>
                                                 <constraint firstItem="cOr-JS-zmn" firstAttribute="leading" secondItem="dth-7o-3BE" secondAttribute="leadingMargin" constant="12" id="4wW-Wa-xuK"/>
                                                 <constraint firstItem="Z4S-S8-LNv" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="3" id="5sH-Pp-tmM"/>
-                                                <constraint firstItem="eJ5-YU-Vcq" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="7" id="7zd-sy-vih"/>
+                                                <constraint firstItem="eJ5-YU-Vcq" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="2" id="7zd-sy-vih"/>
                                                 <constraint firstItem="cOr-JS-zmn" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="5" id="9Gp-cb-ND4"/>
                                                 <constraint firstItem="cOr-JS-zmn" firstAttribute="leading" secondItem="dth-7o-3BE" secondAttribute="leadingMargin" constant="6" id="L3E-gQ-f59"/>
                                                 <constraint firstItem="Z4S-S8-LNv" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="5" id="Teo-79-l90"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="74Z-HA-l5D" secondAttribute="trailing" constant="120" id="X1U-NT-Yqs"/>
                                                 <constraint firstItem="74Z-HA-l5D" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="3" id="ZY2-Xz-4CL"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="eJ5-YU-Vcq" secondAttribute="bottom" constant="5.5" id="cA6-2D-ba9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="eJ5-YU-Vcq" secondAttribute="bottom" constant="3.5" id="cA6-2D-ba9"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="74Z-HA-l5D" secondAttribute="bottom" constant="3" id="fga-Be-PDr"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="eJ5-YU-Vcq" secondAttribute="trailing" constant="60" id="he2-AW-fTo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eJ5-YU-Vcq" secondAttribute="trailing" constant="55" id="he2-AW-fTo"/>
                                                 <constraint firstItem="74Z-HA-l5D" firstAttribute="leading" secondItem="dth-7o-3BE" secondAttribute="leadingMargin" constant="44" id="onh-Vp-vOi"/>
                                                 <constraint firstItem="cOr-JS-zmn" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="3" id="qDT-fy-R8M"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Z4S-S8-LNv" secondAttribute="trailing" id="stv-a3-bHf"/>
