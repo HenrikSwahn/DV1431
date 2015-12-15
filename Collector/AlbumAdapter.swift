@@ -54,7 +54,13 @@ struct AlbumAdapter {
         var adapter = [[AnyObject]]()
         adapter.append(AlbumAdapter.general(album))
         adapter.append(AlbumAdapter.ownership(album))
-        adapter.append(AlbumAdapter.tracks(album))
+        
+        let tracks = AlbumAdapter.tracks(album)
+        
+        if tracks.count > 1 {
+            adapter.append(AlbumAdapter.tracks(album))
+        }
+        
         
         return adapter
     }

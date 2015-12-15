@@ -89,7 +89,7 @@ class MusicTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return controller!.filter != nil ? 44.0 : 0.0
+        return controller!.filter != nil ? 55.0 : 0.0
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -46,8 +46,6 @@ class MediaPageViewController:
     
     var shift: Int? {
         didSet {
-            if oldValue == shift { return }
-            
             if let index = shift {
                 setViewControllers([controllers[index]],
                     direction:  viewControllerDirection(index),
@@ -62,6 +60,7 @@ class MediaPageViewController:
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
+        self.view.backgroundColor = UIColor.whiteColor()
     }
     
     // MARK: - PageView DataSource

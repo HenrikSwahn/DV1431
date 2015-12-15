@@ -38,10 +38,10 @@ class TrackTableViewCell: ColoredTableViewCell {
     func updatePreviewButton() {
         
         if isPlaying {
-            previewButton.setTitle("⏸", forState: .Normal)
+            previewButton.setImage(UIImage(named: "pause"), forState: .Normal)
         }
         else {
-            previewButton.setTitle("▶️", forState: .Normal)
+            previewButton.setImage(UIImage(named: "play"), forState: .Normal)
         }
         
     }
