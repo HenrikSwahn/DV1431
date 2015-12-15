@@ -2367,7 +2367,7 @@
                                             </view>
                                             <blurEffect style="dark"/>
                                         </visualEffectView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D8F05891-E96A-4462-9694-BA5B7249826C" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-tH-aSR">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="56F2BF2B-DB54-4EF9-A683-2D82155438CA" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-tH-aSR">
                                             <rect key="frame" x="12" y="13" width="75" height="111"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="111" id="UKc-2x-Ogy"/>
@@ -2703,10 +2703,10 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJ5-YU-Vcq">
-                                                    <rect key="frame" x="507" y="7" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJ5-YU-Vcq">
+                                                    <rect key="frame" x="507" y="5" width="30" height="34"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="eJ5-YU-Vcq" secondAttribute="height" multiplier="1:1" id="mVS-rL-LRF"/>
+                                                        <constraint firstAttribute="width" secondItem="eJ5-YU-Vcq" secondAttribute="height" multiplier="1:1" constant="-4" id="mVS-rL-LRF"/>
                                                     </constraints>
                                                     <state key="normal" title="▶️"/>
                                                     <connections>
@@ -2718,13 +2718,13 @@
                                             <constraints>
                                                 <constraint firstItem="cOr-JS-zmn" firstAttribute="leading" secondItem="dth-7o-3BE" secondAttribute="leadingMargin" constant="12" id="4wW-Wa-xuK"/>
                                                 <constraint firstItem="Z4S-S8-LNv" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="3" id="5sH-Pp-tmM"/>
-                                                <constraint firstItem="eJ5-YU-Vcq" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="-1" id="7zd-sy-vih"/>
+                                                <constraint firstItem="eJ5-YU-Vcq" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="-3" id="7zd-sy-vih"/>
                                                 <constraint firstItem="cOr-JS-zmn" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="5" id="9Gp-cb-ND4"/>
                                                 <constraint firstItem="cOr-JS-zmn" firstAttribute="leading" secondItem="dth-7o-3BE" secondAttribute="leadingMargin" constant="6" id="L3E-gQ-f59"/>
                                                 <constraint firstItem="Z4S-S8-LNv" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="5" id="Teo-79-l90"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="74Z-HA-l5D" secondAttribute="trailing" constant="120" id="X1U-NT-Yqs"/>
                                                 <constraint firstItem="74Z-HA-l5D" firstAttribute="top" secondItem="dth-7o-3BE" secondAttribute="topMargin" constant="3" id="ZY2-Xz-4CL"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="eJ5-YU-Vcq" secondAttribute="bottom" constant="-1.5" id="cA6-2D-ba9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="eJ5-YU-Vcq" secondAttribute="bottom" constant="-3.5" id="cA6-2D-ba9"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="74Z-HA-l5D" secondAttribute="bottom" constant="3" id="fga-Be-PDr"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="eJ5-YU-Vcq" secondAttribute="trailing" constant="55" id="he2-AW-fTo"/>
                                                 <constraint firstItem="74Z-HA-l5D" firstAttribute="leading" secondItem="dth-7o-3BE" secondAttribute="leadingMargin" constant="44" id="onh-Vp-vOi"/>
@@ -2852,7 +2852,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D8F05891-E96A-4462-9694-BA5B7249826C" width="37" height="55">
+        <image name="56F2BF2B-DB54-4EF9-A683-2D82155438CA" width="37" height="55">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

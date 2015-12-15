@@ -18,8 +18,32 @@ class TrackTableViewCell: ColoredTableViewCell {
     
     weak var delegate: PlayerPresenter?
     private var url: String?
+    private var isPlaying = false
     @IBAction func previewTrackAction(sender: UIButton) {
-        delegate?.playMusic!(self.url!)
+        
+        if !isPlaying {
+            delegate?.playMusic!(self.url!)
+            isPlaying = true
+            updatePreviewButton()
+            previewButton.setNeedsDisplay()
+        }
+        else {
+            delegate?.stopMusic!();
+            isPlaying = false
+            updatePreviewButton()
+            previewButton.setNeedsDisplay()
+        }
+    }
+    
+    func updatePreviewButton() {
+        
+        if isPlaying {
+            previewButton.setTitle("⏸", forState: .Normal)
+        }
+        else {
+            previewButton.setTitle("▶️", forState: .Normal)
+        }
+        
     }
     
     override func updateUI() {
@@ -33,6 +57,13 @@ class TrackTableViewCell: ColoredTableViewCell {
             }
             else {
                 previewButton.hidden = true
+            }
+            
+            if isPlaying {
+                previewButton.titleLabel?.text = "⏸"
+            }
+            else {
+                previewButton.titleLabel?.text = "▶️"
             }
         }
     }
