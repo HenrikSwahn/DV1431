@@ -11,6 +11,8 @@ import UIKit
 protocol MediaPageControllerDelegate {
     var parentController: MediaPageViewController? { get set }
     func reloadData()
+    
+    @available(*, deprecated)
     func indexPaths() -> [NSIndexPath]?
 }
 
@@ -36,7 +38,9 @@ class MediaPageViewController:
     
     func execute(completion: (MediaPageControllerDelegate) -> Void) {
         controllers.forEach { controller in
-            completion( controller as! MediaPageControllerDelegate )
+            if let ctrl = controller as? MediaPageControllerDelegate {
+                completion(ctrl)
+            }
         }
     }
     

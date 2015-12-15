@@ -100,7 +100,10 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - View Lifecycle
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        updateData(music!)
+
+        if let retrievedMusic = music {
+            updateData(retrievedMusic)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
