@@ -161,7 +161,6 @@ class WishListTableViewController: UITableViewController {
         }
     }
     
-    
     /*
     // MARK: - Navigation
 

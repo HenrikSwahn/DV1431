@@ -1445,6 +1445,17 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
+                                                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJf-vO-tgb">
+                                                                    <rect key="frame" x="0.0" y="139" width="600" height="1"/>
+                                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bjK-Rm-DYE">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    </view>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="1" id="D0E-Nu-HCV"/>
+                                                                    </constraints>
+                                                                    <blurEffect style="extraLight"/>
+                                                                </visualEffectView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pti-fZ-Lzu" userLabel="detailLabel" customClass="UIMarqueeLabel" customModule="Collector" customModuleProvider="target">
                                                                     <rect key="frame" x="100" y="78" width="492" height="17"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
@@ -1462,8 +1473,11 @@
                                                                 <constraint firstAttribute="bottom" secondItem="kXy-Ph-Acc" secondAttribute="bottom" constant="74" id="0hn-qR-A2e"/>
                                                                 <constraint firstItem="Pti-fZ-Lzu" firstAttribute="leading" secondItem="j4f-6g-eDV" secondAttribute="leading" constant="100" id="FFn-2U-hjS"/>
                                                                 <constraint firstAttribute="trailing" secondItem="kXy-Ph-Acc" secondAttribute="trailing" constant="8" id="Mqi-B8-wOD"/>
+                                                                <constraint firstAttribute="bottom" secondItem="gJf-vO-tgb" secondAttribute="bottom" id="aBF-Uv-8JU"/>
+                                                                <constraint firstAttribute="trailing" secondItem="gJf-vO-tgb" secondAttribute="trailing" id="hZM-xP-ANU"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Pti-fZ-Lzu" secondAttribute="bottom" constant="45" id="l0L-f1-k0T"/>
                                                                 <constraint firstItem="kXy-Ph-Acc" firstAttribute="leading" secondItem="j4f-6g-eDV" secondAttribute="leading" constant="100" id="nsu-Q4-cMP"/>
+                                                                <constraint firstItem="gJf-vO-tgb" firstAttribute="leading" secondItem="j4f-6g-eDV" secondAttribute="leading" id="sQV-RT-PUy"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Pti-fZ-Lzu" secondAttribute="trailing" constant="8" id="zzW-EF-2jb"/>
                                                             </constraints>
                                                         </view>
@@ -1650,7 +1664,7 @@
                     <navigationItem key="navigationItem" id="8Kl-Tw-J9W">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="jxG-bO-376" customClass="UIRatingView" customModule="Collector" customModuleProvider="target">
-                            <rect key="frame" x="238" y="14" width="124" height="17"/>
+                            <rect key="frame" x="238" y="13.5" width="124" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <userDefinedRuntimeAttributes>
@@ -1677,7 +1691,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWo-q2-3SN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3094" y="5177"/>
+            <point key="canvasLocation" x="-3105" y="5168"/>
         </scene>
         <!--Music Detail View Controller-->
         <scene sceneID="eED-Gd-3FV">
@@ -1713,6 +1727,17 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="181"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
+                                                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQH-Pm-dF1">
+                                                                    <rect key="frame" x="0.0" y="180" width="600" height="1"/>
+                                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mI7-Na-5SK">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    </view>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="1" id="pAG-fJ-HvB"/>
+                                                                    </constraints>
+                                                                    <blurEffect style="light"/>
+                                                                </visualEffectView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSw-5m-tjq" customClass="UIMarqueeLabel" customModule="Collector" customModuleProvider="target">
                                                                     <rect key="frame" x="8" y="156" width="584" height="17"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
@@ -1731,6 +1756,9 @@
                                                                 <constraint firstItem="hSw-5m-tjq" firstAttribute="leading" secondItem="rY6-0h-AP4" secondAttribute="leading" constant="8" id="K1K-b2-Vck"/>
                                                                 <constraint firstAttribute="trailing" secondItem="rSz-F2-FF9" secondAttribute="trailing" constant="8" id="Nm2-2R-txr"/>
                                                                 <constraint firstAttribute="trailing" secondItem="hSw-5m-tjq" secondAttribute="trailing" constant="8" id="PzR-P9-mqK"/>
+                                                                <constraint firstAttribute="bottom" secondItem="kQH-Pm-dF1" secondAttribute="bottom" id="Q1J-A9-Izx"/>
+                                                                <constraint firstItem="kQH-Pm-dF1" firstAttribute="leading" secondItem="rY6-0h-AP4" secondAttribute="leading" id="UkW-Ff-x76"/>
+                                                                <constraint firstAttribute="trailing" secondItem="kQH-Pm-dF1" secondAttribute="trailing" id="dYX-iL-llk"/>
                                                                 <constraint firstItem="rSz-F2-FF9" firstAttribute="leading" secondItem="rY6-0h-AP4" secondAttribute="leading" constant="8" id="jge-AY-X7e"/>
                                                                 <constraint firstAttribute="bottom" secondItem="hSw-5m-tjq" secondAttribute="bottom" constant="8" id="z2h-Rz-96b"/>
                                                             </constraints>
@@ -1923,7 +1951,7 @@
                     <navigationItem key="navigationItem" id="Ju8-Jn-25w">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="Kb9-p1-cGY" customClass="UIRatingView" customModule="Collector" customModuleProvider="target">
-                            <rect key="frame" x="238" y="14" width="124" height="17"/>
+                            <rect key="frame" x="238" y="13.5" width="124" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <userDefinedRuntimeAttributes>
@@ -2476,10 +2504,10 @@
         <image name="wish-list" width="23" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="02z-5J-0ZC"/>
-        <segue reference="uWx-WX-m7B"/>
-        <segue reference="gvY-JJ-dgj"/>
-        <segue reference="7n8-3M-h6M"/>
         <segue reference="K3K-T7-98z"/>
+        <segue reference="EWG-rN-Bge"/>
+        <segue reference="FVE-sg-vtr"/>
+        <segue reference="02z-5J-0ZC"/>
+        <segue reference="gvY-JJ-dgj"/>
     </inferredMetricsTieBreakers>
 </document>
