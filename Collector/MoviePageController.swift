@@ -118,7 +118,7 @@ class MoviePageController: MediaPageViewController, ViewContext, FilterDelegate 
                 return false
             }
         }
-        return false
+        return true
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
