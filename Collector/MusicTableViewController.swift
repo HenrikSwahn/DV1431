@@ -33,24 +33,19 @@ class MusicTableViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.musicCellId) as! MediaBoxTableViewCell
+        /*let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.musicCellId) as! MediaBoxTableViewCell
         cell.media = controller!.filteredMusic![indexPath.row]
-        return cell
+        return cell*/
+        return tableView.dequeueReusableCellWithIdentifier(Storyboard.musicCellId)!
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let c = cell as? MediaBoxTableViewCell {
+            c.media = controller!.filteredMusic![indexPath.row]
+        }
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return controller!.filteredMusic != nil ? controller!.filteredMusic!.count : 0
     }

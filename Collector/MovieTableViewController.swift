@@ -39,9 +39,13 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
     
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId) as! MediaRectangleTableViewCell
-        cell.media = controller?.filteredMovies![indexPath.row]
-        return cell
+        return tableView.dequeueReusableCellWithIdentifier(Storyboard.mediaCellId)!
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let c = cell as? MediaRectangleTableViewCell {
+            c.media = controller?.filteredMovies![indexPath.row]
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -50,11 +50,15 @@ class MusicCollectionViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.musicCellId, forIndexPath: indexPath) as! MediaCollectionViewCell
-        cell.titleLabel.text = controller!.filteredMusic![indexPath.row].title
-        cell.releaseYearLabel.text = "\(controller!.filteredMusic![indexPath.row].releaseYear)"
-        cell.coverArt.image = controller!.filteredMusic![indexPath.row].coverArt
-        return cell
+        return collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.musicCellId, forIndexPath: indexPath)
+    }
+    
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        if let c = cell as? MediaCollectionViewCell {
+            c.titleLabel.text = controller!.filteredMusic![indexPath.row].title
+            c.releaseYearLabel.text = "\(controller!.filteredMusic![indexPath.row].releaseYear)"
+            c.coverArt.image = controller!.filteredMusic![indexPath.row].coverArt
+        }
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {

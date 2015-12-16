@@ -24,7 +24,6 @@ class MediaBoxTableViewCell: UITableViewCell {
     func updateUI() {
         if let music = media {
             mediaImageView.image = music.coverArt
-            mediaImageView.dropShadow()
             
             primaryLabel.text = music.title ?? ""
 
