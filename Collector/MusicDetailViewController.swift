@@ -238,10 +238,6 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Drop a shadow around the cover image
         coverImageView.dropShadow()
-        
-        /*if let rat = self.movie?.rating {
-            self.ratingView.rating = Float(rat)
-        }*/
     }
     
     func updateData(music: Music) {

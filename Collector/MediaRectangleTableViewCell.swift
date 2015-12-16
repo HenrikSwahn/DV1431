@@ -24,7 +24,6 @@ class MediaRectangleTableViewCell: UITableViewCell {
     func updateUI() {
         if let item = media {
             mediaImageView.image = item.coverArt
-            mediaImageView.dropShadow()
             
             primaryLabel.text = item.title
             secondaryLabel.text = "\(item.runtime.toString()) • "
