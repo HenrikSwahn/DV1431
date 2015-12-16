@@ -27,8 +27,6 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.estimatedRowHeight = tableView.rowHeight
-            tableView.rowHeight = UITableViewAutomaticDimension
         }
     }
     
@@ -86,10 +84,6 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return controller!.filter != nil ? 55.0 : 0.0
-    }
-    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
     }
     
     func reloadData() {

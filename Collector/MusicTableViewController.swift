@@ -35,9 +35,6 @@ class MusicTableViewController: UIViewController, UITableViewDataSource, UITable
     
     // MARK: - TableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        /*let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.musicCellId) as! MediaBoxTableViewCell
-        cell.media = controller!.filteredMusic![indexPath.row]
-        return cell*/
         return tableView.dequeueReusableCellWithIdentifier(Storyboard.musicCellId)!
     }
     
@@ -85,10 +82,6 @@ class MusicTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return controller!.filter != nil ? 55.0 : 0.0
-    }
-    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
     }
     
     // MARK: - Navigation
