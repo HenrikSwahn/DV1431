@@ -9,7 +9,7 @@
 import UIKit
 
 class UIStretchableTableView: UITableView, UIScrollViewDelegate {
-    public var headerHeight: CGFloat?
+    internal var headerHeight: CGFloat?
     
     // We need to manage the tableHeaderView
     private var headerView: UIView!
