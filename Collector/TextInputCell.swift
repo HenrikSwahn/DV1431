@@ -8,10 +8,16 @@
 
 import UIKit
 
-class TextInputCell: ColoredTableViewCell {
-    @IBOutlet weak var textInputField: UITextField!
-
+class TextInputCell: ColoredTableViewCell, UITextFieldDelegate {
+    
+    @IBOutlet weak var textInputField: UITextField! {
+        didSet {
+            self.textInputField.delegate = self
+        }
+    }
+    
     @IBOutlet weak var keyLabel: UILabel!
+    
     override func updateUI() {
         if let media = model as? KeyValueAdapter {
             keyLabel.text = media.key

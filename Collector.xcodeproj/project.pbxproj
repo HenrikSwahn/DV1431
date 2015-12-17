@@ -100,6 +100,7 @@
 		AFFFB73D1C2298D800FCD029 /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB73C1C2298D800FCD029 /* TextInputCell.swift */; };
 		AFFFB73F1C229A2500FCD029 /* PickerTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB73E1C229A2500FCD029 /* PickerTextFieldCell.swift */; };
 		AFFFB7411C229B5100FCD029 /* MovieManualEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB7401C229B5100FCD029 /* MovieManualEntryViewController.swift */; };
+		AFFFB7451C22D7F600FCD029 /* MusicManualEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB7441C22D7F600FCD029 /* MusicManualEntryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +221,7 @@
 		AFFFB73C1C2298D800FCD029 /* TextInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
 		AFFFB73E1C229A2500FCD029 /* PickerTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTextFieldCell.swift; sourceTree = "<group>"; };
 		AFFFB7401C229B5100FCD029 /* MovieManualEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieManualEntryViewController.swift; sourceTree = "<group>"; };
+		AFFFB7441C22D7F600FCD029 /* MusicManualEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicManualEntryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,6 +511,7 @@
 				31E41FE81C185A88003976F9 /* WishListTableViewController.swift */,
 				31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */,
 				AFFFB7401C229B5100FCD029 /* MovieManualEntryViewController.swift */,
+				AFFFB7441C22D7F600FCD029 /* MusicManualEntryViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */,
 				31114C4C1C15FFEE00396AA8 /* SearchAPIDelegate.swift in Sources */,
 				317743791C1DAA7100C44715 /* GeneralDetailTableViewCell.swift in Sources */,
+				AFFFB7451C22D7F600FCD029 /* MusicManualEntryViewController.swift in Sources */,
 				31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */,
 				3124B2101C20405600ACE6D9 /* MusicPageController.swift in Sources */,
 				AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */,

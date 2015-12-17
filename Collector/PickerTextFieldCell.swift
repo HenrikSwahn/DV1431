@@ -8,14 +8,21 @@
 
 import UIKit
 
-class PickerTextFieldCell: ColoredTableViewCell, UIImagePickerControllerDelegate {
-    @IBOutlet weak var pickerTextField: UIPickerTextField!
+class PickerTextFieldCell: ColoredTableViewCell, UIImagePickerControllerDelegate, UITextFieldDelegate {
+    
+    @IBOutlet weak var pickerTextField: UIPickerTextField! {
+        didSet {
+            self.pickerTextField.delegate = self
+        }
+    }
+    
     @IBOutlet weak var keyLabel: UILabel!
     
     override func updateUI() {
         if let media = model as? KeyValueAdapter {
             pickerTextField.text = media.value
             keyLabel.text = media.key
+            getContext(media.key)
         }
     }
     

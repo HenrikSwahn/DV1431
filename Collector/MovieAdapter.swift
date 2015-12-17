@@ -76,6 +76,7 @@ struct MovieAdapter {
         let location = getString(movie.ownerLocation)
         return [
         Section.Regular,
+        KeyValueAdapter("Title", getString(movie.title)),
         KeyValueAdapter("Actor(s)", getString(movie.mainActors)),
         KeyValueAdapter("Director(s)", getString(movie.director)),
         KeyValueAdapter("Genre", getString(movie.genre)),

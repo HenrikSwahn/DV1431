@@ -1,5 +1,5 @@
 //
-//  MovieManualEntryViewController.swift
+//  MusicManualEntryViewController.swift
 //  Collector
 //
 //  Created by Henrik Swahn on 2015-12-17.
@@ -9,15 +9,15 @@
 import UIKit
 import MobileCoreServices
 
-class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+/*class MusicManualEntryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var context = ViewContextEnum.Unkown
-    var tmdbSearchItem: TMDbSearchItem?
+    var itunesAlbumItem: ItunesAlbumItem
     var image: UIImage?
     
     private var data: [[AnyObject]]?
     private var colors: UIImageColors?
-    var movie: Movie?
+    var music: Music?
     private let imagePicker = UIImagePickerController()
     
     private struct Storyboard {
@@ -35,16 +35,16 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func addMediaToLibraryAction(sender: UIButton) {
         
-        if movie != nil {
-            checkIfMovieNeedsUpdating();
+        if music != nil {
+            checkIfMusicNeedsUpdating();
             let storage = Storage()
             
             switch context {
-            case .EditMovie:
-                storage.updateMovieObject(self.movie!)
+            case .EditMusic:
+                storage.updateMusicObject(self.music!)
                 break
-            case .Movie:
-                if !storage.storeMovie(self.movie!) {
+            case .Music:
+                if !storage.storeMusic(self.music!) {
                     alertUser("Movie already exists in Media Library")
                 }
                 break
@@ -54,25 +54,25 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    private func checkIfMovieNeedsUpdating() {
+    private func checkIfMusicNeedsUpdating() {
         
         var row = 0, section = 0
         var indexPath = NSIndexPath(forRow: row++, inSection: section)
         
         // Actors
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
+        /*if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
             if let input = cell.textInputField.text {
-                if let actors = movie?.mainActors {
+                if let actors = music?. {
                     if input != actors {
                         movie?.mainActors = input
                     }
                 }
             }
-        }
+        }*/
         
         // Director
         indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
+        /*if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
             if let input = cell.textInputField.text {
                 if let director = movie?.director {
                     if input != director {
@@ -80,11 +80,11 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
                     }
                 }
             }
-        }
+        }*/
         
         //Genre
         indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
+        i/*f let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
             if let input = cell.textInputField.text {
                 if let genre = movie?.genre {
                     if input != genre {
@@ -92,7 +92,7 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
                     }
                 }
             }
-        }
+        }*/
         
         //Location
         //Type
@@ -102,7 +102,7 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         section = 1
         row = 2
         indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
+        /*if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
             if let input = cell.pickerTextField.text {
                 if let runtime = movie?.runtime.toString() {
                     if input != runtime {
@@ -110,11 +110,11 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
                     }
                 }
             }
-        }
+        }*/
         
         //Release year
         indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
+        /*if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
             if let input = cell.pickerTextField.text {
                 if let release = movie?.releaseYear {
                     if input != String(release) {
@@ -122,26 +122,26 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
                     }
                 }
             }
-        }
+        }*/
     }
     //MARK: - View Did Load
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let item = tmdbSearchItem {
-            requestMovie(item)
+        if let item = itunesAlbumItem {
+            requestMusic(item)
         }
         else {
-            if let mov = self.movie {
-                self.updateData(mov)
+            if let mo = self.music {
+                self.updateData(mu)
             }
         }
         
         switch context {
-        case .Movie: self.AddButton.setTitle("Add to library", forState: .Normal); break
-        case .EditMovie: self.AddButton.setTitle("Save changes", forState: .Normal); break
-        case .NewMovie: break
+        case .Music: self.AddButton.setTitle("Add to library", forState: .Normal); break
+        case .EditMusic: self.AddButton.setTitle("Save changes", forState: .Normal); break
+        case .NewMusic: break
         default: break
         }
     }
@@ -151,7 +151,7 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         // Set self as delegate and datasource
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.userInteractionEnabled = true
+        tableView.userInteractionEnabled = true
         
         // Make table cells resizable
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -167,15 +167,15 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         self.imagePicker.delegate = self
     }
     
-    private func requestMovie(item: TMDbSearchItem) {
-    
-        let tmdb = TMDb(resource: TMDbMovieResource(id: item.id))
-        tmdb.request { result in
+    private func requestMusic(item: ItunesAlbumItem) {
+        
+        let itunes = Itunes(resource: ItunesAlbumResource(id: item.id))
+        itunes.request { result in
             switch result {
             case .Success(let response):
-                self.movie = Movie.fromTMDbMovieItem(TMDb.parseMovie(JSON(response.data))!, image: self.image)
-                if let mov = self.movie {
-                    self.updateData(mov)
+                self.music = Music.fromItunesAlbumItem(Itunes.parseAlbum(JSON(response.data))!, albumImage: self.image)
+                if let mu = self.music {
+                    self.updateData(mu)
                 }
                 break
             case .Error(_): break
@@ -183,20 +183,20 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    func updateData(movie: Movie) {
-        data = MovieAdapter.getAddMovieAdapter(movie)
+    func updateData(music: Music) {
+        data = AlbumAdapter.getAddAlbumAdapter(music)
         tableView.reloadData()
         updateUI()
     }
     
     func updateUI() {
-        coverArtImage.image = movie?.coverArt
-        titleLabel.text = movie?.title
+        coverArtImage.image = music?.coverArt
+        titleLabel.text = music?.title
         titleLabel.type = .LeftRight
         titleLabel.scrollRate = 100.0
         titleLabel.fadeLength = 20.0
         
-        detailLabel.text = movie?.genre
+        detailLabel.text = music?.genre
         detailLabel.type = .LeftRight
         detailLabel.scrollRate = 100.0
         detailLabel.fadeLength = 20.0
@@ -215,18 +215,18 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         // Drop a shadow around the cover image
         coverArtImage.dropShadow()
         
-        if let rat = self.movie?.rating {
+        if let rat = self.music?.rating {
             self.ratingView.rating = Float(rat)
         }
     }
     
     //MARK: - Rating view
     func ratingView(ratingView: UIRatingView, didUpdate rating: Float) {
-        self.movie?.rating = Int(rating)
+        self.music?.rating = Int(rating)
     }
     
     func ratingView(ratingView: UIRatingView, isUpdating rating: Float) {
-    
+        
     }
     
     // MARK: - TableView
@@ -237,7 +237,7 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         
         return 0
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
@@ -308,7 +308,7 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         self.coverArtImage.contentMode = .ScaleAspectFit
         self.coverArtImage.image = chosenImage
         self.coverArtImage.setNeedsDisplay()
-        self.movie!.coverArt = chosenImage
+        self.music!.coverArt = chosenImage
         self.image = chosenImage
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -323,22 +323,30 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         alert.addAction(OkAction)
         self.presentViewController(alert, animated: true, completion: nil)
     }
-}
+}*/
 
-extension Movie {
-    static func fromTMDbMovieItem(item: TMDbMovieItem, image: UIImage?) -> Movie {
-        let movie = Movie(title: item.title, released: item.release, runtime: Runtime.getRuntimeBasedOnMinutes(item.runtime))
-        movie.id = item.id
-        movie.genre = item.genres.joinWithSeparator(", ")
-        movie.mainActors = item.cast.joinWithSeparator(", ")
-        movie.desc = item.synopsis
-        movie.coverArt = image
-        movie.director = item.director
+extension Music {
+    static func fromItunesAlbumItem(item: ItunesAlbumItem, albumImage: UIImage?) -> Music {
+        let music = Music(title: item.name, released: item.release)
+        music.albumArtist = item.artist
+        music.genre = item.genre
+        music.desc = item.description
+        music.coverArt = albumImage
+        music.id = item.id
         
-        if let videos = item.videos {
-            movie.trailers = videos
+        if let tracks = item.tracks {
+            for var i = 0; i < tracks.count; ++i {
+                music.insertTrack(Track.fromItunesTrackItem(tracks[i], trackIndex: (i+1)))
+            }
         }
         
-        return movie
+        return music
+    }
+}
+
+extension Track {
+    static func fromItunesTrackItem(item: ItunesAlbumTrackItem, trackIndex: Int) -> Track {
+        let track = Track(name: item.title, runtime: Runtime.getRuntimeBasedOnSeconds(Int(item.duration)!), trackNr: trackIndex, url: item.url)
+        return track
     }
 }

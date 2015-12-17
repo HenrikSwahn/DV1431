@@ -548,7 +548,7 @@ extension Array {
     }
 }
 
-extension Music {
+/*extension Music {
     static func fromItunesAlbumItem(item: ItunesAlbumItem, albumImage: UIImage?) -> Music {
         let music = Music(title: item.name, released: item.release)
         music.albumArtist = item.artist
@@ -572,7 +572,7 @@ extension Track {
         let track = Track(name: item.title, runtime: Runtime.getRuntimeBasedOnSeconds(Int(item.duration)!), trackNr: trackIndex, url: item.url)
         return track
     }
-}
+}*/
 
 /*extension Movie {
     static func fromTMDbMovieItem(item: TMDbMovieItem, image: UIImage?) -> Movie {
