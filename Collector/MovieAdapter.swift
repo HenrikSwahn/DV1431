@@ -15,6 +15,8 @@ struct MovieAdapter {
         static var Description: String = "Description"
         static var People: String = "People"
         static var Video: String = "Videos"
+        static var Regular: String = "Regular"
+        static var Picker: String = "Picker"
     }
     
     private static func getString(str: String?) -> String {
@@ -69,6 +71,30 @@ struct MovieAdapter {
         return videos
     }
     
+    private static func regular(movie: Movie) -> [AnyObject] {
+    
+        let location = getString(movie.ownerLocation)
+        return [
+        Section.Regular,
+        KeyValueAdapter("Actor(s)", getString(movie.mainActors)),
+        KeyValueAdapter("Director(s)", getString(movie.director)),
+        KeyValueAdapter("Genre", getString(movie.genre)),
+        KeyValueAdapter("Location", location),
+        ]
+    }
+    private static func picker(movie: Movie) -> [AnyObject] {
+        
+        let type = getString(movie.owningType?.rawValue)
+        
+        return [
+            Section.Picker,
+            KeyValueAdapter("Type", type),
+            KeyValueAdapter("Format", getString(movie.format?.rawValue)),
+            KeyValueAdapter("Runtime", getString(movie.runtime.toString())),
+            KeyValueAdapter("Release", String(movie.releaseYear))
+        ]
+    }
+
     static func tableView(movie: Movie) -> [[AnyObject]] {
         var adapter = [[AnyObject]]()
         
@@ -82,6 +108,15 @@ struct MovieAdapter {
         if videos.count > 1 {
             adapter.append(MovieAdapter.videos(movie))
         }
+        return adapter
+    }
+    
+    static func getAddMovieAdapter(movie: Movie) -> [[AnyObject]] {
+    
+        var adapter = [[AnyObject]]()
+        
+        adapter.append(MovieAdapter.regular(movie))
+        adapter.append(MovieAdapter.picker(movie))
         
         return adapter
     }

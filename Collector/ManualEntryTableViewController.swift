@@ -574,7 +574,7 @@ extension Track {
     }
 }
 
-extension Movie {
+/*extension Movie {
     static func fromTMDbMovieItem(item: TMDbMovieItem, image: UIImage?) -> Movie {
         let movie = Movie(title: item.title, released: item.release, runtime: Runtime.getRuntimeBasedOnMinutes(item.runtime))
         movie.id = item.id
@@ -590,4 +590,4 @@ extension Movie {
         
         return movie
     }
-}
+}*/

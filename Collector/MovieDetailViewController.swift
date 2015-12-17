@@ -20,7 +20,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     private var colors: UIImageColors?
 
     private struct Storyboard {
-        static let editMovieSegue = "editMovieSegue"
+        static let editMovieSegue = "EditMovie"
         static let generalCell = "generalCell"
         static let descriptionCell = "descriptionCell"
         static let trailerCellID = "trailerCellID"
@@ -153,9 +153,10 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - Prepare for segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Storyboard.editMovieSegue {
-            let dest = segue.destinationViewController as! ManualEntryTableViewController
-            dest.context = .EditMovie
-            dest.movieItem = movie!
+            if let dest = segue.destinationViewController as? MovieManualEntryViewController {
+                dest.context = .EditMovie
+                dest.movie = movie
+            }
         }
     }
     

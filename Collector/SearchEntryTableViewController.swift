@@ -67,7 +67,7 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let dest = segue.destinationViewController as! ManualEntryTableViewController
+        let dest = segue.destinationViewController as! MovieManualEntryViewController
         if segue.identifier == Storyboard.manualEntrySegueId {
             dest.context = context
         }
@@ -75,8 +75,8 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
             dest.context = context
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SearchMusicEntryTableViewCell
-                dest.tempImage = cell.albumImage.image
-                dest.itunesAlbumItem = self.search.getForSelectedAlbumIndexPath(indexPath)
+                //dest.tempImage = cell.albumImage.image
+                //dest.itunesAlbumItem = self.search.getForSelectedAlbumIndexPath(indexPath)
                 
             }
         }
@@ -84,7 +84,7 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
             dest.context = context
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SearchMovieEntryTableViewCell
-                dest.tempImage = cell.movieImage.image
+                dest.image = cell.movieImage.image
                 dest.tmdbSearchItem = self.search.getForSelectedMovieIndexPath(indexPath)
             }
         }

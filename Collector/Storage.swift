@@ -103,6 +103,10 @@ class Storage {
             storeMovie.mainActors = mainActors
         }
         
+        if let rating = movie.rating {
+            storeMovie.rating = rating
+        }
+        
         do {
             try managedObjectContext.save()
             storeTrailers(movie.trailers, movie: storeMovie)

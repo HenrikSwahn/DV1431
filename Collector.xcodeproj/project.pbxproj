@@ -97,6 +97,9 @@
 		AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84E1BFC76E80024D9A4 /* Media.swift */; };
 		AFE9D7151BFE13EC009E5DAA /* ManualEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9D7141BFE13EC009E5DAA /* ManualEntryTableViewController.swift */; };
 		AFF229561BFC8CAF001181AC /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */; };
+		AFFFB73D1C2298D800FCD029 /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB73C1C2298D800FCD029 /* TextInputCell.swift */; };
+		AFFFB73F1C229A2500FCD029 /* PickerTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB73E1C229A2500FCD029 /* PickerTextFieldCell.swift */; };
+		AFFFB7411C229B5100FCD029 /* MovieManualEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB7401C229B5100FCD029 /* MovieManualEntryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +217,9 @@
 		AFADF84E1BFC76E80024D9A4 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		AFE9D7141BFE13EC009E5DAA /* ManualEntryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualEntryTableViewController.swift; sourceTree = "<group>"; };
 		AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCell.swift; sourceTree = "<group>"; };
+		AFFFB73C1C2298D800FCD029 /* TextInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
+		AFFFB73E1C229A2500FCD029 /* PickerTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTextFieldCell.swift; sourceTree = "<group>"; };
+		AFFFB7401C229B5100FCD029 /* MovieManualEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieManualEntryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,14 +463,15 @@
 				3124B2011C1F137600ACE6D9 /* MediaBoxTableViewCell.swift */,
 				AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */,
 				3177437E1C1DE3B200C44715 /* MediaRectangleTableViewCell.swift */,
-				31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */,
 				31D1A6351C16126C00AA02A8 /* SearchMovieEntryTableViewCell.swift */,
 				31D1A6371C16127B00AA02A8 /* SearchMusicEntryTableViewCell.swift */,
 				AF833FDE1C197DD2003D6C0A /* TrackTableViewCell.swift */,
 				AF0450561C1EEC6100E8E7EC /* TrailerTableViewCell.swift */,
 				3177437C1C1DAB1100C44715 /* ValueDetailCell.swift */,
+				AFFFB73C1C2298D800FCD029 /* TextInputCell.swift */,
 				31E41FEA1C185F7F003976F9 /* WishListBoxTableViewCell.swift */,
 				31E41FEC1C186390003976F9 /* WishListRectangleTableViewCell.swift */,
+				AFFFB73E1C229A2500FCD029 /* PickerTextFieldCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -500,6 +507,8 @@
 				3124B2131C20410D00ACE6D9 /* MusicTableViewController.swift */,
 				31749C021BFDE7B400E76648 /* SearchTableViewController.swift */,
 				31E41FE81C185A88003976F9 /* WishListTableViewController.swift */,
+				31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */,
+				AFFFB7401C229B5100FCD029 /* MovieManualEntryViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -637,6 +646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31114C171C15B15700396AA8 /* JSONError.swift in Sources */,
+				AFFFB73F1C229A2500FCD029 /* PickerTextFieldCell.swift in Sources */,
 				AF0450511C1E0D1900E8E7EC /* HeaderTableViewCell.swift in Sources */,
 				31E41FDF1C173380003976F9 /* UICachableTableViewCell.swift in Sources */,
 				AF300AA01C0C908300BC57D9 /* MovieStore.swift in Sources */,
@@ -657,6 +667,7 @@
 				31114C231C15B19000396AA8 /* TMDbSearchItem.swift in Sources */,
 				AF300AB31C16FF9000BC57D9 /* MusicDetailViewController.swift in Sources */,
 				3124B20C1C1F41DF00ACE6D9 /* MovieCollectionViewController.swift in Sources */,
+				AFFFB7411C229B5100FCD029 /* MovieManualEntryViewController.swift in Sources */,
 				31114C4A1C15FEC400396AA8 /* SearchAPI.swift in Sources */,
 				AF4E1D111C1DA15400AB1717 /* Filter.swift in Sources */,
 				3124B2021C1F137600ACE6D9 /* MediaBoxTableViewCell.swift in Sources */,
@@ -693,6 +704,7 @@
 				31D1A6361C16126C00AA02A8 /* SearchMovieEntryTableViewCell.swift in Sources */,
 				AF300AA91C0E3D8200BC57D9 /* ViewContext.swift in Sources */,
 				31B842221BF3880D005429FA /* AppDelegate.swift in Sources */,
+				AFFFB73D1C2298D800FCD029 /* TextInputCell.swift in Sources */,
 				AF300A7F1C0737E000BC57D9 /* Track.swift in Sources */,
 				31114C421C15B1C700396AA8 /* API.swift in Sources */,
 				AF300AA61C0CBFA300BC57D9 /* Storage.swift in Sources */,
