@@ -9,7 +9,7 @@
 import UIKit
 import AVKit
 
-class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter {
+class MovieDetailViewController: UIBarStyleController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter {
 
     // MARK: - Context
     var context = ViewContextEnum.Movie
@@ -54,6 +54,19 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 updateData(movie!)
             }
         }
+
+        tabBarSeparatorColor = colors?.secondaryColor
+        tabBarBackgroundColor = colors?.backgroundColor
+        tabBarTintColor = colors?.primaryColor
+        
+        navigationBarBackgroundColor = colors?.backgroundColor
+        navigationBarTintColor = colors?.primaryColor
+        navigationBarSeparator?.backgroundColor = colors?.secondaryColor
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offset = (scrollView.contentOffset.y + tableView.headerHeight! + 64) / 64
+        navigationBarView?.alpha = offset > 0.95 ? 0.95 : offset
     }
     
     override func viewDidLoad() {
