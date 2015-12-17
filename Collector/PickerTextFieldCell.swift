@@ -20,9 +20,10 @@ class PickerTextFieldCell: ColoredTableViewCell, UIImagePickerControllerDelegate
     
     override func updateUI() {
         if let media = model as? KeyValueAdapter {
+            setContext(media.key)
             pickerTextField.text = media.value
             keyLabel.text = media.key
-            getContext(media.key)
+            
         }
     }
     
@@ -31,7 +32,7 @@ class PickerTextFieldCell: ColoredTableViewCell, UIImagePickerControllerDelegate
         self.pickerTextField.textColor = self.primaryUIColor()
     }
     
-    private func getContext(context: String) {
+    private func setContext(context: String) {
         
         switch context {
         case "Format":
@@ -40,7 +41,8 @@ class PickerTextFieldCell: ColoredTableViewCell, UIImagePickerControllerDelegate
             setRuntimeDatasource()
         case "Type":
             setTypeDatasource()
-        case "Release": break
+        case "Release":
+            setReleaseDatasource()
         default: break
         }
     }
@@ -71,6 +73,14 @@ class PickerTextFieldCell: ColoredTableViewCell, UIImagePickerControllerDelegate
     
     private func setTypeDatasource() {
         self.pickerTextField.dataSource(["Physical", "Digital"], arrayTwo: nil, arrayThree: nil)
+    }
+    
+    private func setReleaseDatasource() {
+        let years: [String] = [Int](count: 100, repeatedValue: 0).mapNumber({
+            (year, _) -> String in return "\(2015 - year)"
+        })
+        
+        self.pickerTextField.dataSource(years, arrayTwo: nil, arrayThree: nil)
     }
 }
 

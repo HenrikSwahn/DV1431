@@ -57,16 +57,20 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
     private func checkIfMovieNeedsUpdating() {
         
         var row = 0, section = 0
-        var indexPath = NSIndexPath(forRow: row++, inSection: section)
         
-        // Actors
+        // Title
+        var indexPath = NSIndexPath(forRow: row++, inSection: section)
         if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
             if let input = cell.textInputField.text {
-                if let actors = movie?.mainActors {
-                    if input != actors {
-                        movie?.mainActors = input
-                    }
-                }
+                movie!.title = input
+            }
+        }
+        
+        // Actors
+        indexPath = NSIndexPath(forRow: row++, inSection: section)
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
+            if let input = cell.textInputField.text {
+                movie!.mainActors = input
             }
         }
         
@@ -74,11 +78,7 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         indexPath = NSIndexPath(forRow: row++, inSection: section)
         if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
             if let input = cell.textInputField.text {
-                if let director = movie?.director {
-                    if input != director {
-                        movie?.director = input
-                    }
-                }
+                movie!.director = input
             }
         }
         
@@ -86,29 +86,42 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         indexPath = NSIndexPath(forRow: row++, inSection: section)
         if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
             if let input = cell.textInputField.text {
-                if let genre = movie?.genre {
-                    if input != genre {
-                        movie?.genre = input
-                    }
-                }
+                movie!.genre = input
             }
         }
         
         //Location
-        //Type
-        //Format
+        indexPath = NSIndexPath(forRow: row++, inSection: section)
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
+            if let input = cell.textInputField.text {
+                movie!.ownerLocation = input
+            }
+        }
         
-        //Runtime
         section = 1
-        row = 2
+        row = 0
+        
+        //Type
         indexPath = NSIndexPath(forRow: row++, inSection: section)
         if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
             if let input = cell.pickerTextField.text {
-                if let runtime = movie?.runtime.toString() {
-                    if input != runtime {
-                        movie?.runtime = Runtime.getRuntimeBasedOnString(input)
-                    }
-                }
+                movie!.setOwningType(input)
+            }
+        }
+        
+        //Format
+        indexPath = NSIndexPath(forRow: row++, inSection: section)
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
+            if let input = cell.pickerTextField.text {
+                movie!.setFormat(input)
+            }
+        }
+        
+        //Runtime
+        indexPath = NSIndexPath(forRow: row++, inSection: section)
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
+            if let input = cell.pickerTextField.text {
+                movie!.runtime = Runtime.getRuntimeBasedOnString(input)
             }
         }
         
@@ -116,11 +129,7 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         indexPath = NSIndexPath(forRow: row++, inSection: section)
         if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
             if let input = cell.pickerTextField.text {
-                if let release = movie?.releaseYear {
-                    if input != String(release) {
-                        movie?.releaseYear = Int(input)!
-                    }
-                }
+                movie!.releaseYear = Int(input)!
             }
         }
     }
@@ -151,7 +160,6 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         // Set self as delegate and datasource
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.userInteractionEnabled = true
         
         // Make table cells resizable
         tableView.estimatedRowHeight = tableView.rowHeight
