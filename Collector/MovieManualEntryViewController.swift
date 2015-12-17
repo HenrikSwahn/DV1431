@@ -38,11 +38,18 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         if movie != nil {
             checkIfMovieNeedsUpdating();
             let storage = Storage()
-            if !storage.storeMovie(movie!) {
-                alertUser("Movie already exists in Media Library")
-                return
+            
+            switch context {
+            case .EditMovie:
+                storage.updateMovieObject(self.movie!)
+                break
+            case .Movie:
+                if !storage.storeMovie(self.movie!) {
+                    alertUser("Movie already exists in Media Library")
+                }
+                break
+            default:break
             }
-
         }
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -300,7 +307,9 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         self.coverArtImage.contentMode = .ScaleAspectFit
         self.coverArtImage.image = chosenImage
+        self.coverArtImage.setNeedsDisplay()
         self.movie!.coverArt = chosenImage
+        self.image = chosenImage
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
