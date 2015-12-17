@@ -8,27 +8,6 @@
 
 import UIKit
 
-extension UIView {
-    enum UIViewSeparator {
-        case Top
-        case Bottom
-    }
-    
-    static func separatorMake(type: UIViewSeparator, rect: CGRect) -> UIView {
-        let thickness = (1.0 / UIScreen.mainScreen().scale) / 2;
-        
-        let separator = UIView(
-            frame: CGRectMake(
-                rect.origin.x,
-                type == .Bottom ? (rect.size.height - thickness) : thickness,
-                rect.size.width,
-                thickness)
-        )
-        
-        return separator
-    }
-}
-
 class UIBarStyleController: UIViewController {
     
     private struct Bar {
