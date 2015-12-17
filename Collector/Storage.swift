@@ -184,6 +184,10 @@ class Storage {
             storeMusic.albumArtist = albumArtist
         }
         
+        if let rating = music.rating {
+            storeMusic.rating = rating
+        }
+        
         do {
             try managedObjectContext.save()
             storeTracks(music.trackList, music: storeMusic)

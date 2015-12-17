@@ -9,10 +9,21 @@
 import UIKit
 import MobileCoreServices
 
-/*class MusicManualEntryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//
+//  MovieManualEntryViewController.swift
+//  Collector
+//
+//  Created by Henrik Swahn on 2015-12-17.
+//  Copyright © 2015 Dino Opijac. All rights reserved.
+//
+
+import UIKit
+import MobileCoreServices
+
+class MusicManualEntryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var context = ViewContextEnum.Unkown
-    var itunesAlbumItem: ItunesAlbumItem
+    var itunesAlbumItem: ItunesAlbumItem?
     var image: UIImage?
     
     private var data: [[AnyObject]]?
@@ -45,7 +56,7 @@ import MobileCoreServices
                 break
             case .Music:
                 if !storage.storeMusic(self.music!) {
-                    alertUser("Movie already exists in Media Library")
+                    alertUser("Album already exists in Media Library")
                 }
                 break
             default:break
@@ -57,72 +68,65 @@ import MobileCoreServices
     private func checkIfMusicNeedsUpdating() {
         
         var row = 0, section = 0
+        
+        // Title
         var indexPath = NSIndexPath(forRow: row++, inSection: section)
-        
-        // Actors
-        /*if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
             if let input = cell.textInputField.text {
-                if let actors = music?. {
-                    if input != actors {
-                        movie?.mainActors = input
-                    }
-                }
+                music!.title = input
             }
-        }*/
+        }
         
-        // Director
+        // Artist
         indexPath = NSIndexPath(forRow: row++, inSection: section)
-        /*if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
             if let input = cell.textInputField.text {
-                if let director = movie?.director {
-                    if input != director {
-                        movie?.director = input
-                    }
-                }
+                music!.albumArtist = input
             }
-        }*/
+        }
         
         //Genre
         indexPath = NSIndexPath(forRow: row++, inSection: section)
-        i/*f let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
             if let input = cell.textInputField.text {
-                if let genre = movie?.genre {
-                    if input != genre {
-                        movie?.genre = input
-                    }
-                }
+                music!.genre = input
             }
-        }*/
+        }
         
         //Location
-        //Type
-        //Format
-        
-        //Runtime
-        section = 1
-        row = 2
         indexPath = NSIndexPath(forRow: row++, inSection: section)
-        /*if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
-            if let input = cell.pickerTextField.text {
-                if let runtime = movie?.runtime.toString() {
-                    if input != runtime {
-                        movie?.runtime = Runtime.getRuntimeBasedOnString(input)
-                    }
-                }
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
+            if let input = cell.textInputField.text {
+                music!.ownerLocation = input
             }
-        }*/
+        }
+        
+        section = 1
+        row = 0
+        
+        //Type
+        indexPath = NSIndexPath(forRow: row++, inSection: section)
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
+            if let input = cell.pickerTextField.text {
+                music!.setOwningType(input)
+            }
+        }
+        
+        //Format
+        indexPath = NSIndexPath(forRow: row++, inSection: section)
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
+            if let input = cell.pickerTextField.text {
+                music!.setFormat(input)
+            }
+        }
         
         //Release year
         indexPath = NSIndexPath(forRow: row++, inSection: section)
-        /*if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
             if let input = cell.pickerTextField.text {
-                if let release = movie?.releaseYear {
-                    if input != String(release) {
-                        movie?.releaseYear = Int(input)!
-                    }
-                }
+                music!.releaseYear = Int(input)!
             }
-        }*/
+        }
     }
     //MARK: - View Did Load
     
@@ -133,7 +137,7 @@ import MobileCoreServices
             requestMusic(item)
         }
         else {
-            if let mo = self.music {
+            if let mu = self.music {
                 self.updateData(mu)
             }
         }
@@ -151,7 +155,6 @@ import MobileCoreServices
         // Set self as delegate and datasource
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.userInteractionEnabled = true
         
         // Make table cells resizable
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -169,8 +172,8 @@ import MobileCoreServices
     
     private func requestMusic(item: ItunesAlbumItem) {
         
-        let itunes = Itunes(resource: ItunesAlbumResource(id: item.id))
-        itunes.request { result in
+        let itunesAlbum = Itunes(resource: ItunesAlbumResource(id: item.id))
+        itunesAlbum.request { result in
             switch result {
             case .Success(let response):
                 self.music = Music.fromItunesAlbumItem(Itunes.parseAlbum(JSON(response.data))!, albumImage: self.image)
@@ -184,7 +187,7 @@ import MobileCoreServices
     }
     
     func updateData(music: Music) {
-        data = AlbumAdapter.getAddAlbumAdapter(music)
+        data = AlbumAdapter.getAddMusicAdapter(music)
         tableView.reloadData()
         updateUI()
     }
@@ -248,8 +251,17 @@ import MobileCoreServices
             }
         case 1:
             if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.PickerInputCell, forIndexPath: indexPath) as? PickerTextFieldCell {
+                cell.context = .Music
                 cell.model = data?[indexPath.section][indexPath.row + 1]
                 cell.colors = colors
+                return cell
+            }
+        case 2:
+            if let cell = tableView.dequeueReusableCellWithIdentifier("trackCell", forIndexPath: indexPath) as? TrackTableViewCell {
+                cell.model = data?[indexPath.section][indexPath.row + 1]
+                cell.colors = colors
+                cell.previewButton.hidden = true
+                cell.userInteractionEnabled = false
                 return cell
             }
         default:break
@@ -323,7 +335,7 @@ import MobileCoreServices
         alert.addAction(OkAction)
         self.presentViewController(alert, animated: true, completion: nil)
     }
-}*/
+}
 
 extension Music {
     static func fromItunesAlbumItem(item: ItunesAlbumItem, albumImage: UIImage?) -> Music {

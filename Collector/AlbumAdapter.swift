@@ -58,9 +58,9 @@ struct AlbumAdapter {
         
         return [
             Section.Picker,
+            KeyValueAdapter("Type", type),
             KeyValueAdapter("Format", album.format?.rawValue),
-            KeyValueAdapter("Runtime", album.runtime.toTrackString()),
-            KeyValueAdapter("Release", String(album.releaseYear)),
+            KeyValueAdapter("Release", String(album.releaseYear))
         ]
     }
     
@@ -69,9 +69,10 @@ struct AlbumAdapter {
         let location = getString(album.ownerLocation)
         return [
             Section.Regular,
+            KeyValueAdapter("Title", album.title),
+            KeyValueAdapter("Artist", album.albumArtist),
             KeyValueAdapter("Genre", album.genre),
             KeyValueAdapter("Location", location),
-            KeyValueAdapter("Tracks", String(album.trackList.count))
         ]
     }
     
@@ -111,12 +112,18 @@ struct AlbumAdapter {
         return "Not set"
     }
     
-    static func getAddMovieAdapter(music: Music) -> [[AnyObject]] {
+    static func getAddMusicAdapter(music: Music) -> [[AnyObject]] {
         
         var adapter = [[AnyObject]]()
         
         adapter.append(AlbumAdapter.regular(music))
         adapter.append(AlbumAdapter.picker(music))
+        
+        let tracks = AlbumAdapter.tracks(music)
+        
+        if tracks.count > 1 {
+            adapter.append(AlbumAdapter.tracks(music))
+        }
         
         return adapter
     }

@@ -258,6 +258,7 @@ class MovieManualEntryViewController: UIViewController, UITableViewDelegate, UIT
             if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.PickerInputCell, forIndexPath: indexPath) as? PickerTextFieldCell {
                 cell.model = data?[indexPath.section][indexPath.row + 1]
                 cell.colors = colors
+                cell.context = .Movie
                 return cell
             }
         default:break

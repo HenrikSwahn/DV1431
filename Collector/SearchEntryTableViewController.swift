@@ -67,20 +67,23 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let dest = segue.destinationViewController as! MovieManualEntryViewController
+
         if segue.identifier == Storyboard.manualEntrySegueId {
+            let dest = segue.destinationViewController as! MovieManualEntryViewController
             dest.context = context
         }
         else if segue.identifier == Storyboard.musicSegueId {
+            let dest = segue.destinationViewController as! MusicManualEntryViewController
             dest.context = context
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SearchMusicEntryTableViewCell
-                //dest.tempImage = cell.albumImage.image
-                //dest.itunesAlbumItem = self.search.getForSelectedAlbumIndexPath(indexPath)
+                dest.image = cell.albumImage.image
+                dest.itunesAlbumItem = self.search.getForSelectedAlbumIndexPath(indexPath)
                 
             }
         }
         else if segue.identifier == Storyboard.movieSegueId {
+            let dest = segue.destinationViewController as! MovieManualEntryViewController
             dest.context = context
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SearchMovieEntryTableViewCell

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class PickerTextFieldCell: ColoredTableViewCell, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class PickerTextFieldCell: ColoredTableViewCell, UIImagePickerControllerDelegate, UITextFieldDelegate, ViewContext {
+    
+    var context = ViewContextEnum.Unkown
     
     @IBOutlet weak var pickerTextField: UIPickerTextField! {
         didSet {
@@ -32,9 +34,9 @@ class PickerTextFieldCell: ColoredTableViewCell, UIImagePickerControllerDelegate
         self.pickerTextField.textColor = self.primaryUIColor()
     }
     
-    private func setContext(context: String) {
+    private func setContext(key: String) {
         
-        switch context {
+        switch key {
         case "Format":
             setFormatDatasource()
         case "Runtime":
@@ -48,7 +50,16 @@ class PickerTextFieldCell: ColoredTableViewCell, UIImagePickerControllerDelegate
     }
     
     private func setFormatDatasource() {
-        self.pickerTextField.dataSource(["DVD", "Blu-Ray", "MP4"], arrayTwo: nil, arrayThree: nil)
+        
+        switch context {
+        case .Movie, .EditMovie:
+            self.pickerTextField.dataSource(["DVD", "Blu-Ray", "MP4"], arrayTwo: nil, arrayThree: nil)
+            break
+        case .Music, .EditMusic:
+            self.pickerTextField.dataSource(["CD", "MP3", "Flac"], arrayTwo: nil, arrayThree: nil)
+            break
+        default:break
+        }
     }
     
     private func setRuntimeDatasource() {
