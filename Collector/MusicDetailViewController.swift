@@ -20,6 +20,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     private var data: [[AnyObject]]?
     private var colors: UIImageColors?
     var musicPlayer: AVPlayer?
+    private var barStyling: UIBarStyling?
     
     private struct Storyboard {
         static let mediaDetailTableCellIdentifier = "media detail cell id"
@@ -106,6 +107,27 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let retrievedMusic = music {
             updateData(retrievedMusic)
         }
+        
+        barStyling?.willAppear()
+        barStyling?.tabBarSeparatorColor = colors?.secondaryColor
+        barStyling?.tabBarBackgroundColor = colors?.backgroundColor
+        barStyling?.tabBarTintColor = colors?.primaryColor
+        
+        barStyling?.navigationBarBackgroundColor = colors?.backgroundColor
+        barStyling?.navigationBarTintColor = colors?.primaryColor
+        barStyling?.navigationBarSeparator?.backgroundColor = colors?.secondaryColor
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        barStyling?.willDisappear()
+        super.viewWillDisappear(animated)
+        stopMusic()
+        self.musicPlayer = nil
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offset = (scrollView.contentOffset.y + tableView.headerHeight! + 64) / 64
+        barStyling?.navigationBarView?.alpha = offset > 0.95 ? 0.95 : offset
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -130,12 +152,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.ratingView.delegate = self
         
         setData()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        stopMusic()
-        self.musicPlayer = nil
+        self.barStyling = UIBarStyling(navigationBar: navigationController?.navigationBar, tabBar: tabBarController?.tabBar)
     }
     
     override func didReceiveMemoryWarning() {
