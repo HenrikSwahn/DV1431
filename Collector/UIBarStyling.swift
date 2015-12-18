@@ -112,7 +112,7 @@ class UIBarStyling {
         }
     }
     
-    func viewWillAppear(animated: Bool) {
+    func willAppear() {
             navigationBarView = UIView(frame: CGRectMake(0, -20, UIScreen.mainScreen().bounds.size.width, CGRectGetHeight(navigationBar.bounds)+20))
             navigationBarView!.userInteractionEnabled = false
             navigationBarView!.backgroundColor = UIColor.clearColor()
@@ -135,7 +135,7 @@ class UIBarStyling {
             tabBarSeparatorView = UIView.separatorMake(.Top, rect: tabBar.bounds)
     }
     
-    func viewWillDisappear(animated: Bool) {
+    func willDisappear() {
             // Restore all changes
             navigationBarView?.removeFromSuperview()
             
