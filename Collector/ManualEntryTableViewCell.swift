@@ -15,6 +15,7 @@ class ManualEntryTableViewCell: UITableViewCell, UITextFieldDelegate {
             self.trackName.delegate = self
         }
     }
+    
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var trackRunTime: UIPickerTextField! {
         didSet {

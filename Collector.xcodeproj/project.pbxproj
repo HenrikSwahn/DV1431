@@ -73,6 +73,8 @@
 		31E41FF81C19C8B1003976F9 /* TMDbConfigurationResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E41FF61C19C8B1003976F9 /* TMDbConfigurationResource.swift */; };
 		31E41FFA1C19D1BC003976F9 /* WishListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E41FF91C19D1BC003976F9 /* WishListItem.swift */; };
 		31EA349F1BFE4E4900D7F72B /* UIPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */; };
+		31EBF1401C233F7E00809F53 /* UIBarStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBF13F1C233F7E00809F53 /* UIBarStyleController.swift */; };
+		31EBF1421C23432400809F53 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBF1411C23432400809F53 /* UIView.swift */; };
 		AF0450511C1E0D1900E8E7EC /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0450501C1E0D1900E8E7EC /* HeaderTableViewCell.swift */; };
 		AF0450531C1EB62700E8E7EC /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0450521C1EB62700E8E7EC /* HeaderCollectionReusableView.swift */; };
 		AF0450571C1EEC6100E8E7EC /* TrailerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0450561C1EEC6100E8E7EC /* TrailerTableViewCell.swift */; };
@@ -90,6 +92,7 @@
 		AF300AAD1C15D11A00BC57D9 /* MusicStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AAB1C15D11A00BC57D9 /* MusicStore.swift */; };
 		AF300AB11C16CA3D00BC57D9 /* TrackStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AB01C16CA3D00BC57D9 /* TrackStore.swift */; };
 		AF300AB31C16FF9000BC57D9 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AB21C16FF9000BC57D9 /* MusicDetailViewController.swift */; };
+		AF40B8071C24CE10007D6F31 /* UIBarStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40B8061C24CE10007D6F31 /* UIBarStyling.swift */; };
 		AF4E1D0F1C1DA0FE00AB1717 /* FilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E1D0E1C1DA0FE00AB1717 /* FilterProtocol.swift */; };
 		AF4E1D111C1DA15400AB1717 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E1D101C1DA15400AB1717 /* Filter.swift */; };
 		AF833FDB1C18AE9F003D6C0A /* WishListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF833FDA1C18AE9F003D6C0A /* WishListStore.swift */; };
@@ -97,6 +100,10 @@
 		AFADF84F1BFC76E80024D9A4 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADF84E1BFC76E80024D9A4 /* Media.swift */; };
 		AFE9D7151BFE13EC009E5DAA /* ManualEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9D7141BFE13EC009E5DAA /* ManualEntryTableViewController.swift */; };
 		AFF229561BFC8CAF001181AC /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */; };
+		AFFFB73D1C2298D800FCD029 /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB73C1C2298D800FCD029 /* TextInputCell.swift */; };
+		AFFFB73F1C229A2500FCD029 /* PickerTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB73E1C229A2500FCD029 /* PickerTextFieldCell.swift */; };
+		AFFFB7411C229B5100FCD029 /* MovieManualEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB7401C229B5100FCD029 /* MovieManualEntryViewController.swift */; };
+		AFFFB7451C22D7F600FCD029 /* MusicManualEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFB7441C22D7F600FCD029 /* MusicManualEntryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +197,8 @@
 		31E41FF61C19C8B1003976F9 /* TMDbConfigurationResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMDbConfigurationResource.swift; path = API/TMDb/TMDbConfigurationResource.swift; sourceTree = "<group>"; };
 		31E41FF91C19D1BC003976F9 /* WishListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListItem.swift; sourceTree = "<group>"; };
 		31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPickerTextField.swift; sourceTree = "<group>"; };
+		31EBF13F1C233F7E00809F53 /* UIBarStyleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarStyleController.swift; sourceTree = "<group>"; };
+		31EBF1411C23432400809F53 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		AF0450501C1E0D1900E8E7EC /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		AF0450521C1EB62700E8E7EC /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		AF0450561C1EEC6100E8E7EC /* TrailerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailerTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +216,7 @@
 		AF300AAB1C15D11A00BC57D9 /* MusicStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicStore.swift; path = ../MusicStore.swift; sourceTree = "<group>"; };
 		AF300AB01C16CA3D00BC57D9 /* TrackStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackStore.swift; sourceTree = "<group>"; };
 		AF300AB21C16FF9000BC57D9 /* MusicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
+		AF40B8061C24CE10007D6F31 /* UIBarStyling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarStyling.swift; sourceTree = "<group>"; };
 		AF4E1D0E1C1DA0FE00AB1717 /* FilterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterProtocol.swift; sourceTree = "<group>"; };
 		AF4E1D101C1DA15400AB1717 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		AF833FDA1C18AE9F003D6C0A /* WishListStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListStore.swift; sourceTree = "<group>"; };
@@ -214,6 +224,10 @@
 		AFADF84E1BFC76E80024D9A4 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		AFE9D7141BFE13EC009E5DAA /* ManualEntryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualEntryTableViewController.swift; sourceTree = "<group>"; };
 		AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCell.swift; sourceTree = "<group>"; };
+		AFFFB73C1C2298D800FCD029 /* TextInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
+		AFFFB73E1C229A2500FCD029 /* PickerTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTextFieldCell.swift; sourceTree = "<group>"; };
+		AFFFB7401C229B5100FCD029 /* MovieManualEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieManualEntryViewController.swift; sourceTree = "<group>"; };
+		AFFFB7441C22D7F600FCD029 /* MusicManualEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicManualEntryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +330,7 @@
 			children = (
 				3177436F1C1DA7AB00C44715 /* UIImageView.swift */,
 				3149A8F41C207CE90078E1AE /* UIAlertController.swift */,
+				31EBF1411C23432400809F53 /* UIView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -399,6 +414,8 @@
 				31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */,
 				315797EE1C075FC60007FAFC /* UIImageColors.swift */,
 				318C2C301C0C8F29008AE6C4 /* UIStretchableTableView.swift */,
+				AF40B8061C24CE10007D6F31 /* UIBarStyling.swift */,
+				31EBF13F1C233F7E00809F53 /* UIBarStyleController.swift */,
 			);
 			name = UIElements;
 			sourceTree = "<group>";
@@ -457,14 +474,15 @@
 				3124B2011C1F137600ACE6D9 /* MediaBoxTableViewCell.swift */,
 				AFF229551BFC8CAF001181AC /* MediaCollectionViewCell.swift */,
 				3177437E1C1DE3B200C44715 /* MediaRectangleTableViewCell.swift */,
-				31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */,
 				31D1A6351C16126C00AA02A8 /* SearchMovieEntryTableViewCell.swift */,
 				31D1A6371C16127B00AA02A8 /* SearchMusicEntryTableViewCell.swift */,
 				AF833FDE1C197DD2003D6C0A /* TrackTableViewCell.swift */,
 				AF0450561C1EEC6100E8E7EC /* TrailerTableViewCell.swift */,
 				3177437C1C1DAB1100C44715 /* ValueDetailCell.swift */,
+				AFFFB73C1C2298D800FCD029 /* TextInputCell.swift */,
 				31E41FEA1C185F7F003976F9 /* WishListBoxTableViewCell.swift */,
 				31E41FEC1C186390003976F9 /* WishListRectangleTableViewCell.swift */,
+				AFFFB73E1C229A2500FCD029 /* PickerTextFieldCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -500,6 +518,9 @@
 				3124B2131C20410D00ACE6D9 /* MusicTableViewController.swift */,
 				31749C021BFDE7B400E76648 /* SearchTableViewController.swift */,
 				31E41FE81C185A88003976F9 /* WishListTableViewController.swift */,
+				31749C041BFDF75600E76648 /* SearchEntryTableViewController.swift */,
+				AFFFB7401C229B5100FCD029 /* MovieManualEntryViewController.swift */,
+				AFFFB7441C22D7F600FCD029 /* MusicManualEntryViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -637,6 +658,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31114C171C15B15700396AA8 /* JSONError.swift in Sources */,
+				AFFFB73F1C229A2500FCD029 /* PickerTextFieldCell.swift in Sources */,
 				AF0450511C1E0D1900E8E7EC /* HeaderTableViewCell.swift in Sources */,
 				31E41FDF1C173380003976F9 /* UICachableTableViewCell.swift in Sources */,
 				AF300AA01C0C908300BC57D9 /* MovieStore.swift in Sources */,
@@ -650,6 +672,7 @@
 				31114C221C15B19000396AA8 /* TMDbMovieResource.swift in Sources */,
 				31749C031BFDE7B400E76648 /* SearchTableViewController.swift in Sources */,
 				AF0450591C1EEFDE00E8E7EC /* PlayerPresenter.swift in Sources */,
+				31EBF1401C233F7E00809F53 /* UIBarStyleController.swift in Sources */,
 				3124B20E1C1F602800ACE6D9 /* MediaPageViewController.swift in Sources */,
 				AF300AAD1C15D11A00BC57D9 /* MusicStore.swift in Sources */,
 				3177437B1C1DAAB200C44715 /* ColoredTableViewCell.swift in Sources */,
@@ -657,6 +680,7 @@
 				31114C231C15B19000396AA8 /* TMDbSearchItem.swift in Sources */,
 				AF300AB31C16FF9000BC57D9 /* MusicDetailViewController.swift in Sources */,
 				3124B20C1C1F41DF00ACE6D9 /* MovieCollectionViewController.swift in Sources */,
+				AFFFB7411C229B5100FCD029 /* MovieManualEntryViewController.swift in Sources */,
 				31114C4A1C15FEC400396AA8 /* SearchAPI.swift in Sources */,
 				AF4E1D111C1DA15400AB1717 /* Filter.swift in Sources */,
 				3124B2021C1F137600ACE6D9 /* MediaBoxTableViewCell.swift in Sources */,
@@ -676,14 +700,17 @@
 				315797EA1C074F0B0007FAFC /* UIMarqueeLabel.swift in Sources */,
 				31114C4C1C15FFEE00396AA8 /* SearchAPIDelegate.swift in Sources */,
 				317743791C1DAA7100C44715 /* GeneralDetailTableViewCell.swift in Sources */,
+				AFFFB7451C22D7F600FCD029 /* MusicManualEntryViewController.swift in Sources */,
 				31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */,
 				3124B2101C20405600ACE6D9 /* MusicPageController.swift in Sources */,
+				AF40B8071C24CE10007D6F31 /* UIBarStyling.swift in Sources */,
 				AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */,
 				31114C3A1C15B1AF00396AA8 /* ItunesTrackItem.swift in Sources */,
 				3124B2121C2040E500ACE6D9 /* MusicCollectionViewController.swift in Sources */,
 				AF300AB11C16CA3D00BC57D9 /* TrackStore.swift in Sources */,
 				31114C241C15B19000396AA8 /* TMDbSearchResource.swift in Sources */,
 				31114C391C15B1AF00396AA8 /* ItunesSearchResource.swift in Sources */,
+				31EBF1421C23432400809F53 /* UIView.swift in Sources */,
 				3177437F1C1DE3B200C44715 /* MediaRectangleTableViewCell.swift in Sources */,
 				AF0450571C1EEC6100E8E7EC /* TrailerTableViewCell.swift in Sources */,
 				31EA349F1BFE4E4900D7F72B /* UIPickerTextField.swift in Sources */,
@@ -693,6 +720,7 @@
 				31D1A6361C16126C00AA02A8 /* SearchMovieEntryTableViewCell.swift in Sources */,
 				AF300AA91C0E3D8200BC57D9 /* ViewContext.swift in Sources */,
 				31B842221BF3880D005429FA /* AppDelegate.swift in Sources */,
+				AFFFB73D1C2298D800FCD029 /* TextInputCell.swift in Sources */,
 				AF300A7F1C0737E000BC57D9 /* Track.swift in Sources */,
 				31114C421C15B1C700396AA8 /* API.swift in Sources */,
 				AF300AA61C0CBFA300BC57D9 /* Storage.swift in Sources */,

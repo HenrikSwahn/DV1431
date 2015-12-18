@@ -13,6 +13,8 @@ enum ViewContextEnum: String {
     case Music = "Music"
     case EditMovie = "EditMovie"
     case EditMusic = "EditMusic"
+    case NewMovie = "NewMovie"
+    case NewMusic = "NewMusic"
     case Unkown = "Unkown"
 }
 

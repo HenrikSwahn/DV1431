@@ -18,9 +18,10 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - Private Members
     private var data: [[AnyObject]]?
     private var colors: UIImageColors?
-
+    private var barStyling: UIBarStyling?
+    
     private struct Storyboard {
-        static let editMovieSegue = "editMovieSegue"
+        static let editMovieSegue = "EditMovie"
         static let generalCell = "generalCell"
         static let descriptionCell = "descriptionCell"
         static let trailerCellID = "trailerCellID"
@@ -29,7 +30,6 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var ratingView: UIRatingView!
-    
     
     @IBOutlet weak var titleLabel: UIMarqueeLabel!
     @IBOutlet weak var detailLabel: UIMarqueeLabel!
@@ -54,6 +54,24 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 updateData(movie!)
             }
         }
+        
+        barStyling?.willAppear()
+        barStyling?.tabBarSeparatorColor = colors?.secondaryColor
+        barStyling?.tabBarBackgroundColor = colors?.backgroundColor
+        barStyling?.tabBarTintColor = colors?.primaryColor
+        
+        barStyling?.navigationBarBackgroundColor = colors?.backgroundColor
+        barStyling?.navigationBarTintColor = colors?.primaryColor
+        barStyling?.navigationBarSeparator?.backgroundColor = colors?.secondaryColor
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        barStyling?.willDisappear()
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offset = (scrollView.contentOffset.y + tableView.headerHeight! + 64) / 64
+        barStyling?.navigationBarView?.alpha = offset > 0.95 ? 0.95 : offset
     }
     
     override func viewDidLoad() {
@@ -68,6 +86,8 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.rowHeight = UITableViewAutomaticDimension
 
         ratingView.delegate = self
+        
+        self.barStyling = UIBarStyling(navigationBar: navigationController?.navigationBar, tabBar: tabBarController?.tabBar)
     }
     
     override func didReceiveMemoryWarning() {
@@ -153,9 +173,10 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - Prepare for segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Storyboard.editMovieSegue {
-            let dest = segue.destinationViewController as! ManualEntryTableViewController
-            dest.context = .EditMovie
-            dest.movieItem = movie!
+            if let dest = segue.destinationViewController as? MovieManualEntryViewController {
+                dest.context = .EditMovie
+                dest.movie = movie
+            }
         }
     }
     

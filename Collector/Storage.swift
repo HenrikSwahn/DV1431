@@ -50,8 +50,8 @@ class Storage {
     private var managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     func storeMovie(movie: Movie) -> Bool {
-        let results = searchData(.MovieId, search: movie.id, batchSize: nil, set: .Movie, doConvert: false)
         
+        let results = searchData(.MovieId, search: movie.id, batchSize: nil, set: .Movie, doConvert: false)
         if results != nil {
             if results?.count > 0 {
                 return false
@@ -101,6 +101,10 @@ class Storage {
         
         if let mainActors = movie.mainActors {
             storeMovie.mainActors = mainActors
+        }
+        
+        if let rating = movie.rating {
+            storeMovie.rating = rating
         }
         
         do {
@@ -178,6 +182,10 @@ class Storage {
         
         if let albumArtist = music.albumArtist {
             storeMusic.albumArtist = albumArtist
+        }
+        
+        if let rating = music.rating {
+            storeMusic.rating = rating
         }
         
         do {

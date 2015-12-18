@@ -24,6 +24,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     private struct Storyboard {
         static let mediaDetailTableCellIdentifier = "media detail cell id"
         static let trackCellId = "TrackCellId"
+        static let editMusic = "EditMusic"
     }
     
     @IBOutlet weak var coverImageView: UIImageView!
@@ -304,6 +305,15 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
                     cell.updatePreviewButton()
                     break;
                 }
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Storyboard.editMusic {
+            if let dest = segue.destinationViewController as? MusicManualEntryViewController {
+                dest.context = .EditMusic
+                dest.music = music
             }
         }
     }
