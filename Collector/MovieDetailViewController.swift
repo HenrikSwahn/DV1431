@@ -9,7 +9,7 @@
 import UIKit
 import AVKit
 
-class MovieDetailViewController: UIBarStyleController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter {
+class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter {
 
     // MARK: - Context
     var context = ViewContextEnum.Movie
@@ -18,7 +18,8 @@ class MovieDetailViewController: UIBarStyleController, UITableViewDelegate, UITa
     // MARK: - Private Members
     private var data: [[AnyObject]]?
     private var colors: UIImageColors?
-
+    private var barStyling: UIBarStyling?
+    
     private struct Storyboard {
         static let editMovieSegue = "EditMovie"
         static let generalCell = "generalCell"
@@ -29,7 +30,6 @@ class MovieDetailViewController: UIBarStyleController, UITableViewDelegate, UITa
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var ratingView: UIRatingView!
-    
     
     @IBOutlet weak var titleLabel: UIMarqueeLabel!
     @IBOutlet weak var detailLabel: UIMarqueeLabel!
@@ -54,19 +54,24 @@ class MovieDetailViewController: UIBarStyleController, UITableViewDelegate, UITa
                 updateData(movie!)
             }
         }
-
-        tabBarSeparatorColor = colors?.secondaryColor
-        tabBarBackgroundColor = colors?.backgroundColor
-        tabBarTintColor = colors?.primaryColor
         
-        navigationBarBackgroundColor = colors?.backgroundColor
-        navigationBarTintColor = colors?.primaryColor
-        navigationBarSeparator?.backgroundColor = colors?.secondaryColor
+        barStyling?.willAppear()
+        barStyling?.tabBarSeparatorColor = colors?.secondaryColor
+        barStyling?.tabBarBackgroundColor = colors?.backgroundColor
+        barStyling?.tabBarTintColor = colors?.primaryColor
+        
+        barStyling?.navigationBarBackgroundColor = colors?.backgroundColor
+        barStyling?.navigationBarTintColor = colors?.primaryColor
+        barStyling?.navigationBarSeparator?.backgroundColor = colors?.secondaryColor
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        barStyling?.willDisappear()
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = (scrollView.contentOffset.y + tableView.headerHeight! + 64) / 64
-        navigationBarView?.alpha = offset > 0.95 ? 0.95 : offset
+        barStyling?.navigationBarView?.alpha = offset > 0.95 ? 0.95 : offset
     }
     
     override func viewDidLoad() {
@@ -81,6 +86,8 @@ class MovieDetailViewController: UIBarStyleController, UITableViewDelegate, UITa
         tableView.rowHeight = UITableViewAutomaticDimension
 
         ratingView.delegate = self
+        
+        self.barStyling = UIBarStyling(navigationBar: navigationController?.navigationBar, tabBar: tabBarController?.tabBar)
     }
     
     override func didReceiveMemoryWarning() {
