@@ -92,6 +92,7 @@
 		AF300AAD1C15D11A00BC57D9 /* MusicStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AAB1C15D11A00BC57D9 /* MusicStore.swift */; };
 		AF300AB11C16CA3D00BC57D9 /* TrackStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AB01C16CA3D00BC57D9 /* TrackStore.swift */; };
 		AF300AB31C16FF9000BC57D9 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF300AB21C16FF9000BC57D9 /* MusicDetailViewController.swift */; };
+		AF40B8071C24CE10007D6F31 /* UIBarStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40B8061C24CE10007D6F31 /* UIBarStyling.swift */; };
 		AF4E1D0F1C1DA0FE00AB1717 /* FilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E1D0E1C1DA0FE00AB1717 /* FilterProtocol.swift */; };
 		AF4E1D111C1DA15400AB1717 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E1D101C1DA15400AB1717 /* Filter.swift */; };
 		AF833FDB1C18AE9F003D6C0A /* WishListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF833FDA1C18AE9F003D6C0A /* WishListStore.swift */; };
@@ -215,6 +216,7 @@
 		AF300AAB1C15D11A00BC57D9 /* MusicStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicStore.swift; path = ../MusicStore.swift; sourceTree = "<group>"; };
 		AF300AB01C16CA3D00BC57D9 /* TrackStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackStore.swift; sourceTree = "<group>"; };
 		AF300AB21C16FF9000BC57D9 /* MusicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
+		AF40B8061C24CE10007D6F31 /* UIBarStyling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarStyling.swift; sourceTree = "<group>"; };
 		AF4E1D0E1C1DA0FE00AB1717 /* FilterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterProtocol.swift; sourceTree = "<group>"; };
 		AF4E1D101C1DA15400AB1717 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		AF833FDA1C18AE9F003D6C0A /* WishListStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListStore.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				31EA349E1BFE4E4900D7F72B /* UIPickerTextField.swift */,
 				315797EE1C075FC60007FAFC /* UIImageColors.swift */,
 				318C2C301C0C8F29008AE6C4 /* UIStretchableTableView.swift */,
+				AF40B8061C24CE10007D6F31 /* UIBarStyling.swift */,
 				31EBF13F1C233F7E00809F53 /* UIBarStyleController.swift */,
 			);
 			name = UIElements;
@@ -700,6 +703,7 @@
 				AFFFB7451C22D7F600FCD029 /* MusicManualEntryViewController.swift in Sources */,
 				31749C051BFDF75600E76648 /* SearchEntryTableViewController.swift in Sources */,
 				3124B2101C20405600ACE6D9 /* MusicPageController.swift in Sources */,
+				AF40B8071C24CE10007D6F31 /* UIBarStyling.swift in Sources */,
 				AF300A7C1C07370E00BC57D9 /* Music.swift in Sources */,
 				31114C3A1C15B1AF00396AA8 /* ItunesTrackItem.swift in Sources */,
 				3124B2121C2040E500ACE6D9 /* MusicCollectionViewController.swift in Sources */,
