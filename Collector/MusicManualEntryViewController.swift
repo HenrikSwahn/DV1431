@@ -5,22 +5,10 @@
 //  Created by Henrik Swahn on 2015-12-17.
 //  Copyright © 2015 Dino Opijac. All rights reserved.
 //
-
 import UIKit
 import MobileCoreServices
 
-//
-//  MovieManualEntryViewController.swift
-//  Collector
-//
-//  Created by Henrik Swahn on 2015-12-17.
-//  Copyright © 2015 Dino Opijac. All rights reserved.
-//
-
-import UIKit
-import MobileCoreServices
-
-class MusicManualEntryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewContext, RatingViewDelegate, PlayerPresenter, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MusicManualEntryViewController: UITableViewController,  ViewContext, RatingViewDelegate, PlayerPresenter, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var context = ViewContextEnum.Unkown
     var itunesAlbumItem: ItunesAlbumItem?
@@ -42,7 +30,7 @@ class MusicManualEntryViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var detailLabel: UIMarqueeLabel!
     @IBOutlet weak var coverArtImage: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var tableView: UIStretchableTableView!
+    
     
     @IBAction func addMediaToLibraryAction(sender: UIButton) {
         
@@ -67,64 +55,62 @@ class MusicManualEntryViewController: UIViewController, UITableViewDelegate, UIT
     
     private func checkIfMusicNeedsUpdating() {
         
-        var row = 0, section = 0
         
-        // Title
-        var indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
-            if let input = cell.textInputField.text {
-                music!.title = input
+        // Title // Artist // Genre // Location
+        var section = 0
+        
+        for (var row = 0; row < tableView.numberOfRowsInSection(section); row++) {
+            if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as? TextInputCell {
+            
+                switch row {
+                case 0:
+                    if let input = cell.textInputField.text {
+                        music!.title = input
+                    }
+                    break
+                case 1:
+                    if let input = cell.textInputField.text {
+                        music!.albumArtist = input
+                    }
+                    break
+                case 2:
+                    if let input = cell.textInputField.text {
+                        music!.genre = input
+                    }
+                    break
+                case 3:
+                    if let input = cell.textInputField.text {
+                        music!.ownerLocation = input
+                    }
+                    break
+                default:break
+                }
             }
         }
         
-        // Artist
-        indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
-            if let input = cell.textInputField.text {
-                music!.albumArtist = input
-            }
-        }
-        
-        //Genre
-        indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
-            if let input = cell.textInputField.text {
-                music!.genre = input
-            }
-        }
-        
-        //Location
-        indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TextInputCell {
-            if let input = cell.textInputField.text {
-                music!.ownerLocation = input
-            }
-        }
-        
-        section = 1
-        row = 0
-        
-        //Type
-        indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
-            if let input = cell.pickerTextField.text {
-                music!.setOwningType(input)
-            }
-        }
-        
-        //Format
-        indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
-            if let input = cell.pickerTextField.text {
-                music!.setFormat(input)
-            }
-        }
-        
-        //Release year
-        indexPath = NSIndexPath(forRow: row++, inSection: section)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PickerTextFieldCell {
-            if let input = cell.pickerTextField.text {
-                music!.releaseYear = Int(input)!
+        section++
+        // Type // Format // Release Year
+        for (var row = 0; row < tableView.numberOfRowsInSection(section); row++) {
+            if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as? PickerTextFieldCell {
+            
+                switch row {
+                case 0:
+                    if let input = cell.pickerTextField.text {
+                        music!.setOwningType(input)
+                    }
+                    break
+                case 1:
+                    if let input = cell.pickerTextField.text {
+                        music!.setFormat(input)
+                    }
+                    break
+                case 2:
+                    if let input = cell.pickerTextField.text {
+                        music!.releaseYear = Int(input)!
+                    }
+                    break
+                default:break
+                }
             }
         }
     }
@@ -151,7 +137,6 @@ class MusicManualEntryViewController: UIViewController, UITableViewDelegate, UIT
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Set self as delegate and datasource
         tableView.delegate = self
         tableView.dataSource = self
@@ -188,6 +173,7 @@ class MusicManualEntryViewController: UIViewController, UITableViewDelegate, UIT
     
     func updateData(music: Music) {
         data = AlbumAdapter.getAddMusicAdapter(music)
+        setUpCells()
         tableView.reloadData()
         updateUI()
     }
@@ -233,56 +219,22 @@ class MusicManualEntryViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     // MARK: - TableView
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let sections = data {
-            return sections.count
+    private func setUpCells() {
+        var section = 0
+        
+        for (var row = 0; row < tableView.numberOfRowsInSection(section); row++) {
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as? TextInputCell
+            cell?.model = data![section][row+1]
+            cell?.colors = colors
         }
         
-        return 0
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.TextInputCell, forIndexPath: indexPath) as? TextInputCell {
-                cell.model = data?[indexPath.section][indexPath.row + 1]
-                cell.colors = colors
-                return cell
-            }
-        case 1:
-            if let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.PickerInputCell, forIndexPath: indexPath) as? PickerTextFieldCell {
-                cell.context = .Music
-                cell.model = data?[indexPath.section][indexPath.row + 1]
-                cell.colors = colors
-                return cell
-            }
-        case 2:
-            if let cell = tableView.dequeueReusableCellWithIdentifier("trackCell", forIndexPath: indexPath) as? TrackTableViewCell {
-                cell.model = data?[indexPath.section][indexPath.row + 1]
-                cell.colors = colors
-                cell.previewButton.hidden = true
-                cell.userInteractionEnabled = false
-                return cell
-            }
-        default:break
+        section++
+        for (var row = 0; row < tableView.numberOfRowsInSection(section); row++) {
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as? PickerTextFieldCell
+            cell?.context = .Music
+            cell?.model = data![section][row+1]
+            cell?.colors = colors
         }
-        return UITableViewCell()
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let rows = data {
-            return rows[section].count - 1
-        }
-        
-        return 0
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let title = data {
-            return title[section][0] as? String
-        }
-        
-        return nil
     }
     
     // MARK: - Custom Image

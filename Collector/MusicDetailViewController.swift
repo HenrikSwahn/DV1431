@@ -312,7 +312,7 @@ class MusicDetailViewController: UIViewController, UITableViewDelegate, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Storyboard.editMusic {
             if let dest = segue.destinationViewController as? MusicManualEntryViewController {
-                dest.context = .EditMovie
+                dest.context = .EditMusic
                 dest.music = music
             }
         }

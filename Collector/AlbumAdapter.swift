@@ -72,7 +72,7 @@ struct AlbumAdapter {
             KeyValueAdapter("Title", album.title),
             KeyValueAdapter("Artist", album.albumArtist),
             KeyValueAdapter("Genre", album.genre),
-            KeyValueAdapter("Location", location),
+            KeyValueAdapter("Location", location)
         ]
     }
     
@@ -122,7 +122,7 @@ struct AlbumAdapter {
         let tracks = AlbumAdapter.tracks(music)
         
         if tracks.count > 1 {
-            adapter.append(AlbumAdapter.tracks(music))
+            adapter.append(tracks)
         }
         
         return adapter

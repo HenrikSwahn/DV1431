@@ -16,7 +16,7 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     
     private struct Storyboard {
         static let manualEntrySegueId   = "ManualEntrySegue"
-        static let musicSegueId = "musicSegue"
+        static let musicSegueId = "MusicSegue"
         static let movieSegueId = "movieSegue"
         static let movieReuseIdentifier = "MovieResultCell"
         static let musicReuseIdentifier = "MusicResultCell"
