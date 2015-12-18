@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Do not use this view controller
+@available(*, deprecated)
 class UIBarStyleController: UIViewController {
     
     private struct Bar {
