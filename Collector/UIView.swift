@@ -15,7 +15,7 @@ extension UIView {
     }
     
     static func separatorMake(type: UIViewSeparator, rect: CGRect) -> UIView {
-        let thickness = (1.0 / UIScreen.mainScreen().scale) / 2;
+        let thickness: CGFloat = (1.0 / UIScreen.mainScreen().scale)
         
         let separator = UIView(
             frame: CGRectMake(
