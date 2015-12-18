@@ -404,8 +404,11 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         case .Music:
             let newMusic = Music(title: titleField.text!, released: Int(releaseYear.text!)!)
             
-            if let id = album!.id {
+            if let id = album?.id {
                 newMusic.id = id
+            }
+            else {
+                newMusic.id = "\(NSDate().timeIntervalSince1970)"
             }
             if let genre = genreFIeld.text {
                 newMusic.genre = genre
@@ -449,8 +452,11 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         
         let movie = Movie(title: titleField.text!, released: Int(releaseYear.text!)!, runtime: Runtime.getRuntimeBasedOnString(runTime.text!))
         
-        if let id = movieItem!.id {
+        if let id = movieItem?.id {
             movie.id = id
+        }
+        else {
+            movie.id = "\(NSDate().timeIntervalSince1970)"
         }
         
         if let genre = genreFIeld.text {
@@ -493,7 +499,9 @@ class ManualEntryTableViewController: UITableViewController, ViewContext, UIImag
         
         indexPath = NSIndexPath(forRow: 2, inSection: 0)
         
-        movie.trailers = movieItem!.trailers
+        if let trailers = movieItem?.trailers {
+            movie.trailers = trailers
+        }
         
         // Potential bug
         // cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ManualEntryTableViewCell
@@ -548,46 +556,3 @@ extension Array {
     }
 }
 
-/*extension Music {
-    static func fromItunesAlbumItem(item: ItunesAlbumItem, albumImage: UIImage?) -> Music {
-        let music = Music(title: item.name, released: item.release)
-        music.albumArtist = item.artist
-        music.genre = item.genre
-        music.desc = item.description
-        music.coverArt = albumImage
-        music.id = item.id
-        
-        if let tracks = item.tracks {
-            for var i = 0; i < tracks.count; ++i {
-                music.insertTrack(Track.fromItunesTrackItem(tracks[i], trackIndex: (i+1)))
-            }
-        }
-        
-        return music
-    }
-}
-
-extension Track {
-    static func fromItunesTrackItem(item: ItunesAlbumTrackItem, trackIndex: Int) -> Track {
-        let track = Track(name: item.title, runtime: Runtime.getRuntimeBasedOnSeconds(Int(item.duration)!), trackNr: trackIndex, url: item.url)
-        return track
-    }
-}*/
-
-/*extension Movie {
-    static func fromTMDbMovieItem(item: TMDbMovieItem, image: UIImage?) -> Movie {
-        let movie = Movie(title: item.title, released: item.release, runtime: Runtime.getRuntimeBasedOnMinutes(item.runtime))
-        movie.id = item.id
-        movie.genre = item.genres.joinWithSeparator(", ")
-        movie.mainActors = item.cast.joinWithSeparator(", ")
-        movie.desc = item.synopsis
-        movie.coverArt = image
-        movie.director = item.director
-        
-        if let videos = item.videos {
-            movie.trailers = videos
-        }
-        
-        return movie
-    }
-}*/

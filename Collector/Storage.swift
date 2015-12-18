@@ -50,8 +50,8 @@ class Storage {
     private var managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     func storeMovie(movie: Movie) -> Bool {
-        let results = searchData(.MovieId, search: movie.id, batchSize: nil, set: .Movie, doConvert: false)
         
+        let results = searchData(.MovieId, search: movie.id, batchSize: nil, set: .Movie, doConvert: false)
         if results != nil {
             if results?.count > 0 {
                 return false

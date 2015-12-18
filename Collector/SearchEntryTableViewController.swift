@@ -69,7 +69,7 @@ class SearchEntryTableViewController: UITableViewController, UINavigationControl
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
         if segue.identifier == Storyboard.manualEntrySegueId {
-            let dest = segue.destinationViewController as! MovieManualEntryViewController
+            let dest = segue.destinationViewController as! ManualEntryTableViewController
             dest.context = context
         }
         else if segue.identifier == Storyboard.musicSegueId {
